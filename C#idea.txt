@@ -1,0 +1,19 @@
+Type Racer game -> our way. 
+
+1) recieve input (Compare the text written by user by the one inputed in text file.) 
+2) parse text
+3) Display UI (To write paragraphs and also show the different statistics after writting paragraph, show statistics in UI. SHOW LOCATION #hackerman)
+4) Achievements
+5) Keep track of progress (WPM, Best score, How many parts of the document you have typed in)
+6) Make your own text file. 
+
+
+What we use 
+
+MVVM -> Research how it works.
+.NET Core
+WPF (Windows Presentation Foundation)
+
+
+Receive a file and get word by word and parse it. 
+
