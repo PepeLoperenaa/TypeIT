@@ -25,8 +25,22 @@ Needs to be Gantt Chart.
 ## Literature
 Useful links APA style.
 ## Moscow
-Must have: Receive input and parse it, UI, User input in text file, Typing screen
-Should have: Statistics, achievements.
-Could have: Making your own Text file type, FAQ, LogIn system
-Won´t have: Multiplayer, Log In system (Local app).
+The Moscow method is a prioritazion technique used for project management. This is done to reach a common understanding of the application and how it works. For the project TypeIT, the Moscow method was used to seperate the different functionalities and see what had more priority than others. As the moscow method, we have separated the different functionalities within the different priorities. After research and thinking about the different functionalities this is what we have thought about: 
+
+### Must have:
+- Receiving user input and parsing it to the application.
+- User input in the text file.
+- Typing screen.
+
+### Should have: 
+- Statistics.
+- Achievements.
+
+### Could have: 
+- Making our own Text file type.
+- FAQ (Frequently Asked Questions).
+
+### Will not have: 
+- Multiplyer (Locally or online).
+- Log in system (As it will be a local application).
 ## Use Case Diagram
