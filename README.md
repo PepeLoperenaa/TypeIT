@@ -24,6 +24,7 @@ Prepare start document, Technical specifications, Realization, testing, Presenta
 Needs to be Gantt Chart.
 ## Literature
 Useful links APA style.
+This links need to be added after doing reserach regarding the different frameworks etc. 
 ## Moscow
 The Moscow method is a prioritazion technique used for project management. This is done to reach a common understanding of the application and how it works. For the project TypeIT, the Moscow method was used to seperate the different functionalities and see what had more priority than others. As the moscow method, we have separated the different functionalities within the different priorities. After research and thinking about the different functionalities this is what we have thought about: 
 
