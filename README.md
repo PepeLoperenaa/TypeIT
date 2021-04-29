@@ -3,12 +3,13 @@
 ## Version History
 V:0.1
 ## Group Roles
-- **Steffen Tourbier**: Leader, Back-end
+- **Abdalrahman Ghname**: Front-end
 - **Chris Takacs**: Front-end
 - **Costandino Hiripis**: Front-end
 - **Georgi Dimitrov**: Back-end
+- **Steffen Tourbier**: Leader, Back-end
 - **Pepe Loperena**: Back-end
-- **Abdalrahman Ghname**: Front-end
+
 ## Idea
 A group of students wants a better way of practicing their typing. These students wanted to be able to read books they enjoy
 while at the same time type them out to practice typing better. To achieve this, the application needs to be able to provide
