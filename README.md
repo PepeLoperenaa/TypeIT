@@ -25,12 +25,11 @@ own pace; Normal: stat trackers, type at your own pace; Hard: stat trackers with
 all the previous modifiers, but a single mistake means you have to restart the entire section of text.
 
 ## Use Case Diagram
-![Usecase](documents/images/usecase.png)
+![Use case](documents/images/usecase.png)
 
 ## Mockups
-Mockups for the application can be found in the following links:
+The following are mockups for the application's main screens
 ### Light Mode
-
 Login Screen
 ![Login Screen](documents/images/mockups_light/Login%205%20Users.png)
 
@@ -58,16 +57,37 @@ Settings
 Change Game Mode
 ![Statistics](documents/images/mockups_light/Change%20Game%20Mode.png)
 
-Change User WIth 5 Users
-![Change User with 5 users](documents/images/mockups_light/Change%20User%20With%205%20Users.png)
-
-Change User WIth 6 Users
-![Change User with 6 users](documents/images/mockups_light/Change%20User%20With%206%20Users.png)
-
 About Us
-![Statistics](documents/images/mockups_light/About%20Us.png)
+![About us](documents/images/mockups_light/Information.png)
 
 ### Dark Mode
+
+Dashboard
+![Dashboard](documents/images/mockups_dark/Dashboard.png)
+
+Documents
+![Documents](documents/images/mockups_dark/Documents.png)
+
+My Collection
+![My Collection](documents/images/mockups_dark/My%20Collection.png)
+
+Statistics
+![Statistics](documents/images/mockups_dark/Statistics.png)
+
+Settings
+![Statistics](documents/images/mockups_dark/Settings.png)
+
+Change Game Mode
+![Statistics](documents/images/mockups_dark/Change%20Game%20Mode.png)
+
+Change User with 5 users
+![Change User with 6 users](documents/images/mockups_dark/Change%20User%20with%205%20users.png)
+
+Change User with 6 users;
+![Change User with 6 users](documents/images/mockups_dark/Change%20User%20with%206%20users.png)
+
+About Us
+![About us](documents/images/mockups_dark/Information.png)
 
 ## Planning
 
