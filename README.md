@@ -26,8 +26,46 @@ all the previous modifiers, but a single mistake means you have to restart the e
 
 ## Mockups
 Mockups for the application can be found in the following links:
-[light mode mockups](documents/images/mockups_light)
-[dark mode mockups](documents/images/mockups_dark)
+### Light Mode
+
+Login Screen
+![Login Screen](documents/images/mockups_light/Login%205%20Users.png)
+
+Dashboard
+![Dashboard](documents/images/mockups_light/Dashboard.png)
+
+Typing
+![Typing](documents/images/mockups_light/Typing.png)
+
+Achievements
+![Achievements](documents/images/mockups_light/Achievements.png)
+
+Documents
+![Documents](documents/images/mockups_light/Documents.png)
+
+My Collection
+![My Collection](documents/images/mockups_light/My%20Collection.png)
+
+Statistics
+![Statistics](documents/images/mockups_light/Stats.png)
+
+Settings
+![Statistics](documents/images/mockups_light/Settings.png)
+
+Change Game Mode
+![Statistics](documents/images/mockups_light/Change%20Game%20Mode.png)
+
+Change User WIth 5 Users
+![Change User with 5 users](documents/images/mockups_light/Change%20User%20With%205%20Users.png)
+
+Change User WIth 6 Users
+![Change User with 6 users](documents/images/mockups_light/Change%20User%20With%206%20Users.png)
+
+About Us
+![Statistics](documents/images/mockups_light/About%20Us.png)
+
+### Dark Mode
+
 ## Planning
 ### 1st week
 	 Creation of start document and edition of start document, Seperating group roles and tasks, Pitch idea to lecturers, Mock ups.
