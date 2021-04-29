@@ -24,47 +24,57 @@ each text they want to practice typing. To achieve this, the following game mode
 own pace; Normal: stat trackers, type at your own pace; Hard: stat trackers with a timer for each section to be typed; Instant Death: 
 all the previous modifiers, but a single mistake means you have to restart the entire section of text.
 
+## Use Case Diagram
+![Usecase](documents/images/usecase.png)
+
 ## Mockups
 Mockups for the application can be found in the following links:
-[light mode mockups](documents/images/mockups_light)
-[dark mode mockups](documents/images/mockups_dark)
+* [light mode mockups](documents/images/mockups_light)
+* [dark mode mockups](documents/images/mockups_dark)
+
 ## Planning
+
 ### 1st week
-	 Creation of start document and edition of start document, Seperating group roles and tasks, Pitch idea to lecturers, Mock ups.
+    Creation of start document and edition of start document, Seperating group roles and tasks, 
+    Pitch idea to lecturers, Mock ups.
+
 ### 2nd week
-	Technical specification of project,start realization of project, Send start document to lecturers
+	Technical specification of project,start realization of project, 
+    Send start document to lecturers
+
 ### 3rd week 
 	Designing class diagram. 
 	Front-end: Dashboard, Typing page, Start-up screen (UI)
 	Back-end: Creating file structure for storing users
+
 ### 4th week 
 	Class diagram to be sent to the lecturers
 	Front-end: Library page, uplaod page, Open file, Document page(could be changed)
 	Back-end: Accepting user input(key strokes), parsing file
+
 ### 5th week
 	Front end: Settings, Live Statistics
 	Back-end: Creating users / Storing users, Calculating statistics
+
 ### 6th week 
 	Front end: Achievements, stats, FAQ
 	Back end: Unlocking achievements
 	Realization phase
+
 ### 7th week 
 	Finalization phase 
+
 ### 8th week 
 	Testing phase, prepare presentation
+
 ### 9th week
 	Presentation
-
 
 ### Gantt Chart
 The gantt chart for this project can be found [here](documents/gantt.pdf)
 
-## Literature
-Useful links APA style.
-This links need to be added after doing reserach regarding the different frameworks etc. 
-## Moscow method
-The Moscow method is a prioritazion technique used for project management. This is done to reach a common understanding of the 
-application and how it works. For the project TypeIT, the Moscow method was used to seperate the different functionalities and see 
+## Application features
+For this project, the Moscow method was used to separate the different functionalities and see 
 what had more priority than others. As the moscow method, we have separated the different functionalities within the different 
 priorities. After research and thinking about the different functionalities this is what we have thought about: 
 
@@ -74,15 +84,21 @@ priorities. After research and thinking about the different functionalities this
 - Typing screen.
 
 ### Should have: 
-- Statistics.
-- Achievements.
+- Statistics page for each user.
+- Achievements page for each user.
 
 ### Could have: 
-- Making our own Text file type.
-- FAQ (Frequently Asked Questions).
+- Making our own file type to store user data.
+- Information page for users to know about the application
 
 ### Will not have: 
 - Multiplayer (Locally or online).
 - Log in system (As it will be a local application).
-## Use Case Diagram
-The use case diagram should be added here. 
+
+## Literature
+
+p.s.w.g (2013). Is there a proper way to create a file format. Stack Exchange. 
+    Retrieved from: https://softwareengineering.stackexchange.com/questions/188536/is-there-a-proper-way-to-create-a-file-format
+
+T. Levesque (2017). Easy text parsing in C# with Sprache. THOMAS LEVESQUE'S .NET BLOG. 
+    Retrieved from: https://thomaslevesque.com/2017/02/23/easy-text-parsing-in-c-with-sprache/
