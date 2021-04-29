@@ -28,8 +28,32 @@ Mockups for the application can be found in the following links:
 [light mode mockups](documents/images/mockups_light)
 [dark mode mockups](documents/images/mockups_dark)
 ## Planning
-Prepare start document, Technical specifications, Realization, testing, Presentation
-Needs to be Gantt Chart.
+### 1st week
+	 Creation of start document and edition of start document, Seperating group roles and tasks, Pitch idea to lecturers, Mock ups.
+### 2nd week
+	Technical specification of project,start realization of project, Send start document to lecturers
+### 3rd week 
+	Designing class diagram. 
+	Front-end: Dashboard, Typing page, Start-up screen (UI)
+	Back-end: Creating file structure for storing users
+### 4th week 
+	Class diagram to be sent to the lecturers
+	Front-end: Library page, uplaod page, Open file, Document page(could be changed)
+	Back-end: Accepting user input(key strokes), parsing file
+### 5th week
+	Front end: Settings, Live Statistics
+	Back-end: Creating users / Storing users, Calculating statistics
+### 6th week 
+	Front end: Achievements, stats, FAQ
+	Back end: Unlocking achievements
+	Realization phase
+### 7th week 
+	Finalization phase 
+### 8th week 
+	Testing phase, prepare presentation
+### 9th week
+	Presentation
+
 
 ### Gantt Chart
 The gantt chart for this project can be found [here](documents/gantt.pdf)
