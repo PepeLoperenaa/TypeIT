@@ -1,7 +1,20 @@
 # TypeIT
 
 ## Version History
-V:0.1
+
+| Version       | Changes                     | Date      |
+|---------------|-----------------------------|-----------|
+|0.0            |Creation of document         |23/04/2021|
+|0.1            |Added the idea               |23/04/2021|
+|0.2            |Added the team roles         |26/04/2021|
+|0.3            |Added the planning           |26/04/2021|
+|0.4            |Added the gantt chart        |26/04/2021|
+|0.5            |Added the Moscow stuff       |26/04/2021|
+|0.6            |Added the literature         |29/04/2021|
+|0.7            |Added the mockups            |29/04/2021|
+|0.8            |Added the use case diagram   |29/04/2021|
+|0.9            |Added the light theme mockups|30/04/2021|
+
 ## Group Roles
 - **Abdalrahman Ghname**: Front-end
 - **Chris Takacs**: Front-end
@@ -30,34 +43,43 @@ all the previous modifiers, but a single mistake means you have to restart the e
 ## Mockups
 The following are mockups for the application's main screens
 ### Light Mode
-Login Screen
-![Login Screen](documents/images/mockups_light/Login%205%20Users.png)
+**Login Screen with 5 users**
+![Login Screen with 5 users](documents/images/mockups_light/Login%205%20Users.png)
 
-Dashboard
+**Login Screen with 6 users**
+![Login Screen with 6 users](documents/images/mockups_light/Login%206%20Users.png)
+
+**Dashboard**
 ![Dashboard](documents/images/mockups_light/Dashboard.png)
 
-Typing
+**Typing**
 ![Typing](documents/images/mockups_light/Typing.png)
 
-Achievements
+**Achievements**
 ![Achievements](documents/images/mockups_light/Achievements.png)
 
-Documents
+**Documents**
 ![Documents](documents/images/mockups_light/Documents.png)
 
-My Collection
+**My Collection**
 ![My Collection](documents/images/mockups_light/My%20Collection.png)
 
-Statistics
+**Statistics**
 ![Statistics](documents/images/mockups_light/Stats.png)
 
-Settings
+**Settings**
 ![Statistics](documents/images/mockups_light/Settings.png)
 
-Change Game Mode
+**Change User with 5 users**
+![Change User with 5 users](documents/images/mockups_light/Change%20User%20with%205%20users.png)
+
+**Change User with 6 users**
+![Change User with 6 users](documents/images/mockups_light/Change%20User%20with%206%20users.png)
+
+**Change Game Mode**
 ![Statistics](documents/images/mockups_light/Change%20Game%20Mode.png)
 
-About Us
+**About**
 ![About us](documents/images/mockups_light/Information.png)
 
 ### Dark Mode
@@ -65,29 +87,6 @@ About Us
 Dashboard
 ![Dashboard](documents/images/mockups_dark/Dashboard.png)
 
-Documents
-![Documents](documents/images/mockups_dark/Documents.png)
-
-My Collection
-![My Collection](documents/images/mockups_dark/My%20Collection.png)
-
-Statistics
-![Statistics](documents/images/mockups_dark/Statistics.png)
-
-Settings
-![Statistics](documents/images/mockups_dark/Settings.png)
-
-Change Game Mode
-![Statistics](documents/images/mockups_dark/Change%20Game%20Mode.png)
-
-Change User with 5 users
-![Change User with 6 users](documents/images/mockups_dark/Change%20User%20with%205%20users.png)
-
-Change User with 6 users;
-![Change User with 6 users](documents/images/mockups_dark/Change%20User%20with%206%20users.png)
-
-About Us
-![About us](documents/images/mockups_dark/Information.png)
 
 ## Planning
 
