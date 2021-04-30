@@ -14,6 +14,7 @@
 |0.7            |Added the mockups            |29/04/2021|
 |0.8            |Added the use case diagram   |29/04/2021|
 |0.9            |Added the light theme mockups|30/04/2021|
+|1.0            |Added the dark theme mockups |30/04/2021|
 
 ## Group Roles
 - **Abdalrahman Ghname**: Front-end
@@ -42,6 +43,7 @@ all the previous modifiers, but a single mistake means you have to restart the e
 
 ## Mockups
 The following are mockups for the application's main screens
+
 ### Light Mode
 **Login Screen with 5 users**
 ![Login Screen with 5 users](documents/images/mockups_light/Login%205%20Users.png)
@@ -83,10 +85,44 @@ The following are mockups for the application's main screens
 ![About us](documents/images/mockups_light/Information.png)
 
 ### Dark Mode
+**Login Screen with 5 users**
+![Login Screen with 5 users](documents/images/mockups_dark/Login%20with%205%20Users.png)
 
-Dashboard
+**Login Screen with 6 users**
+![Login Screen with 6 users](documents/images/mockups_dark/Login%20with%206%20Users.png)
+
+**Dashboard**
 ![Dashboard](documents/images/mockups_dark/Dashboard.png)
 
+**Typing**
+![Typing](documents/images/mockups_dark/Typing.png)
+
+**Achievements**
+![Achievements](documents/images/mockups_dark/Achievements.png)
+
+**Documents**
+![Documents](documents/images/mockups_dark/Documents.png)
+
+**My Collection**
+![My Collection](documents/images/mockups_dark/My%20Collection.png)
+
+**Statistics**
+![Statistics](documents/images/mockups_dark/Stats.png)
+
+**Settings**
+![Statistics](documents/images/mockups_dark/Settings.png)
+
+**Change User with 5 users**
+![Change User with 5 users](documents/images/mockups_dark/Change%20User%20with%205%20users.png)
+
+**Change User with 6 users**
+![Change User with 6 users](documents/images/mockups_dark/Change%20User%20with%206%20users.png)
+
+**Change Game Mode**
+![Statistics](documents/images/mockups_dark/Change%20Game%20Mode.png)
+
+**About**
+![About us](documents/images/mockups_dark/Information.png)
 
 ## Planning
 
