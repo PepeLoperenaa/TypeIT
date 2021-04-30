@@ -2,19 +2,21 @@
 
 ## Version History
 
-| Version       | Changes                     | Date      |
-|---------------|-----------------------------|-----------|
-|0.0            |Creation of document         |23/04/2021|
-|0.1            |Added the idea               |23/04/2021|
-|0.2            |Added the team roles         |26/04/2021|
-|0.3            |Added the planning           |26/04/2021|
-|0.4            |Added the gantt chart        |26/04/2021|
-|0.5            |Added the Moscow stuff       |26/04/2021|
-|0.6            |Added the literature         |29/04/2021|
-|0.7            |Added the mockups            |29/04/2021|
-|0.8            |Added the use case diagram   |29/04/2021|
-|0.9            |Added the light theme mockups|30/04/2021|
-|1.0            |Added the dark theme mockups |30/04/2021|
+| Version       | Changes                                     | Date     |
+|---------------|---------------------------------------------|----------|
+|0.1.0          |Creation of document                         |23/04/2021|
+|0.1.1          |Added the idea                               |23/04/2021|
+|0.2.0          |Added the team roles                         |26/04/2021|
+|0.2.1          |Added the planning                           |26/04/2021|
+|0.2.2          |Added the gantt chart                        |26/04/2021|
+|0.2.3          |Added the Moscow stuff                       |26/04/2021|
+|0.3.0          |Added the literature                         |29/04/2021|
+|0.3.1          |Added the mockups                            |29/04/2021|
+|0.3.2          |Added the use case diagram                   |29/04/2021|
+|0.4.0          |Added the light theme mockups                |30/04/2021|
+|0.4.1          |Added the dark theme mockups                 |30/04/2021|
+|0.4.2          |Updated gantt chart, fixed version numbering |30/04/2021|
+|1.0.0          |Finalized document for submission            |30/04/2021|
 
 ## Group Roles
 - **Abdalrahman Ghname**: Front-end
