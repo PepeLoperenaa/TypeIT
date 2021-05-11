@@ -162,10 +162,10 @@ The following are mockups for the application's main screens
 	Realization phase
 
 ### 7th week 
-	Finalization phase 
+	Finalization stage:  Completing last steps of the application. 
 
 ### 8th week 
-	Testing phase, prepare presentation
+	Preparing presentation
 
 ### 9th week
 	Presentation
