@@ -29,16 +29,22 @@
 ## Idea
 A group of students wants a better way of practicing their typing. These students wanted to be able to read books they enjoy
 while at the same time type them out to practice typing better. To achieve this, the application needs to be able to provide
-specific functionalities to the user. The user should be able to input their own choice of text through a file, either pdf, text,
-or other file types; depending on what file the user in puts, they should also be able to select a specific page for typing practice.
+specific functionalities to the user. The user should be able to input their own choice of text through a file, either pdf and text files. depending on what file the user in puts, they should also be able to select a specific page for typing practice.
 Additionally, the user must be able to see their statistics and progression through typing practice using the application - statistics
 for the current text being typed should also be displayed.
 
 Different users should be able to use the application on the same computer, at different times. In addition, different users 
-should have different profiles where their personal stats are recorded. Users should also be able to select different difficulties for
+should have different profiles where their personal stats are recorded and stored in a unique file structure type. Users should also be able to select different difficulties for
 each text they want to practice typing. To achieve this, the following game modes will be available - Casual: no trackers, type at your
 own pace; Normal: stat trackers, type at your own pace; Hard: stat trackers with a timer for each section to be typed; Instant Death: 
 all the previous modifiers, but a single mistake means you have to restart the entire section of text.
+
+The development team will make use of the .Net Core framework and the Windows Presentation Foundation (WPF) for the application (UI), also the development team is going
+to work with Github version conrtrol using two different branches; development and main so when a part of the application is realized and tested in the development branch
+it can be merged to the main branch.
+
+The method that the application will developed with is (MVVM) Model–view–viewmodel which is a software architectural pattern 
+that facilitates the separation of the development of the graphical user interface (the view).
 
 ## Use Case Diagram
 ![Use case](documents/images/usecase.png)
