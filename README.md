@@ -31,7 +31,7 @@ A group of students wants a better way of practicing their typing. These student
 while at the same time type them out to practice typing better. To achieve this, the application needs to be able to provide
 specific functionalities to the user. The user should be able to input their own choice of text through a file, either pdf and text files. depending on what file the user in puts, they should also be able to select a specific page for typing practice.
 Additionally, the user must be able to see their statistics and progression through typing practice using the application - statistics
-for the current text being typed should also be displayed.
+for the current text being typed should also be displayed.  
 
 Different users should be able to use the application on the same computer, at different times. In addition, different users 
 should have different profiles where their personal stats are recorded and stored in a unique file structure type. Users should also be able to select different difficulties for
@@ -53,43 +53,83 @@ that facilitates the separation of the development of the graphical user interfa
 The following are mockups for the application's main screens
 
 ### Light Mode
-**Login Screen with 5 users**
+**Login Screen with 5 users** <br>
+The first page that the user will see. He has the option to enter a new name to login or select previously entered names that have been stated.
 ![Login Screen with 5 users](documents/images/mockups_light/Login%205%20Users.png)
 
-**Login Screen with 6 users**
+**Login Screen with 6 users** <br>
+The user can enter only 6 profiles
+
 ![Login Screen with 6 users](documents/images/mockups_light/Login%206%20Users.png)
 
-**Dashboard**
+**Dashboard** <br>
+Dashboard is the menu interface where the user can 
 ![Dashboard](documents/images/mockups_light/Dashboard.png)
 
-**Typing**
+**Typing** <br>
+The typing interface is where the user will have the ability to write and complete a certain part of a document.The interface also includes several other options:
+* The time
+* The percentage of completion
+* The word per minute
+* The accuracy
+* the number of pages and how much are left
+
 ![Typing](documents/images/mockups_light/Typing.png)
 
-**Achievements**
+**Achievements** <br>
+The application will contain the features of unlocking achievements whenever the user completes a certain milestone.
+The interface displays the achievements that the user has unlocked, and the ones that are locked
+
 ![Achievements](documents/images/mockups_light/Achievements.png)
 
-**Documents**
+**Documents** <br>
+The user will have the option to add a new document to his collection or select a document that has already been stored.
+
 ![Documents](documents/images/mockups_light/Documents.png)
 
-**My Collection**
+**My Collection** <br>
+
+The collection stores every document that the user has added as well as having the features of showing the progress of their completion, and the number of pages that are completed 
+
 ![My Collection](documents/images/mockups_light/My%20Collection.png)
 
-**Statistics**
+**Statistics** <br>
+The user has the ability to track his performance
+
 ![Statistics](documents/images/mockups_light/Stats.png)
 
-**Settings**
+**Settings** <br>
+The user has the ability to select from the options below:
+* Change user
+* Change the game mode that he is playing
+* resit his progress
+* Change his theme (Light mode/Dark mode)
+* Delete his account
+* Exit his application
+
 ![Statistics](documents/images/mockups_light/Settings.png)
 
-**Change User with 5 users**
+**Change User with 5 users** <br>
+The user can have the option to switch profiles.If there is 5 or less existing profiles, the user has the ability to create a new profile.
 ![Change User with 5 users](documents/images/mockups_light/Change%20User%20with%205%20users.png)
 
-**Change User with 6 users**
+**Change User with 6 users** <br>
+The user can have the options to switch profiles.If there is 6 existing profiles the user cannot create any new ones.
+
 ![Change User with 6 users](documents/images/mockups_light/Change%20User%20with%206%20users.png)
 
-**Change Game Mode**
+**Change Game Mode** <br>
+The user has the option of changing the game difficulty.Each game mode provides their own uniqueness
+the following game modes will be available:
+* Casual: no trackers, type at your own pace; 
+* Normal: stat trackers, type at your own pace; 
+* Hard: stat trackers with a timer for each section to be typed; 
+* Instant Death: all the previous modifiers, but a single mistake means you have to restart the entire section of text.
 ![Statistics](documents/images/mockups_light/Change%20Game%20Mode.png)
 
-**About**
+**About** <br>
+The user can get information about the developers of this application
+
 ![About us](documents/images/mockups_light/Information.png)
 
 ### Dark Mode
