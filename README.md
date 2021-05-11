@@ -17,6 +17,7 @@
 |0.4.1          |Added the dark theme mockups                 |30/04/2021|
 |0.4.2          |Updated gantt chart, fixed version numbering |30/04/2021|
 |1.0.0          |Finalized document for submission            |30/04/2021|
+|1.1.0          |Finalized start document based on feedback   |11/05/2021|
 
 ## Group Roles
 - **Abdalrahman Ghname**: Front-end
@@ -31,20 +32,22 @@ A group of students wants a better way of practicing their typing. These student
 while at the same time type them out to practice typing better. To achieve this, the application needs to be able to provide
 specific functionalities to the user. The user should be able to input their own choice of text through a file, either pdf and text files. depending on what file the user in puts, they should also be able to select a specific page for typing practice.
 Additionally, the user must be able to see their statistics and progression through typing practice using the application - statistics
-for the current text being typed should also be displayed.  
+for the current text being typed should also be displayed. **(1)**
 
 Different users should be able to use the application on the same computer, at different times. In addition, different users 
-should have different profiles where their personal stats are recorded and stored in a unique file structure type. Users should also be able to select different difficulties for
+should have different profiles where their personal stats are recorded and stored in a unique file structure type **(2)**. Users should also be able to select different difficulties for
 each text they want to practice typing. To achieve this, the following game modes will be available - Casual: no trackers, type at your
 own pace; Normal: stat trackers, type at your own pace; Hard: stat trackers with a timer for each section to be typed; Instant Death: 
-all the previous modifiers, but a single mistake means you have to restart the entire section of text.
+all the previous modifiers, but a single mistake means you have to restart the entire section of text. 
 
 The development team will make use of the .Net Core framework and the Windows Presentation Foundation (WPF) for the application (UI), also the development team is going
-to work with Github version conrtrol using two different branches; development and main so when a part of the application is realized and tested in the development branch
+to work with GitHub version control using two different branches; development and main so when a part of the application is realized and tested in the development branch
 it can be merged to the main branch.
 
-The method that the application will developed with is (MVVM) Model–view–viewmodel which is a software architectural pattern 
-that facilitates the separation of the development of the graphical user interface (the view).
+The method that the application will be developed with is (MVVM) Model–view–viewmodel. this is a software architectural pattern 
+that facilitates the separation of the development of the graphical user interface (the view). **(3)**
+
+**(1), (2), (3): For further information please refer to the literature chapter**
 
 ## Use Case Diagram
 ![Use case](documents/images/usecase.png)
@@ -205,10 +208,17 @@ The user can get information about the developers of this application
 	Finalization stage:  Completing last steps of the application. 
 
 ### 8th week 
-	Preparing presentation
+	Testing phase, Preparing presentation
 
 ### 9th week
 	Presentation
+
+
+### Test Plan
+In this chapter we will include the testing plan of the application TypeIT as well as the data required to carry out the testing.
+
+#### Test data
+TODO: Test plan here
 
 ### Gantt Chart
 The gantt chart for this project can be found [here](documents/gantt.pdf)
@@ -222,23 +232,32 @@ priorities. After research and thinking about the different functionalities this
 - Receiving user input and parsing it to the application.
 - User input in the text file.
 - Typing screen.
-
-### Should have: 
+- Parsing PDF / txt files 
+- Making our own file type to store user data. 
 - Statistics page for each user.
 - Achievements page for each user.
 
-### Could have: 
-- Making our own file type to store user data.
+### Should have:
+- Log in system (As it will be a local application).
+- Multiple users.
+- Dark Mode and Light mode theme.
+- Different game modes.
+
+### Could have:
 - Information page for users to know about the application
 
 ### Will not have: 
 - Multiplayer (Locally or online).
-- Log in system (As it will be a local application).
 
 ## Literature
 
-p.s.w.g (2013). Is there a proper way to create a file format. Stack Exchange. 
+This APA references were used in the research and planning phase of the application. 
+
+(1): T. Levesque (2017). Easy text parsing in C# with Sprache. THOMAS LEVESQUE'S .NET BLOG.
+    Retrieved from: https://thomaslevesque.com/2017/02/23/easy-text-parsing-in-c-with-sprache/
+
+(2): p.s.w.g (2013). Is there a proper way to create a file format. Stack Exchange. 
     Retrieved from: https://softwareengineering.stackexchange.com/questions/188536/is-there-a-proper-way-to-create-a-file-format
 
-T. Levesque (2017). Easy text parsing in C# with Sprache. THOMAS LEVESQUE'S .NET BLOG. 
-    Retrieved from: https://thomaslevesque.com/2017/02/23/easy-text-parsing-in-c-with-sprache/
+(3): Wikimedia Foundation. (2021, March 15). Model–view–viewmodel. Wikipedia. 
+    Retrieved from: https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel#:~:text=Model%E2%80%93view%E2%80%93viewmodel%20(MVVM,is%20not%20dependent%20on%20any.
