@@ -175,6 +175,9 @@ The user can get information about the developers of this application
 **About**
 ![About us](documents/images/mockups_dark/Information.png)
 
+## Class diagram
+![Class diagram](documents/images/Class%20Diagram0.png)
+
 ## Planning
 
 ### 1st week
