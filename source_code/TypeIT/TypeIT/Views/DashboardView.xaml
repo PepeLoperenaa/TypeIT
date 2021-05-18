@@ -27,7 +27,7 @@
 
             <Button Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" 
                     Width="130" Style="{StaticResource ImageButton}"
-                    Command="{Binding ButtonCommand}">
+                    Command="{Binding NavigateAboutCommand}">
                 <StackPanel Width="120" Orientation="Horizontal">
                     <Image Source="../Resources/Images/world-png.png" Height="15"/>
                     <TextBlock Text="Hello World"/>

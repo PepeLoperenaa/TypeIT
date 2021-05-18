@@ -20,6 +20,9 @@
                     <DataTemplate DataType="{x:Type viewmodels:DashboardViewModel}">
                         <views:DashboardView/>
                     </DataTemplate>
+                    <DataTemplate DataType="{x:Type viewmodels:AboutViewModel}">
+                        <views:AboutView/>
+                    </DataTemplate>
                 </ContentControl.Resources>
             </ContentControl>
         </Grid>
