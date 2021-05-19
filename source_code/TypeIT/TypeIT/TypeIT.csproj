@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <Folder Include="Models\" />
+    <Folder Include="Utilities\" />
     <Folder Include="Resources\Images\" />
   </ItemGroup>
 
