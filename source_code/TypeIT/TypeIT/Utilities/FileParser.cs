@@ -7,6 +7,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
+using Syncfusion.DocIO.DLS;
 
 namespace TypeIT.Utilities
 {
@@ -95,7 +96,19 @@ namespace TypeIT.Utilities
 
         public void ParseDOCX(string FilePath, string Title)
         {
+            string Text = OpenDocument(FilePath);
 
+            string dir = "../../Documents/" + Title + "/";
+
+            if (!Directory.Exists(dir))
+            {
+                Directory.CreateDirectory(dir);
+            }
+
+            using (WordDocument doc = new WordDocument("test.docx"))
+            {
+                string text = doc.GetText();
+            }
         }
     }
 }
