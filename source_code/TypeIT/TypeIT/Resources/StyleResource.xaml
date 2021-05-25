@@ -1,6 +1,10 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-   
+
+
+    <Style TargetType="{x:Type TextBlock}">
+        <Setter Property="FontFamily" Value="Fonts/Fragmentcore.otf#Fragment Core" />
+    </Style>
 
     <!-- Button with image-->
     <Style x:Key="ImageButton" TargetType="Button">

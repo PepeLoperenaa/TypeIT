@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Fonts\Fragmentcore.otf" />
     <None Remove="Resources\Images\aboutIcon.png" />
     <None Remove="Resources\Images\achievementsIcon.png" />
     <None Remove="Resources\Images\addNewDocumentIcon.png" />
@@ -42,6 +43,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\Fonts\Fragmentcore.otf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Images\aboutIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
