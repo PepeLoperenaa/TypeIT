@@ -9,7 +9,6 @@
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="FontSize" Value="8"/>
         <Setter Property="Foreground" Value="{StaticResource TextBlue}"/>
-        <Setter Property="Margin" Value="5, 0, 5, 10"/>
         <Setter Property="Button.Effect">
             <Setter.Value>
                 <DropShadowEffect Color="{StaticResource Shadow}"
@@ -32,5 +31,47 @@
             </Setter.Value>
         </Setter>
     </Style>
+    
+    <!-- Button in header -->
+    <Style x:Key="HeaderButton" TargetType="Button">
+        <Setter Property="Height" Value="15"/>
+        <Setter Property="Width" Value="15"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="FontSize" Value="8"/>
+        <Setter Property="Foreground" Value="Transparent"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="Transparent">
+                        <ContentPresenter x:Name="contentPresenter" 
+                                              ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                              Content="{TemplateBinding Content}" 
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                              Margin="{TemplateBinding Padding}" 
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!-- Textblocks in AboutView-->
+    <!-- Set the value of its border because the TextBlock itself is embedded in a border tag -->
+    <Style x:Key="TextBlockBorder" TargetType="Border">
+        <Setter Property="Background" Value="{StaticResource Button}"/>
+        <Setter Property="CornerRadius" Value="5"/>
+        <Setter Property="BorderThickness" Value="1.5"/>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect Color="{StaticResource Shadow}"
+                                      Direction="320" ShadowDepth="1" 
+                                      BlurRadius="5" Opacity="0.6" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    
 
 </ResourceDictionary>
