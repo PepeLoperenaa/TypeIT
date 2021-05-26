@@ -4,17 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using TypeIT.Commands;
 using TypeIT.Stores;
 
 namespace TypeIT.ViewModels
 {
     class AboutViewModel : ViewModelBase
     {
-        public ICommand NavigateLoginCommand { get; }
+        public ICommand NavigateHomeCommand { get; }
 
         public AboutViewModel(NavigationStore navigationStore)
         {
-           
+           NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore));
         }
     }
 }
