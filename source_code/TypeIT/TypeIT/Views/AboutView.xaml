@@ -41,11 +41,11 @@
                 <WrapPanel  Orientation="Horizontal">
                     <TextBlock Text="Who Are We?"
                                FontSize="10" 
-                               Foreground="{StaticResource ResourceKey=TextBlue}"
+                               Foreground="{StaticResource ResourceKey=TextHeaderColor}"
                                TextAlignment="Left"/>
                     <TextBlock FontSize="6" 
                                Height="50"
-                               Foreground="{StaticResource ResourceKey=TextColor}"
+                               Foreground="{StaticResource ResourceKey=TextBodyColor}"
                                TextAlignment="Left">
                                We are a group of 6 junior developers from <LineBreak/>
                                NHL Stenden University of Applied Sciences. <LineBreak/>
@@ -54,11 +54,11 @@
                     </TextBlock>
                     <TextBlock Text="What is TypeIT?"
                                FontSize="10" 
-                               Foreground="{StaticResource ResourceKey=TextBlue}"
+                               Foreground="{StaticResource ResourceKey=TextHeaderColor}"
                                TextAlignment="Left"/>
                     <TextBlock FontSize="6" 
                                Height="50"
-                               Foreground="{StaticResource ResourceKey=TextColor}"
+                               Foreground="{StaticResource ResourceKey=TextBodyColor}"
                                TextAlignment="Left">
                                TypeIT is a tyiping game that allows the user <LineBreak/>
                                to upload custom texts and books and type them <LineBreak/>
@@ -80,7 +80,7 @@
                            VerticalAlignment="Center">
                         <Image Source="../Resources/Images/contactUsIcon.png" Height="40"/>
                         <TextBlock Margin="10, 0, 0, 0"
-                                   Foreground="{StaticResource ResourceKey=TextColor}"
+                                   Foreground="{StaticResource ResourceKey=TextHeaderColor}"
                                    Height="15">Contact us</TextBlock>
                     </WrapPanel>
                 </TextBlock>
@@ -89,7 +89,7 @@
             <TextBlock Grid.Column="3" Grid.Row="2"
                        Grid.ColumnSpan="2"
                        Text="typeIT" 
-                       Foreground="{StaticResource TextColor}"
+                       Foreground="{StaticResource TextHeaderColor}"
                        VerticalAlignment="Center" HorizontalAlignment="Center"
                        FontSize="35"/>
         </Grid>

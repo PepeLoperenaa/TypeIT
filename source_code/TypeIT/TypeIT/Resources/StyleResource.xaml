@@ -6,13 +6,18 @@
         <Setter Property="FontFamily" Value="Fonts/Fragmentcore.otf#Fragment Core" />
     </Style>
 
+    <Style x:Key="BodyText" TargetType="{x:Type Run}">
+        <Setter Property="FontSize" Value="5"/>
+        <Setter Property="Foreground" Value="{StaticResource TextBodyColor}"/>
+    </Style>
+
     <!-- Button with image-->
     <Style x:Key="ImageButton" TargetType="Button">
         <Setter Property="Height" Value="60"/>
         <Setter Property="Width" Value="60"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="FontSize" Value="8"/>
-        <Setter Property="Foreground" Value="{StaticResource TextBlue}"/>
+        <Setter Property="Foreground" Value="{StaticResource TextHeaderColor}"/>
         <Setter Property="Button.Effect">
             <Setter.Value>
                 <DropShadowEffect Color="{StaticResource Shadow}"

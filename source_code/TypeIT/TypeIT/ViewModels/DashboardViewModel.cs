@@ -14,10 +14,14 @@ namespace TypeIT.ViewModels
     {
         public ICommand NavigateAboutCommand { get; }
         public ICommand ExitCommand { get; set; }
+        public ICommand NavigateSettingsCommand { get; set; }
+        public ICommand NavigateDocumentsCommand { get; set; }
 
         public DashboardViewModel(NavigationStore navigationStore)
         {
             NavigateAboutCommand = new NavigateCommand<AboutViewModel>(navigationStore, () => new AboutViewModel(navigationStore));
+            NavigateSettingsCommand = new NavigateCommand<SettingsViewModel>(navigationStore, () => new SettingsViewModel(navigationStore));
+            NavigateDocumentsCommand = new NavigateCommand<DocumentsViewModel>(navigationStore, () => new DocumentsViewModel(navigationStore));
             ExitCommand = new DelegateCommand(ClickedExit);
         }
 

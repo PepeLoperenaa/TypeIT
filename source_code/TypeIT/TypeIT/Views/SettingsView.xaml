@@ -1,0 +1,82 @@
+﻿<UserControl x:Class="TypeIT.Views.SettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TypeIT.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Viewbox>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="65"/>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="70"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="70"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Settings" 
+                       TextAlignment="Left" VerticalAlignment="Bottom"
+                       Foreground="{DynamicResource TextBlue}"
+                       Grid.Column="1" Grid.Row="0"/>
+
+            <Button Grid.Column="4" Grid.Row="0"
+                    Style="{StaticResource HeaderButton}"
+                    Command="{Binding NavigateHomeCommand}">
+                <StackPanel>
+                    <Image Source="../Resources/Images/homeIcon.png" />
+                </StackPanel>
+            </Button>
+            <Button Grid.Column="1" Grid.Row="1" Style="{StaticResource ImageButton}"
+                    Command="{Binding NavigateChangeUserCommand}">
+                <StackPanel>
+                    <Image Source="../Resources/Images/changeUserIcon.png" Height="35" Margin="0,5,0,0"/>
+                    <TextBlock Text="Change user" Height="15" Margin="0,2,0,0" TextAlignment="Center"/>
+                </StackPanel>
+            </Button>
+
+            <Button Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" 
+                    Width="125" Style="{StaticResource ImageButton}"
+                    Command="{Binding NavigateChangeGameModeCommand}">
+                <StackPanel Width="120" Orientation="Horizontal">
+                    <Image Source="../Resources/Images/changeGameModeIcon.png" Height="35"  Margin="10,0,0,0"/>
+                    <TextBlock Text="Change Game&#x0a;Mode"  Height="20" Margin="10,5,0,0" TextAlignment="Center"/>
+                </StackPanel>
+            </Button>
+
+            <Button Grid.Column="4" Grid.Row="1" Style="{StaticResource ImageButton}"
+                    Command="{Binding NavigateResetStatisticsCommand}">
+                <StackPanel>
+                    <Image Source="../Resources/Images/resetStatsIcon.png" Height="35" Margin="0,5,0,0"/>
+                    <TextBlock Text="Reset Statistics" Margin="0,2,0,0" Height="15" TextAlignment="Center"/>
+                </StackPanel>
+            </Button>
+            <Button Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource ImageButton}"
+                    Width="125" Command="{Binding NavigateChangeThemeCommand}">
+                <StackPanel Width="120" Orientation="Horizontal">
+                    <Image Source="../Resources/Images/changeThemeIcon.png" Height="40" Margin="10,0,0,0"/>
+                    <TextBlock Text="Change Theme" Height="15" Margin="10,5,0,0" TextAlignment="Center"/>
+                </StackPanel>
+            </Button>
+            <Button Grid.Column="3" Grid.Row="2" Style="{StaticResource ImageButton}"
+                    Command="{Binding NavigateDeleteAccountCommand}">
+                <StackPanel>
+                    <Image Source="../Resources/Images/deleteIcon.png" Height="35" Margin="0,5,0,0"/>
+                    <TextBlock Text="Delete Account" Height="15" Margin="0,2,0,0" TextAlignment="Center"/>
+                </StackPanel>
+            </Button>
+            <Button Grid.Column="4" Grid.Row="2" Style="{StaticResource ImageButton}"
+                    Command="{Binding NavigateAboutCommand}">
+                <StackPanel>
+                    <Image Source="../Resources/Images/exitIcon.png" Height="35" Margin="0,5,0,0"/>
+                    <TextBlock Text="Exit" Height="15" Margin="0,2,0,0" TextAlignment="Center"/>
+                </StackPanel>
+            </Button>
+        </Grid>
+    </Viewbox>
+</UserControl>

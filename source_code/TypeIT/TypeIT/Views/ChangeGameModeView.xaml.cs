@@ -16,18 +16,13 @@ using System.Windows.Shapes;
 namespace TypeIT.Views
 {
     /// <summary>
-    /// Interaction logic for DashboardView.xaml
+    /// Interaction logic for AboutView.xaml
     /// </summary>
-    public partial class DashboardView : UserControl
+    public partial class ChangeGameModeView : UserControl
     {
-        public DashboardView()
+        public ChangeGameModeView()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
