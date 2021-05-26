@@ -55,7 +55,7 @@
 
             <Button Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="2" 
                     Width="125" Style="{StaticResource ImageButton}"
-                    Command="{Binding ChangeGameModeToCasual}">
+                    Command="{Binding ChangeGameModeToNormal}">
                 <StackPanel Width="120" Orientation="Horizontal">
                     <Image Source="../Resources/Images/normalIcon.png" Height="35" Margin="15,0,0,0"/>
                     <TextBlock Width="60" Margin="15,0,0,0">
@@ -74,7 +74,7 @@
 
             <Button Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" 
                     Width="125" Style="{StaticResource ImageButton}"
-                    Command="{Binding ChangeGameModeToCasual}">
+                    Command="{Binding ChangeGameModeToHard}">
                 <StackPanel Width="120" Orientation="Horizontal">
                     <Image Source="../Resources/Images/hardIcon.png" Height="40" Margin="5,0,0,0"/>
                     <TextBlock Width="60" Margin="10,0,0,0">
@@ -95,7 +95,7 @@
 
             <Button Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="2" 
                     Width="125" Style="{StaticResource ImageButton}"
-                    Command="{Binding ChangeGameModeToCasual}">
+                    Command="{Binding ChangeGameModeToExtreme}">
                 <StackPanel Width="120" Orientation="Horizontal">
                     <Image Source="../Resources/Images/extremeIcon.png" Height="45" Margin="5,0,0,0"/>
                     <TextBlock Width="60" Margin="10,0,0,0">

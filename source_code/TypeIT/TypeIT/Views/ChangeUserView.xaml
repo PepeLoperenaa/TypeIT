@@ -1,0 +1,97 @@
+﻿<UserControl x:Class="TypeIT.Views.ChangeUserView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TypeIT.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Viewbox>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="65"/>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="70"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="70"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="About" 
+                       TextAlignment="Left" VerticalAlignment="Bottom"
+                       Foreground="{DynamicResource TextBlue}"
+                       Grid.Column="1" Grid.Row="0"/>
+
+            <Button Grid.Column="4" Grid.Row="0"
+                    Style="{StaticResource HeaderButton}"
+                    Command="{Binding NavigateHomeCommand}">
+                <StackPanel>
+                    <Image Source="../Resources/Images/homeIcon.png" />
+                </StackPanel>
+            </Button>
+
+            <Border  Grid.Column="1" Grid.Row="1" 
+                     Grid.ColumnSpan="2" Grid.RowSpan="2"
+                     Style="{StaticResource TextBlockBorder}">
+                <TextBlock>
+                <WrapPanel  Orientation="Horizontal">
+                    <TextBlock Text="Who Are We?"
+                               FontSize="10" 
+                               Foreground="{StaticResource ResourceKey=TextHeaderColor}"
+                               TextAlignment="Left"/>
+                    <TextBlock FontSize="6" 
+                               Height="50"
+                               Foreground="{StaticResource ResourceKey=TextBodyColor}"
+                               TextAlignment="Left">
+                               We are a group of 6 junior developers from <LineBreak/>
+                               NHL Stenden University of Applied Sciences. <LineBreak/>
+                               TypeIT is the final assignment for our C# course <LineBreak/>
+                               in the second year.
+                    </TextBlock>
+                    <TextBlock Text="What is TypeIT?"
+                               FontSize="10" 
+                               Foreground="{StaticResource ResourceKey=TextHeaderColor}"
+                               TextAlignment="Left"/>
+                    <TextBlock FontSize="6" 
+                               Height="50"
+                               Foreground="{StaticResource ResourceKey=TextBodyColor}"
+                               TextAlignment="Left">
+                               TypeIT is a tyiping game that allows the user <LineBreak/>
+                               to upload custom texts and books and type them <LineBreak/>
+                               whilst keeping track of their performance <LineBreak/>
+                               as they play along.
+                    </TextBlock>
+                </WrapPanel>
+            </TextBlock>
+            </Border>
+
+            <Border Grid.Column="3" Grid.Row="1"
+                    Grid.ColumnSpan="2"
+                    Style="{StaticResource TextBlockBorder}">
+                <TextBlock
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center">
+                <WrapPanel Orientation="Horizontal"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center">
+                        <Image Source="../Resources/Images/contactUsIcon.png" Height="40"/>
+                        <TextBlock Margin="10, 0, 0, 0"
+                                   Foreground="{StaticResource ResourceKey=TextHeaderColor}"
+                                   Height="15">Contact us</TextBlock>
+                    </WrapPanel>
+                </TextBlock>
+            </Border>
+
+            <TextBlock Grid.Column="3" Grid.Row="2"
+                       Grid.ColumnSpan="2"
+                       Text="typeIT" 
+                       Foreground="{StaticResource TextHeaderColor}"
+                       VerticalAlignment="Center" HorizontalAlignment="Center"
+                       FontSize="35"/>
+        </Grid>
+    </Viewbox>
+</UserControl>

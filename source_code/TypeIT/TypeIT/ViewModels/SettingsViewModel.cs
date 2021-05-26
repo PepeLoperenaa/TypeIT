@@ -13,7 +13,7 @@ namespace TypeIT.ViewModels
     class SettingsViewModel : ViewModelBase
     {
         public ICommand NavigateHomeCommand { get; }
-        public ICommand ChangeUserCommand { get; set; }
+        public ICommand NavigateChangeUserCommand { get; set; }
         public ICommand NavigateChangeGameModeCommand { get; set; }
         public ICommand ResetStatisticsCommand { get; set; }
         public ICommand ChangeThemeCommand { get; set; }
@@ -22,7 +22,7 @@ namespace TypeIT.ViewModels
         public SettingsViewModel(NavigationStore navigationStore)
         {
             NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore));
-            //ChangeUserCommand
+            NavigateChangeUserCommand = new NavigateCommand<ChangeUserViewModel>(navigationStore, () => new ChangeUserViewModel(navigationStore));
             NavigateChangeGameModeCommand = new NavigateCommand<ChangeGameModeViewModel>(navigationStore, () => new ChangeGameModeViewModel(navigationStore));
             //ResetStatisticsCommand
             ChangeThemeCommand = new DelegateCommand(ClickedChangeTheme);
