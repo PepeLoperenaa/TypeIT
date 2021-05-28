@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="TypeIT.Views.AboutView"
+﻿<UserControl x:Class="TypeIT.Views.ChangeUserView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -69,19 +69,22 @@
             </TextBlock>
             </Border>
 
-            <Button Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="2"
-                    VerticalAlignment="Top" Margin="0,2,0,0"
-                    Width="125" Style="{StaticResource ImageButton}"
-                    Command="{Binding ContactCommand}">
-                <StackPanel Width="120" Orientation="Horizontal">
-                    <Image Source="../Resources/Images/contactUsIcon.png" Height="35"/>
-                    <TextBlock Text="Contact us" 
-                               Height="15" Margin="15,0,0,0" 
-                               TextAlignment="Center"
-                               Foreground="{StaticResource TextColor}"/>
-                </StackPanel>
-            </Button>
-
+            <Border Grid.Column="3" Grid.Row="1"
+                    Grid.ColumnSpan="2"
+                    Style="{StaticResource TextBlockBorder}">
+                <TextBlock
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center">
+                <WrapPanel Orientation="Horizontal"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center">
+                        <Image Source="../Resources/Images/contactUsIcon.png" Height="40"/>
+                        <TextBlock Margin="10, 0, 0, 0"
+                                   Foreground="{StaticResource ResourceKey=TextHeaderColor}"
+                                   Height="15">Contact us</TextBlock>
+                    </WrapPanel>
+                </TextBlock>
+            </Border>
 
             <TextBlock Grid.Column="3" Grid.Row="2"
                        Grid.ColumnSpan="2"

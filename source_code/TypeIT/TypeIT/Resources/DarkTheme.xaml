@@ -9,10 +9,12 @@
     <Color x:Key="ButtonColor">#212121</Color>
     <Color x:Key="ElementBlue">#326ba5</Color>
     <Color x:Key="Shadow">#000000</Color>
-    <Color x:Key="Text">#FFFFFF</Color>
+    <Color x:Key="TextHeader">#326ba5</Color>
+    <Color x:Key="TextBody">#ffffff</Color>
 
     <SolidColorBrush x:Key="Background" Color="{StaticResource BackgroundColor}"/>
     <SolidColorBrush x:Key="TextBlue" Color="{StaticResource ElementBlue}"/>
     <SolidColorBrush x:Key="Button" Color="{StaticResource ButtonColor}"/>
-    <SolidColorBrush x:Key="TextColor" Color="{StaticResource Text}"/>
+    <SolidColorBrush x:Key="TextHeaderColor" Color="{StaticResource TextHeader}"/>
+    <SolidColorBrush x:Key="TextBodyColor" Color="{StaticResource TextBody}"/>
 </ResourceDictionary> 
