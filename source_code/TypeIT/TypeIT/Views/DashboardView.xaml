@@ -57,7 +57,7 @@
                 </StackPanel>
             </Button>
             <Button Grid.Column="1" Grid.Row="2" Style="{StaticResource ImageButton}"
-                    Command="{Binding NavigateAboutCommand}">
+                    Command="{Binding NavigateStatisticsCommand}">
                 <StackPanel>
                     <Image Source="../Resources/Images/statsIcon.png" Height="35"/>
                     <TextBlock Text="Statistics" Height="15" TextAlignment="Center"/>

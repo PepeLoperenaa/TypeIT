@@ -35,6 +35,9 @@
                     <DataTemplate DataType="{x:Type viewmodels:ChangeUserViewModel}">
                         <views:ChangeUserView/>
                     </DataTemplate>
+                    <DataTemplate DataType="{x:Type viewmodels:StatisticsViewModel}">
+                        <views:StatisticsView/>
+                    </DataTemplate>
                 </ContentControl.Resources>
             </ContentControl>
         </Grid>
