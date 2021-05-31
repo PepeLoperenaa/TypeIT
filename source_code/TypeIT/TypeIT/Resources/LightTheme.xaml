@@ -17,4 +17,5 @@
     <SolidColorBrush x:Key="Button" Color="{StaticResource ButtonColor}"/>
     <SolidColorBrush x:Key="TextHeaderColor" Color="{StaticResource TextHeader}"/>
     <SolidColorBrush x:Key="TextBodyColor" Color="{StaticResource TextBody}"/>
+    <SolidColorBrush x:Key="ShadowColor" Color="{StaticResource Shadow}"/>
 </ResourceDictionary>

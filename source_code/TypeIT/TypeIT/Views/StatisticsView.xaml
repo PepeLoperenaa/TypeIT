@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TypeIT.Views"
+             xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Viewbox>
@@ -38,13 +39,82 @@
             <!-- Second row -->
             <Border Grid.Column="1" Grid.Row="1"
                     Grid.ColumnSpan="2"
-                    Style="{StaticResource TextBlockBorder}">
-                
+                    Style="{StaticResource TextBlockBorder}"
+                    Padding="2,0,2,0">
+                <lvc:CartesianChart Zoom="X">
+                    <lvc:CartesianChart.Series>
+                        <lvc:LineSeries Title="Average WPM:" Values="{ Binding WpmValues}"
+                                        StrokeThickness="1"
+                                        Foreground="{StaticResource Background}"
+                                        Stroke="{StaticResource TextBlue}"
+                                        LineSmoothness="1" 
+                                        PointGeometrySize="5"
+                                        PointForeground="{StaticResource Button}"/>
+                    </lvc:CartesianChart.Series>
+                    <lvc:CartesianChart.DataTooltip>
+                        <lvc:DefaultTooltip BulletSize="4"
+                                            FontSize="6"
+                                            Foreground="{StaticResource TextBodyColor}"
+                                            Background="{StaticResource Background}"/>
+                    </lvc:CartesianChart.DataTooltip>
+                    <lvc:CartesianChart.AxisX >
+                        <lvc:Axis Title="Date"
+                                  FontSize="5"
+                                  FontFamily="Fonts/Fragmentcore.otf#Fragment Core"
+                                  Labels="{Binding Dates}"
+                                  ShowLabels="False" />
+                    </lvc:CartesianChart.AxisX>
+                    <lvc:CartesianChart.AxisY>
+                        <lvc:Axis Title="WPM" 
+                                  FontSize="5"
+                                  MinValue="0"
+                                  FontFamily="Fonts/Fragmentcore.otf#Fragment Core">
+                            <lvc:Axis.Separator>
+                                <lvc:Separator Stroke="{StaticResource Background}"/>
+                            </lvc:Axis.Separator>
+                        </lvc:Axis>
+                    </lvc:CartesianChart.AxisY>
+                </lvc:CartesianChart>
             </Border>
             <Border Grid.Column="3" Grid.Row="1"
                     Grid.ColumnSpan="2"
-                    Style="{StaticResource TextBlockBorder}">
-                
+                    Style="{StaticResource TextBlockBorder}"
+                     Padding="2,0,2,0">
+                <lvc:CartesianChart Zoom="X">
+                    <lvc:CartesianChart.Series>
+                        <lvc:LineSeries Title="Average accuracy:" Values="{ Binding AccuracyValues}"
+                                        StrokeThickness="1"
+                                        Foreground="{StaticResource Background}"
+                                        Stroke="{StaticResource TextBlue}"
+                                        LineSmoothness="1" 
+                                        PointGeometrySize="5"
+                                        PointForeground="{StaticResource Button}"/>
+                    </lvc:CartesianChart.Series>
+                    <lvc:CartesianChart.DataTooltip>
+                        <lvc:DefaultTooltip BulletSize="4"
+                                            FontSize="6"
+                                            Foreground="{StaticResource TextBodyColor}"
+                                            Background="{StaticResource Background}"/>
+                    </lvc:CartesianChart.DataTooltip>
+                    <lvc:CartesianChart.AxisX >
+                        <lvc:Axis Title="Date"
+                                  FontSize="5"
+                                  FontFamily="Fonts/Fragmentcore.otf#Fragment Core"
+                                  Labels="{Binding Dates}"
+                                  ShowLabels="False" />
+                    </lvc:CartesianChart.AxisX>
+                    <lvc:CartesianChart.AxisY>
+                        <lvc:Axis Title="Accuracy" 
+                                  FontSize="5"
+                                  MinValue="0"
+                                  MaxValue="100"
+                                  FontFamily="Fonts/Fragmentcore.otf#Fragment Core">
+                            <lvc:Axis.Separator>
+                                <lvc:Separator Stroke="{StaticResource Background}"/>
+                            </lvc:Axis.Separator>
+                        </lvc:Axis>
+                    </lvc:CartesianChart.AxisY>
+                </lvc:CartesianChart>
             </Border>
 
             <!-- Third row -->
