@@ -36,7 +36,7 @@
 
             <Button Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" 
                     Width="125" Style="{StaticResource ImageButton}"
-                    Command="{Binding NavigateAboutCommand}">
+                    Command="{Binding NavigateTypingCommand}">
                 <StackPanel Width="120" Orientation="Horizontal">
                     <Image Source="../Resources/Images/typingIcon.png" Height="35"/>
                     <TextBlock Text="Start Typing" Height="15" Margin="15,0,0,0" TextAlignment="Center"/>

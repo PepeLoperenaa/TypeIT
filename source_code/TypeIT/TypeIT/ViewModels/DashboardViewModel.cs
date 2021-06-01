@@ -17,6 +17,7 @@ namespace TypeIT.ViewModels
         public ICommand NavigateSettingsCommand { get; set; }
         public ICommand NavigateDocumentsCommand { get; set; }
         public ICommand NavigateStatisticsCommand { get; set; }
+        public ICommand NavigateTypingCommand { get; set; }
 
         public DashboardViewModel(NavigationStore navigationStore)
         {
@@ -24,6 +25,7 @@ namespace TypeIT.ViewModels
             NavigateSettingsCommand = new NavigateCommand<SettingsViewModel>(navigationStore, () => new SettingsViewModel(navigationStore));
             NavigateDocumentsCommand = new NavigateCommand<DocumentsViewModel>(navigationStore, () => new DocumentsViewModel(navigationStore));
             NavigateStatisticsCommand = new NavigateCommand<StatisticsViewModel>(navigationStore, () => new StatisticsViewModel(navigationStore));
+            NavigateTypingCommand = new NavigateCommand<TypingViewModel>(navigationStore, () => new TypingViewModel(navigationStore));
             ExitCommand = new DelegateCommand(ClickedExit);
         }
 
