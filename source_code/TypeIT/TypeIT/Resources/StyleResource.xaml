@@ -10,22 +10,52 @@
         <Setter Property="Opacity" Value="0"/>
     </Style>
 
-    <Style TargetType="{x:Type xctk:MessageBox}">
-        <Setter Property="Background" Value="{StaticResource Background}" />
-        <Setter Property="BorderBrush" Value="{StaticResource ShadowColor}" />
-        <Setter Property="CaptionForeground" Value="Transparent" />
-        <Setter Property="WindowBorderBrush" Value="Transparent" />
-        <Setter Property="WindowBackground" Value="Transparent" />
-        <Setter Property="WindowOpacity" Value="1" />
-        <Setter Property="Foreground" Value="{StaticResource TextBodyColor}"/>
-        <Setter Property="CloseButtonStyle" Value="{StaticResource MyCloseButtonStyle}"/>
-        
+    <Style x:Key="MyButton" TargetType="Button">
+        <Setter Property="Foreground" Value="{StaticResource TextHeaderColor}"/>
+        <Setter Property="Button.Effect">
+            <Setter.Value>
+                <DropShadowEffect Color="{StaticResource Shadow}"
+                                      Direction="320" ShadowDepth="1" 
+                                      BlurRadius="5" Opacity="0.6" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border CornerRadius="5" Background="White" BorderBrush="{StaticResource ShadowColor}">
+                        <ContentPresenter x:Name="contentPresenter" 
+                                              ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                              Content="{TemplateBinding Content}" 
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                              Margin="{TemplateBinding Padding}" 
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
+
+    <Style TargetType="{x:Type xctk:MessageBox}">
+        <Setter Property="Background" Value="white" />
+        <Setter Property="BorderBrush" Value="{StaticResource ShadowColor}"/>
+        <Setter Property="Height" Value="200"/>
+        <Setter Property="Width" Value="400"/>
+        <Setter Property="CaptionForeground" Value="Transparent"/>
+        <Setter Property="WindowBorderBrush" Value="Transparent"/>
+        <Setter Property="WindowBackground" Value="Transparent"/>
+        <Setter Property="WindowOpacity" Value="1" />
+        <Setter Property="Foreground" Value="{StaticResource TextHeaderColor}"/>
+        <Setter Property="CloseButtonStyle" Value="{StaticResource MyCloseButtonStyle}"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontFamily" Value="Fonts/Fragmentcore.otf#Fragment Core"/>
+        <Setter Property="YesButtonStyle" Value="{StaticResource MyButton}"/>
+        <Setter Property="NoButtonStyle" Value="{StaticResource MyButton}"/>
     </Style>
 
 
     <Style TargetType="{x:Type TextBlock}">
-        <Setter Property="FontFamily" Value="Fonts/Fragmentcore.otf#Fragment Core" />
+        <Setter Property="FontFamily" Value="Fonts/Fragmentcore.otf#Fragment Core"/>
     </Style>
 
     <Style x:Key="BodyText" TargetType="{x:Type Run}">

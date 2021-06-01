@@ -39,10 +39,9 @@ namespace TypeIT.ViewModels
             //}
 
             var res = Xceed.Wpf.Toolkit.MessageBox.Show(
-                           "R U sure you want to quit?",
+                           "Are you sure you want to quit?",
                            "Quit",
-                           MessageBoxButton.YesNo,
-                           MessageBoxImage.None
+                           MessageBoxButton.YesNo
                        );
 
             if ("Yes" == res.ToString())
