@@ -15,9 +15,11 @@ namespace TypeIT
     /// </summary>
     public partial class App : Application
     {
+
+        public NavigationStore navigationStore { get; set; }
         protected override void OnStartup(StartupEventArgs e)
         {
-            NavigationStore navigationStore = new NavigationStore();
+            navigationStore = new NavigationStore();
 
             navigationStore.CurrentViewModel = new DashboardViewModel(navigationStore);
 

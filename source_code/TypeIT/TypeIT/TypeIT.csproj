@@ -20,6 +20,7 @@
     <None Remove="Resources\Images\documentsAndCollectionIcon.png" />
     <None Remove="Resources\Images\exitIcon.png" />
     <None Remove="Resources\Images\extremeIcon.png" />
+    <None Remove="Resources\Images\hardIcon.png" />
     <None Remove="Resources\Images\homeIcon.png" />
     <None Remove="Resources\Images\individualAchievemtsIcon.png" />
     <None Remove="Resources\Images\lockedAchievementsIcon.png" />
@@ -77,6 +78,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Images\extremeIcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\hardIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Images\individualAchievemtsIcon.png">
