@@ -11,10 +11,10 @@
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="5"/>
-                <ColumnDefinition Width="60"/>
-                <ColumnDefinition Width="70"/>
-                <ColumnDefinition Width="70"/>
-                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="67.5"/>
+                <ColumnDefinition Width="67.5"/>
+                <ColumnDefinition Width="67.5"/>
+                <ColumnDefinition Width="67.5"/>
                 <ColumnDefinition Width="5"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
@@ -22,6 +22,7 @@
                 <RowDefinition Height="20"/>
                 <RowDefinition Height="95"/>
                 <RowDefinition Height="20"/>
+                <RowDefinition Height="5"/>
             </Grid.RowDefinitions>
 
             <!-- First row - header-->

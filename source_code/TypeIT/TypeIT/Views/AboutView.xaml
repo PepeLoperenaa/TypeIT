@@ -10,15 +10,17 @@
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="5"/>
-                <ColumnDefinition Width="65"/>
-                <ColumnDefinition Width="70"/>
-                <ColumnDefinition Width="70"/>
-                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="67.5"/>
+                <ColumnDefinition Width="67.5"/>
+                <ColumnDefinition Width="67.5"/>
+                <ColumnDefinition Width="67.5"/>
+                <ColumnDefinition Width="5"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="20"/>
                 <RowDefinition Height="70"/>
-                <RowDefinition Height="70"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="5"/>
             </Grid.RowDefinitions>
 
             <TextBlock Text="About" 
@@ -36,7 +38,8 @@
 
             <Border  Grid.Column="1" Grid.Row="1" 
                      Grid.ColumnSpan="2" Grid.RowSpan="2"
-                     Style="{StaticResource TextBlockBorder}">
+                     Style="{StaticResource TextBlockBorder}"
+                     Padding="5">
                 <TextBlock>
                 <WrapPanel  Orientation="Horizontal">
                     <TextBlock Text="Who Are We?"

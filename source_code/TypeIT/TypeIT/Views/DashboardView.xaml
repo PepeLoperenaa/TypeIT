@@ -19,7 +19,8 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="20"/>
                 <RowDefinition Height="70"/>
-                <RowDefinition Height="70"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="5"/>
             </Grid.RowDefinitions>
             <TextBlock Text="Dashboard" 
                        TextAlignment="Left" VerticalAlignment="Bottom"
