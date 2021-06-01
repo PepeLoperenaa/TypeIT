@@ -127,7 +127,6 @@
                     <ColumnDefinition Width="54"/>
                     <ColumnDefinition Width="54"/>
                     <ColumnDefinition Width="54"/>
-                    <ColumnDefinition Width="5"/>
                 </Grid.ColumnDefinitions>
 
                 <Border Grid.Column="1" Grid.Row="1"
