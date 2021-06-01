@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using TypeIT.Commands;
 using TypeIT.Stores;
@@ -19,6 +20,7 @@ namespace TypeIT.ViewModels
         public ICommand ChangeThemeCommand { get; set; }
         public ICommand DeleteAccountCommand { get; set; }
         public ICommand ExitCommand { get; set; }
+        public string currentTheme { get; set; }
         public SettingsViewModel(NavigationStore navigationStore)
         {
             NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore));
@@ -28,6 +30,7 @@ namespace TypeIT.ViewModels
             ChangeThemeCommand = new DelegateCommand(ClickedChangeTheme);
             //DeleteAccountCommand
             ExitCommand = new DelegateCommand(ClickedExit);
+            currentTheme = "LightTheme.xaml";
         }
 
         private void ClickedExit()
@@ -37,7 +40,19 @@ namespace TypeIT.ViewModels
 
         private void ClickedChangeTheme()
         {
-            
+            currentTheme = "LightTheme.xaml";
+            System.Uri uri  = Application.Current.Resources.MergedDictionaries[0].Source;
+
+
+
+            string gg = uri.ToString();
+
+            System.Uri uriNew = new Uri("Resources/LightTheme.xaml", UriKind.Relative);
+
+            Application.Current.Resources.MergedDictionaries[0].Source = uriNew;
+
+
         }
+
     }
 }

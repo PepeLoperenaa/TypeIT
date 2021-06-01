@@ -6,55 +6,51 @@
     <SolidColorBrush x:Key="MyButtonPressedBrush" Color="Maroon" />
 
     <Style x:Key="MyCloseButtonStyle" TargetType="Button">
+        <Setter Property="IsEnabled" Value="False"/>
+        <Setter Property="Opacity" Value="0"/>
+    </Style>
+
+    <Style x:Key="MyButton" TargetType="Button">
+        <Setter Property="Foreground" Value="{StaticResource TextHeaderColor}"/>
+        <Setter Property="Button.Effect">
+            <Setter.Value>
+                <DropShadowEffect Color="{StaticResource Shadow}"
+                                      Direction="320" ShadowDepth="1" 
+                                      BlurRadius="5" Opacity="0.6" />
+            </Setter.Value>
+        </Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Grid>
-                        <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup x:Name="CommonStates">
-                                <VisualState x:Name="Normal"/>
-                                <VisualState x:Name="MouseOver">
-                                    <Storyboard>
-                                        <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="Background" Storyboard.TargetProperty="(Border.Background)">
-                                            <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{StaticResource MyButtonHoverBrush}"></DiscreteObjectKeyFrame>
-                                        </ObjectAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="Pressed">
-                                    <Storyboard>
-                                        <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="Background" Storyboard.TargetProperty="(Border.Background)">
-                                            <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{StaticResource MyButtonPressedBrush}"></DiscreteObjectKeyFrame>
-                                        </ObjectAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </VisualState>
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
-                        <Border x:Name="Background" CornerRadius="0,0,2,0" Background="Green">
-                            <Border Margin="1,0,1,1" BorderBrush="#59FFFFFF" BorderThickness="1" CornerRadius="0,0,1,0"/>
-                        </Border>
-                        <ContentPresenter x:Name="contentPresenter" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}"/>
-                        <Path x:Name="path" Fill="White" Margin="0,0,0,1" Visibility="Collapsed"
-	                Height="6"
-		Width="7"
-		Stretch="Fill"
-		Opacity="1"
-		Data="M 2,6 C2,6 3,6 3,6 3,6 3,5 3,5 3,5 4,5 4,5 4,5 4,6 4,6 4,6 5,6 5,6 5,6 7,6 7,6 7,6 7,5 7,5 7,5 6,5 6,5 6,5 6,4 6,4 6,4 5,4 5,4 5,4 5,2 5,2 5,2 6,2 6,2 6,2 6,1 6,1 6,1 7,1 7,1 7,1 7,0 7,0 7,0 5,0 5,0 5,0 4,0 4,0 4,0 4,1 4,1 4,1 3,1 3,1 3,1 3,0 3,0 3,0 2,0 2,0 2,0 0,0 0,0 0,0 0,1 0,1 0,1 1,1 1,1 1,1 1,2 1,2 1,2 2,2 2,2 2,2 2,4 2,4 2,4 1,4 1,4 1,4 1,5 1,5 1,5 0,5 0,5 0,5 0,6 0,6 0,6 2,6 2,6 z"/>
-                    </Grid>
+                    <Border CornerRadius="5" Background="White" BorderBrush="{StaticResource ShadowColor}">
+                        <ContentPresenter x:Name="contentPresenter" 
+                                              ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                              Content="{TemplateBinding Content}" 
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                              Margin="{TemplateBinding Padding}" 
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
 
-    <Style TargetType="{x:Type xctk:MessageBox}">
-        <Setter Property="Background" Value="{StaticResource Background}" />
-        <Setter Property="BorderBrush" Value="{StaticResource ShadowColor}" />
-        <Setter Property="CaptionForeground" Value="Transparent" />
-        <Setter Property="WindowBorderBrush" Value="Transparent" />
-        <Setter Property="WindowBackground" Value="Transparent" />
-        <Setter Property="WindowOpacity" Value="1" />
-        <Setter Property="Foreground" Value="{StaticResource TextBodyColor}"/>
-        <Setter Property="CloseButtonStyle" Value="{StaticResource MyCloseButtonStyle}"/>
 
+    <Style TargetType="{x:Type xctk:MessageBox}">
+        <Setter Property="Background" Value="white" />
+        <Setter Property="BorderBrush" Value="{StaticResource ShadowColor}"/>
+        <Setter Property="Height" Value="200"/>
+        <Setter Property="Width" Value="400"/>
+        <Setter Property="CaptionForeground" Value="Transparent"/>
+        <Setter Property="WindowBorderBrush" Value="Transparent"/>
+        <Setter Property="WindowBackground" Value="Transparent"/>
+        <Setter Property="WindowOpacity" Value="1" />
+        <Setter Property="Foreground" Value="{StaticResource TextHeaderColor}"/>
+        <Setter Property="CloseButtonStyle" Value="{StaticResource MyCloseButtonStyle}"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontFamily" Value="Fonts/Fragmentcore.otf#Fragment Core"/>
+        <Setter Property="YesButtonStyle" Value="{StaticResource MyButton}"/>
+        <Setter Property="NoButtonStyle" Value="{StaticResource MyButton}"/>
     </Style>
     
     <!-- Achievements style -->
@@ -111,7 +107,7 @@
     <!-- -->
 
     <Style TargetType="{x:Type TextBlock}">
-        <Setter Property="FontFamily" Value="Fonts/Fragmentcore.otf#Fragment Core" />
+        <Setter Property="FontFamily" Value="Fonts/Fragmentcore.otf#Fragment Core"/>
     </Style>
 
     <Style x:Key="BodyText" TargetType="{x:Type Run}">
