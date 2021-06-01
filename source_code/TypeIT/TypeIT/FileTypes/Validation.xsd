@@ -79,8 +79,6 @@
     <xs:complexType name="SpecificAchievement">
         <xs:all>
             <xs:element name="AchievementName" type="achievementInfo"/>
-            <xs:element name="Description" type="achievementInfo"/>
-            <xs:element name="ImagePath" type="achievementInfo"/>
         </xs:all>
     </xs:complexType>
 
