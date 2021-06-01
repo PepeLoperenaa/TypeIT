@@ -33,7 +33,7 @@
                     Style="{StaticResource HeaderButton}"
                     Command="{Binding NavigateHomeCommand}">
                 <StackPanel>
-                    <Image Source="../Resources/Images/homeIcon.png" />
+                    <Image Source="../Resources/Images/homeIcon.png"/>
                 </StackPanel>
             </Button>
             
