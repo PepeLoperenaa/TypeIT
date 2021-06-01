@@ -29,7 +29,6 @@
     <None Remove="Resources\Images\settingsIcon.png" />
     <None Remove="Resources\Images\statsIcon.png" />
     <None Remove="Resources\Images\typingIcon.png" />
-    <None Remove="Resources\Images\Untitled.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -78,9 +77,6 @@
     <Resource Include="Resources\Images\documentsAndCollectionIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Images\exitIcon.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="Resources\Images\extremeIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -111,7 +107,7 @@
     <Resource Include="Resources\Images\typingIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Images\Untitled.png">
+    <Resource Include="Resources\Images\exitIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

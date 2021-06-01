@@ -31,7 +31,7 @@
                     Style="{StaticResource HeaderButton}"
                     Command="{Binding ExitCommand}">
                 <StackPanel  Orientation="Horizontal">
-                    <Image Source="../Resources/Images/Untitled.png" />
+                    <Image Source="../Resources/Images/exitIcon.png" />
                 </StackPanel>
             </Button>
 
