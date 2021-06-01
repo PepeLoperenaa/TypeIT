@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using TypeIT.Commands;
 using TypeIT.Stores;
@@ -31,7 +32,23 @@ namespace TypeIT.ViewModels
 
         private void ClickedExit()
         {
-            System.Windows.Application.Current.Shutdown();
+            //if (MessageBox.Show("Are you sure you want to leave us we will never forget this!!!",
+            //"Quit", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            //{
+            //    System.Windows.Application.Current.Shutdown();
+            //}
+
+            var res = Xceed.Wpf.Toolkit.MessageBox.Show(
+                           "R U sure you want to quit?",
+                           "Quit",
+                           MessageBoxButton.YesNo,
+                           MessageBoxImage.None
+                       );
+
+            if ("Yes" == res.ToString())
+            {
+                System.Windows.Application.Current.Shutdown();
+            }
         }
     }
 }
