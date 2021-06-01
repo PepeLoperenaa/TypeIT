@@ -32,10 +32,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Documents\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="IronPdf" Version="2021.3.1" />
     <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
     <PackageReference Include="Prism.Unity" Version="8.0.0.1909" />
