@@ -72,19 +72,6 @@
             </TextBlock>
             </Border>
 
-            <Button Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="2"
-                    VerticalAlignment="Top" Margin="0,2,0,0"
-                    Width="125" Style="{StaticResource ImageButton}"
-                    Command="{Binding ContactCommand}">
-                <StackPanel Width="120" Orientation="Horizontal">
-                    <Image Source="../Resources/Images/contactUsIcon.png" Height="35"/>
-                    <TextBlock Text="Contact us" 
-                               Height="15" Margin="15,0,0,0" 
-                               TextAlignment="Center"
-                               Foreground="{StaticResource TextBodyColor}"/>
-                </StackPanel>
-            </Button>
-
                 <Border Grid.Column="3" Grid.Row="1"
                     Grid.ColumnSpan="2"
                     Style="{StaticResource TextBlockBorder}">

@@ -19,6 +19,7 @@ namespace TypeIT.ViewModels
         public ICommand NavigateDocumentsCommand { get; set; }
         public ICommand NavigateStatisticsCommand { get; set; }
         public ICommand NavigateTypingCommand { get; set; }
+        public ICommand NavigateAchievementsCommand { get; set; }
 
         public DashboardViewModel(NavigationStore navigationStore)
         {
@@ -27,17 +28,12 @@ namespace TypeIT.ViewModels
             NavigateDocumentsCommand = new NavigateCommand<DocumentsViewModel>(navigationStore, () => new DocumentsViewModel(navigationStore));
             NavigateStatisticsCommand = new NavigateCommand<StatisticsViewModel>(navigationStore, () => new StatisticsViewModel(navigationStore));
             NavigateTypingCommand = new NavigateCommand<TypingViewModel>(navigationStore, () => new TypingViewModel(navigationStore));
+            NavigateAchievementsCommand = new NavigateCommand<AchievementsViewModel>(navigationStore, () => new AchievementsViewModel(navigationStore));
             ExitCommand = new DelegateCommand(ClickedExit);
         }
 
         private void ClickedExit()
         {
-            //if (MessageBox.Show("Are you sure you want to leave us we will never forget this!!!",
-            //"Quit", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-            //{
-            //    System.Windows.Application.Current.Shutdown();
-            //}
-
             var res = Xceed.Wpf.Toolkit.MessageBox.Show(
                            "R U sure you want to quit?",
                            "Quit",

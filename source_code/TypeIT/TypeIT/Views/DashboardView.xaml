@@ -28,7 +28,6 @@
                        Grid.Column="1" Grid.Row="0"/>
             
             <Button Grid.Column="4" Grid.Row="0"
-                    
                     Style="{StaticResource HeaderButton}"
                     Command="{Binding ExitCommand}">
                 <StackPanel  Orientation="Horizontal">
@@ -45,7 +44,7 @@
                 </StackPanel>
             </Button>
             <Button Grid.Column="3" Grid.Row="1" Style="{StaticResource ImageButton}"
-                    Command="{Binding NavigateAboutCommand}">
+                    Command="{Binding NavigateAchievementsCommand}">
                 <StackPanel>
                     <Image Source="../Resources/Images/achievementsIcon.png" Height="35"/>
                     <TextBlock Text="Achievements" Height="15" TextAlignment="Center"/>

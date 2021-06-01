@@ -56,7 +56,59 @@
         <Setter Property="CloseButtonStyle" Value="{StaticResource MyCloseButtonStyle}"/>
 
     </Style>
+    
+    <!-- Achievements style -->
+    <!-- Achievement border -->
+    <Style x:Key="UnlockedAchievementBorder" TargetType="Border">
+        <Setter Property="Background" Value="{StaticResource Button}"/>
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="CornerRadius" Value="5"/>
+        <Setter Property="BorderThickness" Value="1.5"/>
+        <Setter Property="Grid.ColumnSpan" Value="2"/>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect Color="{StaticResource Shadow}"
+                                      Direction="320" ShadowDepth="1" 
+                                      BlurRadius="5" Opacity="0.6" />
+            </Setter.Value>
+        </Setter>
+    </Style>
 
+    <Style x:Key="LockedAchievementBorder" TargetType="Border">
+        <Setter Property="Background" Value="{StaticResource LockedAchievement}"/>
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="CornerRadius" Value="5"/>
+        <Setter Property="BorderThickness" Value="1.5"/>
+        <Setter Property="Grid.ColumnSpan" Value="2"/>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect Color="{StaticResource Shadow}"
+                                      Direction="320" ShadowDepth="1" 
+                                      BlurRadius="5" Opacity="0.6" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Achievement title -->
+    <Style x:Key="AchievementTitle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="6"/>
+        <Setter Property="Foreground" Value="{StaticResource TextHeaderColor}"/>
+        <Setter Property="FontFamily" Value="Fonts/Fragmentcore.otf#Fragment Core" />
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+    
+    <!-- Achievement description -->
+    <Style x:Key="AchievementDescription" TargetType="TextBlock">
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Width" Value="65"/>
+        <Setter Property="Margin" Value="2, 0, 0, 0"/>
+        <Setter Property="FontSize" Value="5"/>
+        <Setter Property="TextWrapping" Value="WrapWithOverflow"/>
+        <Setter Property="FontFamily" Value="Fonts/Fragmentcore.otf#Fragment Core" />
+        <Setter Property="Foreground" Value="{StaticResource TextBodyColor}"/>
+    </Style>
+
+    <!-- -->
 
     <Style TargetType="{x:Type TextBlock}">
         <Setter Property="FontFamily" Value="Fonts/Fragmentcore.otf#Fragment Core" />

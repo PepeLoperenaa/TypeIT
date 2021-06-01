@@ -11,6 +11,7 @@
     <Color x:Key="Shadow">#000000</Color>
     <Color x:Key="TextHeader">#326ba5</Color>
     <Color x:Key="TextBody">#ffffff</Color>
+    <Color x:Key="LockedAchievementColor">#212326</Color>
 
     <SolidColorBrush x:Key="Background" Color="{StaticResource BackgroundColor}"/>
     <SolidColorBrush x:Key="TextBlue" Color="{StaticResource ElementBlue}"/>
@@ -18,4 +19,5 @@
     <SolidColorBrush x:Key="TextHeaderColor" Color="{StaticResource TextHeader}"/>
     <SolidColorBrush x:Key="TextBodyColor" Color="{StaticResource TextBody}"/>
     <SolidColorBrush x:Key="ShadowColor" Color="{StaticResource Shadow}"/>
+    <SolidColorBrush x:Key="LockedAchievement" Color="{StaticResource LockedAchievementColor}"/>
 </ResourceDictionary> 
