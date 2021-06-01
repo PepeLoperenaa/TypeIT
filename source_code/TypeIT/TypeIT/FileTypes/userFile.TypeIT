@@ -18,8 +18,6 @@
     <Achievements>
         <Achievement>
             <AchievementName></AchievementName>
-            <Description></Description>
-            <ImagePath></ImagePath>
         </Achievement>
     </Achievements>
 </UserProfile>

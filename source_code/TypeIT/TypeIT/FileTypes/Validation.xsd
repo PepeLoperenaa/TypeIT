@@ -78,16 +78,14 @@
 
     <xs:complexType name="SpecificAchievement">
         <xs:all>
-            <xs:element name="AchievementName" type="achievementInfo"/>
-            <xs:element name="Description" type="achievementInfo"/>
-            <xs:element name="ImagePath" type="achievementInfo"/>
+          <xs:element name="AchievementName">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
         </xs:all>
     </xs:complexType>
-
-    <xs:simpleType name="achievementInfo">
-        <xs:restriction base="xs:string">
-            <xs:minLength value="1"/>
-        </xs:restriction>
-    </xs:simpleType>
 
 </xs:schema>
