@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="TypeIT.Views.TypingView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TypeIT.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Viewbox>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="65"/>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="70"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="70"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Typing" 
+                       TextAlignment="Left" VerticalAlignment="Bottom"
+                       Foreground="{DynamicResource TextBlue}"
+                       Grid.Column="1" Grid.Row="0"/>
+
+            <Button Grid.Column="4" Grid.Row="0"
+                    Style="{StaticResource HeaderButton}"
+                    Command="{Binding NavigateHomeCommand}">
+                <StackPanel>
+                    <Image Source="../Resources/Images/homeIcon.png" />
+                </StackPanel>
+            </Button>
+
+            <Border Grid.Column="1" Grid.Row="1" 
+                     Grid.ColumnSpan="1" Grid.RowSpan="1"
+                     Style="{StaticResource TextBlockBorder}">
+
+            </Border>
+        </Grid>
+    </Viewbox>
+</UserControl>

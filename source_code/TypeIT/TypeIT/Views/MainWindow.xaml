@@ -38,6 +38,9 @@
                     <DataTemplate DataType="{x:Type viewmodels:StatisticsViewModel}">
                         <views:StatisticsView/>
                     </DataTemplate>
+                    <DataTemplate DataType="{x:Type viewmodels:TypingViewModel}">
+                        <views:TypingView/>
+                    </DataTemplate>
                 </ContentControl.Resources>
             </ContentControl>
         </Grid>
