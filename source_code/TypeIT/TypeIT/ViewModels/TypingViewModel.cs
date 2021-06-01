@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prism.Commands;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,13 +10,12 @@ using TypeIT.Stores;
 
 namespace TypeIT.ViewModels
 {
-    class AboutViewModel : ViewModelBase
+    class TypingViewModel : ViewModelBase
     {
         public ICommand NavigateHomeCommand { get; }
-
-        public AboutViewModel(NavigationStore navigationStore)
+        public TypingViewModel(NavigationStore navigationStore)
         {
-           NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore));
+            NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore));
         }
     }
 }

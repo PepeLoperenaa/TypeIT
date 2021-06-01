@@ -1,12 +1,8 @@
 ﻿using IronPdf;
+using Syncfusion.DocIO.DLS;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace TypeIT.Utilities
 {
@@ -95,7 +91,24 @@ namespace TypeIT.Utilities
 
         public void ParseDOCX(string FilePath, string Title)
         {
+            string Text = OpenDocument(FilePath);
 
+            string dir = "../../Documents/" + Title + "/";
+
+            if (!Directory.Exists(dir))
+            {
+                Directory.CreateDirectory(dir);
+            }
+
+            //Opens the Word template document
+            using (WordDocument document = new WordDocument(FilePath)) //template.docx does not exist here we should change this.
+            {
+                //Gets the string that contains whole document content as text
+                string text = document.GetText();
+                //Create a new text file and write specified string in it
+                File.WriteAllText("Result.txt", text);
+            }
+            System.Diagnostics.Process.Start("Result.txt"); // this is a test to see if we get the txt file.
         }
     }
 }

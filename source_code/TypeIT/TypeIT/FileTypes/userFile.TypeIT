@@ -1,0 +1,23 @@
+<?xml version = "1.0"?>
+<UserProfile>
+    <Name></Name>
+    <Value>
+        <Statistics>
+            <WPM></WPM>
+            <Average></Average>
+            <Accuracy></Accuracy>
+            <HoursSpent></HoursSpent>
+            <TypedWords></TypedWords>
+        </Statistics>
+    </Value>
+    <Settings>
+        <Theme>DarkMode</Theme>
+		<Theme>LightMode</Theme>
+        <GameMode></GameMode>
+    </Settings>
+    <Achievements>
+        <Achievement>
+            <AchievementName></AchievementName>
+        </Achievement>
+    </Achievements>
+</UserProfile>

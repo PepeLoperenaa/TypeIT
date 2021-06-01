@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="https://www.w3schools.com"
+           elementFormDefault="qualified"
+           xmlns="https://www.w3schools.com">
+    <xs:element name="UserProfile" type="UserProfileType"/>
+    <xs:complexType name="UserProfileType">
+        <xs:sequence>
+            <xs:element name="Name">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Value" type="ValueType"/>
+            <xs:element name="Settings" type="SettingsType"/>
+            <xs:element name="Achievements" type="AchievementsType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ValueType">
+        <xs:sequence>
+            <xs:element name="Statistics" type="StatisticsType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="StatisticsType">
+        <xs:sequence>
+            <xs:element name="WPM" type="wordInfo"/>
+            <xs:element name="Average" type="wordInfo"/>
+            <xs:element name="Accuracy" type="StatisticsInfo"/>
+            <xs:element name="HoursSpent" type="StatisticsInfo"/>
+            <xs:element name="TypedWords" type="StatisticsInfo"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="wordInfo">
+        <xs:restriction base="xs:int">
+            <xs:minInclusive value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StatisticsInfo">
+        <xs:restriction base="xs:double">
+            <xs:minInclusive value="0.0"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="SettingsType">
+        <xs:sequence>
+            <xs:element name="Theme">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="Dark mode"/>
+                        <xs:enumeration value="Light mode"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="GameMode">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="Casual"/>
+                        <xs:enumeration value="Normal"/>
+                        <xs:enumeration value="Hard"/>
+                        <xs:enumeration value="Extreme"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="AchievementsType">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Achievement" type="SpecificAchievement"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="SpecificAchievement">
+        <xs:all>
+          <xs:element name="AchievementName">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+        </xs:all>
+    </xs:complexType>
+
+</xs:schema>

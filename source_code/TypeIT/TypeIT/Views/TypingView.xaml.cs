@@ -15,19 +15,11 @@ using System.Windows.Shapes;
 
 namespace TypeIT.Views
 {
-    /// <summary>
-    /// Interaction logic for DashboardView.xaml
-    /// </summary>
-    public partial class DashboardView : UserControl
+    public partial class TypingView : UserControl
     {
-        public DashboardView()
+        public TypingView()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

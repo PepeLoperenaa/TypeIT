@@ -9,11 +9,11 @@ using TypeIT.Stores;
 
 namespace TypeIT.ViewModels
 {
-    class AboutViewModel : ViewModelBase
+    class DocumentsViewModel : ViewModelBase
     {
         public ICommand NavigateHomeCommand { get; }
 
-        public AboutViewModel(NavigationStore navigationStore)
+        public DocumentsViewModel(NavigationStore navigationStore)
         {
            NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore));
         }

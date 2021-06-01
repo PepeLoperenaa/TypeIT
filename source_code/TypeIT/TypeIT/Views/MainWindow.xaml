@@ -23,6 +23,24 @@
                     <DataTemplate DataType="{x:Type viewmodels:AboutViewModel}">
                         <views:AboutView/>
                     </DataTemplate>
+                    <DataTemplate DataType="{x:Type viewmodels:SettingsViewModel}">
+                        <views:SettingsView/>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type viewmodels:DocumentsViewModel}">
+                        <views:DocumentsView/>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type viewmodels:ChangeGameModeViewModel}">
+                        <views:ChangeGameModeView/>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type viewmodels:ChangeUserViewModel}">
+                        <views:ChangeUserView/>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type viewmodels:StatisticsViewModel}">
+                        <views:StatisticsView/>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type viewmodels:TypingViewModel}">
+                        <views:TypingView/>
+                    </DataTemplate>
                 </ContentControl.Resources>
             </ContentControl>
         </Grid>
