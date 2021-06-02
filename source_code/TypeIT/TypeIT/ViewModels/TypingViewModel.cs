@@ -48,8 +48,6 @@ namespace TypeIT.ViewModels
             TypingModel.CurrentWord = GetWord(FileText, TypingModel.CurrentWordIndex);
             TypingModel.TypingTimer.Elapsed += OnTimedEvent;
             TypingModel.TypingTimer.Interval = 1000;
-
-            NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore));
         }
 
         private void OnTimedEvent(Object source, ElapsedEventArgs e)
