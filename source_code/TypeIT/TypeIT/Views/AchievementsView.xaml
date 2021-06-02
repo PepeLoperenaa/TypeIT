@@ -19,8 +19,8 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="20"/>
                 <RowDefinition Height="55"/>
-                <RowDefinition Height="65"/>
-                <RowDefinition Height="20"/>
+                <RowDefinition Height="75"/>
+                <RowDefinition Height="10"/>
             </Grid.RowDefinitions>
 
             <TextBlock Text="Achievements" 
@@ -58,6 +58,7 @@
                       Grid.RowSpan="2"
                       ScrollViewer.HorizontalScrollBarVisibility="Hidden"
                       ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                      ScrollViewer.CanContentScroll="False"
                       Background="Transparent"
                       BorderThickness="0">
                 <ListView.ItemContainerStyle>
@@ -65,7 +66,9 @@
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="Background" Value="Gold" />
-                                <Setter Property="BorderThickness" Value="0" />
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="Gold" />
                             </Trigger>
                         </Style.Triggers>
                     </Style>

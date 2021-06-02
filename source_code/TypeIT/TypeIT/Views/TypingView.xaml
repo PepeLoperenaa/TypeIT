@@ -120,7 +120,7 @@
             
             <!-- Third row -->
             <Border Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="4" Style="{StaticResource TextBlockBorder}" Padding="5">
-                <TextBox Focusable="True" MaxLength="{Binding TypingModel.ErrorSpace}" Style="{StaticResource TextBoxStyle}" Text="{Binding InputString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Focusable="True" MaxLength="{Binding TypingModel.ErrorSpace}" Style="{StaticResource TextBoxStyle}" FontSize="5" TextAlignment="left" Text="{Binding InputString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             </Border>
         </Grid>
     </Viewbox>

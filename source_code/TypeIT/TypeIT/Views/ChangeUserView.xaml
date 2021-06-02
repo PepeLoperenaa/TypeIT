@@ -18,12 +18,11 @@
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="20"/>
-                <RowDefinition Height="70"/>
-                <RowDefinition Height="65"/>
+                <RowDefinition Height="135"/>
                 <RowDefinition Height="5"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Text="About" 
+            <TextBlock Text="Change User"
                        TextAlignment="Left" VerticalAlignment="Bottom"
                        Foreground="{DynamicResource TextBlue}"
                        Grid.Column="1" Grid.Row="0"/>
@@ -36,64 +35,89 @@
                 </StackPanel>
             </Button>
 
-            <Border  Grid.Column="1" Grid.Row="1" 
-                     Grid.ColumnSpan="2" Grid.RowSpan="2"
-                     Style="{StaticResource TextBlockBorder}">
-                <TextBlock>
-                <WrapPanel  Orientation="Horizontal">
-                    <TextBlock Text="Who Are We?"
-                               FontSize="10" 
-                               Foreground="{StaticResource ResourceKey=TextHeaderColor}"
-                               TextAlignment="Left"/>
-                    <TextBlock FontSize="6" 
-                               Height="50"
-                               Foreground="{StaticResource ResourceKey=TextBodyColor}"
-                               TextAlignment="Left">
-                               We are a group of 6 junior developers from <LineBreak/>
-                               NHL Stenden University of Applied Sciences. <LineBreak/>
-                               TypeIT is the final assignment for our C# course <LineBreak/>
-                               in the second year.
-                    </TextBlock>
-                    <TextBlock Text="What is TypeIT?"
-                               FontSize="10" 
-                               Foreground="{StaticResource ResourceKey=TextHeaderColor}"
-                               TextAlignment="Left"/>
-                    <TextBlock FontSize="6" 
-                               Height="50"
-                               Foreground="{StaticResource ResourceKey=TextBodyColor}"
-                               TextAlignment="Left">
-                               TypeIT is a tyiping game that allows the user <LineBreak/>
-                               to upload custom texts and books and type them <LineBreak/>
-                               whilst keeping track of their performance <LineBreak/>
-                               as they play along.
-                    </TextBlock>
-                </WrapPanel>
-            </TextBlock>
-            </Border>
+            <Grid Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.6*"/>
+                    <ColumnDefinition Width="0.03*"/>
+                    <ColumnDefinition Width="0.4*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="125"/>
+                    <RowDefinition Height="5"/>
+                </Grid.RowDefinitions>
 
-            <Border Grid.Column="3" Grid.Row="1"
-                    Grid.ColumnSpan="2"
-                    Style="{StaticResource TextBlockBorder}">
-                <TextBlock
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Center">
-                <WrapPanel Orientation="Horizontal"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center">
-                        <Image Source="../Resources/Images/contactUsIcon.png" Height="40"/>
-                        <TextBlock Margin="10, 0, 0, 0"
-                                   Foreground="{StaticResource ResourceKey=TextHeaderColor}"
-                                   Height="15">Contact us</TextBlock>
-                    </WrapPanel>
-                </TextBlock>
-            </Border>
+                <Grid Grid.Column="0" Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="15"/>
+                        <ColumnDefinition Width="0.5*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="15"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="15"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
 
-            <TextBlock Grid.Column="3" Grid.Row="2"
-                       Grid.ColumnSpan="2"
-                       Text="typeIT" 
-                       Foreground="{StaticResource TextHeaderColor}"
-                       VerticalAlignment="Center" HorizontalAlignment="Center"
-                       FontSize="35"/>
+                    <Button Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1"
+                        Command="{Binding ChangeUser}" Style="{StaticResource ChangeUserButtonStyle}">
+                        <TextBlock>Granya Seong</TextBlock>
+                    </Button>
+
+                    <Button Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="1"
+                        Command="{Binding ChangeUser}" Style="{StaticResource ChangeUserButtonStyle}">
+                    </Button>
+
+                    <Button Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="1"
+                        Command="{Binding ChangeUser}" Style="{StaticResource ChangeUserButtonStyle}">
+                    </Button>
+
+                    <Button Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="1"
+                        Command="{Binding ChangeUser}" Style="{StaticResource ChangeUserButtonStyle}">
+                    </Button>
+
+                    <Button Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="1"
+                        Command="{Binding ChangeUser}" Style="{StaticResource ChangeUserButtonStyle}">
+                    </Button>
+                </Grid>
+
+                <Border Grid.Column="1" Grid.Row="0" Grid.RowSpan="3">
+                    <Rectangle
+                        Height="135"
+                        Width="1"
+                        Fill="{StaticResource TextBlue}"/>
+                </Border>
+
+
+                <Grid Grid.Column="2" Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="15"/>
+                        <ColumnDefinition Width="0.1*"/>
+                        <ColumnDefinition Width="0.2*"/>
+                        <ColumnDefinition Width="0.1*"/>
+                        <ColumnDefinition Width="15"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="15"/>
+                        <RowDefinition Height="15"/>
+                        <RowDefinition Height="40"/>
+                    </Grid.RowDefinitions>
+
+                    <Border Grid.Column="1"  Grid.Row="1" Grid.ColumnSpan="3" Style="{StaticResource TextBlockBorder}">
+                        <TextBox Text="Create User" Style="{StaticResource TextBoxStyle}"/>
+                    </Border>
+
+                    <Button Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="1"
+                        Command="{Binding CreateUser}" Style="{StaticResource ChangeUserButtonStyle}">
+                        <TextBlock>Create</TextBlock>
+                    </Button>
+                </Grid>
+                
+            </Grid>
         </Grid>
     </Viewbox>
 </UserControl>
