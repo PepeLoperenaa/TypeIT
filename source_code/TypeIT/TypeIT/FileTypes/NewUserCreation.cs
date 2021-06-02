@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Xml.Linq;
+using System.Collections.Generic;
 
 namespace TypeIT.FileTypes
 {
@@ -40,16 +41,18 @@ namespace TypeIT.FileTypes
 
         public static void getElementsFromTags(string filePath, string tag)
         {
-            XDocument doc = XDocument.Load(filePath);
-            //XDocument parse = XDocument.Parse(fileChris);
+            List<string> listElements = new List<string>();
 
-            foreach (XElement lev2 in doc.Descendants(tag))
+            XDocument doc = XDocument.Load(filePath);
+
+            foreach (XElement element in doc.Descendants(tag))
             {
-                string lev2Value = (string)lev2;
-                //return a list of string. 
+                string elementValue = (string)element;
+                listElements.Add(elementValue);
             }
+            return listElements;
         }
-        public static void addingDataIntoAnXml(string filePath) //to add information into the element
+        public void addingDataIntoAnXml(string filePath) //to add information into the element
         {
             //string file = "C:/Users/MyPC/source/repos/XMLChanging/XMLChanging/folder/userFile.TypeIT";
             XDocument doc = XDocument.Load(filePath);
