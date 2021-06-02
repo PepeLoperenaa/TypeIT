@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using TypeIT.FileTypes;
 using TypeIT.Stores;
 using TypeIT.ViewModels;
 
@@ -34,6 +35,9 @@ namespace TypeIT
 
             MainWindow.Show();
             base.OnStartup(e);
+
+            NewUserCreation.newUser("hel  lo");
+            NewUserCreation.addingDataIntoAnXml("../../../FileTypes/hello.TypeIT");
         }
     }
 }
