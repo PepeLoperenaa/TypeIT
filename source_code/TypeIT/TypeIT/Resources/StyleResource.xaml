@@ -2,9 +2,6 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit">
 
-    <SolidColorBrush x:Key="MyButtonHoverBrush" Color="YellowGreen" />
-    <SolidColorBrush x:Key="MyButtonPressedBrush" Color="Maroon" />
-
     <Style x:Key="MyCloseButtonStyle" TargetType="Button">
         <Setter Property="IsEnabled" Value="False"/>
         <Setter Property="Opacity" Value="0"/>
@@ -186,15 +183,61 @@
         </Setter>
     </Style>
 
-    <Style x:Key="TextBoxStyle" TargetType="TextBox">
+    <!--<Style x:Key="TextBoxStyle" TargetType="TextBox">
         <Setter Property="FontFamily" Value="Fonts/Fragmentcore.otf#Fragment Core"/>
         <Setter Property="FontSize" Value="5"/>
         <Setter Property="Foreground" Value="{StaticResource TextBodyColor}"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="CaretBrush" Value="{StaticResource TextBodyColor}"/>
+    </Style>-->
+
+
+    <Style x:Key="ChangeUserButtonStyle" TargetType="Button">
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="FontSize" Value="8"/>
+        <Setter Property="Foreground" Value="{StaticResource TextBodyColor}"/>
+        <Setter Property="Button.Effect">
+            <Setter.Value>
+                <DropShadowEffect Color="{StaticResource Shadow}"
+                                      Direction="320" ShadowDepth="1" 
+                                      BlurRadius="5" Opacity="0.6" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border CornerRadius="5" Background="{StaticResource Button}">
+                        <ContentPresenter x:Name="contentPresenter" 
+                                              ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                              Content="{TemplateBinding Content}" 
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                              Margin="{TemplateBinding Padding}" 
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        
     </Style>
-    
+
+    <Style x:Key="TextBoxStyle" TargetType="TextBox">
+        <Style.Resources>
+            <Style TargetType="{x:Type Border}">
+                <Setter Property="CornerRadius" Value="3"/>
+            </Style>
+        </Style.Resources>
+        <Setter Property="Background" Value="{StaticResource Button}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{StaticResource TextBodyColor}"/>
+        <Setter Property="FontFamily" Value="Fonts/Fragmentcore.otf#Fragment Core"/>
+        <Setter Property="FontSize" Value="8"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="CaretBrush" Value="{StaticResource TextBodyColor}"/>
+    </Style>
 
 
 

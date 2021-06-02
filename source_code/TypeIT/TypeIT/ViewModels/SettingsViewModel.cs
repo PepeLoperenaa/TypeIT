@@ -21,6 +21,7 @@ namespace TypeIT.ViewModels
         public ICommand ChangeThemeCommand { get; set; }
         public ICommand DeleteAccountCommand { get; set; }
         public ICommand ExitCommand { get; set; }
+        
         public string currentTheme { get; set; }
 
         public SettingsViewModel(NavigationStore navigationStore)
@@ -57,19 +58,18 @@ namespace TypeIT.ViewModels
 
             string currentTheme = Application.Current.Resources.MergedDictionaries[0].Source.ToString();
 
+            Application.Current.Resources.MergedDictionaries.Clear();
+
             if (currentTheme == "Resources/LightTheme.xaml")
             {
-                Application.Current.Resources.MergedDictionaries.Clear();
                 Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("Resources/DarkTheme.xaml", UriKind.Relative) });
-                Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("Resources/StyleResource.xaml", UriKind.Relative) });
             } else if (currentTheme == "Resources/DarkTheme.xaml")
             {
-                Application.Current.Resources.MergedDictionaries.Clear();
                 Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("Resources/LightTheme.xaml", UriKind.Relative) });
-                Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("Resources/StyleResource.xaml", UriKind.Relative) });
             }
 
-            //Add navigation to the dashboard
+            Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("Resources/StyleResource.xaml", UriKind.Relative) });
+
             NavigateHomeCommand.Execute(null);
         }
 
