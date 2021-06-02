@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Xml;
 using TypeIT.Commands;
 using TypeIT.Models;
 using TypeIT.Stores;
@@ -21,13 +22,25 @@ namespace TypeIT.ViewModels
             NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore));
             Achievements = new ObservableCollection<AchievementModel>();
 
-            AchievementModel achievementModel = new AchievementModel("Achievement1", "Hello this is the description for achievement1 please work.");
-            AchievementModel achievementModel2 = new AchievementModel("Achievement2", "Hello this is the description for achievement2 please work.");
-            AchievementModel achievementModel3 = new AchievementModel("Achievement3", "Hello this is the description for achievement4 please work.");
+            loadAchievements();
+        }
 
-            Achievements.Add(achievementModel);
-            Achievements.Add(achievementModel2);
-            Achievements.Add(achievementModel3);
+        private void loadAchievements()
+        {
+            //Loading the document that stores the achievements
+            XmlDocument xmlDocument = new XmlDocument();
+            xmlDocument.Load("../../../FileTypes/achievements.TypeIT");
+
+            //Getting the achievements
+            XmlNodeList titles = xmlDocument.GetElementsByTagName("AchievementName");
+            XmlNodeList description = xmlDocument.GetElementsByTagName("Description");
+
+            //Adding the achievements to the field that is binded to the view
+            for (int i = 0; i < titles.Count; i++)
+            {
+                AchievementModel achievementModel = new AchievementModel(titles[i].InnerText, description[i].InnerText);
+                Achievements.Add(achievementModel);
+            }
         }
     }
 }
