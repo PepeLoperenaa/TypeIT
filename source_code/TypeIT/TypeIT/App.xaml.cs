@@ -35,6 +35,9 @@ namespace TypeIT
 
             MainWindow.Show();
             base.OnStartup(e);
+
+            NewUserCreation.newUser("hello");
+            NewUserCreation.AddingDataIntoAnXml("../../../FileTypes/hello.TypeIT");
         }
     }
 }

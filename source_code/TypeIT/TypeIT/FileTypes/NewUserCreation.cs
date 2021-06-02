@@ -52,7 +52,7 @@ namespace TypeIT.FileTypes
             }
             return listElements;
         }
-        public static void addingDataIntoAnXml(string filePath) //to add information into the element
+        public static void AddingDataIntoAnXml(string filePath) //to add information into the element
         {
             //string file = "C:/Users/MyPC/source/repos/XMLChanging/XMLChanging/folder/userFile.TypeIT";
             XDocument doc = XDocument.Load(filePath);
