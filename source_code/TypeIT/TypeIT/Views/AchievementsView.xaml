@@ -23,10 +23,11 @@
                 <RowDefinition Height="20"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Text="Documents" 
+            <TextBlock Text="Achievements" 
                        TextAlignment="Left" VerticalAlignment="Bottom"
                        Foreground="{DynamicResource TextBlue}"
-                       Grid.Column="1" Grid.Row="0"/>
+                       Grid.Column="1" Grid.Row="0"
+                       Grid.ColumnSpan="2"/>
 
             <Button Grid.Column="4" Grid.Row="0"
                     Style="{StaticResource HeaderButton}"
@@ -59,6 +60,16 @@
                       ScrollViewer.VerticalScrollBarVisibility="Hidden"
                       Background="Transparent"
                       BorderThickness="0">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListViewItem}">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="Gold" />
+                                <Setter Property="BorderThickness" Value="0" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ListView.ItemContainerStyle>
                 <ListView.ItemTemplate>
                     <ItemContainerTemplate>
                         <WrapPanel>

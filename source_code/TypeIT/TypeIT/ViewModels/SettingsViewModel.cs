@@ -22,20 +22,34 @@ namespace TypeIT.ViewModels
         public ICommand DeleteAccountCommand { get; set; }
         public ICommand ExitCommand { get; set; }
         public string currentTheme { get; set; }
+
         public SettingsViewModel(NavigationStore navigationStore)
         {
+            //Navigation comands
             NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore));
             NavigateChangeUserCommand = new NavigateCommand<ChangeUserViewModel>(navigationStore, () => new ChangeUserViewModel(navigationStore));
             NavigateChangeGameModeCommand = new NavigateCommand<ChangeGameModeViewModel>(navigationStore, () => new ChangeGameModeViewModel(navigationStore));
+
             //ResetStatisticsCommand
             ChangeThemeCommand = new DelegateCommand(ClickedChangeTheme);
+
             //DeleteAccountCommand
             ExitCommand = new DelegateCommand(ClickedExit);
         }
 
         private void ClickedExit()
         {
-            System.Windows.Application.Current.Shutdown();
+            //Custom messagebox
+            var res = Xceed.Wpf.Toolkit.MessageBox.Show(
+                           "Are you sure you want to quit?",
+                           "Quit",
+                           MessageBoxButton.YesNo
+                       );
+
+            if ("Yes" == res.ToString())
+            {
+                System.Windows.Application.Current.Shutdown();
+            }
         }
 
         private void ClickedChangeTheme()
@@ -55,9 +69,8 @@ namespace TypeIT.ViewModels
                 Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("Resources/StyleResource.xaml", UriKind.Relative) });
             }
 
-            //Add navigation to the dashboard or the settings page
-            //var currentApp = Application.Current as App;
-            //currentApp.navigationStore = new DashboardViewModel();
+            //Add navigation to the dashboard
+            NavigateHomeCommand.Execute(null);
         }
 
     }

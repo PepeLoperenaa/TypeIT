@@ -34,6 +34,7 @@ namespace TypeIT.ViewModels
 
         private void ClickedExit()
         {
+            //Custom messagebox
             var res = Xceed.Wpf.Toolkit.MessageBox.Show(
                            "Are you sure you want to quit?",
                            "Quit",
