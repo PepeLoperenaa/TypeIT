@@ -1,6 +1,7 @@
 ﻿using Prism.Commands;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,7 +31,6 @@ namespace TypeIT.ViewModels
             ChangeThemeCommand = new DelegateCommand(ClickedChangeTheme);
             //DeleteAccountCommand
             ExitCommand = new DelegateCommand(ClickedExit);
-            currentTheme = "LightTheme.xaml";
         }
 
         private void ClickedExit()
@@ -40,18 +40,24 @@ namespace TypeIT.ViewModels
 
         private void ClickedChangeTheme()
         {
-            currentTheme = "LightTheme.xaml";
-            System.Uri uri  = Application.Current.Resources.MergedDictionaries[0].Source;
 
+            string currentTheme = Application.Current.Resources.MergedDictionaries[0].Source.ToString();
 
+            if (currentTheme == "Resources/LightTheme.xaml")
+            {
+                Application.Current.Resources.MergedDictionaries.Clear();
+                Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("Resources/DarkTheme.xaml", UriKind.Relative) });
+                Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("Resources/StyleResource.xaml", UriKind.Relative) });
+            } else if (currentTheme == "Resources/DarkTheme.xaml")
+            {
+                Application.Current.Resources.MergedDictionaries.Clear();
+                Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("Resources/LightTheme.xaml", UriKind.Relative) });
+                Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("Resources/StyleResource.xaml", UriKind.Relative) });
+            }
 
-            string gg = uri.ToString();
-
-            System.Uri uriNew = new Uri("Resources/LightTheme.xaml", UriKind.Relative);
-
-            Application.Current.Resources.MergedDictionaries[0].Source = uriNew;
-
-
+            //Add navigation to the dashboard or the settings page
+            //var currentApp = Application.Current as App;
+            //currentApp.navigationStore = new DashboardViewModel();
         }
 
     }
