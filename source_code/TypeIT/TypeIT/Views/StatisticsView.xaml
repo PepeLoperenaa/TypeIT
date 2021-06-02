@@ -11,15 +11,21 @@
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="5"/>
-                <ColumnDefinition Width="65"/>
-                <ColumnDefinition Width="70"/>
-                <ColumnDefinition Width="70"/>
-                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="67.5"/>
+                <ColumnDefinition Width="67.5"/>
+                <ColumnDefinition Width="67.5"/>
+                <ColumnDefinition Width="67.5"/>
+                <ColumnDefinition Width="5"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
+                <!--<RowDefinition Height="20"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="55"/>-->
+
                 <RowDefinition Height="20"/>
                 <RowDefinition Height="80"/>
                 <RowDefinition Height="55"/>
+                <RowDefinition Height="5"/>
             </Grid.RowDefinitions>
 
             <!-- First row - header-->
@@ -32,7 +38,7 @@
                     Style="{StaticResource HeaderButton}"
                     Command="{Binding NavigateHomeCommand}">
                 <StackPanel>
-                    <Image Source="../Resources/Images/homeIcon.png" />
+                    <Image Source="../Resources/Images/homeIcon.png"/>
                 </StackPanel>
             </Button>
             
@@ -121,11 +127,11 @@
             <Grid Grid.Row="2" Grid.ColumnSpan="5">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="5"/>
-                    <ColumnDefinition Width="55"/>
-                    <ColumnDefinition Width="55"/>
-                    <ColumnDefinition Width="55"/>
-                    <ColumnDefinition Width="55"/>
-                    <ColumnDefinition Width="55"/>
+                    <ColumnDefinition Width="54"/>
+                    <ColumnDefinition Width="54"/>
+                    <ColumnDefinition Width="54"/>
+                    <ColumnDefinition Width="54"/>
+                    <ColumnDefinition Width="54"/>
                 </Grid.ColumnDefinitions>
 
                 <Border Grid.Column="1" Grid.Row="1"

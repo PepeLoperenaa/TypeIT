@@ -15,6 +15,9 @@ using System.Windows.Shapes;
 
 namespace TypeIT.Views
 {
+    /// <summary>
+    /// Interaction logic for AboutView.xaml
+    /// </summary>
     public partial class TypingView : UserControl
     {
         public TypingView()

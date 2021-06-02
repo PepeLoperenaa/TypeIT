@@ -1,23 +1,22 @@
 <?xml version = "1.0"?>
-<UserProfile>
-    <Name></Name>
+<UserProfile xmlns="https://www.w3schools.com">
+    <Name>Testing</Name>
     <Value>
         <Statistics>
-            <WPM></WPM>
-            <Average></Average>
-            <Accuracy></Accuracy>
-            <HoursSpent></HoursSpent>
-            <TypedWords></TypedWords>
+            <WPM>2</WPM>
+            <Average>3</Average>
+            <Accuracy>1</Accuracy>
+            <HoursSpent>4</HoursSpent>
+            <TypedWords>5</TypedWords>
         </Statistics>
     </Value>
     <Settings>
-        <Theme>DarkMode</Theme>
-		<Theme>LightMode</Theme>
-        <GameMode></GameMode>
+        <Theme>Dark mode</Theme>
+        <GameMode>Hard</GameMode>
     </Settings>
     <Achievements>
         <Achievement>
-            <AchievementName></AchievementName>
+            <AchievementName>Example</AchievementName>
         </Achievement>
     </Achievements>
 </UserProfile>
