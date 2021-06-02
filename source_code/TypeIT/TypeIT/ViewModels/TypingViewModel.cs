@@ -15,8 +15,10 @@ namespace TypeIT.ViewModels
 {
     class TypingViewModel : ViewModelBase
     {
+
         public ICommand NavigateHomeCommand { get; }
         public TypingModel TypingModel { get; set; }
+        public UserStore currentUser { get; set; }
         public string inputString;
         public string InputString
         {
@@ -38,12 +40,14 @@ namespace TypeIT.ViewModels
             }
         }
 
-        public TypingViewModel(NavigationStore navigationStore)
+        public TypingViewModel(NavigationStore navigationStore, UserStore userStore)
         {
             TypingModel = new TypingModel(File.ReadAllText("../../../Documents/20.txt"));
             TypingModel.CurrentWord = GetWord(TypingModel.Text, TypingModel.CurrentWordIndex);
 
-            NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore));
+            NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore, userStore));
+            //Current user
+            currentUser = userStore;
         }
 
         public int CalculateErrorSpace(string word)

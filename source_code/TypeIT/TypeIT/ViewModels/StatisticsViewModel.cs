@@ -17,11 +17,14 @@ namespace TypeIT.ViewModels
         public ChartValues<int> WpmValues { get; set; }
         public ChartValues<double> AccuracyValues { get; set; }
         public List<string> Dates { get; set; }
+        public UserStore currentUser { get; set; }
 
-
-        public StatisticsViewModel(NavigationStore navigationStore)
+        public StatisticsViewModel(NavigationStore navigationStore, UserStore userStore)
         {
-            NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore));
+            NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore, userStore));
+            
+            //Current user
+            currentUser = userStore;
 
             WpmValues = new ChartValues<int>
             {

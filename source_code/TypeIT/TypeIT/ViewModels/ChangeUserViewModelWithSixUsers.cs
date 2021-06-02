@@ -15,7 +15,7 @@ namespace TypeIT.ViewModels
 
         public ChangeUserViewModelWithSixUsers(NavigationStore navigationStore)
         {
-           NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore));
+           //NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore));
         }
     }
 }
