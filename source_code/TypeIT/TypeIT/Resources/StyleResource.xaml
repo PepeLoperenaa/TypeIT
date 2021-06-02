@@ -60,7 +60,7 @@
         <Setter Property="Padding" Value="5"/>
         <Setter Property="CornerRadius" Value="5"/>
         <Setter Property="BorderThickness" Value="1.5"/>
-        <Setter Property="Grid.ColumnSpan" Value="2"/>
+        <Setter Property="Grid.ColumnSpan" Value="1"/>
         <Setter Property="Effect">
             <Setter.Value>
                 <DropShadowEffect Color="{StaticResource Shadow}"
@@ -75,7 +75,7 @@
         <Setter Property="Padding" Value="5"/>
         <Setter Property="CornerRadius" Value="5"/>
         <Setter Property="BorderThickness" Value="1.5"/>
-        <Setter Property="Grid.ColumnSpan" Value="2"/>
+        <Setter Property="Grid.ColumnSpan" Value="1"/>
         <Setter Property="Effect">
             <Setter.Value>
                 <DropShadowEffect Color="{StaticResource Shadow}"
@@ -103,7 +103,6 @@
         <Setter Property="FontFamily" Value="Fonts/Fragmentcore.otf#Fragment Core" />
         <Setter Property="Foreground" Value="{StaticResource TextBodyColor}"/>
     </Style>
-
     <!-- -->
 
     <Style TargetType="{x:Type TextBlock}">

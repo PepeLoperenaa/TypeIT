@@ -15,9 +15,11 @@ namespace TypeIT
     /// </summary>
     public partial class App : Application
     {
+        public NavigationStore navigationStore;
+
         protected override void OnStartup(StartupEventArgs e)
         {
-            NavigationStore navigationStore = new NavigationStore();
+            navigationStore = new NavigationStore();
 
             navigationStore.CurrentViewModel = new DashboardViewModel(navigationStore);
 
@@ -25,6 +27,10 @@ namespace TypeIT
             {
                 DataContext = new MainViewModel(navigationStore)
             };
+
+            //Setting the default theme
+            System.Uri uriNew = new Uri("Resources/LightTheme.xaml", UriKind.Relative);
+            Application.Current.Resources.MergedDictionaries[0].Source = uriNew;
 
             MainWindow.Show();
             base.OnStartup(e);

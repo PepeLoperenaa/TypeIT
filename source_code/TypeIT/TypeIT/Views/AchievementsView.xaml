@@ -36,24 +36,8 @@
                 </StackPanel>
             </Button>
 
-            <Border Style="{StaticResource LockedAchievementBorder}"
-                    Grid.Column="1" Grid.Row="1">
-                <StackPanel Orientation="Horizontal" 
-                            HorizontalAlignment="Center">
-                    <Image Source="../Resources/Images/individualAchievemtsIcon.png" 
-                           VerticalAlignment="Top"
-                           Height="20"
-                           Margin="2,0,6,0"/>
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock Style="{StaticResource AchievementTitle}">Hello</TextBlock>
-                        <TextBlock Style="{StaticResource AchievementDescription}">This is the description of the acievement.</TextBlock>
-                    </StackPanel>
-                    <Image Source="../Resources/Images/lockedAchievementsIcon.png" 
-                           VerticalAlignment="Center"
-                           Height="40"/>
-                </StackPanel>
-            </Border>
-            <Border Style="{StaticResource UnlockedAchievementBorder}"
+            
+            <!--<Border Style="{StaticResource UnlockedAchievementBorder}"
                     Grid.Column="3" Grid.Row="1">
                 <StackPanel Orientation="Horizontal" 
                             HorizontalAlignment="Center">
@@ -66,7 +50,38 @@
                         <TextBlock Style="{StaticResource AchievementDescription}" Margin="0,0,35,0">This is the description of the acievement.</TextBlock>
                     </StackPanel>
                 </StackPanel>
-            </Border>
+            </Border>-->
+            <ListView x:Name="achievements" ItemsSource="{Binding Achievements}" 
+                      Grid.Column="1" Grid.Row="1"
+                      Grid.ColumnSpan="4"
+                      Grid.RowSpan="2"
+                      ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                      ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                      Background="Transparent"
+                      BorderThickness="0">
+                <ListView.ItemTemplate>
+                    <ItemContainerTemplate>
+                        <WrapPanel>
+                            <Border Style="{StaticResource LockedAchievementBorder}">
+                                <StackPanel Orientation="Horizontal" 
+                                        HorizontalAlignment="Center">
+                                    <Image Source="../Resources/Images/individualAchievemtsIcon.png" 
+                                       VerticalAlignment="Top"
+                                       Height="20"
+                                       Margin="2,0,6,0"/>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock Style="{StaticResource AchievementTitle}" Text="{Binding Title}"/>
+                                        <TextBlock Style="{StaticResource AchievementDescription}" Text="{Binding Desc}"/>
+                                    </StackPanel>
+                                    <Image Source="../Resources/Images/lockedAchievementsIcon.png" 
+                                       VerticalAlignment="Center"
+                                       Height="40"/>
+                                </StackPanel>
+                            </Border>
+                        </WrapPanel>
+                    </ItemContainerTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </Grid>
     </Viewbox>
 </UserControl>
