@@ -19,4 +19,11 @@
             <AchievementName>Example</AchievementName>
         </Achievement>
     </Achievements>
+  <documents>
+    <document>
+      <documentName></documentName>
+      <pageNumber></pageNumber>
+      <documentAccuracy></documentAccuracy>
+    </document>
+  </documents>
 </UserProfile>
