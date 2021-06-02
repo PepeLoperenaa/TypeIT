@@ -13,11 +13,44 @@ namespace TypeIT.Models
         public string Text { get; set; }
         public int CurrentMistakes { get; set; }
         public int CurrentWordIndex { get; set; }
-        public string CurrentWord { get; set; }
         public int ErrorSpace { get; set; }
         public int TotalMistakes { get; set; }
-        public double AverageTypingSpeed { get; set; }
-        public double AverageAccuracy { get; set; }
+
+        //Binded values
+        private string _currentWord;
+        private double _averageTypingSpeed;
+        private double _averageAccuracy;
+
+        public string CurrentWord
+        {
+            get => _currentWord;
+            set
+            {
+                _currentWord = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CurrentWord)));
+            }
+        }
+
+        public double AverageTypingSpeed
+        {
+            get => _averageTypingSpeed;
+            set
+            {
+                _averageTypingSpeed = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(AverageTypingSpeed)));
+            }
+        }
+
+        public double AverageAccuracy
+        {
+            get => _averageAccuracy;
+            set
+            {
+                _averageAccuracy = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(AverageAccuracy)));
+            }
+        }
+
         public DateTime StartTime { get; set; }
 
         public TypingModel(string text)
@@ -28,6 +61,8 @@ namespace TypeIT.Models
             AverageTypingSpeed = 0;
             CurrentWordIndex = 0;
             Text = text;
+
+
         }
 
         private void OnPropertyChanged(string p)
