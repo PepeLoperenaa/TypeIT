@@ -91,6 +91,7 @@
         <Setter Property="Foreground" Value="{StaticResource TextHeaderColor}"/>
         <Setter Property="FontFamily" Value="Fonts/Fragmentcore.otf#Fragment Core" />
         <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="TextWrapping" Value="WrapWithOverflow"/>
     </Style>
     
     <!-- Achievement description -->
