@@ -15,10 +15,12 @@ namespace TypeIT.ViewModels
     {
         public ICommand NavigateHomeCommand { get; }
         public ICommand UploadDocumentCommand { get; set; }
+        public ICommand NavigateMyCollectionCommand { get; set; }
 
         public DocumentsViewModel(NavigationStore navigationStore)
         {
            NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore));
+           NavigateMyCollectionCommand = new NavigateCommand<MyCollectionViewModel>(navigationStore, () => new MyCollectionViewModel(navigationStore));
            UploadDocumentCommand = new DelegateCommand(ClickedUploadDocument);
 
         }
