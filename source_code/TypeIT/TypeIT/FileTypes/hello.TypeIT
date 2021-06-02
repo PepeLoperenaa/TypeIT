@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UserProfile>
+  <Name>Example</Name>
+  <Statistics>
+    <HighestWPM>20</HighestWPM>
+    <AverageWPM>20</AverageWPM>
+    <AverageAccuracy>20</AverageAccuracy>
+    <HoursSpent>20</HoursSpent>
+    <TypedTypedWordsTotalWords>20</TypedTypedWordsTotalWords>
+    <DailyRecords>
+      <Day>
+        <Date />
+        <WPM />
+        <Average />
+      </Day>
+    </DailyRecords>
+  </Statistics>
+  <Settings>
+    <Theme>LightMode</Theme>
+    <GameMode>Hard</GameMode>
+  </Settings>
+  <Achievements>
+    <Achievement>
+      <AchievementName>Yes</AchievementName>
+    </Achievement>
+  </Achievements>
+  <Documents>
+    <Document>
+      <DocumentName />
+      <TotalPageNumber />
+      <UserPageNumber />
+      <DocumentAccuracy />
+    </Document>
+  </Documents>
+</UserProfile>
