@@ -32,6 +32,9 @@
                     <DataTemplate DataType="{x:Type viewmodels:ChangeGameModeViewModel}">
                         <views:ChangeGameModeView/>
                     </DataTemplate>
+                    <DataTemplate DataType="{x:Type viewmodels:ChangeUserViewModelWithSixUsers}">
+                        <views:ChangeUserViewWithSixUsers/>
+                    </DataTemplate>
                     <DataTemplate DataType="{x:Type viewmodels:ChangeUserViewModel}">
                         <views:ChangeUserView/>
                     </DataTemplate>

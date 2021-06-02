@@ -113,6 +113,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Update="Views\ChangeUserViewWithSixUsers.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\ChangeUserView.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
