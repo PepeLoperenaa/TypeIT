@@ -17,11 +17,14 @@ namespace TypeIT.Objects
         {
             Location = location;
             Pages = new List<Page>();
-            foreach (string file in Directory.GetFiles(location))
+
+            foreach (string file in Directory.GetFiles(location, ""))
             {
                 Page page = new Page(file);
                 Pages.Add(page);
             }
+
+            Pages = Pages.OrderBy(o => o.Number).ToList();
         }
 
         public Page GetPageByPageNumber(int pageNumber)

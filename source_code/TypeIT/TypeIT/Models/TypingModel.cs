@@ -19,13 +19,17 @@ namespace TypeIT.Models
         // used to calculate accuracy for the page
         public int TotalMistakes { get; set; }
 
-        public int CurrentLetterIndex { get; set; }
-        public int CurrentLetterFromText { get; set; }
+        public int CurrentLetterIndexFromWord { get; set; }
+        public int CurrentLetterIndexFromText { get; set; }
+        public int InputCount { get; set; }
         public double HighestSpeed { get; set; }
         public DateTime StartTime { get; set; }
+        public string Text { get; set; }
 
         //Binded values
-        private string _text;
+        private string _textCorrect;
+        private string _textWrong;
+        private string _textLeft;
         private string _currentWord;
         private double _averageTypingSpeed;
         private double _averageAccuracy;
@@ -42,13 +46,34 @@ namespace TypeIT.Models
                 Text = GetTextFromPage(PageNumber);
             }
         }
-        public string Text
+
+        public string TextCorrect
         {
-            get => _text;
+            get => _textCorrect;
             set
             {
-                _text = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Text)));
+                _textCorrect = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TextCorrect)));
+            }
+        }
+
+        public string TextWrong
+        {
+            get => _textWrong;
+            set
+            {
+                _textWrong = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TextWrong)));
+            }
+        }
+
+        public string TextLeft
+        {
+            get => _textLeft;
+            set
+            {
+                _textLeft = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TextLeft)));
             }
         }
 
@@ -105,6 +130,7 @@ namespace TypeIT.Models
         {
             Document = new Document(document);
             PageNumber = 0;
+            CurrentLetterIndexFromWord = 0;
             CurrentMistakes = 0;
             TotalMistakes = 0;
             AverageAccuracy = 0;
@@ -112,6 +138,7 @@ namespace TypeIT.Models
             CurrentWordIndex = 0;
             ErrorSpace = 5;
             Text = GetTextFromPage(PageNumber);
+            TextLeft = Text[CurrentLetterIndexFromWord..];
             TypingTimer = new Timer();
         }
 

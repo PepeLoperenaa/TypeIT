@@ -14,6 +14,9 @@ namespace TypeIT.ViewModels
     {
         public ICommand NavigateHomeCommand { get; }
         public TypingModel TypingModel { get; set; }
+        public string LatestCorrect { get; set; }
+        public int InputLengthTracker { get; set; }
+
         public string inputString;
         public string InputString
         {
@@ -23,7 +26,7 @@ namespace TypeIT.ViewModels
             }
             set
             {
-                if (TypingModel.CurrentLetterIndex == 0 && TypingModel.CurrentWordIndex == 0)
+                if (TypingModel.CurrentLetterIndexFromWord == 0 && TypingModel.CurrentWordIndex == 0)
                 {
                     TypingModel.StartTime = DateTime.Now;
                     TypingModel.TypingTimer.Start();
@@ -38,7 +41,7 @@ namespace TypeIT.ViewModels
         {
             TypingModel = new TypingModel("../../../Documents/Overlord 1");
 
-            string FileText = TypingModel.Text;            
+            string FileText = TypingModel.Text;
 
             TypingModel.CurrentWord = GetWord(FileText, TypingModel.CurrentWordIndex);
             TypingModel.TypingTimer.Elapsed += OnTimedEvent;
@@ -49,7 +52,7 @@ namespace TypeIT.ViewModels
 
         private void OnTimedEvent(Object source, ElapsedEventArgs e)
         {
-            TypingModel.AverageAccuracy = TypingModel.CalculateAccuracy(TypingModel.CurrentLetterFromText);
+            TypingModel.AverageAccuracy = TypingModel.CalculateAccuracy(TypingModel.InputCount);
             if (TypingModel.AverageAccuracy < 0)
             {
                 TypingModel.AverageAccuracy = 0;
@@ -80,12 +83,30 @@ namespace TypeIT.ViewModels
         {
             if (InputString.Length > 0)
             {
-                // check if the end of the word is a space to determine when to break to the next word
-                if (InputString.Last() == ' ')
+                // Check if you're at the last word in the text
+                if (TypingModel.CurrentWordIndex != GetNumberOfWords(TypingModel.Text))
                 {
-                    // check if the word minus the space at the end is equal to the expected word
-                    if (InputString[0..^1].Equals(word))
+                    // goes to the next word in the text, needs to check for the space to know when to go to next word
+
+                    // check if the end of the word is a space to determine when to break to the next word
+                    if (InputString.Last() == ' ')
                     {
+                        // check if the word minus the space at the end is equal to the expected word
+                        if (InputString[0..^1].Equals(word))
+                        {
+                            InputLengthTracker = 0;
+                            InputString = "";
+                            return true;
+                        }
+                    }
+                }
+                else
+                {
+                    // returns true if at the last word so that a space isn't needed to return true and go to the next page
+
+                    if (InputString == TypingModel.CurrentWord)
+                    {
+                        InputLengthTracker = 0;
                         InputString = "";
                         return true;
                     }
@@ -94,49 +115,80 @@ namespace TypeIT.ViewModels
             return false;
         }
 
-        public void TypeWord(string word)
+        private void ParseWord(string word)
         {
-            TypingModel.CurrentMistakes = 0;
-
-            // set the number of letters they can input after making a mistake
-            if (word.Contains(InputString))
-            {
-                TypingModel.ErrorSpace = InputString.Length + TypingModel.CalculateErrorSpace(word);
-            }
-
             if (IsWordCorrect(word))
             {
                 if (TypingModel.CurrentWordIndex == GetNumberOfWords(TypingModel.Text))
                 {
                     TypingModel.CurrentWordIndex = 0;
-                    TypingModel.CurrentLetterIndex = 0;
                     if (TypingModel.HasNextPage())
                     {
                         TypingModel.NextPage();
-                        TypingModel.CurrentWord = GetWord(TypingModel.Text, TypingModel.CurrentWordIndex);
                     }
                     else
                     {
-                        // Go back to home page
+                        // Go back to home page or say hey you finished the book or something
                     }
+
+                    TypingModel.TextLeft = TypingModel.Text;
+                    TypingModel.TextCorrect = "";
+                    TypingModel.TextWrong = "";
+                    TypingModel.CurrentLetterIndexFromText = 0;
                 }
                 else
                 {
                     TypingModel.CurrentWordIndex++;
-                    TypingModel.CurrentLetterIndex = 0;
-                    TypingModel.CurrentWord = GetWord(TypingModel.Text, TypingModel.CurrentWordIndex);
                 }
+                TypingModel.CurrentLetterIndexFromWord = 0;
+                TypingModel.CurrentWord = GetWord(TypingModel.Text, TypingModel.CurrentWordIndex);
                 return;
             }
+        }
 
-            TypingModel.CurrentLetterIndex = InputString.Length;
-            TypingModel.CurrentLetterFromText++;
+        public void TypeWord(string word)
+        {
+            TypingModel.CurrentMistakes = 0;
+
+            TypingModel.CurrentLetterIndexFromWord = InputString.Length;
+            TypingModel.InputCount++;
 
             if (GetMistakeIndex(word) >= 0)
             {
-                TypingModel.CurrentMistakes = InputString.Length - GetMistakeIndex(word);
-                TypingModel.TotalMistakes++;
+                if (InputString.Trim() != word)
+                {
+
+                    TypingModel.CurrentMistakes = (InputString.Length - GetMistakeIndex(word));
+                    TypingModel.TotalMistakes++;
+                }
             }
+
+            // Decrement CurrentLetterIndexFromText
+            // Not complete yet, still has some bugs
+            if (InputLengthTracker > InputString.Length && TypingModel.CurrentLetterIndexFromText > 0 && word.Contains(InputString) && InputString != "")
+            {
+                TypingModel.CurrentLetterIndexFromText -= (InputLengthTracker - InputString.Length);
+            }
+
+            InputLengthTracker = InputString.Length;
+
+            // set the number of letters they can input after making a mistake
+            if (word.Contains(InputString.Trim()) && InputString != "")
+            {
+                if (TypingModel.Text[TypingModel.CurrentLetterIndexFromText] == InputString.Last() && TypingModel.CurrentWordIndex <= GetNumberOfWords(TypingModel.Text))
+                {
+                    TypingModel.CurrentLetterIndexFromText++;
+                }
+
+                TypingModel.ErrorSpace = InputString.Length + TypingModel.CalculateErrorSpace(word);
+            }
+
+
+            TypingModel.TextLeft = TypingModel.Text[(TypingModel.CurrentLetterIndexFromText + TypingModel.CurrentMistakes)..];
+            TypingModel.TextWrong = TypingModel.Text[(TypingModel.CurrentLetterIndexFromText)..(TypingModel.CurrentLetterIndexFromText + TypingModel.CurrentMistakes)];
+            TypingModel.TextCorrect = TypingModel.Text[0..TypingModel.CurrentLetterIndexFromText];
+
+            ParseWord(word);
         }
 
         public string GetWord(string text, int wordIndex)

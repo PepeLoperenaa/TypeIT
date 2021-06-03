@@ -107,12 +107,16 @@
         <Setter Property="FontFamily" Value="Fonts/Fragmentcore.otf#Fragment Core"/>
     </Style>
 
+    <Style TargetType="{x:Type RichTextBox}">
+        <Setter Property="FontFamily" Value="Fonts/Fragmentcore.otf#Fragment Core"/>
+    </Style>
+
     <Style x:Key="BodyText" TargetType="{x:Type Run}">
         <Setter Property="FontSize" Value="5"/>
         <Setter Property="Foreground" Value="{StaticResource TextBodyColor}"/>
     </Style>
 
-    
+
     <!-- Button with image-->
     <Style x:Key="ImageButton" TargetType="Button">
         <Setter Property="Height" Value="60"/>
