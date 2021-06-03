@@ -16,13 +16,12 @@ namespace TypeIT
     /// </summary>
     public partial class App : Application
     {
-
         public NavigationStore navigationStore { get; set; }
+
         protected override void OnStartup(StartupEventArgs e)
         {
             navigationStore = new NavigationStore();
-
-            navigationStore.CurrentViewModel = new DashboardViewModel(navigationStore);
+            navigationStore.CurrentViewModel = new ChangeUserViewModel(navigationStore);
 
             MainWindow = new MainWindow()
             {
@@ -35,9 +34,6 @@ namespace TypeIT
 
             MainWindow.Show();
             base.OnStartup(e);
-
-            NewUserCreation.newUser("hello");
-            NewUserCreation.AddingDataIntoAnXml("../../../FileTypes/hello.TypeIT");
         }
     }
 }

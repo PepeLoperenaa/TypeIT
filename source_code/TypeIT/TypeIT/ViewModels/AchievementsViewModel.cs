@@ -15,13 +15,14 @@ namespace TypeIT.ViewModels
     class AchievementsViewModel : ViewModelBase
     {
         public ICommand NavigateHomeCommand { get; }
+        public UserStore currentUser { get; set; }
         public ObservableCollection<AchievementModel> Achievements { get; set; }
 
-        public AchievementsViewModel(NavigationStore navigationStore)
+        public AchievementsViewModel(NavigationStore navigationStore, UserStore userStore)
         {
-            NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore));
+            NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore, userStore));
             Achievements = new ObservableCollection<AchievementModel>();
-
+            currentUser = userStore;
             loadAchievements();
         }
 
@@ -29,7 +30,7 @@ namespace TypeIT.ViewModels
         {
             //Loading the document that stores the achievements
             XmlDocument xmlDocument = new XmlDocument();
-            xmlDocument.Load("../../../FileTypes/achievements.TypeIT");
+            xmlDocument.Load("../../../FileTypes/TypeitFiles/achievements.TypeIT");
 
             //Getting the achievements
             XmlNodeList titles = xmlDocument.GetElementsByTagName("AchievementName");

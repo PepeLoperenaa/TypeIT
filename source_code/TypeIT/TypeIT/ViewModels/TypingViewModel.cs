@@ -12,11 +12,13 @@ namespace TypeIT.ViewModels
 {
     class TypingViewModel : ViewModelBase
     {
+
         public ICommand NavigateHomeCommand { get; }
         public TypingModel TypingModel { get; set; }
         public string LatestCorrect { get; set; }
         public int InputLengthTracker { get; set; }
 
+        public UserStore currentUser { get; set; }
         public string inputString;
         public string InputString
         {
@@ -37,17 +39,18 @@ namespace TypeIT.ViewModels
             }
         }
 
-        public TypingViewModel(NavigationStore navigationStore)
+        public TypingViewModel(NavigationStore navigationStore, UserStore userStore)
         {
             TypingModel = new TypingModel("../../../Documents/Overlord 1");
 
-            string FileText = TypingModel.Text;
+            NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore, userStore));
+            //Current user
+            currentUser = userStore;
+            string FileText = TypingModel.Text;            
 
             TypingModel.CurrentWord = GetWord(FileText, TypingModel.CurrentWordIndex);
             TypingModel.TypingTimer.Elapsed += OnTimedEvent;
             TypingModel.TypingTimer.Interval = 1000;
-
-            NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore));
         }
 
         private void OnTimedEvent(Object source, ElapsedEventArgs e)

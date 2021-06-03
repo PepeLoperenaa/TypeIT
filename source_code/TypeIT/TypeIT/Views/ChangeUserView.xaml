@@ -22,16 +22,16 @@
                 <RowDefinition Height="5"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Text="Change User"
+            <TextBlock Text="Select user"
                        TextAlignment="Left" VerticalAlignment="Bottom"
                        Foreground="{DynamicResource TextBlue}"
                        Grid.Column="1" Grid.Row="0"/>
 
             <Button Grid.Column="4" Grid.Row="0"
                     Style="{StaticResource HeaderButton}"
-                    Command="{Binding NavigateHomeCommand}">
+                    Command="{Binding ExitCommand}">
                 <StackPanel>
-                    <Image Source="../Resources/Images/homeIcon.png" />
+                    <Image Source="../Resources/Images/exitIcon.png" />
                 </StackPanel>
             </Button>
 
@@ -47,41 +47,38 @@
                     <RowDefinition Height="5"/>
                 </Grid.RowDefinitions>
 
-                <Grid Grid.Column="0" Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.5*"/>
-                        <ColumnDefinition Width="15"/>
-                        <ColumnDefinition Width="0.5*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="30"/>
-                        <RowDefinition Height="15"/>
-                        <RowDefinition Height="30"/>
-                        <RowDefinition Height="15"/>
-                        <RowDefinition Height="30"/>
-                    </Grid.RowDefinitions>
-
-                    <Button Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1"
-                        Command="{Binding ChangeUser}" Style="{StaticResource ChangeUserButtonStyle}">
-                        <TextBlock>Granya Seong</TextBlock>
-                    </Button>
-
-                    <Button Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="1"
-                        Command="{Binding ChangeUser}" Style="{StaticResource ChangeUserButtonStyle}">
-                    </Button>
-
-                    <Button Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="1"
-                        Command="{Binding ChangeUser}" Style="{StaticResource ChangeUserButtonStyle}">
-                    </Button>
-
-                    <Button Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="1"
-                        Command="{Binding ChangeUser}" Style="{StaticResource ChangeUserButtonStyle}">
-                    </Button>
-
-                    <Button Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="1"
-                        Command="{Binding ChangeUser}" Style="{StaticResource ChangeUserButtonStyle}">
-                    </Button>
-                </Grid>
+                <ListView x:Name="achievements" ItemsSource="{Binding Users}" 
+                      Grid.Column="0" Grid.Row="1"
+                      ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                      ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                      ScrollViewer.CanContentScroll="False"
+                      Background="Transparent"
+                      BorderThickness="0">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListViewItem}">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="Gold" />
+                                </Trigger>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="Gold" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.ItemTemplate>
+                        <ItemContainerTemplate>
+                            <WrapPanel>
+                                <Button Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:ChangeUserView}}, Path=DataContext.SelectUser}" 
+                                        CommandParameter="{Binding Text, ElementName=existingUsername}"
+                                        Style="{StaticResource ChangeUserButtonStyle}">
+                                    <TextBlock x:Name="existingUsername" Text="{Binding Name}"/>
+                                    
+                                </Button>
+                            </WrapPanel>
+                        </ItemContainerTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
 
                 <Border Grid.Column="1" Grid.Row="0" Grid.RowSpan="3">
                     <Rectangle
@@ -107,12 +104,16 @@
                         <RowDefinition Height="40"/>
                     </Grid.RowDefinitions>
 
-                    <Border Grid.Column="1"  Grid.Row="1" Grid.ColumnSpan="3" Style="{StaticResource TextBlockBorder}">
-                        <TextBox Text="Create User" Style="{StaticResource TextBoxStyle}"/>
+                    <Border Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Style="{StaticResource TextBlockBorder}">
+                        <TextBox Text="Create User" 
+                                 Style="{StaticResource TextBoxStyle}"
+                                 x:Name="username"/>
                     </Border>
 
                     <Button Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="1"
-                        Command="{Binding CreateUser}" Style="{StaticResource ChangeUserButtonStyle}">
+                            Command="{Binding CreateUser}" 
+                            CommandParameter="{Binding Text, ElementName=username}"
+                            Style="{StaticResource ChangeUserButtonStyle}">
                         <TextBlock>Create</TextBlock>
                     </Button>
                 </Grid>

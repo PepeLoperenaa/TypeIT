@@ -35,7 +35,7 @@ namespace TypeIT.FileTypes
                                                 new XElement("UserPageNumber"), 
                                                 new XElement("DocumentAccuracy")))));
 
-            doc.Save("../../../FileTypes/" + name + ".TypeIT");
+            doc.Save("../../../FileTypes/Users/" + name + ".TypeIT");
             //when we save in the current directory, it will save the data in the debug folder.
         }
 

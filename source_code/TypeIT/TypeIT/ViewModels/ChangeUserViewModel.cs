@@ -1,10 +1,16 @@
-﻿using System;
+﻿using Prism.Commands;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using TypeIT.Commands;
+using TypeIT.FileTypes;
+using TypeIT.Models;
 using TypeIT.Stores;
 
 namespace TypeIT.ViewModels
@@ -12,10 +18,73 @@ namespace TypeIT.ViewModels
     class ChangeUserViewModel : ViewModelBase
     {
         public ICommand NavigateHomeCommand { get; }
+        public ICommand CreateUser { get; }
+        public ICommand SelectUser { get; }
+        public UserStore currentUser { get; set; }
+        public ObservableCollection<UserModel> Users { get; set; }
+        public ICommand ExitCommand { get; set; }
 
         public ChangeUserViewModel(NavigationStore navigationStore)
         {
-           NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore));
+            //Creating a new user model
+            currentUser = new UserStore();
+
+            //Navigate home
+            NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore, currentUser));
+
+            //Commands
+            CreateUser = new DelegateCommand<string>(createUserFile);
+            SelectUser = new DelegateCommand<string>(loadSelectedUser);
+            ExitCommand = new DelegateCommand(ClickedExit);
+
+            //Users list
+            Users = new ObservableCollection<UserModel>();
+            loadUsers();
+        }
+
+        private void createUserFile(string userName)
+        {
+            NewUserCreation.newUser(userName);
+            loadSelectedUser(userName);
+        }
+
+        private void loadSelectedUser(string userName)
+        {
+            UserModel user = new UserModel(userName);
+
+            //Setting the current user to the selected one
+            currentUser.CurrentUser = user;
+
+            //Navigate to dashboard
+            NavigateHomeCommand.Execute(null);
+        }
+
+        private void loadUsers()
+        {
+            string[] files = Directory.GetFiles("../../../FileTypes/Users");
+            foreach (string file in files)
+            {
+                string userName = Path.GetFileName(file);
+                int pos = userName.LastIndexOf(".");
+                userName = userName.Remove(pos);
+                UserModel user = new UserModel(userName);
+                Users.Add(user);
+            }
+        }
+
+        private void ClickedExit()
+        {
+            //Custom messagebox
+            var res = Xceed.Wpf.Toolkit.MessageBox.Show(
+                           "Are you sure you want to quit?",
+                           "Quit",
+                           MessageBoxButton.YesNo
+                       );
+
+            if ("Yes" == res.ToString())
+            {
+                System.Windows.Application.Current.Shutdown();
+            }
         }
     }
 }

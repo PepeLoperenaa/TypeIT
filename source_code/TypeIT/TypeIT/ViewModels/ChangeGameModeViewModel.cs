@@ -16,10 +16,12 @@ namespace TypeIT.ViewModels
         public ICommand ChangeGameModeToNormal { get; set; }
         public ICommand ChangeGameModeToHard { get; set; }
         public ICommand ChangeGameModeToExtreme { get; set; }
+        public UserStore currentUser { get; set; }
 
-        public ChangeGameModeViewModel(NavigationStore navigationStore)
+        public ChangeGameModeViewModel(NavigationStore navigationStore, UserStore userStore)
         {
-            NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore));
+            NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore, userStore));
+            currentUser = userStore;
             //ChangeGameModeToCasual
             //ChangeGameModeToNormal
             //ChangeGameModeToHard

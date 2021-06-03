@@ -23,18 +23,21 @@ namespace TypeIT.ViewModels
         public ICommand ExitCommand { get; set; }
         
         public string currentTheme { get; set; }
+        public UserStore currentUser { get; set; }
 
-        public SettingsViewModel(NavigationStore navigationStore)
+        public SettingsViewModel(NavigationStore navigationStore, UserStore userStore)
         {
             //Navigation comands
-            NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore));
+            NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore, userStore));
             NavigateChangeUserCommand = new NavigateCommand<ChangeUserViewModel>(navigationStore, () => new ChangeUserViewModel(navigationStore));
-            NavigateChangeGameModeCommand = new NavigateCommand<ChangeGameModeViewModel>(navigationStore, () => new ChangeGameModeViewModel(navigationStore));
+            NavigateChangeGameModeCommand = new NavigateCommand<ChangeGameModeViewModel>(navigationStore, () => new ChangeGameModeViewModel(navigationStore, userStore));
+
+            //Current user
+            currentUser = userStore;
 
             //ResetStatisticsCommand
             ChangeThemeCommand = new DelegateCommand(ClickedChangeTheme);
 
-            //DeleteAccountCommand
             ExitCommand = new DelegateCommand(ClickedExit);
         }
 

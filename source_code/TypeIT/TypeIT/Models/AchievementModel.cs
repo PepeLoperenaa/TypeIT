@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TypeIT.Models
 {
-    class AchievementModel
+    public class AchievementModel
     {
         public string Title { get; set; }
         public string Desc { get; set; }
