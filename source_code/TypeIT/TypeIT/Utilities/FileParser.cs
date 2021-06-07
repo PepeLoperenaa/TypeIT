@@ -49,9 +49,10 @@ namespace TypeIT.Utilities
         }
         private static string RemoveSpecialCharacters(string str)
         {
-            str = str.Replace('\u2018', '\'').Replace('\u2019', '\'').Replace('\u201c', '\"').Replace('\u201d', '\"').Replace("\u2026", "...").Replace("\r\n", " ");
-
-            return Regex.Replace(str, "[^a-zA-Z0-9_.\r\n\"\' ]+", "", RegexOptions.Compiled);
+            str = str.Replace('\u2018', '\'').Replace('\u2019', '\'').Replace('\u201c', '\"').Replace('\u201d', '\"').Replace("\u2026", "...").Replace("\r\n", " ").Replace('—', '-').Replace(@"\s+", " ");
+            str = Regex.Replace(str, @"\s+", " ");
+            str = Regex.Replace(str, @"[^a-zA-Z0-9`!@#$%^&*()_+|\-=\\{}\[\]:"";'<>?,./\r\n\'' ]+", "", RegexOptions.Compiled);
+            return str;
         }
 
         public void ParsePDF(string FilePath, string Title)

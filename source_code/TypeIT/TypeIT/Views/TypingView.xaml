@@ -120,7 +120,7 @@
                          Style="{StaticResource BodyText}" 
                          Text="{Binding TypingModel.TextWrong}" Foreground="Red"/><Run 
                          Style="{StaticResource BodyText}" 
-                         Text="{Binding TypingModel.TextLeft}"/>
+                         Text="{Binding TypingModel.CharactersLeft}"/>
                 </TextBlock>
             </Border>
             

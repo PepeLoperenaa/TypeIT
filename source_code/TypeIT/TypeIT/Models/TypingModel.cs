@@ -11,16 +11,15 @@ namespace TypeIT.Models
     class TypingModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        public Document Document { get; set; }
+        public BookModel Document { get; set; }
         // used to keep track of typing individual words
         public int CurrentMistakes { get; set; }
         // keep track of which part of the text is being typed
         public int CurrentWordIndex { get; set; }
         // used to calculate accuracy for the page
         public int TotalMistakes { get; set; }
-
-        public int CurrentLetterIndexFromWord { get; set; }
-        public int CurrentLetterIndexFromText { get; set; }
+        // used to keep track of where the user is in the text and replace colors
+        public int Index { get; set; }
         public int InputCount { get; set; }
         public double HighestSpeed { get; set; }
         public DateTime StartTime { get; set; }
@@ -67,13 +66,13 @@ namespace TypeIT.Models
             }
         }
 
-        public string TextLeft
+        public string CharactersLeft
         {
             get => _textLeft;
             set
             {
                 _textLeft = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TextLeft)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CharactersLeft)));
             }
         }
 
@@ -128,17 +127,16 @@ namespace TypeIT.Models
 
         public TypingModel(string document)
         {
-            Document = new Document(document);
+            Document = new Objects.BookModel(document);
             PageNumber = 0;
-            CurrentLetterIndexFromWord = 0;
             CurrentMistakes = 0;
+            HighestSpeed = 0;
             TotalMistakes = 0;
             AverageAccuracy = 0;
             AverageTypingSpeed = 0;
             CurrentWordIndex = 0;
             ErrorSpace = 5;
             Text = GetTextFromPage(PageNumber);
-            TextLeft = Text[CurrentLetterIndexFromWord..];
             TypingTimer = new Timer();
         }
 
@@ -162,6 +160,10 @@ namespace TypeIT.Models
         public double CalculateTypingSpeed(int wordNumber)
         {
             double speed = Math.Round((wordNumber / (DateTime.Now - StartTime).TotalSeconds) * 60, 2);
+            if (speed > HighestSpeed)
+            {
+                HighestSpeed = speed;
+            }
             return speed;
         }
 

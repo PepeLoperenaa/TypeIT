@@ -7,27 +7,27 @@ using System.Threading.Tasks;
 
 namespace TypeIT.Objects
 {
-    class Document
+    class BookModel
     {
         public string Name { get; set; }
         public string Location { get; set; }
-        public List<Page> Pages { get; set; }
+        public List<PageModel> Pages { get; set; }
 
-        public Document(string location)
+        public BookModel(string location)
         {
             Location = location;
-            Pages = new List<Page>();
+            Pages = new List<PageModel>();
 
             foreach (string file in Directory.GetFiles(location, ""))
             {
-                Page page = new Page(file);
+                PageModel page = new PageModel(file);
                 Pages.Add(page);
             }
 
             Pages = Pages.OrderBy(o => o.Number).ToList();
         }
 
-        public Page GetPageByPageNumber(int pageNumber)
+        public PageModel GetPageByPageNumber(int pageNumber)
         {
             try
             {
