@@ -49,9 +49,15 @@ namespace TypeIT.Utilities
         }
         private static string RemoveSpecialCharacters(string str)
         {
+            // replace characters with counter-parts on keyboard
             str = str.Replace('\u2018', '\'').Replace('\u2019', '\'').Replace('\u201c', '\"').Replace('\u201d', '\"').Replace("\u2026", "...").Replace("\r\n", " ").Replace('—', '-').Replace(@"\s+", " ");
+            
+            // replace multiple spaces with single ones
             str = Regex.Replace(str, @"\s+", " ");
+
+            // remove characters which aren't on the keyboard (qwerty)
             str = Regex.Replace(str, @"[^a-zA-Z0-9`!@#$%^&*()_+|\-=\\{}\[\]:"";'<>?,./\r\n\'' ]+", "", RegexOptions.Compiled);
+
             return str;
         }
 
@@ -101,12 +107,16 @@ namespace TypeIT.Utilities
                 Directory.CreateDirectory(dir);
             }
 
-            //Opens the Word template document
-            using (WordDocument document = new WordDocument(FilePath)) //template.docx does not exist here we should change this.
+            // opens the Word template document
+            using (WordDocument document = new WordDocument(FilePath)) // template.docx does not exist here we should change this.
             {
-                //Gets the string that contains whole document content as text
+                // gets the string that contains whole document content as text
                 string text = document.GetText();
-                //Create a new text file and write specified string in it
+
+                // cleanse the file of its sins
+                RemoveSpecialCharacters(text);
+
+                // create a new text file and write specified string in it
                 File.WriteAllText("Result.txt", text);
             }
             System.Diagnostics.Process.Start("Result.txt"); // this is a test to see if we get the txt file.

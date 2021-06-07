@@ -66,6 +66,7 @@ namespace TypeIT.ViewModels
             }
             TypingModel.AverageTypingSpeed = TypingModel.CalculateTypingSpeed(TypingModel.CurrentWordIndex);
         }
+
         public void TypeWord(string word)
         {
             TypingModel.CurrentMistakes = 0;
@@ -113,15 +114,12 @@ namespace TypeIT.ViewModels
             ParseWord(word);
         }
 
-
-
         private void ParseWord(string word)
         {
-            if (IsWordCorrect(word))
+            if (CanGoToNextWord(word))
             {
                 if (TypingModel.CurrentWordIndex == GetNumberOfWords(TypingModel.Text))
                 {
-                    TypingModel.CurrentWordIndex = 0;
                     if (TypingModel.HasNextPage())
                     {
                         TypingModel.NextPage();
@@ -130,11 +128,6 @@ namespace TypeIT.ViewModels
                     {
                         // Go back to home page or say hey you finished the book or something
                     }
-
-                    TypingModel.CharactersLeft = TypingModel.Text;
-                    TypingModel.TextCorrect = "";
-                    TypingModel.TextWrong = "";
-                    TypingModel.Index = 0;
                 }
                 else
                 {
@@ -149,7 +142,7 @@ namespace TypeIT.ViewModels
             }
         }
 
-        private bool IsWordCorrect(string word)
+        private bool CanGoToNextWord(string word)
         {
             if (InputString.Length > 0)
             {

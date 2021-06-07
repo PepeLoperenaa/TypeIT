@@ -188,6 +188,12 @@ namespace TypeIT.Models
 
         public void NextPage()
         {
+            CurrentWordIndex = 0;
+            HighestSpeed = 0;
+            CharactersLeft = Text;
+            TextCorrect = "";
+            TextWrong = "";
+            Index = 0;
             PageNumber++;
         }
         
