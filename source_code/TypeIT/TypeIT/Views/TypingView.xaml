@@ -118,7 +118,7 @@
                     <Run Style="{StaticResource BodyText}" 
                          Text="{Binding TypingModel.TextCorrect}" Foreground="Green"/><Run 
                          Style="{StaticResource BodyText}" 
-                         Text="{Binding TypingModel.TextWrong}" Foreground="Red"/><Run 
+                         Text="{Binding TypingModel.TextWrong}" Foreground="DarkRed" Background="Red"/><Run 
                          Style="{StaticResource BodyText}" 
                          Text="{Binding TypingModel.CharactersLeft}"/>
                 </TextBlock>
