@@ -47,8 +47,24 @@
                     <RowDefinition Height="5"/>
                 </Grid.RowDefinitions>
 
+                <ItemsControl ItemsSource="{Binding Users}"
+                              Grid.Column="0" Grid.Row="1">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <Button Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:ChangeUserView}}, Path=DataContext.SelectUser}" 
+                                        CommandParameter="{Binding Text, ElementName=existingUsername}"
+                                        Style="{StaticResource ChangeUserButtonStyle}">
+                                    <TextBlock x:Name="existingUsername" Text="{Binding Name}"/>
+
+                                </Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
                 <ListView x:Name="achievements" ItemsSource="{Binding Users}" 
-                      Grid.Column="0" Grid.Row="1"
+                      
                       ScrollViewer.HorizontalScrollBarVisibility="Hidden"
                       ScrollViewer.VerticalScrollBarVisibility="Hidden"
                       ScrollViewer.CanContentScroll="False"
@@ -69,12 +85,7 @@
                     <ListView.ItemTemplate>
                         <ItemContainerTemplate>
                             <WrapPanel>
-                                <Button Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:ChangeUserView}}, Path=DataContext.SelectUser}" 
-                                        CommandParameter="{Binding Text, ElementName=existingUsername}"
-                                        Style="{StaticResource ChangeUserButtonStyle}">
-                                    <TextBlock x:Name="existingUsername" Text="{Binding Name}"/>
-                                    
-                                </Button>
+                                
                             </WrapPanel>
                         </ItemContainerTemplate>
                     </ListView.ItemTemplate>

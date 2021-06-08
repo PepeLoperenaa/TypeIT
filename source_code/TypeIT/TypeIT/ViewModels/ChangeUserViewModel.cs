@@ -24,6 +24,7 @@ namespace TypeIT.ViewModels
         public ObservableCollection<UserModel> Users { get; set; }
         public ICommand ExitCommand { get; set; }
 
+
         public ChangeUserViewModel(NavigationStore navigationStore)
         {
             //Creating a new user model
