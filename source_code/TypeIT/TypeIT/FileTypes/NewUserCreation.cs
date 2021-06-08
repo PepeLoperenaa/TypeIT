@@ -68,5 +68,20 @@ namespace TypeIT.FileTypes
             doc.Root.Element("Achievements").Element("Achievement").Element("AchievementName").Value = "Yes";
             doc.Save(filePath);
         }
+        
+        public static void AddingADocumentIntoUserXml(string filePath)
+        {
+            XDocument doc = XDocument.Load(filePath); //getting the users XML
+            doc.Root.Element("Documents").Element("Document").Element("DocumentName").Value = "Overlord1"; //Here we should add the name of the books he had.
+            doc.Root.Element("Documents").Element("Document").Element("TotalPageNumber").Value = "500"; //get length
+            doc.Root.Element("Documents").Element("Document").Element("UserPageNumber").Value = "25"; // get in what page the user is actually on
+            doc.Root.Element("Documents").Element("Document").Element("DocumentAccuracy").Value = "96.90"; //Statistics of the specific page.
+            //binding with the add document page
+            //add it into the documents tag in the xml. 
+            //document name,
+            //TotalPageNumber
+            //UserPageNumber
+            //DocumentAccuracy
+        }
     }
 }
