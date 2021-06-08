@@ -1,36 +1,36 @@
-<?xml version = "1.0"?>
+<?xml version = "1.0" encoding="UTF-8"?>
 <UserProfile xmlns="https://www.w3schools.com">
   <Name>Testing</Name>
   <Statistics>
-      <HighestWPM>2</HighestWPM>
-      <AverageWPM>3</AverageWPM>
-      <AverageAccuracy>1</AverageAccuracy>
-      <HoursSpent>4</HoursSpent>
-      <TypedWordsTotal>5</TypedWordsTotal>
-      <DailyRecords>
-        <Day>
-          <Date>02/06/2021</Date>
-          <WPM>2</WPM>
-          <Average>3</Average>
-          <Accuracy>1</Accuracy>
-        </Day>
-      </DailyRecords>
+    <HighestWPM>2</HighestWPM>
+    <AverageWPM>3</AverageWPM>
+    <AverageAccuracy>9.0</AverageAccuracy>
+    <HoursSpent>0</HoursSpent>
+    <TypedWordsTotal>5</TypedWordsTotal>
+    <DailyRecords>
+      <Day>
+        <Date>2002-09-24</Date>
+        <WPM>2</WPM>
+        <Average>3</Average>
+        <Accuracy>1</Accuracy>
+      </Day>
+    </DailyRecords>
   </Statistics>
   <Settings>
-      <Theme>Dark mode</Theme>
-      <GameMode>Hard</GameMode>
+    <Theme>Dark mode</Theme>
+    <GameMode>Normal</GameMode>
   </Settings>
   <Achievements>
-      <Achievement>
-          <AchievementName>Example</AchievementName>
-      </Achievement>
+    <Achievement>
+      <AchievementName>Example</AchievementName>
+    </Achievement>
   </Achievements>
   <Documents>
     <Document>
       <DocumentName></DocumentName>
-      <TotalPageNumber></TotalPageNumber>
-      <UserPageNumber></UserPageNumber>
-      <DocumentAccuracy></DocumentAccuracy>
+      <TotalPageNumber>0</TotalPageNumber>
+      <UserPageNumber>0</UserPageNumber>
+      <DocumentAccuracy>0</DocumentAccuracy>
     </Document>
   </Documents>
 </UserProfile>
