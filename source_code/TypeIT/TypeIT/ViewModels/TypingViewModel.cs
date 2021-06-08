@@ -7,6 +7,7 @@ using System.Windows.Input;
 using TypeIT.Commands;
 using TypeIT.Models;
 using TypeIT.Stores;
+using TypeIT.Utilities;
 
 namespace TypeIT.ViewModels
 {
@@ -15,29 +16,26 @@ namespace TypeIT.ViewModels
 
         public ICommand NavigateHomeCommand { get; }
         public TypingModel TypingModel { get; set; }
-        public string LatestCorrect { get; set; }
         public int InputLengthTracker { get; set; }
-
         public UserStore currentUser { get; set; }
-        public string inputString;
+
+        public string _inputString;
         public string InputString
         {
             get
             {
-                return inputString;
+                return _inputString;
             }
             set
             {
-                if (InputString != null)
+                _inputString = value;
+
+                if (InputString.Length == 1 && TypingModel.CurrentWordIndex == 0)
                 {
-                    if (InputString.Length > 0 && TypingModel.CurrentWordIndex == 0)
-                    {
-                        TypingModel.StartTime = DateTime.Now;
-                        TypingModel.TypingTimer.Start();
-                    }
+                    TypingModel.StartTime = DateTime.Now;
+                    TypingModel.TypingTimer.Start();
                 }
 
-                inputString = value;
                 TypeWord(TypingModel.CurrentWord);
             }
         }
@@ -46,6 +44,8 @@ namespace TypeIT.ViewModels
         {
             TypingModel = new TypingModel("../../../Documents/Overlord 1");
 
+            TypingModel.SelectedDifficulty = (Difficulty.Extreme);
+
             TypingModel.CharactersLeft = TypingModel.Text;
 
             NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore, userStore));
@@ -53,6 +53,8 @@ namespace TypeIT.ViewModels
             currentUser = userStore;
 
             TypingModel.CurrentWord = GetWord(TypingModel.Text, TypingModel.CurrentWordIndex);
+            TypingModel.SetDisplayTime(90);
+
             TypingModel.TypingTimer.Elapsed += OnTimedEvent;
             TypingModel.TypingTimer.Interval = 1000;
         }
@@ -64,7 +66,10 @@ namespace TypeIT.ViewModels
             {
                 TypingModel.AverageAccuracy = 0;
             }
-            TypingModel.AverageTypingSpeed = TypingModel.CalculateTypingSpeed(TypingModel.CurrentWordIndex);
+
+            TypingModel.IncrementTime();
+
+            TypingModel.AverageTypingSpeed = (int) TypingModel.CalculateTypingSpeed(TypingModel.CurrentWordIndex);
         }
 
         public void TypeWord(string word)
@@ -82,6 +87,9 @@ namespace TypeIT.ViewModels
                 }
             }
 
+            // handle the countdown timer if difficulty is extreme
+            TypingModel.HandleExtreme();
+
             // set the index based on the current length subtracted by the tracker
             TypingModel.Index += InputString.Length - InputLengthTracker;
 
@@ -94,6 +102,7 @@ namespace TypeIT.ViewModels
                 TypingModel.ErrorSpace = InputString.Length + TypingModel.CalculateErrorSpace(word);
             }
 
+            // set the gray text (text left to type)
             TypingModel.CharactersLeft = TypingModel.Text[(TypingModel.Index)..];
 
             // set text wrong to null before checking so that if word has no wrong characters then there won't be wrong characters displayed
@@ -118,11 +127,13 @@ namespace TypeIT.ViewModels
         {
             if (CanGoToNextWord(word))
             {
-                if (TypingModel.CurrentWordIndex == GetNumberOfWords(TypingModel.Text))
+                if (TypingModel.CurrentWordIndex == TypingModel.GetNumberOfWords())
                 {
                     if (TypingModel.HasNextPage())
                     {
                         TypingModel.NextPage();
+
+                        TypingModel.SetDisplayTime(90);
                     }
                     else
                     {
@@ -148,7 +159,7 @@ namespace TypeIT.ViewModels
             {
                 // check if you're at the last word to see if the space is needed to continue
                 // important otherwise the text will proceed without a space needed
-                if (TypingModel.CurrentWordIndex == GetNumberOfWords(TypingModel.Text))
+                if (TypingModel.CurrentWordIndex == TypingModel.GetNumberOfWords())
                 {
                     // check if the input is equal to the word (no need to trim)
                     if (InputString == TypingModel.CurrentWord)
@@ -209,17 +220,11 @@ namespace TypeIT.ViewModels
         {
             string[] words = text.Split(' ');
 
-            if (wordIndex <= GetNumberOfWords(text))
+            if (wordIndex <= TypingModel.GetNumberOfWords())
             {
                 return words[wordIndex];
             }
             return null;
-        }
-
-        public int GetNumberOfWords(string text)
-        {
-            int number = text.Split(' ').Length - 1;
-            return number;
         }
     }
 }
