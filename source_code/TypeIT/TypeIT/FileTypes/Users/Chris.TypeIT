@@ -2,11 +2,11 @@
 <UserProfile>
   <Name>Chris</Name>
   <Statistics>
-    <HighestWPM />
-    <AverageWPM />
-    <AverageAccuracy />
-    <HoursSpent />
-    <TypedTypedWordsTotalWords />
+    <HighestWPM>1</HighestWPM>
+    <AverageWPM>2</AverageWPM>
+    <AverageAccuracy>3</AverageAccuracy>
+    <HoursSpent>4</HoursSpent>
+    <TypedTypedWordsTotalWords>5</TypedTypedWordsTotalWords>
     <DailyRecords>
       <Day>
         <Date />

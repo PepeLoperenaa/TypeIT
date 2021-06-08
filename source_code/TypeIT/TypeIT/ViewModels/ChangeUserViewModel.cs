@@ -21,8 +21,9 @@ namespace TypeIT.ViewModels
         public ICommand CreateUser { get; }
         public ICommand SelectUser { get; }
         public UserStore currentUser { get; set; }
-        public ObservableCollection<UserModel> Users { get; set; }
+        public List<UserModel> Users { get; set; }
         public ICommand ExitCommand { get; set; }
+
 
         public ChangeUserViewModel(NavigationStore navigationStore)
         {
@@ -38,19 +39,19 @@ namespace TypeIT.ViewModels
             ExitCommand = new DelegateCommand(ClickedExit);
 
             //Users list
-            Users = new ObservableCollection<UserModel>();
+            Users = new List<UserModel>();
             loadUsers();
         }
 
         private void createUserFile(string userName)
         {
-            NewUserCreation.newUser(userName);
+            XmlHandler.newUser(userName);
             loadSelectedUser(userName);
         }
 
         private void loadSelectedUser(string userName)
         {
-            UserModel user = new UserModel(userName);
+            UserModel user = new UserModel(userName, true);
 
             //Setting the current user to the selected one
             currentUser.CurrentUser = user;
@@ -67,7 +68,7 @@ namespace TypeIT.ViewModels
                 string userName = Path.GetFileName(file);
                 int pos = userName.LastIndexOf(".");
                 userName = userName.Remove(pos);
-                UserModel user = new UserModel(userName);
+                UserModel user = new UserModel(userName, false);
                 Users.Add(user);
             }
         }
