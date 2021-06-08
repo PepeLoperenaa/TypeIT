@@ -46,7 +46,7 @@
                           Grid.RowSpan="2">
                 <StackPanel>
                     <!--Unlocked Achievements-->
-                    <ItemsControl ItemsSource="{Binding Achievements}">
+                    <ItemsControl ItemsSource="{Binding UnlockedAchievements}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <Border Style="{StaticResource UnlockedAchievementBorder}">
@@ -59,10 +59,6 @@
                                             <TextBlock Style="{StaticResource AchievementTitle}" Text="{Binding Title}"/>
                                             <TextBlock Style="{StaticResource AchievementDescription}" Text="{Binding Desc}"/>
                                         </StackPanel>
-                                        <Image Source="../Resources/Images/lockedAchievementsIcon.png" 
-                                        VerticalAlignment="Bottom" 
-                                        HorizontalAlignment="Right"
-                                        Height="20"/>
                                     </StackPanel>
                                 </Border>
                             </DataTemplate>
@@ -80,7 +76,7 @@
                     <ItemsControl ItemsSource="{Binding Achievements}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <Border Style="{StaticResource UnlockedAchievementBorder}">
+                                <Border Style="{StaticResource LockedAchievementBorder}">
                                     <StackPanel Orientation="Horizontal">
                                         <Image Source="../Resources/Images/individualAchievemtsIcon.png" 
                                            VerticalAlignment="Top"

@@ -18,15 +18,46 @@ namespace TypeIT.ViewModels
         public ICommand NavigateHomeCommand { get; }
         public UserStore currentUser { get; set; }
         public List<AchievementModel> Achievements { get; set; }
+        public List<AchievementModel> UnlockedAchievements { get; set; }
 
         public AchievementsViewModel(NavigationStore navigationStore, UserStore userStore)
         {
             NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore, userStore));
             Achievements = new List<AchievementModel>();
+            UnlockedAchievements = new List<AchievementModel>();
             currentUser = userStore;
             loadAchievements();
+            loadUsersAchievements();
         }
 
+        private void loadUsersAchievements()
+        {
+            // Load unlocked achievements
+            List<string> hallo = XmlHandler.getElementsFromTags("../../../FileTypes/Users/" + currentUser.CurrentUser.Name + ".TypeIT", "AchievementName");
+            foreach (AchievementModel achievement in Achievements)
+            {
+                foreach (string achievementName in hallo)
+                {                    
+                   if (achievement.Title == achievementName)
+                   {
+                        UnlockedAchievements.Add(achievement);
+                        break;
+                   }                    
+                }
+            }
+
+            // We have to iterate backwards to safely delete elements
+
+            for (int i = Achievements.Count - 1; i >= 0; i--)
+            {
+                if (UnlockedAchievements.Contains(Achievements[i]))
+                {
+                    Achievements.Remove(Achievements[i]);
+                }
+            }
+
+        }
+        
         private void loadAchievements()
         {
             List<string> achievementName = XmlHandler.getElementsFromTags("../../../FileTypes/TypeitFiles/achievements.TypeIT", "AchievementName");

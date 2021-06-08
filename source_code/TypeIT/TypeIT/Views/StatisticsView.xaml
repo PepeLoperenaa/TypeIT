@@ -144,7 +144,6 @@
                         <TextBlock Foreground="{StaticResource ResourceKey=TextBlue}"
                                    Height="35"
                                    FontSize="35"
-                                   Margin="18,4,0,0"
                                    Text="{Binding currentUser.CurrentUser.statistics.HighestWPM}"/>
                         <TextBlock Foreground="{StaticResource ResourceKey=TextHeaderColor}"
                                    Height="15"
