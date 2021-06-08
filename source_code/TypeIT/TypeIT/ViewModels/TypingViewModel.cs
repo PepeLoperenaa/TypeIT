@@ -44,9 +44,7 @@ namespace TypeIT.ViewModels
         {
             currentUser = userStore;
 
-            TypingModel = new TypingModel();
-
-            TypingModel.Document = new DocumentModel("../../../Documents/Overlord 1");
+            TypingModel = new TypingModel("../../../Documents/Overlord 1");
 
             NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore, userStore));
 
