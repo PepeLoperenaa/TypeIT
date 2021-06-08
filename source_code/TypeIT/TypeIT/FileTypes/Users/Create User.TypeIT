@@ -24,12 +24,5 @@
       <AchievementName />
     </Achievement>
   </Achievements>
-  <Documents>
-    <Document>
-      <DocumentName />
-      <TotalPageNumber />
-      <UserPageNumber />
-      <DocumentAccuracy />
-    </Document>
-  </Documents>
+  <Documents />
 </UserProfile>

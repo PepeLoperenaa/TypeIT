@@ -18,9 +18,9 @@ namespace TypeIT.Views
     /// <summary>
     /// Interaction logic for AboutView.xaml
     /// </summary>
-    public partial class ChangeUserView : UserControl
+    public partial class ChangeUserViewWithOneToFiveUsers : UserControl
     {
-        public ChangeUserView()
+        public ChangeUserViewWithOneToFiveUsers()
         {
             InitializeComponent();
         }

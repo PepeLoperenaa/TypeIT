@@ -118,7 +118,7 @@
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\ChangeUserView.xaml">
+    <Page Update="Views\ChangeUserViewWithOneToFiveUsers.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
     <Page Update="Views\ChangeGameModeView.xaml">

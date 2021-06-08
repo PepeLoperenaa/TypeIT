@@ -32,7 +32,7 @@ namespace TypeIT.ViewModels
 
             if (files.Length < 6)
             {
-                NavigateChangeUserCommand = new NavigateCommand<ChangeUserViewModel>(navigationStore, () => new ChangeUserViewModel(navigationStore));
+                NavigateChangeUserCommand = new NavigateCommand<ChangeUserViewModelWithOneToFiveUsers>(navigationStore, () => new ChangeUserViewModelWithOneToFiveUsers(navigationStore));
             }
             else
             {
