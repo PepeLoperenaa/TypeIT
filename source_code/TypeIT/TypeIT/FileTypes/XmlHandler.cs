@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace TypeIT.FileTypes
 {
-    public static class NewUserCreation
+    public static class XmlHandler
     {
         public static void newUser(string name)
         {
@@ -52,6 +52,7 @@ namespace TypeIT.FileTypes
             }
             return listElements;
         }
+
         public static void AddingDataIntoAnXml(string filePath) //to add information into the element
         {
             //string file = "C:/Users/MyPC/source/repos/XMLChanging/XMLChanging/folder/userFile.TypeIT";

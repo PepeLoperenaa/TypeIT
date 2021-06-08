@@ -15,9 +15,12 @@ namespace TypeIT.Models
         public List<AchievementModel> Achievements { get; set; }
         public List<DocumentModel> Documents { get; set; }
 
-        public UserModel(string name)
+        public UserModel(string name, bool loadStats)
         {
             Name = name;
+
+            if (loadStats)
+                statistics = new StatisticsModel(name);
         }
     }
 }
