@@ -11,7 +11,7 @@ namespace TypeIT.Models
     public class StatisticsModel
     {
         public double HighestWPM { get; set; }
-        public double AverageWPM { get; set; }
+        public int AverageWPM { get; set; }
         public double AverageAccuracy { get; set; }
         public double HoursSpent { get; set; }
         public int TypedWordsTotal { get; set; }
@@ -23,7 +23,7 @@ namespace TypeIT.Models
             HighestWPM = (parameter == "") ? 0 : Convert.ToDouble(parameter);
 
             parameter = XmlHandler.getElementsFromTags("../../../FileTypes/Users/" + UserName + ".TypeIT", "AverageWPM").First();
-            AverageWPM = (parameter == "") ? 0 : Convert.ToDouble(parameter);
+            AverageWPM = (parameter == "") ? 0 : Int32.Parse(parameter);
 
             parameter = XmlHandler.getElementsFromTags("../../../FileTypes/Users/" + UserName + ".TypeIT", "AverageAccuracy").First();
             AverageAccuracy = (parameter == "") ? 0 : Convert.ToDouble(parameter);

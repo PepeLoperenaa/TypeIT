@@ -1,6 +1,7 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
 using System.Xml.Linq;
-using System.Collections.Generic;
+using TypeIT.Models;
+using TypeIT.Objects;
 
 namespace TypeIT.FileTypes
 {
@@ -18,7 +19,7 @@ namespace TypeIT.FileTypes
                                            new XElement("HoursSpent"),
                                            new XElement("TypedTypedWordsTotalWords"),
                                            new XElement("DailyRecords",
-                                               new XElement("Day", 
+                                               new XElement("Day",
                                                new XElement("Date"),
                                                new XElement("WPM"),
                                                new XElement("Average")))),
@@ -28,12 +29,7 @@ namespace TypeIT.FileTypes
                                        new XElement("Achievements",
                                            new XElement("Achievement",
                                                new XElement("AchievementName"))),
-                                       new XElement("Documents",
-                                           new XElement("Document", 
-                                                new XElement("DocumentName"), 
-                                                new XElement("TotalPageNumber"), 
-                                                new XElement("UserPageNumber"), 
-                                                new XElement("DocumentAccuracy")))));
+                                       new XElement("Documents")));
 
             doc.Save("../../../FileTypes/Users/" + name + ".TypeIT");
             //when we save in the current directory, it will save the data in the debug folder.
@@ -58,31 +54,47 @@ namespace TypeIT.FileTypes
             //string file = "C:/Users/MyPC/source/repos/XMLChanging/XMLChanging/folder/userFile.TypeIT";
             XDocument doc = XDocument.Load(filePath);
 
-            doc.Root.Element("Name").Value = "Example";
-            doc.Root.Element("Statistics").Element("HighestWPM").Value = "20";
-            doc.Root.Element("Statistics").Element("AverageWPM").Value = "20";
-            doc.Root.Element("Statistics").Element("AverageAccuracy").Value = "20";
-            doc.Root.Element("Statistics").Element("HoursSpent").Value = "20";
-            doc.Root.Element("Statistics").Element("TypedTypedWordsTotalWords").Value = "20";
+            doc.Root.Element("Name").Value = "example ";
+            doc.Root.Element("Statistics").Element("HighestWPM").Value = "0";
+            doc.Root.Element("Statistics").Element("AverageWPM").Value = "0";
+            doc.Root.Element("Statistics").Element("AverageAccuracy").Value = "0";
+            doc.Root.Element("Statistics").Element("HoursSpent").Value = "0";
+            doc.Root.Element("Statistics").Element("TypedWordsTotal").Value = "0";
+            doc.Root.Element("Statistics").Element("DailyRecords").Element("Day").Element("Date").Value = "0";
+            doc.Root.Element("Statistics").Element("DailyRecords").Element("Day").Element("WPM").Value = "0";
+            doc.Root.Element("Statistics").Element("DailyRecords").Element("Day").Element("Average").Value = "0";
+            doc.Root.Element("Statistics").Element("DailyRecords").Element("Day").Element("Accuracy").Value = "0";
             doc.Root.Element("Settings").Element("Theme").Value = "LightMode";
             doc.Root.Element("Settings").Element("GameMode").Value = "Hard";
-            doc.Root.Element("Achievements").Element("Achievement").Element("AchievementName").Value = "Yes";
+            doc.Root.Element("Achievements").Element("Achievement").Element("AchievementName").Value = "Example";
+            doc.Root.Element("Documents").Element("Document").Element("DocumentName").Value = "Example";
+            doc.Root.Element("Documents").Element("Document").Element("TotalPageNumber").Value = "Example";
+            doc.Root.Element("Documents").Element("Document").Element("UserPageNumber").Value = "Example";
+            doc.Root.Element("Documents").Element("Document").Element("DocumentAccuracy").Value = "Example";
+
             doc.Save(filePath);
         }
-        
-        public static void AddingADocumentIntoUserXml(string filePath)
+
+        public static void AddingADocumentIntoUserXml(string userName)
         {
-            XDocument doc = XDocument.Load(filePath); //getting the users XML
-            doc.Root.Element("Documents").Element("Document").Element("DocumentName").Value = "Overlord1"; //Here we should add the name of the books he had.
-            doc.Root.Element("Documents").Element("Document").Element("TotalPageNumber").Value = "500"; //get length
-            doc.Root.Element("Documents").Element("Document").Element("UserPageNumber").Value = "25"; // get in what page the user is actually on
-            doc.Root.Element("Documents").Element("Document").Element("DocumentAccuracy").Value = "96.90"; //Statistics of the specific page.
-            //binding with the add document page
-            //add it into the documents tag in the xml. 
-            //document name,
-            //TotalPageNumber
-            //UserPageNumber
-            //DocumentAccuracy
+            XDocument doc = XDocument.Load($"../../../FileTypes/Users/{userName}.TypeIT"); //this needs to be dynamic. 
+            doc.Element("Documents");
+
+            XElement document = new XElement("Document");
+            XElement name = new XElement("DocumentName");
+            XElement numberTotal = new XElement("TotalPageNumber");
+            XElement userNumber = new XElement("UserPageNumber");
+            XElement docAccuracy = new XElement("DocumentAccuracy");
+
+            document.Add(name);
+            document.Add(numberTotal);
+            document.Add(userNumber);
+            document.Add(docAccuracy);
+
+            doc.Element("documents").Add(document);
         }
+
+        // remove document from user
+        // get documentmodel from user
     }
 }

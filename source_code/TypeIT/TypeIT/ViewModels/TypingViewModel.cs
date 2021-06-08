@@ -7,6 +7,7 @@ using System.Windows.Input;
 using TypeIT.Commands;
 using TypeIT.Models;
 using TypeIT.Stores;
+using TypeIT.Utilities;
 
 namespace TypeIT.ViewModels
 {
@@ -15,44 +16,53 @@ namespace TypeIT.ViewModels
 
         public ICommand NavigateHomeCommand { get; }
         public TypingModel TypingModel { get; set; }
-        public string LatestCorrect { get; set; }
         public int InputLengthTracker { get; set; }
-
         public UserStore currentUser { get; set; }
-        public string inputString;
+
+        public string _inputString;
         public string InputString
         {
             get
             {
-                return inputString;
+                return _inputString;
             }
             set
             {
-                if (InputString != null)
+                _inputString = value;
+
+                if (InputString.Length == 1 && TypingModel.CurrentWordIndex == 0)
                 {
-                    if (InputString.Length > 0 && TypingModel.CurrentWordIndex == 0)
-                    {
-                        TypingModel.StartTime = DateTime.Now;
-                        TypingModel.TypingTimer.Start();
-                    }
+                    TypingModel.StartTime = DateTime.Now;
+                    TypingModel.TypingTimer.Start();
                 }
 
-                inputString = value;
                 TypeWord(TypingModel.CurrentWord);
             }
         }
 
         public TypingViewModel(NavigationStore navigationStore, UserStore userStore)
         {
-            TypingModel = new TypingModel("../../../Documents/Overlord 1");
-
-            TypingModel.CharactersLeft = TypingModel.Text;
-
-            NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore, userStore));
-            //Current user
             currentUser = userStore;
 
-            TypingModel.CurrentWord = GetWord(TypingModel.Text, TypingModel.CurrentWordIndex);
+            TypingModel = new TypingModel();
+
+            TypingModel.Document = new DocumentModel("../../../Documents/Overlord 1");
+
+            NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore, userStore));
+
+            currentUser.CurrentUser.GameMode = Difficulty.Hard;
+            TypingModel.SelectedDifficulty = (currentUser.CurrentUser.GameMode);
+
+            // set the initial text 
+            TypingModel.CharactersLeft = TypingModel.Text;
+
+            // set the initial current word
+            TypingModel.CurrentWord = TypingModel.GetWord(TypingModel.Text, TypingModel.CurrentWordIndex);
+
+            // set the in itial displayed time
+            TypingModel.SetDisplayTime(currentUser.CurrentUser.statistics.AverageWPM);
+
+            // configure timer
             TypingModel.TypingTimer.Elapsed += OnTimedEvent;
             TypingModel.TypingTimer.Interval = 1000;
         }
@@ -64,7 +74,10 @@ namespace TypeIT.ViewModels
             {
                 TypingModel.AverageAccuracy = 0;
             }
-            TypingModel.AverageTypingSpeed = TypingModel.CalculateTypingSpeed(TypingModel.CurrentWordIndex);
+
+            TypingModel.IncrementTime();
+
+            TypingModel.AverageTypingSpeed = (int) TypingModel.CalculateTypingSpeed(TypingModel.CurrentWordIndex);
         }
 
         public void TypeWord(string word)
@@ -73,14 +86,17 @@ namespace TypeIT.ViewModels
 
             TypingModel.InputCount++;
 
-            if (GetMistakeIndex(word) >= 0)
+            if (TypingModel.GetMistakeIndex(word, InputString) >= 0)
             {
                 if (InputString.Trim() != word)
                 {
-                    TypingModel.CurrentMistakes = (InputString.Length - GetMistakeIndex(word));
+                    TypingModel.CurrentMistakes = (InputString.Length - TypingModel.GetMistakeIndex(word, InputString));
                     TypingModel.TotalMistakes++;
                 }
             }
+
+            // handle the countdown timer if difficulty is extreme
+            TypingModel.HandleExtreme();
 
             // set the index based on the current length subtracted by the tracker
             TypingModel.Index += InputString.Length - InputLengthTracker;
@@ -94,13 +110,20 @@ namespace TypeIT.ViewModels
                 TypingModel.ErrorSpace = InputString.Length + TypingModel.CalculateErrorSpace(word);
             }
 
+            UpdateDisplayText(word);
+            ParseWord(word);
+        }
+
+        private void UpdateDisplayText(string word)
+        {
+            // set the gray text (text left to type)
             TypingModel.CharactersLeft = TypingModel.Text[(TypingModel.Index)..];
 
             // set text wrong to null before checking so that if word has no wrong characters then there won't be wrong characters displayed
             // !IMPORTANT do not delete
             TypingModel.TextWrong = null;
 
-            if (IsCurrentInputCorrect(word))
+            if (TypingModel.IsActualExpected(InputString, word))
             {
                 // set value of text correct to all correct characters
                 TypingModel.TextCorrect = TypingModel.Text[0..TypingModel.Index];
@@ -110,19 +133,20 @@ namespace TypeIT.ViewModels
                 // set value of text wrong to all wrong characters
                 TypingModel.TextWrong = TypingModel.Text[(TypingModel.Index - TypingModel.CurrentMistakes)..(TypingModel.Index)];
             }
-
-            ParseWord(word);
         }
 
         private void ParseWord(string word)
         {
             if (CanGoToNextWord(word))
             {
-                if (TypingModel.CurrentWordIndex == GetNumberOfWords(TypingModel.Text))
+                if (TypingModel.CurrentWordIndex == TypingModel.GetNumberOfWords())
                 {
                     if (TypingModel.HasNextPage())
                     {
                         TypingModel.NextPage();
+
+                        // doing this here since we need user statistics for calculation
+                        TypingModel.SetDisplayTime(currentUser.CurrentUser.statistics.AverageWPM);
                     }
                     else
                     {
@@ -133,7 +157,7 @@ namespace TypeIT.ViewModels
                 {
                     TypingModel.CurrentWordIndex++;
                 }
-                TypingModel.CurrentWord = GetWord(TypingModel.Text, TypingModel.CurrentWordIndex);
+                TypingModel.CurrentWord = TypingModel.GetWord(TypingModel.Text, TypingModel.CurrentWordIndex);
 
                 InputLengthTracker = 0;
                 InputString = "";
@@ -148,7 +172,7 @@ namespace TypeIT.ViewModels
             {
                 // check if you're at the last word to see if the space is needed to continue
                 // important otherwise the text will proceed without a space needed
-                if (TypingModel.CurrentWordIndex == GetNumberOfWords(TypingModel.Text))
+                if (TypingModel.CurrentWordIndex == TypingModel.GetNumberOfWords())
                 {
                     // check if the input is equal to the word (no need to trim)
                     if (InputString == TypingModel.CurrentWord)
@@ -172,54 +196,6 @@ namespace TypeIT.ViewModels
                 }
             }
             return false;
-        }
-
-        private bool IsCurrentInputCorrect(string word)
-        {
-            if (InputString.Length >= 0 && InputString.Length <= word.Length)
-            {
-                if (word.Substring(0, InputString.Length) == InputString)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        public int GetMistakeIndex(string word)
-        {
-            for (int i = 0; i < InputString.Length; i++)
-            {
-                try
-                {
-                    if (word[i] != InputString[i])
-                    {
-                        return i;
-                    }
-                }
-                catch (IndexOutOfRangeException)
-                {
-                    return word.Length;
-                }
-            }
-            return -1;
-        }
-
-        public string GetWord(string text, int wordIndex)
-        {
-            string[] words = text.Split(' ');
-
-            if (wordIndex <= GetNumberOfWords(text))
-            {
-                return words[wordIndex];
-            }
-            return null;
-        }
-
-        public int GetNumberOfWords(string text)
-        {
-            int number = text.Split(' ').Length - 1;
-            return number;
         }
     }
 }

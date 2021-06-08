@@ -32,16 +32,18 @@ namespace TypeIT.Utilities
 
         public void ParseFile(string FilePath, string Title)
         {
+            string dir = "../../Documents/" + Title + "/";
+
             switch (GetFileExtension(FilePath))
             {
                 case ".pdf":
-                    ParsePDF(FilePath, Title);
+                    ParsePDF(FilePath, dir);
                     break;
                 case ".txt":
-                    ParseTXT(FilePath, Title);
+                    ParseTXT(FilePath, dir));
                     break;
                 case ".docx":
-                    ParseDOCX(FilePath, Title);
+                    ParseDOCX(FilePath, dir));
                     break;
                 default:
                     throw new Exception("That file type is not supported.");
@@ -56,20 +58,18 @@ namespace TypeIT.Utilities
             str = Regex.Replace(str, @"\s+", " ");
 
             // remove characters which aren't on the keyboard (qwerty)
-            str = Regex.Replace(str, @"[^a-zA-Z0-9`!@#$%^&*()_+|\-=\\{}\[\]:"";'<>?,./\r\n\'' ]+", "", RegexOptions.Compiled);
+            str = Regex.Replace(str, @"[^a-zA-Z0-9`!@#$%^&*()_+|\-=\\{}\[\]:"";<>?,./\r\n\'' ]+", "", RegexOptions.Compiled);
 
             return str;
         }
 
-        public void ParsePDF(string FilePath, string Title)
+        public void ParsePDF(string FilePath, string StoragePath)
         {
             PdfDocument pdf = PdfDocument.FromFile(FilePath);
 
-            string dir = "../../Documents/" + Title + "/";
-
-            if (!Directory.Exists(dir))
+            if (!Directory.Exists(StoragePath))
             {
-                Directory.CreateDirectory(dir);
+                Directory.CreateDirectory(StoragePath);
             }
 
             for (int i = 0; i < pdf.PageCount; i++)
@@ -77,34 +77,30 @@ namespace TypeIT.Utilities
                 string Text = pdf.ExtractTextFromPage(i);
                 if (Text != "")
                 {
-                    CreateDocument(dir, i, RemoveSpecialCharacters(Text));
+                    CreateDocument(StoragePath, i, RemoveSpecialCharacters(Text));
                 }
             }
         }
 
-        public void ParseTXT(string FilePath, string Title)
+        public void ParseTXT(string FilePath, string StoragePath)
         {
             string Text = OpenDocument(FilePath);
 
-            string dir = "../../Documents/" + Title + "/";
-
-            if (!Directory.Exists(dir))
+            if (!Directory.Exists(StoragePath))
             {
-                Directory.CreateDirectory(dir);
+                Directory.CreateDirectory(StoragePath);
             }
 
-            CreateDocument(dir, 0, RemoveSpecialCharacters(Text));
+            CreateDocument(StoragePath, 0, RemoveSpecialCharacters(Text));
         }
 
-        public void ParseDOCX(string FilePath, string Title)
+        public void ParseDOCX(string FilePath, string StoragePath)
         {
             string Text = OpenDocument(FilePath);
 
-            string dir = "../../Documents/" + Title + "/";
-
-            if (!Directory.Exists(dir))
+            if (!Directory.Exists(StoragePath))
             {
-                Directory.CreateDirectory(dir);
+                Directory.CreateDirectory(StoragePath);
             }
 
             // opens the Word template document
