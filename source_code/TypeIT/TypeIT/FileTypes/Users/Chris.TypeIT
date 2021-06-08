@@ -29,10 +29,16 @@
   </Achievements>
   <Documents>
     <Document>
-      <DocumentName />
-      <TotalPageNumber />
-      <UserPageNumber />
-      <DocumentAccuracy />
+      <DocumentName>A Game of Thrones</DocumentName>
+      <TotalPageNumber>750</TotalPageNumber>
+      <UserPageNumber>650</UserPageNumber>
+      <DocumentAccuracy>97</DocumentAccuracy>
+    </Document>
+    <Document>
+      <DocumentName>Return of the King</DocumentName>
+      <TotalPageNumber>450</TotalPageNumber>
+      <UserPageNumber>299</UserPageNumber>
+      <DocumentAccuracy>85</DocumentAccuracy>
     </Document>
   </Documents>
 </UserProfile>

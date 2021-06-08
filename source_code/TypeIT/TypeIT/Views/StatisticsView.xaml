@@ -144,7 +144,7 @@
                         <TextBlock Foreground="{StaticResource ResourceKey=TextBlue}"
                                    Height="35"
                                    FontSize="35"
-                                   Text="{Binding currentUser.CurrentUser.statistics.HighestWPM}"/>
+                                   Text="{Binding currentUser.CurrentUser.Statistics.HighestWPM}"/>
                         <TextBlock Foreground="{StaticResource ResourceKey=TextHeaderColor}"
                                    Height="15"
                                    FontSize="8">Highest WPM</TextBlock>
@@ -161,7 +161,7 @@
                                    Height="35"
                                    FontSize="35"
                                    Margin="16,5,0,0"
-                                   Text="{Binding currentUser.CurrentUser.statistics.AverageWPM}"/>
+                                   Text="{Binding currentUser.CurrentUser.Statistics.AverageWPM}"/>
                         <TextBlock Foreground="{StaticResource ResourceKey=TextHeaderColor}"
                                    Height="15"
                                    FontSize="8">Average WPM</TextBlock>
@@ -178,7 +178,7 @@
                                    Height="35"
                                    FontSize="35"
                                    Margin="9,5,0,0"
-                                    Text="{Binding currentUser.CurrentUser.statistics.AverageAccuracy}"/>
+                                    Text="{Binding currentUser.CurrentUser.Statistics.AverageAccuracy}"/>
                         <TextBlock Foreground="{StaticResource ResourceKey=TextHeaderColor}"
                                    Height="15"
                                    FontSize="8"
@@ -196,7 +196,7 @@
                                    Height="35"
                                    FontSize="22"
                                    Margin="16,25,0,0"
-                                   Text="{Binding currentUser.CurrentUser.statistics.HoursSpent}"/>
+                                   Text="{Binding currentUser.CurrentUser.Statistics.HoursSpent}"/>
                         <TextBlock Foreground="{StaticResource ResourceKey=TextHeaderColor}"
                                    Height="15"
                                    FontSize="8">Hours spent</TextBlock>
@@ -213,7 +213,7 @@
                                    Height="35"
                                    FontSize="22"
                                     Margin="16,25,0,0"
-                                   Text="{Binding currentUser.CurrentUser.statistics.TypedWordsTotal}"/>
+                                   Text="{Binding currentUser.CurrentUser.Statistics.TypedWordsTotal}"/>
                         <TextBlock Foreground="{StaticResource ResourceKey=TextHeaderColor}"
                                    Height="15"
                                    FontSize="8">Words typed</TextBlock>

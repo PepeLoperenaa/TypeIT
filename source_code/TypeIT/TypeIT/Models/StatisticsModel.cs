@@ -17,22 +17,13 @@ namespace TypeIT.Models
         public int TypedWordsTotal { get; set; }
         public List<DailyRecordModel> DailyRecords { get; set; }
 
-        public StatisticsModel(string UserName)
+        public StatisticsModel(double highestWPM, int averageWPM, double averageAccuracy, double hoursSpent, int typedWordsTotal)
         {
-            string parameter = XmlHandler.getElementsFromTags("../../../FileTypes/Users/" + UserName + ".TypeIT", "HighestWPM").First();
-            HighestWPM = (parameter == "") ? 0 : Convert.ToDouble(parameter);
-
-            parameter = XmlHandler.getElementsFromTags("../../../FileTypes/Users/" + UserName + ".TypeIT", "AverageWPM").First();
-            AverageWPM = (parameter == "") ? 0 : Int32.Parse(parameter);
-
-            parameter = XmlHandler.getElementsFromTags("../../../FileTypes/Users/" + UserName + ".TypeIT", "AverageAccuracy").First();
-            AverageAccuracy = (parameter == "") ? 0 : Convert.ToDouble(parameter);
-
-            parameter = XmlHandler.getElementsFromTags("../../../FileTypes/Users/" + UserName + ".TypeIT", "HoursSpent").First();
-            HoursSpent = (parameter == "") ? 0 : Convert.ToDouble(parameter);
-
-            parameter = XmlHandler.getElementsFromTags("../../../FileTypes/Users/" + UserName + ".TypeIT", "TypedTypedWordsTotalWords").First();
-            TypedWordsTotal = (parameter == "") ? 0 : Convert.ToInt32(parameter);
+            HighestWPM = highestWPM;
+            AverageWPM = averageWPM;
+            AverageAccuracy = averageAccuracy;
+            HoursSpent = hoursSpent;
+            TypedWordsTotal = typedWordsTotal;
         }
     }
 }

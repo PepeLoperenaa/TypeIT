@@ -31,31 +31,16 @@ namespace TypeIT.ViewModels
         }
 
         private void loadUsersAchievements()
-        {
-            // Load unlocked achievements
-            List<string> hallo = XmlHandler.getElementsFromTags("../../../FileTypes/Users/" + currentUser.CurrentUser.Name + ".TypeIT", "AchievementName");
-            foreach (AchievementModel achievement in Achievements)
-            {
-                foreach (string achievementName in hallo)
-                {                    
-                   if (achievement.Title == achievementName)
-                   {
-                        UnlockedAchievements.Add(achievement);
-                        break;
-                   }                    
-                }
-            }
-
+        {            
             // We have to iterate backwards to safely delete elements
-
             for (int i = Achievements.Count - 1; i >= 0; i--)
             {
-                if (UnlockedAchievements.Contains(Achievements[i]))
+                if (currentUser.CurrentUser.Achievements.Contains(Achievements[i].Title))
                 {
+                    UnlockedAchievements.Add(Achievements[i]);
                     Achievements.Remove(Achievements[i]);
                 }
             }
-
         }
         
         private void loadAchievements()
