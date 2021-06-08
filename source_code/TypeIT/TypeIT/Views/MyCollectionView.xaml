@@ -46,7 +46,46 @@
                     <RowDefinition Height="5"/>
                 </Grid.RowDefinitions>
 
-                
+                <ScrollViewer VerticalScrollBarVisibility="Hidden"  
+                          HorizontalScrollBarVisibility="Disabled" 
+                          CanContentScroll="False" 
+                          Grid.Column="1" 
+                          Grid.Row="1"
+                          Grid.ColumnSpan="4"
+                          Grid.RowSpan="2">
+                    <StackPanel>
+                        <ItemsControl ItemsSource="{Binding Books}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Style="{StaticResource UnlockedAchievementAndBookBorder}">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="../Resources/Images/individualAchievemtsIcon.png" 
+                                                   VerticalAlignment="Top"
+                                                   Height="20"
+                                                   Margin="0,0,6,0"/>
+                                            <StackPanel Orientation="Vertical">
+                                                <TextBlock Style="{StaticResource AchievementAndBookTitle}" Text="{Binding Title}"/>
+                                                <TextBlock Style="{StaticResource AchievementAndBookDescription}" Text="{Binding Desc}"/>
+                                            </StackPanel>
+                                            <Image Source="../Resources/Images/deleteIcon.png" 
+                                                    VerticalAlignment="Bottom" 
+                                                    HorizontalAlignment="Right"
+                                                    Height="20"/>
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                            <!--The ItemsControl is used to specify the ItemsPanelTemplate which then allows for the panel
+                    to be styled from left to right-->
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel Orientation="Horizontal"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+                    </StackPanel>
+                </ScrollViewer>
+
             </Grid>
         </Grid>
     </Viewbox>

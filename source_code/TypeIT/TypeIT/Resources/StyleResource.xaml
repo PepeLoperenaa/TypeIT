@@ -52,7 +52,7 @@
     
     <!-- Achievements style -->
     <!-- Achievement border -->
-    <Style x:Key="UnlockedAchievementBorder" TargetType="Border">
+    <Style x:Key="UnlockedAchievementAndBookBorder" TargetType="Border">
         <Setter Property="Background" Value="{StaticResource Button}"/>
         <Setter Property="Padding" Value="5"/>
         <Setter Property="Width" Value="135"/>
@@ -85,7 +85,7 @@
     </Style>
 
     <!-- Achievement title -->
-    <Style x:Key="AchievementTitle" TargetType="TextBlock">
+    <Style x:Key="AchievementAndBookTitle" TargetType="TextBlock">
         <Setter Property="FontSize" Value="6"/>
         <Setter Property="Foreground" Value="{StaticResource TextHeaderColor}"/>
         <Setter Property="FontFamily" Value="Fonts/Fragmentcore.otf#Fragment Core" />
@@ -94,7 +94,7 @@
     </Style>
     
     <!-- Achievement description -->
-    <Style x:Key="AchievementDescription" TargetType="TextBlock">
+    <Style x:Key="AchievementAndBookDescription" TargetType="TextBlock">
         <Setter Property="Height" Value="30"/>
         <Setter Property="Width" Value="85"/>
         <Setter Property="FontSize" Value="5"/>
