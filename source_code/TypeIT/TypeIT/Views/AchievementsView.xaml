@@ -37,65 +37,77 @@
                 </StackPanel>
             </Button>
 
-            
-            <!--<Border Style="{StaticResource UnlockedAchievementBorder}"
-                    Grid.Column="3" Grid.Row="1">
-                <StackPanel Orientation="Horizontal" 
-                            HorizontalAlignment="Center">
-                    <Image Source="../Resources/Images/individualAchievemtsIcon.png" 
-                           VerticalAlignment="Top"
-                           Height="20"
-                           Margin="2,0,6,0"/>
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock Style="{StaticResource AchievementTitle}">Hello</TextBlock>
-                        <TextBlock Style="{StaticResource AchievementDescription}" Margin="0,0,35,0">This is the description of the acievement.</TextBlock>
-                    </StackPanel>
-                </StackPanel>
-            </Border>-->
-            <ListView x:Name="achievements" ItemsSource="{Binding Achievements}" 
-                      Grid.Column="1" Grid.Row="1"
-                      Grid.ColumnSpan="4"
-                      Grid.RowSpan="2"
-                      ScrollViewer.HorizontalScrollBarVisibility="Hidden"
-                      ScrollViewer.VerticalScrollBarVisibility="Hidden"
-                      ScrollViewer.CanContentScroll="False"
-                      Background="Transparent"
-                      BorderThickness="0">
-                <ListView.ItemContainerStyle>
-                    <Style TargetType="{x:Type ListViewItem}">
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="Gold" />
-                            </Trigger>
-                            <Trigger Property="IsSelected" Value="True">
-                                <Setter Property="Background" Value="Gold" />
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </ListView.ItemContainerStyle>
-                <ListView.ItemTemplate>
-                    <ItemContainerTemplate>
-                        <WrapPanel>
-                            <Border Style="{StaticResource LockedAchievementBorder}">
-                                <StackPanel Orientation="Horizontal" 
-                                        HorizontalAlignment="Center">
-                                    <Image Source="../Resources/Images/individualAchievemtsIcon.png" 
-                                       VerticalAlignment="Top"
-                                       Height="20"
-                                       Margin="2,0,6,0"/>
-                                    <StackPanel Orientation="Vertical">
-                                        <TextBlock Style="{StaticResource AchievementTitle}" Text="{Binding Title}"/>
-                                        <TextBlock Style="{StaticResource AchievementDescription}" Text="{Binding Desc}"/>
+            <ScrollViewer VerticalScrollBarVisibility="Hidden"  
+                          HorizontalScrollBarVisibility="Disabled" 
+                          CanContentScroll="False" 
+                          Grid.Column="1" 
+                          Grid.Row="1"
+                          Grid.ColumnSpan="4"
+                          Grid.RowSpan="2">
+                <StackPanel>
+                    <!--Unlocked Achievements-->
+                    <ItemsControl ItemsSource="{Binding Achievements}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border Style="{StaticResource UnlockedAchievementBorder}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="../Resources/Images/individualAchievemtsIcon.png" 
+                                           VerticalAlignment="Top"
+                                           Height="20"
+                                           Margin="0,0,6,0"/>
+                                        <StackPanel Orientation="Vertical">
+                                            <TextBlock Style="{StaticResource AchievementTitle}" Text="{Binding Title}"/>
+                                            <TextBlock Style="{StaticResource AchievementDescription}" Text="{Binding Desc}"/>
+                                        </StackPanel>
+                                        <Image Source="../Resources/Images/lockedAchievementsIcon.png" 
+                                        VerticalAlignment="Bottom" 
+                                        HorizontalAlignment="Right"
+                                        Height="20"/>
                                     </StackPanel>
-                                    <Image Source="../Resources/Images/lockedAchievementsIcon.png" 
-                                       VerticalAlignment="Center"
-                                       Height="40"/>
-                                </StackPanel>
-                            </Border>
-                        </WrapPanel>
-                    </ItemContainerTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <!--The ItemsControl is used to specify the ItemsPanelTemplate which then allows for the panel
+                    to be styled from left to right-->
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+
+                    <!--Locked Achievements-->
+                    <ItemsControl ItemsSource="{Binding Achievements}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border Style="{StaticResource UnlockedAchievementBorder}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="../Resources/Images/individualAchievemtsIcon.png" 
+                                           VerticalAlignment="Top"
+                                           Height="20"
+                                           Margin="0,0,6,0"/>
+                                        <StackPanel Orientation="Vertical">
+                                            <TextBlock Style="{StaticResource AchievementTitle}" Text="{Binding Title}"/>
+                                            <TextBlock Style="{StaticResource AchievementDescription}" Text="{Binding Desc}"/>
+                                        </StackPanel>
+                                        <Image Source="../Resources/Images/lockedAchievementsIcon.png" 
+                                        VerticalAlignment="Bottom" 
+                                        HorizontalAlignment="Right"
+                                        Height="20"/>
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <!--The ItemsControl is used to specify the ItemsPanelTemplate which then allows for the panel
+                    to be styled from left to right-->
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                </StackPanel>
+            </ScrollViewer>
         </Grid>
     </Viewbox>
 </UserControl>
