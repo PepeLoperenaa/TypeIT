@@ -1,6 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
 using System.Xml.Linq;
-using System.Collections.Generic;
 
 namespace TypeIT.FileTypes
 {
@@ -18,7 +17,7 @@ namespace TypeIT.FileTypes
                                            new XElement("HoursSpent"),
                                            new XElement("TypedTypedWordsTotalWords"),
                                            new XElement("DailyRecords",
-                                               new XElement("Day", 
+                                               new XElement("Day",
                                                new XElement("Date"),
                                                new XElement("WPM"),
                                                new XElement("Average")))),
@@ -28,12 +27,7 @@ namespace TypeIT.FileTypes
                                        new XElement("Achievements",
                                            new XElement("Achievement",
                                                new XElement("AchievementName"))),
-                                       new XElement("Documents",
-                                           new XElement("Document", 
-                                                new XElement("DocumentName"), 
-                                                new XElement("TotalPageNumber"), 
-                                                new XElement("UserPageNumber"), 
-                                                new XElement("DocumentAccuracy")))));
+                                       new XElement("Documents")));
 
             doc.Save("../../../FileTypes/Users/" + name + ".TypeIT");
             //when we save in the current directory, it will save the data in the debug folder.
@@ -69,20 +63,24 @@ namespace TypeIT.FileTypes
             doc.Root.Element("Achievements").Element("Achievement").Element("AchievementName").Value = "Yes";
             doc.Save(filePath);
         }
-        
-        public static void AddingADocumentIntoUserXml(string filePath)
+
+        public static void AddingADocumentIntoUserXml(string username)
         {
-            XDocument doc = XDocument.Load(filePath); //getting the users XML
-            doc.Root.Element("Documents").Element("Document").Element("DocumentName").Value = "Overlord1"; //Here we should add the name of the books he had.
-            doc.Root.Element("Documents").Element("Document").Element("TotalPageNumber").Value = "500"; //get length
-            doc.Root.Element("Documents").Element("Document").Element("UserPageNumber").Value = "25"; // get in what page the user is actually on
-            doc.Root.Element("Documents").Element("Document").Element("DocumentAccuracy").Value = "96.90"; //Statistics of the specific page.
-            //binding with the add document page
-            //add it into the documents tag in the xml. 
-            //document name,
-            //TotalPageNumber
-            //UserPageNumber
-            //DocumentAccuracy
+            XDocument doc = XDocument.Load($"../../../FileTypes/Users/{username}.TypeIT"); //this needs to be dynamic. 
+            doc.Element("Documents");
+
+            XElement document = new XElement("Document");
+            XElement name = new XElement("DocumentName");
+            XElement numberTotal = new XElement("TotalPageNumber");
+            XElement userNumber = new XElement("UserPageNumber");
+            XElement docAccuracy = new XElement("DocumentAccuracy");
+
+            document.Add(name);
+            document.Add(numberTotal);
+            document.Add(userNumber);
+            document.Add(docAccuracy);
+
+            doc.Element("documents").Add(document);
         }
     }
 }

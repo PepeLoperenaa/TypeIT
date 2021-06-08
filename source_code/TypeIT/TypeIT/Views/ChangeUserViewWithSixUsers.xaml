@@ -29,9 +29,9 @@
 
             <Button Grid.Column="4" Grid.Row="0"
                     Style="{StaticResource HeaderButton}"
-                    Command="{Binding NavigateHomeCommand}">
+                    Command="{Binding ExitCommand}">
                 <StackPanel>
-                    <Image Source="../Resources/Images/homeIcon.png" />
+                    <Image Source="../Resources/Images/exitIcon.png" />
                 </StackPanel>
             </Button>
 
@@ -47,45 +47,26 @@
                     <RowDefinition Height="5"/>
                 </Grid.RowDefinitions>
 
-                <Grid Grid.Column="1" Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.5*"/>
-                        <ColumnDefinition Width="30"/>
-                        <ColumnDefinition Width="0.5*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="30"/>
-                        <RowDefinition Height="15"/>
-                        <RowDefinition Height="30"/>
-                        <RowDefinition Height="15"/>
-                        <RowDefinition Height="30"/>
-                    </Grid.RowDefinitions>
-
-                    <Button Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1"
-                        Command="{Binding ChangeUser}" Style="{StaticResource ChangeUserButtonStyle}">
-                        <TextBlock>Granya Seong</TextBlock>
-                    </Button>
-
-                    <Button Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="1"
-                        Command="{Binding ChangeUser}" Style="{StaticResource ChangeUserButtonStyle}">
-                    </Button>
-
-                    <Button Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="1"
-                        Command="{Binding ChangeUser}" Style="{StaticResource ChangeUserButtonStyle}">
-                    </Button>
-
-                    <Button Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="1"
-                        Command="{Binding ChangeUser}" Style="{StaticResource ChangeUserButtonStyle}">
-                    </Button>
-
-                    <Button Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="1"
-                        Command="{Binding ChangeUser}" Style="{StaticResource ChangeUserButtonStyle}">
-                    </Button>
-
-                    <Button Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="1"
-                        Command="{Binding ChangeUser}" Style="{StaticResource ChangeUserButtonStyle}">
-                    </Button>
-                </Grid>
+                <ItemsControl ItemsSource="{Binding Users}" 
+                              Grid.Column="1" 
+                              Grid.Row="1" Margin="10">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Button Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:ChangeUserViewWithSixUsers}}, Path=DataContext.SelectUser}" 
+                                        CommandParameter="{Binding Text, ElementName=existingUsername}"
+                                        Style="{StaticResource ChangeUserButtonStyleForSixUsers}">
+                                <TextBlock x:Name="existingUsername" Text="{Binding Name}"/>
+                            </Button>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    <!--The ItemsControl is used to specify the ItemsPanelTemplate which then allows for the panel
+                    to be styled from left to right-->
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
 
             </Grid>
         </Grid>

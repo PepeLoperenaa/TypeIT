@@ -47,49 +47,26 @@
                     <RowDefinition Height="5"/>
                 </Grid.RowDefinitions>
 
-                <ItemsControl ItemsSource="{Binding Users}"
-                              Grid.Column="0" Grid.Row="1">
+                <ItemsControl ItemsSource="{Binding Users}" 
+                              Grid.Column="0" 
+                              Grid.Row="1" Margin="10">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel>
-                                <Button Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:ChangeUserView}}, Path=DataContext.SelectUser}" 
+                            <Button Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:ChangeUserView}}, Path=DataContext.SelectUser}" 
                                         CommandParameter="{Binding Text, ElementName=existingUsername}"
                                         Style="{StaticResource ChangeUserButtonStyle}">
-                                    <TextBlock x:Name="existingUsername" Text="{Binding Name}"/>
-
-                                </Button>
-                            </StackPanel>
+                                <TextBlock x:Name="existingUsername" Text="{Binding Name}"/>
+                            </Button>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
+                    <!--The ItemsControl is used to specify the ItemsPanelTemplate which then allows for the panel
+                    to be styled from left to right-->
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
                 </ItemsControl>
-
-                <!--<ListView x:Name="achievements" ItemsSource="{Binding Users}" 
-                      
-                      ScrollViewer.HorizontalScrollBarVisibility="Hidden"
-                      ScrollViewer.VerticalScrollBarVisibility="Hidden"
-                      ScrollViewer.CanContentScroll="False"
-                      Background="Transparent"
-                      BorderThickness="0">
-                    <ListView.ItemContainerStyle>
-                        <Style TargetType="{x:Type ListViewItem}">
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="Gold" />
-                                </Trigger>
-                                <Trigger Property="IsSelected" Value="True">
-                                    <Setter Property="Background" Value="Gold" />
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </ListView.ItemContainerStyle>
-                    <ListView.ItemTemplate>
-                        <ItemContainerTemplate>
-                            <WrapPanel>
-                                
-                            </WrapPanel>
-                        </ItemContainerTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>-->
 
                 <Border Grid.Column="1" Grid.Row="0" Grid.RowSpan="3">
                     <Rectangle

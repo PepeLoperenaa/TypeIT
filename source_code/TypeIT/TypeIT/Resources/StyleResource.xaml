@@ -55,6 +55,7 @@
     <Style x:Key="UnlockedAchievementBorder" TargetType="Border">
         <Setter Property="Background" Value="{StaticResource Button}"/>
         <Setter Property="Padding" Value="5"/>
+        <Setter Property="Width" Value="135"/>
         <Setter Property="CornerRadius" Value="5"/>
         <Setter Property="BorderThickness" Value="1.5"/>
         <Setter Property="Grid.ColumnSpan" Value="1"/>
@@ -62,7 +63,7 @@
             <Setter.Value>
                 <DropShadowEffect Color="{StaticResource Shadow}"
                                       Direction="320" ShadowDepth="1" 
-                                      BlurRadius="5" Opacity="0.6" />
+                                      BlurRadius="2.5" Opacity="0.6" />
             </Setter.Value>
         </Setter>
     </Style>
@@ -70,6 +71,7 @@
     <Style x:Key="LockedAchievementBorder" TargetType="Border">
         <Setter Property="Background" Value="{StaticResource LockedAchievement}"/>
         <Setter Property="Padding" Value="5"/>
+        <Setter Property="Width" Value="135"/>
         <Setter Property="CornerRadius" Value="5"/>
         <Setter Property="BorderThickness" Value="1.5"/>
         <Setter Property="Grid.ColumnSpan" Value="1"/>
@@ -77,7 +79,7 @@
             <Setter.Value>
                 <DropShadowEffect Color="{StaticResource Shadow}"
                                       Direction="320" ShadowDepth="1" 
-                                      BlurRadius="5" Opacity="0.6" />
+                                      BlurRadius="2.5" Opacity="0.2" />
             </Setter.Value>
         </Setter>
     </Style>
@@ -94,8 +96,7 @@
     <!-- Achievement description -->
     <Style x:Key="AchievementDescription" TargetType="TextBlock">
         <Setter Property="Height" Value="30"/>
-        <Setter Property="Width" Value="65"/>
-        <Setter Property="Margin" Value="2, 0, 0, 0"/>
+        <Setter Property="Width" Value="85"/>
         <Setter Property="FontSize" Value="5"/>
         <Setter Property="TextWrapping" Value="WrapWithOverflow"/>
         <Setter Property="FontFamily" Value="Fonts/Fragmentcore.otf#Fragment Core" />
@@ -199,10 +200,9 @@
 
 
     <Style x:Key="ChangeUserButtonStyle" TargetType="Button">
-        <Setter Property="Margin" Value="2"/>
+        <Setter Property="Margin" Value="10,10,0,0"/>
         <Setter Property="Height" Value="20"/>
-        <Setter Property="Width" Value="80"/>
-        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Width" Value="50"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="FontSize" Value="8"/>
         <Setter Property="Foreground" Value="{StaticResource TextBodyColor}"/>
@@ -229,6 +229,38 @@
         </Setter>
         
     </Style>
+
+    <Style x:Key="ChangeUserButtonStyleForSixUsers" TargetType="Button">
+        <Setter Property="Margin" Value="10,10,0,0"/>
+        <Setter Property="Height" Value="20"/>
+        <Setter Property="Width" Value="80"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="FontSize" Value="8"/>
+        <Setter Property="Foreground" Value="{StaticResource TextBodyColor}"/>
+        <Setter Property="Button.Effect">
+            <Setter.Value>
+                <DropShadowEffect Color="{StaticResource Shadow}"
+                                      Direction="320" ShadowDepth="1" 
+                                      BlurRadius="5" Opacity="0.6" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border CornerRadius="5" Background="{StaticResource Button}">
+                        <ContentPresenter x:Name="contentPresenter" 
+                                              ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                              Content="{TemplateBinding Content}" 
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                              Margin="{TemplateBinding Padding}" 
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+    
 
     <Style x:Key="CreateUserButtonStyle" TargetType="Button">
 
