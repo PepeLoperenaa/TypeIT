@@ -113,7 +113,7 @@
                     <Button Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="1"
                             Command="{Binding CreateUser}" 
                             CommandParameter="{Binding Text, ElementName=username}"
-                            Style="{StaticResource ChangeUserButtonStyle}">
+                            Style="{StaticResource CreateUserButtonStyle}">
                         <TextBlock>Create</TextBlock>
                     </Button>
                 </Grid>
