@@ -27,7 +27,7 @@ namespace TypeIT
 
             if (files.Length < 6)
             {
-                navigationStore.CurrentViewModel = new ChangeUserViewModel(navigationStore);
+                navigationStore.CurrentViewModel = new ChangeUserViewModelWithOneToFiveUsers(navigationStore);
             } else
             {
                 navigationStore.CurrentViewModel = new ChangeUserViewModelWithSixUsers(navigationStore);

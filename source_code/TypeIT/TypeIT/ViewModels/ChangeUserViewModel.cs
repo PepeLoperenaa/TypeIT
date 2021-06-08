@@ -15,10 +15,9 @@ using TypeIT.Stores;
 
 namespace TypeIT.ViewModels
 {
-    class ChangeUserViewModel : ViewModelBase
+    public abstract class ChangeUserViewModel: ViewModelBase
     {
         public ICommand NavigateHomeCommand { get; }
-        public ICommand CreateUser { get; }
         public ICommand SelectUser { get; }
         public UserStore currentUser { get; set; }
         public List<UserModel> Users { get; set; }
@@ -34,7 +33,6 @@ namespace TypeIT.ViewModels
             NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore, currentUser));
 
             //Commands
-            CreateUser = new DelegateCommand<string>(createUserFile);
             SelectUser = new DelegateCommand<string>(loadSelectedUser);
             ExitCommand = new DelegateCommand(ClickedExit);
 
@@ -43,13 +41,7 @@ namespace TypeIT.ViewModels
             loadUsers();
         }
 
-        private void createUserFile(string userName)
-        {
-            XmlHandler.newUser(userName);
-            loadSelectedUser(userName);
-        }
-
-        private void loadSelectedUser(string userName)
+        protected void loadSelectedUser(string userName)
         {
             UserModel user = new UserModel(userName, true);
 
@@ -60,7 +52,7 @@ namespace TypeIT.ViewModels
             NavigateHomeCommand.Execute(null);
         }
 
-        private void loadUsers()
+        protected void loadUsers()
         {
             string[] files = Directory.GetFiles("../../../FileTypes/Users");
             foreach (string file in files)
@@ -73,7 +65,7 @@ namespace TypeIT.ViewModels
             }
         }
 
-        private void ClickedExit()
+        protected void ClickedExit()
         {
             //Custom messagebox
             var res = Xceed.Wpf.Toolkit.MessageBox.Show(

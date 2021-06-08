@@ -22,7 +22,7 @@
                 <RowDefinition Height="5"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Text="Change User"
+            <TextBlock Text="Select User"
                        TextAlignment="Left" VerticalAlignment="Bottom"
                        Foreground="{DynamicResource TextBlue}"
                        Grid.Column="1" Grid.Row="0"/>

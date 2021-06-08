@@ -35,8 +35,8 @@
                     <DataTemplate DataType="{x:Type viewmodels:ChangeUserViewModelWithSixUsers}">
                         <views:ChangeUserViewWithSixUsers/>
                     </DataTemplate>
-                    <DataTemplate DataType="{x:Type viewmodels:ChangeUserViewModel}">
-                        <views:ChangeUserView/>
+                    <DataTemplate DataType="{x:Type viewmodels:ChangeUserViewModelWithOneToFiveUsers}">
+                        <views:ChangeUserViewWithOneToFiveUsers/>
                     </DataTemplate>
                     <DataTemplate DataType="{x:Type viewmodels:StatisticsViewModel}">
                         <views:StatisticsView/>

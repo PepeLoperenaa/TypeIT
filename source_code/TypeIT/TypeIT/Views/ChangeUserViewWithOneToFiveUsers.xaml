@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="TypeIT.Views.ChangeUserView"
+﻿<UserControl x:Class="TypeIT.Views.ChangeUserViewWithOneToFiveUsers"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -52,7 +52,7 @@
                               Grid.Row="1" Margin="10">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Button Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:ChangeUserView}}, Path=DataContext.SelectUser}" 
+                            <Button Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:ChangeUserViewWithOneToFiveUsers}}, Path=DataContext.SelectUser}" 
                                         CommandParameter="{Binding Text, ElementName=existingUsername}"
                                         Style="{StaticResource ChangeUserButtonStyle}">
                                 <TextBlock x:Name="existingUsername" Text="{Binding Name}"/>
