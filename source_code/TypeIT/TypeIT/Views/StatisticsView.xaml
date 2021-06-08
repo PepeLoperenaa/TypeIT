@@ -144,6 +144,7 @@
                         <TextBlock Foreground="{StaticResource ResourceKey=TextBlue}"
                                    Height="35"
                                    FontSize="35"
+                                   Margin="18,4,0,0"
                                    Text="{Binding currentUser.CurrentUser.statistics.HighestWPM}"/>
                         <TextBlock Foreground="{StaticResource ResourceKey=TextHeaderColor}"
                                    Height="15"
@@ -160,6 +161,7 @@
                         <TextBlock Foreground="{StaticResource ResourceKey=TextBlue}"
                                    Height="35"
                                    FontSize="35"
+                                   Margin="16,5,0,0"
                                    Text="{Binding currentUser.CurrentUser.statistics.AverageWPM}"/>
                         <TextBlock Foreground="{StaticResource ResourceKey=TextHeaderColor}"
                                    Height="15"
@@ -174,13 +176,13 @@
                            VerticalAlignment="Bottom">
 
                         <TextBlock Foreground="{StaticResource ResourceKey=TextBlue}"
-                                   Height="25"
-                                   FontSize="23"
+                                   Height="35"
+                                   FontSize="35"
+                                   Margin="9,5,0,0"
                                     Text="{Binding currentUser.CurrentUser.statistics.AverageAccuracy}"/>
                         <TextBlock Foreground="{StaticResource ResourceKey=TextHeaderColor}"
                                    Height="15"
                                    FontSize="8"
-                                   Margin="9, 0, 0, 0"
                                    VerticalAlignment="Center">Accuracy</TextBlock>
                     </WrapPanel>
                 </Border>
@@ -192,8 +194,9 @@
                            VerticalAlignment="Bottom">
 
                         <TextBlock Foreground="{StaticResource ResourceKey=TextBlue}"
-                                   Height="25"
-                                   FontSize="23"
+                                   Height="35"
+                                   FontSize="22"
+                                   Margin="16,25,0,0"
                                    Text="{Binding currentUser.CurrentUser.statistics.HoursSpent}"/>
                         <TextBlock Foreground="{StaticResource ResourceKey=TextHeaderColor}"
                                    Height="15"
@@ -208,8 +211,9 @@
                            VerticalAlignment="Bottom">
 
                         <TextBlock Foreground="{StaticResource ResourceKey=TextBlue}"
-                                   Height="20"
-                                   FontSize="17"
+                                   Height="35"
+                                   FontSize="22"
+                                    Margin="16,25,0,0"
                                    Text="{Binding currentUser.CurrentUser.statistics.TypedWordsTotal}"/>
                         <TextBlock Foreground="{StaticResource ResourceKey=TextHeaderColor}"
                                    Height="15"
