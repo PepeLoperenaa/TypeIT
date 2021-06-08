@@ -54,23 +54,25 @@
                           Grid.ColumnSpan="4"
                           Grid.RowSpan="2">
                     <StackPanel>
-                        <ItemsControl ItemsSource="{Binding Books}">
+                        <ItemsControl ItemsSource="{Binding currentUser.CurrentUser.Documents}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Border Style="{StaticResource UnlockedAchievementAndBookBorder}">
+                                    <Border Style="{StaticResource BookBorder}">
+                                        
                                         <StackPanel Orientation="Horizontal">
-                                            <Image Source="../Resources/Images/individualAchievemtsIcon.png" 
-                                                   VerticalAlignment="Top"
-                                                   Height="20"
-                                                   Margin="0,0,6,0"/>
-                                            <StackPanel Orientation="Vertical">
-                                                <TextBlock Style="{StaticResource AchievementAndBookTitle}" Text="{Binding Title}"/>
-                                                <TextBlock Style="{StaticResource AchievementAndBookDescription}" Text="{Binding Desc}"/>
-                                            </StackPanel>
-                                            <Image Source="../Resources/Images/deleteIcon.png" 
+                                            <Button Style="{StaticResource DocumentTitleStyle}">
+                                                <StackPanel Orientation="Vertical">
+                                                    <TextBlock Style="{StaticResource AchievementAndBookTitle}" Text="{Binding Name}"/>
+                                                    <TextBlock Style="{StaticResource AchievementAndBookDescription}" Text="{Binding UserPageNumber}"/>
+                                                </StackPanel>
+                                            </Button>
+                                            <Button Style="{StaticResource DocumentTitleStyle}" 
                                                     VerticalAlignment="Bottom" 
                                                     HorizontalAlignment="Right"
-                                                    Height="20"/>
+                                                    Margin="12,0,0,0"
+                                                    Height="20">
+                                                <Image Source="../Resources/Images/deleteIcon.png" />
+                                                </Button>
                                         </StackPanel>
                                     </Border>
                                 </DataTemplate>

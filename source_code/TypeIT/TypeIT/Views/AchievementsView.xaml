@@ -49,7 +49,7 @@
                     <ItemsControl ItemsSource="{Binding UnlockedAchievements}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <Border Style="{StaticResource UnlockedAchievementAndBookBorder}">
+                                <Border Style="{StaticResource UnlockedAchievementBorder}">
                                     <StackPanel Orientation="Horizontal">
                                         <Image Source="../Resources/Images/individualAchievemtsIcon.png" 
                                            VerticalAlignment="Top"

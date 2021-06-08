@@ -52,7 +52,26 @@
     
     <!-- Achievements style -->
     <!-- Achievement border -->
-    <Style x:Key="UnlockedAchievementAndBookBorder" TargetType="Border">
+
+
+
+    <Style x:Key="BookBorder" TargetType="Border">
+        <Setter Property="Background" Value="{StaticResource Button}"/>
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="Width" Value="130"/>
+        <Setter Property="CornerRadius" Value="5"/>
+        <Setter Property="BorderThickness" Value="1.5"/>
+        <Setter Property="Grid.ColumnSpan" Value="1"/>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect Color="{StaticResource Shadow}"
+                                      Direction="320" ShadowDepth="1" 
+                                      BlurRadius="2.5" Opacity="0.6" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style x:Key="UnlockedAchievementBorder" TargetType="Border">
         <Setter Property="Background" Value="{StaticResource Button}"/>
         <Setter Property="Padding" Value="5"/>
         <Setter Property="Width" Value="135"/>
@@ -309,6 +328,24 @@
         <Setter Property="CaretBrush" Value="{StaticResource TextBodyColor}"/>
     </Style>
 
+    <Style x:Key="DocumentTitleStyle" TargetType="Button">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="Transparent">
+                        <ContentPresenter x:Name="contentPresenter" 
+                                              ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                              Content="{TemplateBinding Content}" 
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                              Margin="{TemplateBinding Padding}" 
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
 
 </ResourceDictionary>
