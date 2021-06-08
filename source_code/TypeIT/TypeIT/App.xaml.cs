@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,9 +21,20 @@ namespace TypeIT
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            navigationStore = new NavigationStore();
-            navigationStore.CurrentViewModel = new ChangeUserViewModel(navigationStore);
+            string[] files = Directory.GetFiles("../../../FileTypes/Users");
 
+            navigationStore = new NavigationStore();
+
+            if (files.Length < 6)
+            {
+                navigationStore.CurrentViewModel = new ChangeUserViewModel(navigationStore);
+            } else
+            {
+                navigationStore.CurrentViewModel = new ChangeUserViewModelWithSixUsers(navigationStore);
+            }
+
+            
+            
             MainWindow = new MainWindow()
             {
                 DataContext = new MainViewModel(navigationStore)
@@ -35,5 +47,7 @@ namespace TypeIT
             MainWindow.Show();
             base.OnStartup(e);
         }
+
+        
     }
 }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,9 +28,19 @@ namespace TypeIT.ViewModels
 
         public SettingsViewModel(NavigationStore navigationStore, UserStore userStore)
         {
+            string[] files = Directory.GetFiles("../../../FileTypes/Users");
+
+            if (files.Length < 6)
+            {
+                NavigateChangeUserCommand = new NavigateCommand<ChangeUserViewModel>(navigationStore, () => new ChangeUserViewModel(navigationStore));
+            }
+            else
+            {
+                NavigateChangeUserCommand = new NavigateCommand<ChangeUserViewModelWithSixUsers>(navigationStore, () => new ChangeUserViewModelWithSixUsers(navigationStore));
+            }
             //Navigation comands
             NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore, userStore));
-            NavigateChangeUserCommand = new NavigateCommand<ChangeUserViewModel>(navigationStore, () => new ChangeUserViewModel(navigationStore));
+           
             NavigateChangeGameModeCommand = new NavigateCommand<ChangeGameModeViewModel>(navigationStore, () => new ChangeGameModeViewModel(navigationStore, userStore));
 
             //Current user
