@@ -46,7 +46,7 @@
                           Grid.RowSpan="2">
                 <StackPanel>
                     <!--Unlocked Achievements-->
-                    <ItemsControl ItemsSource="{Binding Achievements}">
+                    <ItemsControl ItemsSource="{Binding UnlockedAchievements}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <Border Style="{StaticResource UnlockedAchievementAndBookBorder}">

@@ -2,7 +2,7 @@
 <UserProfile>
   <Name>Chris</Name>
   <Statistics>
-    <HighestWPM>1</HighestWPM>
+    <HighestWPM>15555555</HighestWPM>
     <AverageWPM>2</AverageWPM>
     <AverageAccuracy>3</AverageAccuracy>
     <HoursSpent>4</HoursSpent>
@@ -21,15 +21,24 @@
   </Settings>
   <Achievements>
     <Achievement>
-      <AchievementName />
+      <AchievementName>You have to start somewhere</AchievementName>
+      <AchievementName>Library owner</AchievementName>
+      <AchievementName>First steps</AchievementName>
+      <AchievementName>What book is that?</AchievementName>
     </Achievement>
   </Achievements>
   <Documents>
     <Document>
-      <DocumentName />
-      <TotalPageNumber />
-      <UserPageNumber />
-      <DocumentAccuracy />
+      <DocumentName>A Game of Thrones</DocumentName>
+      <TotalPageNumber>750</TotalPageNumber>
+      <UserPageNumber>650</UserPageNumber>
+      <DocumentAccuracy>97</DocumentAccuracy>
+    </Document>
+    <Document>
+      <DocumentName>Return of the King</DocumentName>
+      <TotalPageNumber>450</TotalPageNumber>
+      <UserPageNumber>299</UserPageNumber>
+      <DocumentAccuracy>85</DocumentAccuracy>
     </Document>
   </Documents>
 </UserProfile>

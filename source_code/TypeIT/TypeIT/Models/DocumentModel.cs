@@ -29,9 +29,11 @@ namespace TypeIT.Models
             Pages = Pages.OrderBy(o => o.Number).ToList();
         }
 
-        public DocumentModel()
+        public DocumentModel(string name, int userPageNumber, double accuracy)
         {
-            
+            Name = name;
+            UserPageNumber = userPageNumber;
+            Accuracy = accuracy;
         }
 
         public PageModel GetPageByPageNumber(int pageNumber)

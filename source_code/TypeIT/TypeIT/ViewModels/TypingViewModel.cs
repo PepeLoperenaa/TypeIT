@@ -58,7 +58,7 @@ namespace TypeIT.ViewModels
             TypingModel.CurrentWord = TypingModel.GetWord(TypingModel.Text, TypingModel.CurrentWordIndex);
 
             // set the in itial displayed time
-            TypingModel.SetDisplayTime(currentUser.CurrentUser.statistics.AverageWPM);
+            TypingModel.SetDisplayTime(currentUser.CurrentUser.Statistics.AverageWPM);
 
             // configure timer
             TypingModel.TypingTimer.Elapsed += OnTimedEvent;
@@ -144,7 +144,7 @@ namespace TypeIT.ViewModels
                         TypingModel.NextPage();
 
                         // doing this here since we need user statistics for calculation
-                        TypingModel.SetDisplayTime(currentUser.CurrentUser.statistics.AverageWPM);
+                        TypingModel.SetDisplayTime(currentUser.CurrentUser.Statistics.AverageWPM);
                     }
                     else
                     {

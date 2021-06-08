@@ -54,7 +54,6 @@ namespace TypeIT.ViewModels
 
         protected void loadUsers()
         {
-
             string[] files = Directory.GetFiles("../../../FileTypes/Users");
             foreach (string file in files)
             {
