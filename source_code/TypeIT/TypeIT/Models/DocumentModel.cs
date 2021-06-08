@@ -45,7 +45,7 @@ namespace TypeIT.Models
             catch (Exception)
             {
 
-                throw;
+                throw new Exception("That page doesn't exist");
             }
         }
 
