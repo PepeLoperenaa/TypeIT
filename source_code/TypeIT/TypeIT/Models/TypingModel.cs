@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Timers;
 using System.Windows;
-using TypeIT.Objects;
 using TypeIT.Utilities;
 
 namespace TypeIT.Models
@@ -163,8 +162,9 @@ namespace TypeIT.Models
             }
         }
 
-        public TypingModel()
+        public TypingModel(string document)
         {
+            Document = new DocumentModel(document);
             PageNumber = 0;
             CurrentMistakes = 0;
             HighestSpeed = 0;

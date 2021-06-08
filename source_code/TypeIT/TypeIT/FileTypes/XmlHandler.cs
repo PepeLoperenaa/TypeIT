@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Xml.Linq;
 using TypeIT.Models;
-using TypeIT.Objects;
 
 namespace TypeIT.FileTypes
 {

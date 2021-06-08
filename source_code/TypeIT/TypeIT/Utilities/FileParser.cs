@@ -40,10 +40,10 @@ namespace TypeIT.Utilities
                     ParsePDF(FilePath, dir);
                     break;
                 case ".txt":
-                    ParseTXT(FilePath, dir));
+                    ParseTXT(FilePath, dir);
                     break;
                 case ".docx":
-                    ParseDOCX(FilePath, dir));
+                    ParseDOCX(FilePath, dir);
                     break;
                 default:
                     throw new Exception("That file type is not supported.");
