@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TypeIT.Objects
+namespace TypeIT.Models
 {
-    class PageModel
+    public class PageModel
     {
         public string FileLocation { get; set; }
         public string Text { get; set; }

@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Xml.Linq;
+using TypeIT.Models;
+using TypeIT.Objects;
 
 namespace TypeIT.FileTypes
 {
@@ -47,10 +49,10 @@ namespace TypeIT.FileTypes
             return listElements;
         }
 
-        public static void AddingDataIntoAnXml(string filePath) //to add information into the element
+        public static void AddingDataIntoAnXml(string userName) //to add information into the element
         {
             //string file = "C:/Users/MyPC/source/repos/XMLChanging/XMLChanging/folder/userFile.TypeIT";
-            XDocument doc = XDocument.Load(filePath);
+            XDocument doc = XDocument.Load($"../../../FileTypes/Users/{userName}.TypeIT");
 
             doc.Root.Element("Name").Value = "Example";
             doc.Root.Element("Statistics").Element("HighestWPM").Value = "20";
@@ -61,12 +63,12 @@ namespace TypeIT.FileTypes
             doc.Root.Element("Settings").Element("Theme").Value = "LightMode";
             doc.Root.Element("Settings").Element("GameMode").Value = "Hard";
             doc.Root.Element("Achievements").Element("Achievement").Element("AchievementName").Value = "Yes";
-            doc.Save(filePath);
+            doc.Save(userName);
         }
 
-        public static void AddingADocumentIntoUserXml(string username)
+        public static void AddingADocumentIntoUserXml(string userName)
         {
-            XDocument doc = XDocument.Load($"../../../FileTypes/Users/{username}.TypeIT"); //this needs to be dynamic. 
+            XDocument doc = XDocument.Load($"../../../FileTypes/Users/{userName}.TypeIT"); //this needs to be dynamic. 
             doc.Element("Documents");
 
             XElement document = new XElement("Document");
@@ -82,5 +84,8 @@ namespace TypeIT.FileTypes
 
             doc.Element("documents").Add(document);
         }
+
+        // remove document from user
+        // get documentmodel from user
     }
 }

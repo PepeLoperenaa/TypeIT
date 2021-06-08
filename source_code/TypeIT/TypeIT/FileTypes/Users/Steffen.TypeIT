@@ -3,7 +3,7 @@
   <Name>Steffen</Name>
   <Statistics>
     <HighestWPM />
-    <AverageWPM />
+	  <AverageWPM>100</AverageWPM>
     <AverageAccuracy />
     <HoursSpent />
     <TypedTypedWordsTotalWords />

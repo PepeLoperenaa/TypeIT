@@ -23,7 +23,7 @@ namespace TypeIT.Models
         public int InputCount { get; set; }
         public double HighestSpeed { get; set; }
         public string Text { get; set; }
-        public BookModel Document { get; set; }
+        public DocumentModel Document { get; set; }
         public DateTime StartTime { get; set; }
         public Difficulty SelectedDifficulty { get; set; }
 
@@ -163,9 +163,8 @@ namespace TypeIT.Models
             }
         }
 
-        public TypingModel(string document)
+        public TypingModel()
         {
-            Document = new Objects.BookModel(document);
             PageNumber = 0;
             CurrentMistakes = 0;
             HighestSpeed = 0;
@@ -273,18 +272,6 @@ namespace TypeIT.Models
             return Text.Split(' ').Length - 1;
         }
 
-        public void SetDisplayTime(int averageWpm)
-        {
-            if (SelectedDifficulty == Difficulty.Easy || SelectedDifficulty == Difficulty.Medium)
-            {
-                TimeCounter = 0;
-            }
-            else
-            {
-                TimeCounter = TypingModel.CalculateMaxTimeInSeconds(GetNumberOfWords(), averageWpm);
-            }
-        }
-
         public void IncrementTime()
         {
             if (SelectedDifficulty == Difficulty.Easy || SelectedDifficulty == Difficulty.Medium)
@@ -328,6 +315,59 @@ namespace TypeIT.Models
 
             // set the time span string whenever the counter changes (always increments or decrements)
             TimeDisplay = TimeSpan.FromSeconds(TimeCounter).ToString("mm':'ss");
+        }
+
+        public bool IsActualExpected(string actual, string expected)
+        {
+            if (actual.Length >= 0 && actual.Length <= expected.Length)
+            {
+                if (expected.Substring(0, actual.Length) == actual)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public void SetDisplayTime(int averageWpm)
+        {
+            if (SelectedDifficulty == Difficulty.Easy || SelectedDifficulty == Difficulty.Medium)
+            {
+                TimeCounter = 0;
+            }
+            else
+            {
+                TimeCounter = TypingModel.CalculateMaxTimeInSeconds(GetNumberOfWords(), averageWpm);
+            }
+        }
+        public string GetWord(string text, int wordIndex)
+        {
+            string[] words = text.Split(' ');
+
+            if (wordIndex <= GetNumberOfWords())
+            {
+                return words[wordIndex];
+            }
+            return null;
+        }
+
+        public int GetMistakeIndex(string word, string input)
+        {
+            for (int i = 0; i < input.Length; i++)
+            {
+                try
+                {
+                    if (word[i] != input[i])
+                    {
+                        return i;
+                    }
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    return word.Length;
+                }
+            }
+            return -1;
         }
     }
 }
