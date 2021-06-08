@@ -199,6 +199,10 @@
 
 
     <Style x:Key="ChangeUserButtonStyle" TargetType="Button">
+        <Setter Property="Margin" Value="2"/>
+        <Setter Property="Height" Value="20"/>
+        <Setter Property="Width" Value="80"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="FontSize" Value="8"/>
         <Setter Property="Foreground" Value="{StaticResource TextBodyColor}"/>
@@ -224,6 +228,35 @@
             </Setter.Value>
         </Setter>
         
+    </Style>
+
+    <Style x:Key="CreateUserButtonStyle" TargetType="Button">
+
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="FontSize" Value="8"/>
+        <Setter Property="Foreground" Value="{StaticResource TextBodyColor}"/>
+        <Setter Property="Button.Effect">
+            <Setter.Value>
+                <DropShadowEffect Color="{StaticResource Shadow}"
+                                      Direction="320" ShadowDepth="1" 
+                                      BlurRadius="5" Opacity="0.6" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border CornerRadius="5" Background="{StaticResource Button}">
+                        <ContentPresenter x:Name="contentPresenter" 
+                                              ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                              Content="{TemplateBinding Content}" 
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                              Margin="{TemplateBinding Padding}" 
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
     </Style>
 
     <Style x:Key="TextBoxStyle" TargetType="TextBox">

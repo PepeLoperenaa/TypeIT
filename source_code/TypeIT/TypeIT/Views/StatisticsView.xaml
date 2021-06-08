@@ -143,7 +143,9 @@
 
                         <TextBlock Foreground="{StaticResource ResourceKey=TextBlue}"
                                    Height="35"
-                                   FontSize="35">164</TextBlock>
+                                   FontSize="35"
+                                   Margin="18,4,0,0"
+                                   Text="{Binding currentUser.CurrentUser.statistics.HighestWPM}"/>
                         <TextBlock Foreground="{StaticResource ResourceKey=TextHeaderColor}"
                                    Height="15"
                                    FontSize="8">Highest WPM</TextBlock>
@@ -157,13 +159,13 @@
                            VerticalAlignment="Bottom">
 
                         <TextBlock Foreground="{StaticResource ResourceKey=TextBlue}"
-                                   Height="25"
-                                   FontSize="23">100%</TextBlock>
+                                   Height="35"
+                                   FontSize="35"
+                                   Margin="16,5,0,0"
+                                   Text="{Binding currentUser.CurrentUser.statistics.AverageWPM}"/>
                         <TextBlock Foreground="{StaticResource ResourceKey=TextHeaderColor}"
                                    Height="15"
-                                   FontSize="8"
-                                   Margin="9, 0, 0, 0"
-                                   VerticalAlignment="Center">Accuracy</TextBlock>
+                                   FontSize="8">Average WPM</TextBlock>
                     </WrapPanel>
                 </Border>
                 <Border Grid.Column="3" Grid.Row="1"
@@ -174,11 +176,14 @@
                            VerticalAlignment="Bottom">
 
                         <TextBlock Foreground="{StaticResource ResourceKey=TextBlue}"
-                                   Height="25"
-                                   FontSize="23">9999</TextBlock>
+                                   Height="35"
+                                   FontSize="35"
+                                   Margin="9,5,0,0"
+                                    Text="{Binding currentUser.CurrentUser.statistics.AverageAccuracy}"/>
                         <TextBlock Foreground="{StaticResource ResourceKey=TextHeaderColor}"
                                    Height="15"
-                                   FontSize="8">Hours spent</TextBlock>
+                                   FontSize="8"
+                                   VerticalAlignment="Center">Accuracy</TextBlock>
                     </WrapPanel>
                 </Border>
                 <Border Grid.Column="4" Grid.Row="1"
@@ -189,11 +194,13 @@
                            VerticalAlignment="Bottom">
 
                         <TextBlock Foreground="{StaticResource ResourceKey=TextBlue}"
-                                   Height="20"
-                                   FontSize="17">999.999</TextBlock>
+                                   Height="35"
+                                   FontSize="22"
+                                   Margin="16,25,0,0"
+                                   Text="{Binding currentUser.CurrentUser.statistics.HoursSpent}"/>
                         <TextBlock Foreground="{StaticResource ResourceKey=TextHeaderColor}"
                                    Height="15"
-                                   FontSize="8">Words typed</TextBlock>
+                                   FontSize="8">Hours spent</TextBlock>
                     </WrapPanel>
                 </Border>
                 <Border Grid.Column="5" Grid.Row="1"
@@ -205,12 +212,15 @@
 
                         <TextBlock Foreground="{StaticResource ResourceKey=TextBlue}"
                                    Height="35"
-                                   FontSize="35">164</TextBlock>
+                                   FontSize="22"
+                                    Margin="16,25,0,0"
+                                   Text="{Binding currentUser.CurrentUser.statistics.TypedWordsTotal}"/>
                         <TextBlock Foreground="{StaticResource ResourceKey=TextHeaderColor}"
                                    Height="15"
-                                   FontSize="8">Books finished</TextBlock>
+                                   FontSize="8">Words typed</TextBlock>
                     </WrapPanel>
                 </Border>
+                
             </Grid>
         </Grid>
     </Viewbox>
