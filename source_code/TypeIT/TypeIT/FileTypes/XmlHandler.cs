@@ -49,21 +49,30 @@ namespace TypeIT.FileTypes
             return listElements;
         }
 
-        public static void AddingDataIntoAnXml(string userName) //to add information into the element
+        public static void AddingDataIntoAnXml(string filePath) //to add information into the element
         {
             //string file = "C:/Users/MyPC/source/repos/XMLChanging/XMLChanging/folder/userFile.TypeIT";
-            XDocument doc = XDocument.Load($"../../../FileTypes/Users/{userName}.TypeIT");
+            XDocument doc = XDocument.Load(filePath);
 
-            doc.Root.Element("Name").Value = "Example";
-            doc.Root.Element("Statistics").Element("HighestWPM").Value = "20";
-            doc.Root.Element("Statistics").Element("AverageWPM").Value = "20";
-            doc.Root.Element("Statistics").Element("AverageAccuracy").Value = "20";
-            doc.Root.Element("Statistics").Element("HoursSpent").Value = "20";
-            doc.Root.Element("Statistics").Element("TypedTypedWordsTotalWords").Value = "20";
+            doc.Root.Element("Name").Value = "example ";
+            doc.Root.Element("Statistics").Element("HighestWPM").Value = "0";
+            doc.Root.Element("Statistics").Element("AverageWPM").Value = "0";
+            doc.Root.Element("Statistics").Element("AverageAccuracy").Value = "0";
+            doc.Root.Element("Statistics").Element("HoursSpent").Value = "0";
+            doc.Root.Element("Statistics").Element("TypedWordsTotal").Value = "0";
+            doc.Root.Element("Statistics").Element("DailyRecords").Element("Day").Element("Date").Value = "0";
+            doc.Root.Element("Statistics").Element("DailyRecords").Element("Day").Element("WPM").Value = "0";
+            doc.Root.Element("Statistics").Element("DailyRecords").Element("Day").Element("Average").Value = "0";
+            doc.Root.Element("Statistics").Element("DailyRecords").Element("Day").Element("Accuracy").Value = "0";
             doc.Root.Element("Settings").Element("Theme").Value = "LightMode";
             doc.Root.Element("Settings").Element("GameMode").Value = "Hard";
-            doc.Root.Element("Achievements").Element("Achievement").Element("AchievementName").Value = "Yes";
-            doc.Save(userName);
+            doc.Root.Element("Achievements").Element("Achievement").Element("AchievementName").Value = "Example";
+            doc.Root.Element("Documents").Element("Document").Element("DocumentName").Value = "Example";
+            doc.Root.Element("Documents").Element("Document").Element("TotalPageNumber").Value = "Example";
+            doc.Root.Element("Documents").Element("Document").Element("UserPageNumber").Value = "Example";
+            doc.Root.Element("Documents").Element("Document").Element("DocumentAccuracy").Value = "Example";
+
+            doc.Save(filePath);
         }
 
         public static void AddingADocumentIntoUserXml(string userName)
