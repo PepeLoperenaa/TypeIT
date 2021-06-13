@@ -65,6 +65,11 @@ namespace TypeIT.ViewModels
             TypingModel.TypingTimer.Interval = 1000;
         }
 
+        /// <summary>
+        /// Timer when on the writting page
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="e"></param>
         private void OnTimedEvent(Object source, ElapsedEventArgs e)
         {
             TypingModel.AverageAccuracy = TypingModel.CalculateAccuracy(TypingModel.InputCount);
@@ -78,6 +83,10 @@ namespace TypeIT.ViewModels
             TypingModel.AverageTypingSpeed = (int) TypingModel.CalculateTypingSpeed(TypingModel.CurrentWordIndex);
         }
 
+        /// <summary>
+        /// See the amount of words you have written
+        /// </summary>
+        /// <param name="word"></param>
         public void TypeWord(string word)
         {
             TypingModel.CurrentMistakes = 0;
@@ -112,6 +121,10 @@ namespace TypeIT.ViewModels
             ParseWord(word);
         }
 
+        /// <summary>
+        /// Update the text being displayed whilst writting
+        /// </summary>
+        /// <param name="word"></param>
         private void UpdateDisplayText(string word)
         {
             // set the gray text (text left to type)
@@ -133,6 +146,10 @@ namespace TypeIT.ViewModels
             }
         }
 
+        /// <summary>
+        /// Parsing the words written by the user
+        /// </summary>
+        /// <param name="word"></param>
         private void ParseWord(string word)
         {
             if (CanGoToNextWord(word))
@@ -164,6 +181,11 @@ namespace TypeIT.ViewModels
             }
         }
 
+        /// <summary>
+        /// Checking if the user can go to the next word depending if the word is written correctly or not
+        /// </summary>
+        /// <param name="word"></param>
+        /// <returns></returns>
         private bool CanGoToNextWord(string word)
         {
             if (InputString.Length > 0)

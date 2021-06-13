@@ -52,6 +52,10 @@ namespace TypeIT.ViewModels
             ExitCommand = new DelegateCommand(ClickedExit);
         }
 
+
+        /// <summary>
+        /// Quitting the application 
+        /// </summary>
         private void ClickedExit()
         {
             //Custom messagebox
@@ -67,6 +71,9 @@ namespace TypeIT.ViewModels
             }
         }
 
+        /// <summary>
+        /// Changing the theme of the application. Can choose between Dark mode and Light mode. 
+        /// </summary>
         private void ClickedChangeTheme()
         {
 

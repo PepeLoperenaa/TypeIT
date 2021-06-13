@@ -6,6 +6,10 @@ namespace TypeIT.FileTypes
 {
     public static class XmlHandler
     {
+        /// <summary>
+        /// when a new user comes into the application, a new .TypeIT file is created.
+        /// </summary>
+        /// <param name="name"></param>
         public static void newUser(string name)
         {
             XDocument doc;
@@ -48,9 +52,12 @@ namespace TypeIT.FileTypes
             return listElements;
         }
 
-        public static void AddingDataIntoAnXml(string filePath) //to add information into the element
+        /// <summary>
+        /// Method to add data to the different .TypeIT files
+        /// </summary>
+        /// <param name="filePath"></param>
+        public static void AddingDataIntoAnXml(string filePath) 
         {
-            //string file = "C:/Users/MyPC/source/repos/XMLChanging/XMLChanging/folder/userFile.TypeIT";
             XDocument doc = XDocument.Load(filePath);
 
             doc.Root.Element("Name").Value = "example ";
@@ -74,9 +81,13 @@ namespace TypeIT.FileTypes
             doc.Save(filePath);
         }
 
+        /// <summary>
+        /// Adding a document into the users .TypeIT file when a new document is added.  
+        /// </summary>
+        /// <param name="userName"></param>
         public static void AddingADocumentIntoUserXml(string userName)
         {
-            XDocument doc = XDocument.Load($"../../../FileTypes/Users/{userName}.TypeIT"); //this needs to be dynamic. 
+            XDocument doc = XDocument.Load($"../../../FileTypes/Users/{userName}.TypeIT"); 
             doc.Element("Documents");
 
             XElement document = new XElement("Document");

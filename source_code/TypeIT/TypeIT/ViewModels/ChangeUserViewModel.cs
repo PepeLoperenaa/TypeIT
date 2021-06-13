@@ -41,6 +41,10 @@ namespace TypeIT.ViewModels
             loadUsers();
         }
 
+        /// <summary>
+        /// Loads the selected user in the user view
+        /// </summary>
+        /// <param name="userName"></param>
         protected void loadSelectedUser(string userName)
         {
             UserModel user = new UserModel(userName, true);
@@ -52,6 +56,10 @@ namespace TypeIT.ViewModels
             NavigateHomeCommand.Execute(null);
         }
 
+
+        /// <summary>
+        /// Loads all of the users in the LogIn page.
+        /// </summary>
         protected void loadUsers()
         {
             string[] files = Directory.GetFiles("../../../FileTypes/Users");
@@ -65,6 +73,9 @@ namespace TypeIT.ViewModels
             }
         }
 
+        /// <summary>
+        /// Quitting the application 
+        /// </summary>
         protected void ClickedExit()
         {
             //Custom messagebox

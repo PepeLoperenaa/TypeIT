@@ -30,6 +30,9 @@ namespace TypeIT.ViewModels
             loadUsersAchievements();
         }
 
+        /// <summary>
+        /// Loading the user achievements on the application
+        /// </summary>
         private void loadUsersAchievements()
         {            
             // We have to iterate backwards to safely delete elements
@@ -43,6 +46,9 @@ namespace TypeIT.ViewModels
             }
         }
         
+        /// <summary>
+        /// Load all of the achievements into the application.
+        /// </summary>
         private void loadAchievements()
         {
             List<string> achievementName = XmlHandler.getElementsFromTags("../../../FileTypes/TypeitFiles/achievements.TypeIT", "AchievementName");
