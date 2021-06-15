@@ -54,7 +54,12 @@ namespace TypeIT.ViewModels
 
             //Setting the default theme from the user's .TpyeIT
             Application.Current.Resources.MergedDictionaries.Clear();
-            Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("Resources/" + user.Theme + "Theme.xaml", UriKind.Relative) });
+
+            //If the theme is unset then set it to light
+            //Theme should NOT be unset
+            string theme = (user.Theme == "") ? "Light" : user.Theme;
+
+            Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("Resources/" + theme + "Theme.xaml", UriKind.Relative) });
             Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("Resources/StyleResource.xaml", UriKind.Relative) });
 
             //Navigate to dashboard
