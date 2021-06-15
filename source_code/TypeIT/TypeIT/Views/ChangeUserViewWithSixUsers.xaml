@@ -28,7 +28,7 @@
                        Grid.Column="1" Grid.Row="0"/>
 
             <Button Grid.Column="4" Grid.Row="0"
-                    Style="{StaticResource HeaderButton}"
+                    Style="{DynamicResource HeaderButton}"
                     Command="{Binding ExitCommand}">
                 <StackPanel>
                     <Image Source="../Resources/Images/exitIcon.png" />
@@ -54,7 +54,7 @@
                         <DataTemplate>
                             <Button Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:ChangeUserViewWithSixUsers}}, Path=DataContext.SelectUser}" 
                                         CommandParameter="{Binding Text, ElementName=existingUsername}"
-                                        Style="{StaticResource ChangeUserButtonStyleForSixUsers}">
+                                        Style="{DynamicResource ChangeUserButtonStyleForSixUsers}">
                                 <TextBlock x:Name="existingUsername" Text="{Binding Name}"/>
                             </Button>
                         </DataTemplate>

@@ -35,7 +35,7 @@
                        Grid.Column="1" Grid.Row="0"/>
 
             <Button Grid.Column="4" Grid.Row="0"
-                    Style="{StaticResource HeaderButton}"
+                    Style="{DynamicResource HeaderButton}"
                     Command="{Binding NavigateHomeCommand}">
                 <StackPanel>
                     <Image Source="../Resources/Images/homeIcon.png"/>
@@ -45,23 +45,23 @@
             <!-- Second row -->
             <Border Grid.Column="1" Grid.Row="1"
                     Grid.ColumnSpan="2"
-                    Style="{StaticResource TextBlockBorder}"
+                    Style="{DynamicResource TextBlockBorder}"
                     Padding="2,0,2,0">
                 <lvc:CartesianChart Zoom="X">
                     <lvc:CartesianChart.Series>
                         <lvc:LineSeries Title="Average WPM:" Values="{ Binding WpmValues}"
                                         StrokeThickness="1"
-                                        Foreground="{StaticResource Background}"
-                                        Stroke="{StaticResource TextBlue}"
+                                        Foreground="{DynamicResource Background}"
+                                        Stroke="{DynamicResource TextBlue}"
                                         LineSmoothness="1" 
                                         PointGeometrySize="5"
-                                        PointForeground="{StaticResource Button}"/>
+                                        PointForeground="{DynamicResource Button}"/>
                     </lvc:CartesianChart.Series>
                     <lvc:CartesianChart.DataTooltip>
                         <lvc:DefaultTooltip BulletSize="4"
                                             FontSize="6"
-                                            Foreground="{StaticResource TextBodyColor}"
-                                            Background="{StaticResource Background}"/>
+                                            Foreground="{DynamicResource TextBodyColor}"
+                                            Background="{DynamicResource Background}"/>
                     </lvc:CartesianChart.DataTooltip>
                     <lvc:CartesianChart.AxisX >
                         <lvc:Axis Title="Date"
@@ -76,7 +76,7 @@
                                   MinValue="0"
                                   FontFamily="Fonts/Fragmentcore.otf#Fragment Core">
                             <lvc:Axis.Separator>
-                                <lvc:Separator Stroke="{StaticResource Background}"/>
+                                <lvc:Separator Stroke="{DynamicResource Background}"/>
                             </lvc:Axis.Separator>
                         </lvc:Axis>
                     </lvc:CartesianChart.AxisY>
@@ -84,23 +84,23 @@
             </Border>
             <Border Grid.Column="3" Grid.Row="1"
                     Grid.ColumnSpan="2"
-                    Style="{StaticResource TextBlockBorder}"
+                    Style="{DynamicResource TextBlockBorder}"
                      Padding="2,0,2,0">
                 <lvc:CartesianChart Zoom="X">
                     <lvc:CartesianChart.Series>
                         <lvc:LineSeries Title="Average accuracy:" Values="{ Binding AccuracyValues}"
                                         StrokeThickness="1"
-                                        Foreground="{StaticResource Background}"
-                                        Stroke="{StaticResource TextBlue}"
+                                        Foreground="{DynamicResource Background}"
+                                        Stroke="{DynamicResource TextBlue}"
                                         LineSmoothness="1" 
                                         PointGeometrySize="5"
-                                        PointForeground="{StaticResource Button}"/>
+                                        PointForeground="{DynamicResource Button}"/>
                     </lvc:CartesianChart.Series>
                     <lvc:CartesianChart.DataTooltip>
                         <lvc:DefaultTooltip BulletSize="4"
                                             FontSize="6"
-                                            Foreground="{StaticResource TextBodyColor}"
-                                            Background="{StaticResource Background}"/>
+                                            Foreground="{DynamicResource TextBodyColor}"
+                                            Background="{DynamicResource Background}"/>
                     </lvc:CartesianChart.DataTooltip>
                     <lvc:CartesianChart.AxisX >
                         <lvc:Axis Title="Date"
@@ -116,7 +116,7 @@
                                   MaxValue="100"
                                   FontFamily="Fonts/Fragmentcore.otf#Fragment Core">
                             <lvc:Axis.Separator>
-                                <lvc:Separator Stroke="{StaticResource Background}"/>
+                                <lvc:Separator Stroke="{DynamicResource Background}"/>
                             </lvc:Axis.Separator>
                         </lvc:Axis>
                     </lvc:CartesianChart.AxisY>
@@ -135,86 +135,86 @@
                 </Grid.ColumnDefinitions>
 
                 <Border Grid.Column="1" Grid.Row="1"
-                    Style="{StaticResource TextBlockBorder}">
+                    Style="{DynamicResource TextBlockBorder}">
 
                     <WrapPanel Orientation="Horizontal"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Bottom">
 
-                        <TextBlock Foreground="{StaticResource ResourceKey=TextBlue}"
+                        <TextBlock Foreground="{DynamicResource ResourceKey=TextBlue}"
                                    Height="35"
                                    FontSize="35"
                                    Text="{Binding currentUser.CurrentUser.Statistics.HighestWPM}"/>
-                        <TextBlock Foreground="{StaticResource ResourceKey=TextHeaderColor}"
+                        <TextBlock Foreground="{DynamicResource ResourceKey=TextHeaderColor}"
                                    Height="15"
                                    FontSize="8">Highest WPM</TextBlock>
                     </WrapPanel>
                 </Border>
                 <Border Grid.Column="2" Grid.Row="1"
-                    Style="{StaticResource TextBlockBorder}">
+                    Style="{DynamicResource TextBlockBorder}">
 
                     <WrapPanel Orientation="Horizontal"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Bottom">
 
-                        <TextBlock Foreground="{StaticResource ResourceKey=TextBlue}"
+                        <TextBlock Foreground="{DynamicResource ResourceKey=TextBlue}"
                                    Height="35"
                                    FontSize="35"
                                    Margin="16,5,0,0"
                                    Text="{Binding currentUser.CurrentUser.Statistics.AverageWPM}"/>
-                        <TextBlock Foreground="{StaticResource ResourceKey=TextHeaderColor}"
+                        <TextBlock Foreground="{DynamicResource ResourceKey=TextHeaderColor}"
                                    Height="15"
                                    FontSize="8">Average WPM</TextBlock>
                     </WrapPanel>
                 </Border>
                 <Border Grid.Column="3" Grid.Row="1"
-                    Style="{StaticResource TextBlockBorder}">
+                    Style="{DynamicResource TextBlockBorder}">
 
                     <WrapPanel Orientation="Horizontal"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Bottom">
 
-                        <TextBlock Foreground="{StaticResource ResourceKey=TextBlue}"
+                        <TextBlock Foreground="{DynamicResource ResourceKey=TextBlue}"
                                    Height="35"
                                    FontSize="35"
                                    Margin="9,5,0,0"
                                     Text="{Binding currentUser.CurrentUser.Statistics.AverageAccuracy}"/>
-                        <TextBlock Foreground="{StaticResource ResourceKey=TextHeaderColor}"
+                        <TextBlock Foreground="{DynamicResource ResourceKey=TextHeaderColor}"
                                    Height="15"
                                    FontSize="8"
                                    VerticalAlignment="Center">Accuracy</TextBlock>
                     </WrapPanel>
                 </Border>
                 <Border Grid.Column="4" Grid.Row="1"
-                    Style="{StaticResource TextBlockBorder}">
+                    Style="{DynamicResource TextBlockBorder}">
 
                     <WrapPanel Orientation="Horizontal"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Bottom">
 
-                        <TextBlock Foreground="{StaticResource ResourceKey=TextBlue}"
+                        <TextBlock Foreground="{DynamicResource ResourceKey=TextBlue}"
                                    Height="35"
                                    FontSize="22"
                                    Margin="16,25,0,0"
                                    Text="{Binding currentUser.CurrentUser.Statistics.HoursSpent}"/>
-                        <TextBlock Foreground="{StaticResource ResourceKey=TextHeaderColor}"
+                        <TextBlock Foreground="{DynamicResource ResourceKey=TextHeaderColor}"
                                    Height="15"
                                    FontSize="8">Hours spent</TextBlock>
                     </WrapPanel>
                 </Border>
                 <Border Grid.Column="5" Grid.Row="1"
-                    Style="{StaticResource TextBlockBorder}">
+                    Style="{DynamicResource TextBlockBorder}">
 
                     <WrapPanel Orientation="Horizontal"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Bottom">
 
-                        <TextBlock Foreground="{StaticResource ResourceKey=TextBlue}"
+                        <TextBlock Foreground="{DynamicResource ResourceKey=TextBlue}"
                                    Height="35"
                                    FontSize="22"
                                     Margin="16,25,0,0"
                                    Text="{Binding currentUser.CurrentUser.Statistics.TypedWordsTotal}"/>
-                        <TextBlock Foreground="{StaticResource ResourceKey=TextHeaderColor}"
+                        <TextBlock Foreground="{DynamicResource ResourceKey=TextHeaderColor}"
                                    Height="15"
                                    FontSize="8">Words typed</TextBlock>
                     </WrapPanel>

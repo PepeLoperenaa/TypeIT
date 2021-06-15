@@ -13,11 +13,11 @@
     <Color x:Key="TextBody">#ffffff</Color>
     <Color x:Key="LockedAchievementColor">#212326</Color>
 
-    <SolidColorBrush x:Key="Background" Color="{StaticResource BackgroundColor}"/>
-    <SolidColorBrush x:Key="TextBlue" Color="{StaticResource ElementBlue}"/>
-    <SolidColorBrush x:Key="Button" Color="{StaticResource ButtonColor}"/>
-    <SolidColorBrush x:Key="TextHeaderColor" Color="{StaticResource TextHeader}"/>
-    <SolidColorBrush x:Key="TextBodyColor" Color="{StaticResource TextBody}"/>
-    <SolidColorBrush x:Key="ShadowColor" Color="{StaticResource Shadow}"/>
-    <SolidColorBrush x:Key="LockedAchievement" Color="{StaticResource LockedAchievementColor}"/>
+    <SolidColorBrush x:Key="Background" Color="{DynamicResource BackgroundColor}"/>
+    <SolidColorBrush x:Key="TextBlue" Color="{DynamicResource ElementBlue}"/>
+    <SolidColorBrush x:Key="Button" Color="{DynamicResource ButtonColor}"/>
+    <SolidColorBrush x:Key="TextHeaderColor" Color="{DynamicResource TextHeader}"/>
+    <SolidColorBrush x:Key="TextBodyColor" Color="{DynamicResource TextBody}"/>
+    <SolidColorBrush x:Key="ShadowColor" Color="{DynamicResource Shadow}"/>
+    <SolidColorBrush x:Key="LockedAchievement" Color="{DynamicResource LockedAchievementColor}"/>
 </ResourceDictionary> 

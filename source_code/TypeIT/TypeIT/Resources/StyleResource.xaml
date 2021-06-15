@@ -8,10 +8,10 @@
     </Style>
 
     <Style x:Key="MyButton" TargetType="Button">
-        <Setter Property="Foreground" Value="{StaticResource TextHeaderColor}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextHeaderColor}"/>
         <Setter Property="Button.Effect">
             <Setter.Value>
-                <DropShadowEffect Color="{StaticResource Shadow}"
+                <DropShadowEffect Color="{DynamicResource Shadow}"
                                       Direction="320" ShadowDepth="1" 
                                       BlurRadius="5" Opacity="0.6" />
             </Setter.Value>
@@ -19,7 +19,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border CornerRadius="5" Background="White" BorderBrush="{StaticResource ShadowColor}">
+                    <Border CornerRadius="5" Background="White" BorderBrush="{DynamicResource ShadowColor}">
                         <ContentPresenter x:Name="contentPresenter" 
                                               ContentTemplate="{TemplateBinding ContentTemplate}" 
                                               Content="{TemplateBinding Content}" 
@@ -35,19 +35,19 @@
 
     <Style TargetType="{x:Type xctk:MessageBox}">
         <Setter Property="Background" Value="white" />
-        <Setter Property="BorderBrush" Value="{StaticResource ShadowColor}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ShadowColor}"/>
         <Setter Property="Height" Value="200"/>
         <Setter Property="Width" Value="400"/>
         <Setter Property="CaptionForeground" Value="Transparent"/>
         <Setter Property="WindowBorderBrush" Value="Transparent"/>
         <Setter Property="WindowBackground" Value="Transparent"/>
         <Setter Property="WindowOpacity" Value="1" />
-        <Setter Property="Foreground" Value="{StaticResource TextHeaderColor}"/>
-        <Setter Property="CloseButtonStyle" Value="{StaticResource MyCloseButtonStyle}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextHeaderColor}"/>
+        <Setter Property="CloseButtonStyle" Value="{DynamicResource MyCloseButtonStyle}"/>
         <Setter Property="FontSize" Value="20"/>
         <Setter Property="FontFamily" Value="Fonts/Fragmentcore.otf#Fragment Core"/>
-        <Setter Property="YesButtonStyle" Value="{StaticResource MyButton}"/>
-        <Setter Property="NoButtonStyle" Value="{StaticResource MyButton}"/>
+        <Setter Property="YesButtonStyle" Value="{DynamicResource MyButton}"/>
+        <Setter Property="NoButtonStyle" Value="{DynamicResource MyButton}"/>
     </Style>
     
     <!-- Achievements style -->
@@ -56,7 +56,7 @@
 
 
     <Style x:Key="BookBorder" TargetType="Border">
-        <Setter Property="Background" Value="{StaticResource Button}"/>
+        <Setter Property="Background" Value="{DynamicResource Button}"/>
         <Setter Property="Padding" Value="5"/>
         <Setter Property="Width" Value="130"/>
         <Setter Property="CornerRadius" Value="5"/>
@@ -64,7 +64,7 @@
         <Setter Property="Grid.ColumnSpan" Value="1"/>
         <Setter Property="Effect">
             <Setter.Value>
-                <DropShadowEffect Color="{StaticResource Shadow}"
+                <DropShadowEffect Color="{DynamicResource Shadow}"
                                       Direction="320" ShadowDepth="1" 
                                       BlurRadius="2.5" Opacity="0.6" />
             </Setter.Value>
@@ -72,7 +72,7 @@
     </Style>
     
     <Style x:Key="UnlockedAchievementBorder" TargetType="Border">
-        <Setter Property="Background" Value="{StaticResource Button}"/>
+        <Setter Property="Background" Value="{DynamicResource Button}"/>
         <Setter Property="Padding" Value="5"/>
         <Setter Property="Width" Value="135"/>
         <Setter Property="CornerRadius" Value="5"/>
@@ -80,7 +80,7 @@
         <Setter Property="Grid.ColumnSpan" Value="1"/>
         <Setter Property="Effect">
             <Setter.Value>
-                <DropShadowEffect Color="{StaticResource Shadow}"
+                <DropShadowEffect Color="{DynamicResource Shadow}"
                                       Direction="320" ShadowDepth="1" 
                                       BlurRadius="2.5" Opacity="0.6" />
             </Setter.Value>
@@ -88,7 +88,7 @@
     </Style>
 
     <Style x:Key="LockedAchievementBorder" TargetType="Border">
-        <Setter Property="Background" Value="{StaticResource LockedAchievement}"/>
+        <Setter Property="Background" Value="{DynamicResource LockedAchievement}"/>
         <Setter Property="Padding" Value="5"/>
         <Setter Property="Width" Value="135"/>
         <Setter Property="CornerRadius" Value="5"/>
@@ -96,7 +96,7 @@
         <Setter Property="Grid.ColumnSpan" Value="1"/>
         <Setter Property="Effect">
             <Setter.Value>
-                <DropShadowEffect Color="{StaticResource Shadow}"
+                <DropShadowEffect Color="{DynamicResource Shadow}"
                                       Direction="320" ShadowDepth="1" 
                                       BlurRadius="2.5" Opacity="0.2" />
             </Setter.Value>
@@ -106,7 +106,7 @@
     <!-- Achievement title -->
     <Style x:Key="AchievementAndBookTitle" TargetType="TextBlock">
         <Setter Property="FontSize" Value="6"/>
-        <Setter Property="Foreground" Value="{StaticResource TextHeaderColor}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextHeaderColor}"/>
         <Setter Property="FontFamily" Value="Fonts/Fragmentcore.otf#Fragment Core" />
         <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="TextWrapping" Value="WrapWithOverflow"/>
@@ -119,7 +119,7 @@
         <Setter Property="FontSize" Value="5"/>
         <Setter Property="TextWrapping" Value="WrapWithOverflow"/>
         <Setter Property="FontFamily" Value="Fonts/Fragmentcore.otf#Fragment Core" />
-        <Setter Property="Foreground" Value="{StaticResource TextBodyColor}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextBodyColor}"/>
     </Style>
     <!-- -->
 
@@ -133,7 +133,7 @@
 
     <Style x:Key="BodyText" TargetType="{x:Type Run}">
         <Setter Property="FontSize" Value="5"/>
-        <Setter Property="Foreground" Value="{StaticResource TextBodyColor}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextBodyColor}"/>
     </Style>
 
 
@@ -143,10 +143,10 @@
         <Setter Property="Width" Value="60"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="FontSize" Value="8"/>
-        <Setter Property="Foreground" Value="{StaticResource TextHeaderColor}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextHeaderColor}"/>
         <Setter Property="Button.Effect">
             <Setter.Value>
-                <DropShadowEffect Color="{StaticResource Shadow}"
+                <DropShadowEffect Color="{DynamicResource Shadow}"
                                       Direction="320" ShadowDepth="1" 
                                       BlurRadius="5" Opacity="0.6" />
             </Setter.Value>
@@ -154,7 +154,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border CornerRadius="5" Background="{StaticResource Button}">
+                    <Border CornerRadius="5" Background="{DynamicResource Button}">
                         <ContentPresenter x:Name="contentPresenter" 
                                               ContentTemplate="{TemplateBinding ContentTemplate}" 
                                               Content="{TemplateBinding Content}" 
@@ -196,12 +196,12 @@
     <!-- Textblocks in AboutView-->
     <!-- Set the value of its border because the TextBlock itself is embedded in a border tag -->
     <Style x:Key="TextBlockBorder" TargetType="Border">
-        <Setter Property="Background" Value="{StaticResource Button}"/>
+        <Setter Property="Background" Value="{DynamicResource Button}"/>
         <Setter Property="CornerRadius" Value="5"/>
         <Setter Property="BorderThickness" Value="1.5"/>
         <Setter Property="Effect">
             <Setter.Value>
-                <DropShadowEffect Color="{StaticResource Shadow}"
+                <DropShadowEffect Color="{DynamicResource Shadow}"
                                       Direction="320" ShadowDepth="1" 
                                       BlurRadius="5" Opacity="0.6" />
             </Setter.Value>
@@ -211,10 +211,10 @@
     <!--<Style x:Key="TextBoxStyle" TargetType="TextBox">
         <Setter Property="FontFamily" Value="Fonts/Fragmentcore.otf#Fragment Core"/>
         <Setter Property="FontSize" Value="5"/>
-        <Setter Property="Foreground" Value="{StaticResource TextBodyColor}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextBodyColor}"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
-        <Setter Property="CaretBrush" Value="{StaticResource TextBodyColor}"/>
+        <Setter Property="CaretBrush" Value="{DynamicResource TextBodyColor}"/>
     </Style>-->
 
 
@@ -224,10 +224,10 @@
         <Setter Property="Width" Value="50"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="FontSize" Value="8"/>
-        <Setter Property="Foreground" Value="{StaticResource TextBodyColor}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextBodyColor}"/>
         <Setter Property="Button.Effect">
             <Setter.Value>
-                <DropShadowEffect Color="{StaticResource Shadow}"
+                <DropShadowEffect Color="{DynamicResource Shadow}"
                                       Direction="320" ShadowDepth="1" 
                                       BlurRadius="5" Opacity="0.6" />
             </Setter.Value>
@@ -235,7 +235,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border CornerRadius="5" Background="{StaticResource Button}">
+                    <Border CornerRadius="5" Background="{DynamicResource Button}">
                         <ContentPresenter x:Name="contentPresenter" 
                                               ContentTemplate="{TemplateBinding ContentTemplate}" 
                                               Content="{TemplateBinding Content}" 
@@ -255,10 +255,10 @@
         <Setter Property="Width" Value="80"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="FontSize" Value="8"/>
-        <Setter Property="Foreground" Value="{StaticResource TextBodyColor}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextBodyColor}"/>
         <Setter Property="Button.Effect">
             <Setter.Value>
-                <DropShadowEffect Color="{StaticResource Shadow}"
+                <DropShadowEffect Color="{DynamicResource Shadow}"
                                       Direction="320" ShadowDepth="1" 
                                       BlurRadius="5" Opacity="0.6" />
             </Setter.Value>
@@ -266,7 +266,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border CornerRadius="5" Background="{StaticResource Button}">
+                    <Border CornerRadius="5" Background="{DynamicResource Button}">
                         <ContentPresenter x:Name="contentPresenter" 
                                               ContentTemplate="{TemplateBinding ContentTemplate}" 
                                               Content="{TemplateBinding Content}" 
@@ -285,10 +285,10 @@
 
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="FontSize" Value="8"/>
-        <Setter Property="Foreground" Value="{StaticResource TextBodyColor}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextBodyColor}"/>
         <Setter Property="Button.Effect">
             <Setter.Value>
-                <DropShadowEffect Color="{StaticResource Shadow}"
+                <DropShadowEffect Color="{DynamicResource Shadow}"
                                       Direction="320" ShadowDepth="1" 
                                       BlurRadius="5" Opacity="0.6" />
             </Setter.Value>
@@ -296,7 +296,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border CornerRadius="5" Background="{StaticResource Button}">
+                    <Border CornerRadius="5" Background="{DynamicResource Button}">
                         <ContentPresenter x:Name="contentPresenter" 
                                               ContentTemplate="{TemplateBinding ContentTemplate}" 
                                               Content="{TemplateBinding Content}" 
@@ -316,16 +316,16 @@
                 <Setter Property="CornerRadius" Value="3"/>
             </Style>
         </Style.Resources>
-        <Setter Property="Background" Value="{StaticResource Button}"/>
+        <Setter Property="Background" Value="{DynamicResource Button}"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
-        <Setter Property="Foreground" Value="{StaticResource TextBodyColor}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextBodyColor}"/>
         <Setter Property="FontFamily" Value="Fonts/Fragmentcore.otf#Fragment Core"/>
         <Setter Property="FontSize" Value="8"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="TextAlignment" Value="Center"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
-        <Setter Property="CaretBrush" Value="{StaticResource TextBodyColor}"/>
+        <Setter Property="CaretBrush" Value="{DynamicResource TextBodyColor}"/>
     </Style>
 
     <Style x:Key="DocumentTitleStyle" TargetType="Button">

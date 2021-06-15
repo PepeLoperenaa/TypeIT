@@ -29,7 +29,7 @@
                        Grid.Column="1" Grid.Row="0"/>
 
             <Button Grid.Column="4" Grid.Row="0"
-                    Style="{StaticResource HeaderButton}"
+                    Style="{DynamicResource HeaderButton}"
                     Command="{Binding NavigateHomeCommand}">
                 <StackPanel>
                     <Image Source="../Resources/Images/homeIcon.png" />
@@ -38,17 +38,17 @@
 
             <Border  Grid.Column="1" Grid.Row="1" 
                      Grid.ColumnSpan="2" Grid.RowSpan="2"
-                     Style="{StaticResource TextBlockBorder}"
+                     Style="{DynamicResource TextBlockBorder}"
                      Padding="5">
                 <TextBlock>
                 <WrapPanel  Orientation="Horizontal">
                     <TextBlock Text="Who Are We?"
                                FontSize="10" 
-                               Foreground="{StaticResource ResourceKey=TextHeaderColor}"
+                               Foreground="{DynamicResource ResourceKey=TextHeaderColor}"
                                TextAlignment="Left"/>
                     <TextBlock FontSize="6" 
                                Height="50"
-                               Foreground="{StaticResource ResourceKey=TextBodyColor}"
+                               Foreground="{DynamicResource ResourceKey=TextBodyColor}"
                                TextAlignment="Left">
                                We are a group of 6 junior developers from <LineBreak/>
                                NHL Stenden University of Applied Sciences. <LineBreak/>
@@ -57,11 +57,11 @@
                     </TextBlock>
                     <TextBlock Text="What is TypeIT?"
                                FontSize="10" 
-                               Foreground="{StaticResource ResourceKey=TextHeaderColor}"
+                               Foreground="{DynamicResource ResourceKey=TextHeaderColor}"
                                TextAlignment="Left"/>
                     <TextBlock FontSize="6" 
                                Height="50"
-                               Foreground="{StaticResource ResourceKey=TextBodyColor}"
+                               Foreground="{DynamicResource ResourceKey=TextBodyColor}"
                                TextAlignment="Left">
                                TypeIT is a tyiping game that allows the user <LineBreak/>
                                to upload custom texts and books and type them <LineBreak/>
@@ -74,20 +74,20 @@
 
             <Button Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="2"
                     VerticalAlignment="Top" Margin="0,2,0,0"
-                    Width="125" Style="{StaticResource ImageButton}"
+                    Width="125" Style="{DynamicResource ImageButton}"
                     Command="{Binding ContactCommand}">
                 <StackPanel Width="120" Orientation="Horizontal">
                     <Image Source="../Resources/Images/contactUsIcon.png" Height="35"/>
                     <TextBlock Text="Contact us" 
                                Height="15" Margin="15,0,0,0" 
                                TextAlignment="Center"
-                               Foreground="{StaticResource TextBodyColor}"/>
+                               Foreground="{DynamicResource TextBodyColor}"/>
                 </StackPanel>
             </Button>
 
                 <Border Grid.Column="3" Grid.Row="1"
                     Grid.ColumnSpan="2"
-                    Style="{StaticResource TextBlockBorder}">
+                    Style="{DynamicResource TextBlockBorder}">
                     <TextBlock
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center">
@@ -96,7 +96,7 @@
                            VerticalAlignment="Center">
                         <Image Source="../Resources/Images/contactUsIcon.png" Height="40"/>
                         <TextBlock Margin="10, 0, 0, 0"
-                                   Foreground="{StaticResource ResourceKey=TextHeaderColor}"
+                                   Foreground="{DynamicResource ResourceKey=TextHeaderColor}"
                                    Height="15">Contact us</TextBlock>
                     </WrapPanel>
                 </TextBlock>
@@ -105,7 +105,7 @@
                 <TextBlock Grid.Column="3" Grid.Row="2"
                        Grid.ColumnSpan="2"
                        Text="typeIT" 
-                       Foreground="{StaticResource TextHeaderColor}"
+                       Foreground="{DynamicResource TextHeaderColor}"
                        VerticalAlignment="Center" HorizontalAlignment="Center"
                        FontSize="35"/>
         </Grid>

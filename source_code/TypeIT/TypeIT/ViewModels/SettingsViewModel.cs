@@ -17,6 +17,7 @@ namespace TypeIT.ViewModels
     class SettingsViewModel : ViewModelBase
     {
         public ICommand NavigateHomeCommand { get; }
+        public ICommand NavigateSettingsCommand { get; }
         public ICommand NavigateChangeUserCommand { get; set; }
         public ICommand NavigateChangeGameModeCommand { get; set; }
         public ICommand ResetStatisticsCommand { get; set; }
@@ -42,6 +43,7 @@ namespace TypeIT.ViewModels
             //Navigation comands
             NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore, userStore));
             NavigateChangeGameModeCommand = new NavigateCommand<ChangeGameModeViewModel>(navigationStore, () => new ChangeGameModeViewModel(navigationStore, userStore));
+            NavigateSettingsCommand = new NavigateCommand<SettingsViewModel>(navigationStore, () => new SettingsViewModel(navigationStore, userStore));
 
             //Delete User Command
             DeleteAccountCommand = new DelegateCommand(ClickedDeleteAccount);
@@ -85,7 +87,6 @@ namespace TypeIT.ViewModels
         /// </summary>
         private void ClickedChangeTheme()
         {
-
             string currentTheme = Application.Current.Resources.MergedDictionaries[0].Source.ToString();
 
             Application.Current.Resources.MergedDictionaries.Clear();
@@ -102,7 +103,7 @@ namespace TypeIT.ViewModels
 
             Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("Resources/StyleResource.xaml", UriKind.Relative) });
 
-            NavigateHomeCommand.Execute(null);
+            NavigateSettingsCommand.Execute(null);
         }
 
         /// <summary>
@@ -144,7 +145,6 @@ namespace TypeIT.ViewModels
 
             if ("Yes" == res.ToString())
             {
-                // TODO implement wipe statisiics
                 XmlHandler.ClearUserStatistics(currentUser.CurrentUser.Name);
             }
 

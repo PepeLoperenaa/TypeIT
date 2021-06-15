@@ -25,7 +25,7 @@
                        Grid.Column="1" Grid.Row="0"/>
 
             <Button Grid.Column="1" Grid.Row="0"
-                    Style="{StaticResource HeaderButton}"
+                    Style="{DynamicResource HeaderButton}"
                     Command="{Binding NavigateHomeCommand}">
                 <StackPanel>
                     <Image Source="../Resources/Images/homeIcon.png" />
@@ -57,16 +57,16 @@
                         <ItemsControl ItemsSource="{Binding currentUser.CurrentUser.Documents}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Border Style="{StaticResource BookBorder}">
+                                    <Border Style="{DynamicResource BookBorder}">
                                         
                                         <StackPanel Orientation="Horizontal">
-                                            <Button Style="{StaticResource DocumentTitleStyle}">
+                                            <Button Style="{DynamicResource DocumentTitleStyle}">
                                                 <StackPanel Orientation="Vertical">
-                                                    <TextBlock Style="{StaticResource AchievementAndBookTitle}" Text="{Binding Name}"/>
-                                                    <TextBlock Style="{StaticResource AchievementAndBookDescription}" Text="{Binding UserPageNumber}"/>
+                                                    <TextBlock Style="{DynamicResource AchievementAndBookTitle}" Text="{Binding Name}"/>
+                                                    <TextBlock Style="{DynamicResource AchievementAndBookDescription}" Text="{Binding UserPageNumber}"/>
                                                 </StackPanel>
                                             </Button>
-                                            <Button Style="{StaticResource DocumentTitleStyle}" 
+                                            <Button Style="{DynamicResource DocumentTitleStyle}" 
                                                     VerticalAlignment="Bottom" 
                                                     HorizontalAlignment="Right"
                                                     Margin="12,0,0,0"
