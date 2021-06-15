@@ -44,6 +44,9 @@ namespace TypeIT.ViewModels
            
             NavigateChangeGameModeCommand = new NavigateCommand<ChangeGameModeViewModel>(navigationStore, () => new ChangeGameModeViewModel(navigationStore, userStore));
 
+            //Delete User Command
+            DeleteAccountCommand = new DelegateCommand(ClickedDeleteAccount);
+
             //Current user
             currentUser = userStore;
 
@@ -97,6 +100,34 @@ namespace TypeIT.ViewModels
             Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("Resources/StyleResource.xaml", UriKind.Relative) });
 
             NavigateHomeCommand.Execute(null);
+        }
+
+        /// <summary>
+        /// Deleting the current user
+        /// Shows an alert asking if the user want to delete their account as it is irreversible
+        /// </summary>
+        private void ClickedDeleteAccount()
+        {
+            string usersFolder = "../../../FileTypes/Users/";
+            string userToDelete = currentUser.CurrentUser.Name + ".TypeIT";
+
+            var res = Xceed.Wpf.Toolkit.MessageBox.Show(
+                "Are you sure you want to delete your account? This is irreversible!",
+                "Delete Account",
+                MessageBoxButton.YesNo
+            );
+
+            if ("Yes" == res.ToString())
+            {
+                if (File.Exists(Path.Combine(usersFolder, userToDelete)))
+                {
+                    File.Delete(Path.Combine(usersFolder, userToDelete));
+                    NavigateChangeUserCommand.Execute(null);
+                }
+            }
+
+            
+
         }
 
     }
