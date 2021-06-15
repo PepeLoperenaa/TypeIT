@@ -28,6 +28,7 @@ namespace TypeIT.Models
             loadUsersAchievements();
             loadUserDocuments();
             loadStatistics();
+            loadUserGameMode();
         }
 
         /// <summary>
@@ -105,9 +106,42 @@ namespace TypeIT.Models
             return new StatisticsModel(HighestWPM, AverageWPM, AverageAccuracy, HoursSpent, TypedTypedWordsTotalWords);
         }
 
+        /// <summary>
+        /// Loads the user's theme from his .TypeIT file
+        /// </summary>
+        /// <returns>Returns the theme as string</returns>
         private string loadTheme()
         {
             return XmlHandler.getElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "Theme").First();
+        }
+
+        /// <summary>
+        /// Loads the user's selected game mode from his .TypeIT file
+        /// Sets the enum value based on the game mode
+        /// If the value is invalid it's set to easy
+        /// </summary>
+        private void loadUserGameMode()
+        {
+            string gameMode = XmlHandler.getElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "GameMode").First();
+
+            switch (gameMode)
+            {
+                case "Casual":
+                    GameMode = Difficulty.Easy;
+                    break;
+                case "Normal":
+                    GameMode = Difficulty.Medium;
+                    break;
+                case "Hard":
+                    GameMode = Difficulty.Hard;
+                    break;
+                case "Extreme":
+                    GameMode = Difficulty.Extreme;
+                    break;
+                default:
+                    GameMode = Difficulty.Easy;
+                    break;
+            }
         }
     }
 }

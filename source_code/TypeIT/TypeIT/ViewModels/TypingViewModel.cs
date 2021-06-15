@@ -49,6 +49,8 @@ namespace TypeIT.ViewModels
             NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore, userStore));
 
             currentUser.CurrentUser.GameMode = Difficulty.Hard;
+
+            // loading the user's game mode
             TypingModel.SelectedDifficulty = (currentUser.CurrentUser.GameMode);
 
             // set the initial text 
