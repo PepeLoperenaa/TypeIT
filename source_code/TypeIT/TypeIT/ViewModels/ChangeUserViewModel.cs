@@ -23,7 +23,6 @@ namespace TypeIT.ViewModels
         public List<UserModel> Users { get; set; }
         public ICommand ExitCommand { get; set; }
 
-
         public ChangeUserViewModel(NavigationStore navigationStore)
         {
             //Creating a new user model
@@ -44,17 +43,16 @@ namespace TypeIT.ViewModels
         /// <summary>
         /// Loads the selected user in the user view
         /// </summary>
-        /// <param name="userName"></param>
+        /// <param name="userName">The user's name to be loaded</param>
         protected void loadSelectedUser(string userName)
         {
+            //Create a new UserModel
             UserModel user = new UserModel(userName, true);
 
             //Setting the current user to the selected one
             currentUser.CurrentUser = user;
 
-            //Setting the default theme
-            string currentTheme = Application.Current.Resources.MergedDictionaries[0].Source.ToString();
-
+            //Setting the default theme from the user's .TpyeIT
             Application.Current.Resources.MergedDictionaries.Clear();
             Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("Resources/" + user.Theme + "Theme.xaml", UriKind.Relative) });
             Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("Resources/StyleResource.xaml", UriKind.Relative) });
@@ -65,7 +63,7 @@ namespace TypeIT.ViewModels
 
 
         /// <summary>
-        /// Loads all of the users in the LogIn page.
+        /// Loads all of the users in the LogIn page
         /// </summary>
         protected void loadUsers()
         {
@@ -81,7 +79,8 @@ namespace TypeIT.ViewModels
         }
 
         /// <summary>
-        /// Quitting the application 
+        /// Opens a dialog box
+        /// If yes is clicked the application quits
         /// </summary>
         protected void ClickedExit()
         {

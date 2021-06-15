@@ -72,7 +72,9 @@ namespace TypeIT.ViewModels
         }
 
         /// <summary>
-        /// Changing the theme of the application. Can choose between Dark mode and Light mode. 
+        /// Changing the theme of the application
+        /// Switches between Light and Dark theme
+        /// TODO: update the user's .TypeIT with the preferred theme
         /// </summary>
         private void ClickedChangeTheme()
         {

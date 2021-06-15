@@ -23,16 +23,35 @@ namespace TypeIT.ViewModels
 
         public UserStore currentUser { get; set; }
 
+        /// <summary>
+        /// Contains the navigation ICommands to different views
+        /// </summary>
+        /// <param name="navigationStore">Stores the current view</param>
+        /// <param name="userStore">Stores the current view</param>
         public DashboardViewModel(NavigationStore navigationStore, UserStore userStore)
         {
+            //Navigating to About view
             NavigateAboutCommand = new NavigateCommand<AboutViewModel>(navigationStore, () => new AboutViewModel(navigationStore, userStore));
+
+            //Navigating to Settings view
             NavigateSettingsCommand = new NavigateCommand<SettingsViewModel>(navigationStore, () => new SettingsViewModel(navigationStore, userStore));
+
+            //Navigate to Documents view
             NavigateDocumentsCommand = new NavigateCommand<DocumentsViewModel>(navigationStore, () => new DocumentsViewModel(navigationStore, userStore));
+
+            //Naviagte to Statistics view
             NavigateStatisticsCommand = new NavigateCommand<StatisticsViewModel>(navigationStore, () => new StatisticsViewModel(navigationStore, userStore));
+
+            //Navigate to Typing view
             NavigateTypingCommand = new NavigateCommand<TypingViewModel>(navigationStore, () => new TypingViewModel(navigationStore, userStore));
+
+            //Navigate to Achievements view
             NavigateAchievementsCommand = new NavigateCommand<AchievementsViewModel>(navigationStore, () => new AchievementsViewModel(navigationStore, userStore));
+
+            //Command when exit button is clicked
             ExitCommand = new DelegateCommand(ClickedExit);
 
+            //Setting the current user to the parameter
             currentUser = userStore;
         }
 
