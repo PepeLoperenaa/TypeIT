@@ -8,9 +8,9 @@ namespace TypeIT.Utilities.Enums
 {
         public enum DailyRecords
         {
-            Date = 0,
-            WPM = 1,
-            Average = 2,
-            Accuracy = 3
+            Date,
+            WPM,
+            Average,
+            Accuracy
         }
 }

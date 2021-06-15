@@ -8,6 +8,6 @@ namespace TypeIT.Utilities.Enums
 {
         public enum Settings
         {
-            Theme = 1 //1 is light mode 2 is dark mode ? 
+            Theme
         }
     }

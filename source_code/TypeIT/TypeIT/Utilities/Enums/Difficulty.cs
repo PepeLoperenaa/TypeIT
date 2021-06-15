@@ -8,9 +8,9 @@ namespace TypeIT.Utilities
 {
     public enum Difficulty
     {
-        Easy = 0, 
-        Medium = 1,
-        Hard = 2,
-        Extreme = 3
+        Easy,
+        Medium,
+        Hard,
+        Extreme
     }
 }
