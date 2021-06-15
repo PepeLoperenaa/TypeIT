@@ -1,11 +1,14 @@
-﻿using System;
+﻿using Prism.Commands;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using TypeIT.Commands;
+using TypeIT.FileTypes;
 using TypeIT.Stores;
+using TypeIT.Utilities;
 
 namespace TypeIT.ViewModels
 {
@@ -22,11 +25,39 @@ namespace TypeIT.ViewModels
         {
             NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore, userStore));
             currentUser = userStore;
-            //TODO
-            //ChangeGameModeToCasual
-            //ChangeGameModeToNormal
-            //ChangeGameModeToHard
-            //ChangeGameModeToExtreme
+
+            ChangeGameModeToCasual = new DelegateCommand(setToCasual);
+            ChangeGameModeToNormal = new DelegateCommand(setToNormal);
+            ChangeGameModeToHard = new DelegateCommand(setToHard);
+            ChangeGameModeToExtreme = new DelegateCommand(setToExtreme);
+        }
+
+        private void setToCasual()
+        {
+            XmlHandler.updateSettings(currentUser.CurrentUser.Name, "GameMode", "Casual");
+            currentUser.CurrentUser.GameMode = Difficulty.Easy;
+            NavigateHomeCommand.Execute(null);
+        }
+
+        private void setToNormal()
+        {
+            XmlHandler.updateSettings(currentUser.CurrentUser.Name, "GameMode", "Normal");
+            currentUser.CurrentUser.GameMode = Difficulty.Medium;
+            NavigateHomeCommand.Execute(null);
+        }
+
+        private void setToHard()
+        {
+            XmlHandler.updateSettings(currentUser.CurrentUser.Name, "GameMode", "Hard");
+            currentUser.CurrentUser.GameMode = Difficulty.Hard;
+            NavigateHomeCommand.Execute(null);
+        }
+
+        private void setToExtreme()
+        {
+            XmlHandler.updateSettings(currentUser.CurrentUser.Name, "GameMode", "Extreme");
+            currentUser.CurrentUser.GameMode = Difficulty.Extreme;
+            NavigateHomeCommand.Execute(null);
         }
     }
 }
