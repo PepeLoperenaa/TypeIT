@@ -186,6 +186,7 @@ namespace TypeIT.Models
                 handler(this, new PropertyChangedEventArgs(p));
             }
         }
+
         public int CalculateErrorSpace(string word)
         {
             int minSpace = 5;

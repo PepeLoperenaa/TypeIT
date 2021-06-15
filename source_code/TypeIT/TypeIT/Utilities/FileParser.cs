@@ -8,11 +8,22 @@ namespace TypeIT.Utilities
 {
     class FileParser
     {
+        /// <summary>
+        /// Creating a new document from the users input.
+        /// </summary>
+        /// <param name="FileLocation"></param>
+        /// <param name="PageNum"></param>
+        /// <param name="Text"></param>
         private void CreateDocument(string FileLocation, int PageNum, string Text)
         {
             System.IO.File.WriteAllText(FileLocation + PageNum + ".txt", Text);
         }
 
+        /// <summary>
+        /// Opening the document that the user had added.
+        /// </summary>
+        /// <param name="Location"></param>
+        /// <returns></returns>
         private string OpenDocument(string Location)
         {
             string contents;
@@ -25,11 +36,21 @@ namespace TypeIT.Utilities
             return contents;
         }
 
+        /// <summary>
+        /// Getting the file extension of the Users document. 
+        /// </summary>
+        /// <param name="FilePath"></param>
+        /// <returns></returns>
         private string GetFileExtension(string FilePath)
         {
             return Path.GetExtension(FilePath);
         }
 
+        /// <summary>
+        /// Parsing the users document depening on what type of document it is. 
+        /// </summary>
+        /// <param name="FilePath"></param>
+        /// <param name="Title"></param>
         public void ParseFile(string FilePath, string Title)
         {
             string dir = "../../Documents/" + Title + "/";
@@ -49,6 +70,12 @@ namespace TypeIT.Utilities
                     throw new Exception("That file type is not supported.");
             }
         }
+
+        /// <summary>
+        /// Removing the special characters from the text that has being parsed. 
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
         private static string RemoveSpecialCharacters(string str)
         {
             // replace characters with counter-parts on keyboard
@@ -63,6 +90,11 @@ namespace TypeIT.Utilities
             return str;
         }
 
+        /// <summary>
+        /// parsing PDF files.
+        /// </summary>
+        /// <param name="FilePath"></param>
+        /// <param name="StoragePath"></param>
         public void ParsePDF(string FilePath, string StoragePath)
         {
             PdfDocument pdf = PdfDocument.FromFile(FilePath);
@@ -82,6 +114,11 @@ namespace TypeIT.Utilities
             }
         }
 
+        /// <summary>
+        /// Parsing TXT files
+        /// </summary>
+        /// <param name="FilePath"></param>
+        /// <param name="StoragePath"></param>
         public void ParseTXT(string FilePath, string StoragePath)
         {
             string Text = OpenDocument(FilePath);
@@ -94,6 +131,11 @@ namespace TypeIT.Utilities
             CreateDocument(StoragePath, 0, RemoveSpecialCharacters(Text));
         }
 
+        /// <summary>
+        /// Parsing Word document files
+        /// </summary>
+        /// <param name="FilePath"></param>
+        /// <param name="StoragePath"></param>
         public void ParseDOCX(string FilePath, string StoragePath)
         {
             string Text = OpenDocument(FilePath);
@@ -109,7 +151,7 @@ namespace TypeIT.Utilities
                 // gets the string that contains whole document content as text
                 string text = document.GetText();
 
-                // cleanse the file of its sins
+                // cleanse the file of the unnecessary charactest
                 RemoveSpecialCharacters(text);
 
                 // create a new text file and write specified string in it

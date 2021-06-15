@@ -36,6 +36,10 @@ namespace TypeIT.ViewModels
             currentUser = userStore;
         }
 
+
+        /// <summary>
+        /// Quitting the application 
+        /// </summary>
         private void ClickedExit()
         {
             //Custom messagebox

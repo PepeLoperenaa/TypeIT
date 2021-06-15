@@ -56,8 +56,8 @@
                                            Height="20"
                                            Margin="0,0,6,0"/>
                                         <StackPanel Orientation="Vertical">
-                                            <TextBlock Style="{StaticResource AchievementTitle}" Text="{Binding Title}"/>
-                                            <TextBlock Style="{StaticResource AchievementDescription}" Text="{Binding Desc}"/>
+                                            <TextBlock Style="{StaticResource AchievementAndBookTitle}" Text="{Binding Title}"/>
+                                            <TextBlock Style="{StaticResource AchievementAndBookDescription}" Text="{Binding Desc}"/>
                                         </StackPanel>
                                     </StackPanel>
                                 </Border>
@@ -83,8 +83,8 @@
                                            Height="20"
                                            Margin="0,0,6,0"/>
                                         <StackPanel Orientation="Vertical">
-                                            <TextBlock Style="{StaticResource AchievementTitle}" Text="{Binding Title}"/>
-                                            <TextBlock Style="{StaticResource AchievementDescription}" Text="{Binding Desc}"/>
+                                            <TextBlock Style="{StaticResource AchievementAndBookTitle}" Text="{Binding Title}"/>
+                                            <TextBlock Style="{StaticResource AchievementAndBookDescription}" Text="{Binding Desc}"/>
                                         </StackPanel>
                                         <Image Source="../Resources/Images/lockedAchievementsIcon.png" 
                                         VerticalAlignment="Bottom" 
@@ -95,7 +95,7 @@
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                         <!--The ItemsControl is used to specify the ItemsPanelTemplate which then allows for the panel
-                    to be styled from left to right-->
+                            to be styled from left to right-->
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapPanel Orientation="Horizontal"/>

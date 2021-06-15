@@ -27,6 +27,9 @@ namespace TypeIT.ViewModels
            //Current user
            currentUser = userStore;
         }
+        /// <summary>
+        /// Open File dialog so that a document can be chosen. 
+        /// </summary>
         private void ClickedUploadDocument()
         {
             //Custom messagebox
