@@ -46,7 +46,7 @@
                     Width="125" Style="{DynamicResource ImageButton}"
                     Command="{Binding NavigateChangeGameModeCommand}">
                 <StackPanel Width="120" Orientation="Horizontal">
-                    <Image Source="../Resources/Images/changeGameModeIcon.png" Height="35"  Margin="10,0,0,0"/>
+                    <Image Source="../Resources/Images/changeGameModeIcon.png" Height="45"  Margin="10,0,0,0"/>
                     <TextBlock Text="Change Game&#x0a;Mode"  Height="20" Margin="10,5,0,0" TextAlignment="Center"/>
                 </StackPanel>
             </Button>

@@ -26,9 +26,9 @@
 
             <Button Grid.Column="1" Grid.Row="0"
                     Style="{DynamicResource HeaderButton}"
-                    Command="{Binding NavigateHomeCommand}">
+                    Command="{Binding NavigateDocumentsCommand}">
                 <StackPanel>
-                    <Image Source="../Resources/Images/homeIcon.png" />
+                    <Image Source="../Resources/Images/backIcon.png" />
                 </StackPanel>
             </Button>
 

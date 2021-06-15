@@ -53,9 +53,8 @@
                                     <StackPanel Orientation="Horizontal">
                                         <Image Source="../Resources/Images/individualAchievemtsIcon.png" 
                                            VerticalAlignment="Top"
-                                           Height="20"
-                                           Margin="0,0,6,0"/>
-                                        <StackPanel Orientation="Vertical">
+                                           Height="20"/>
+                                        <StackPanel Orientation="Vertical" Margin="3,0,0,0">
                                             <TextBlock Style="{DynamicResource AchievementAndBookTitle}" Text="{Binding Title}"/>
                                             <TextBlock Style="{DynamicResource AchievementAndBookDescription}" Text="{Binding Desc}"/>
                                         </StackPanel>
@@ -80,16 +79,16 @@
                                     <StackPanel Orientation="Horizontal">
                                         <Image Source="../Resources/Images/individualAchievemtsIcon.png" 
                                            VerticalAlignment="Top"
-                                           Height="20"
-                                           Margin="0,0,6,0"/>
-                                        <StackPanel Orientation="Vertical">
+                                           Height="20"/>
+                                        <StackPanel Orientation="Vertical" Margin="3,0,0,0">
                                             <TextBlock Style="{DynamicResource AchievementAndBookTitle}" Text="{Binding Title}"/>
                                             <TextBlock Style="{DynamicResource AchievementAndBookDescription}" Text="{Binding Desc}"/>
                                         </StackPanel>
                                         <Image Source="../Resources/Images/lockedAchievementsIcon.png" 
                                         VerticalAlignment="Bottom" 
                                         HorizontalAlignment="Right"
-                                        Height="20"/>
+                                        Height="20"
+                                        Margin="-3,0,0,0"/>
                                     </StackPanel>
                                 </Border>
                             </DataTemplate>

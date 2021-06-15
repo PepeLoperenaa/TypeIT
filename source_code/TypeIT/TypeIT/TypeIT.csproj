@@ -11,6 +11,7 @@
     <None Remove="Resources\Images\aboutIcon.png" />
     <None Remove="Resources\Images\achievementsIcon.png" />
     <None Remove="Resources\Images\addNewDocumentIcon.png" />
+    <None Remove="Resources\Images\backIcon.png" />
     <None Remove="Resources\Images\casualIcon.png" />
     <None Remove="Resources\Images\changeGameModeIcon.png" />
     <None Remove="Resources\Images\changeThemeIcon.png" />
@@ -55,6 +56,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Images\addNewDocumentIcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\backIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Images\casualIcon.png">

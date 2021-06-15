@@ -30,9 +30,9 @@
 
             <Button Grid.Column="4" Grid.Row="0"
                     Style="{DynamicResource HeaderButton}"
-                    Command="{Binding NavigateHomeCommand}">
+                    Command="{Binding NavigateSettingsCommand}">
                 <StackPanel>
-                    <Image Source="../Resources/Images/homeIcon.png" />
+                    <Image Source="../Resources/Images/backIcon.png" />
                 </StackPanel>
             </Button>
 
