@@ -43,6 +43,9 @@ namespace TypeIT.ViewModels
            
             NavigateChangeGameModeCommand = new NavigateCommand<ChangeGameModeViewModel>(navigationStore, () => new ChangeGameModeViewModel(navigationStore, userStore));
 
+            //Delete User Command
+            DeleteAccountCommand = new DelegateCommand(ClickedDeleteAccount);
+
             //Current user
             currentUser = userStore;
 
@@ -92,6 +95,26 @@ namespace TypeIT.ViewModels
             Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("Resources/StyleResource.xaml", UriKind.Relative) });
 
             NavigateHomeCommand.Execute(null);
+        }
+
+        private void ClickedDeleteAccount()
+        {
+            string usersFolder = "./FileTypes/Users/";
+            string userToDelete = currentUser.CurrentUser.Name + ".TypeIT";
+
+            if (File.Exists(Path.Combine(usersFolder, userToDelete))) 
+            {
+                try
+                {
+                    File.Delete(Path.Combine(usersFolder, userToDelete));
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
+                
+            }
+
         }
 
     }
