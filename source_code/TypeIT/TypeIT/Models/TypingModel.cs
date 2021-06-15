@@ -187,6 +187,11 @@ namespace TypeIT.Models
             }
         }
 
+        /// <summary>
+        /// Calculates the number of letters which a user can input based on the length of the current word
+        /// </summary>
+        /// <param name="word"></param>
+        /// <returns>The space a user has for error on the current word</returns>
         public int CalculateErrorSpace(string word)
         {
             int minSpace = 5;
@@ -195,6 +200,11 @@ namespace TypeIT.Models
             return minSpace > calculatedSpace ? minSpace : calculatedSpace;
         }
 
+        /// <summary>
+        /// Calculates the user's typing speed 
+        /// </summary>
+        /// <param name="wordNumber"></param>
+        /// <returns>The average typing speed of a user</returns>
         public double CalculateTypingSpeed(int wordNumber)
         {
             double speed = Math.Round((wordNumber / (DateTime.Now - StartTime).TotalSeconds) * 60, 2);
@@ -205,16 +215,33 @@ namespace TypeIT.Models
             return speed;
         }
 
+        /// <summary>
+        /// Calculates the user's accuracy
+        /// </summary>
+        /// <param name="totalChars"></param>
+        /// <returns>The average accuracy of a user</returns>
         public double CalculateAccuracy(int totalChars)
         {
             return Math.Round(((Double)(totalChars - TotalMistakes) / totalChars) * 100, 2);
         }
 
+        /// <summary>
+        /// Retrieves the text from the current word being typed
+        /// </summary>
+        /// <param name="pageNumber"></param>
+        /// <returns>The text from the page</returns>
         public string GetTextFromPage(int pageNumber)
         {
             return Document.GetPageByPageNumber(pageNumber).Text;
         }
 
+        /// <summary>
+        /// Calculates the amount of time in seconds which a user has based on the users
+        /// average typing speed.
+        /// </summary>
+        /// <param name="wordCount"></param>
+        /// <param name="averageWpm"></param>
+        /// <returns>The time limit which the user has to complete the current pagae</returns>
         public static int CalculateMaxTimeInSeconds(double wordCount, double averageWpm)
         {
             if (averageWpm > 6)
@@ -227,6 +254,10 @@ namespace TypeIT.Models
             }
         }
 
+        /// <summary>
+        /// Determines if the document has another page after the current one
+        /// </summary>
+        /// <returns>Whether the next page exists or not</returns>
         public bool HasNextPage()
         {
             if (PageNumber < Document.GetNumberOfPages())
@@ -236,14 +267,15 @@ namespace TypeIT.Models
             return false;
         }
 
-        public void NextPage()
+        /// <summary>
+        /// Clears the data on the previous page and sets the text to that of the current one
+        /// </summary>
+        public void NavigatePage()
         {
 
             // indexes
             CurrentWordIndex = 0;
             Index = 0;
-
-            PageNumber++;
 
             // text blocks
             CharactersLeft = Text;
@@ -263,16 +295,38 @@ namespace TypeIT.Models
             TypingTimer.Stop();
         }
 
+        /// <summary>
+        /// Resets the current page values, and sets the text to that of the next page
+        /// </summary>
+        public void NextPage()
+        {
+            PageNumber++;
+
+            NavigatePage();
+        }
+
+        /// <summary>
+        /// Resets the current page values, and sets the text to that of the previous page
+        /// </summary>
         public void PreviousPage()
         {
             PageNumber--;
+
+            NavigatePage();
         }
 
+        /// <summary>
+        /// Gets the number of words on the current page
+        /// </summary>
+        /// <returns>Word count for current page</returns>
         public int GetNumberOfWords()
         {
             return Text.Split(' ').Length - 1;
         }
 
+        /// <summary>
+        /// Increments or decrements the time counter every game tick, depending on the selected difficulty
+        /// </summary>
         public void IncrementTime()
         {
             if (SelectedDifficulty == Difficulty.Easy || SelectedDifficulty == Difficulty.Medium)
@@ -285,6 +339,9 @@ namespace TypeIT.Models
             }
         }
 
+        /// <summary>
+        /// Handles the taxing on the time limit if a user makes a mistake in Extreme difficulty
+        /// </summary>
         public void HandleExtreme()
         {
             if (SelectedDifficulty == Difficulty.Extreme)
@@ -303,6 +360,9 @@ namespace TypeIT.Models
             }
         }
 
+        /// <summary>
+        /// Handles what happens per game tick based on the difficulty setting
+        /// </summary>
         private void OnCounterChange()
         {
             if (SelectedDifficulty == Difficulty.Hard || SelectedDifficulty == Difficulty.Extreme)
@@ -318,6 +378,12 @@ namespace TypeIT.Models
             TimeDisplay = TimeSpan.FromSeconds(TimeCounter).ToString("mm':'ss");
         }
 
+        /// <summary>
+        /// Checks if what the user has typed is correct and as exptected
+        /// </summary>
+        /// <param name="actual">What the user has typed</param>
+        /// <param name="expected">What the user was expected to type</param>
+        /// <returns>Whether the user has typed the correct input so far</returns>
         public bool IsActualExpected(string actual, string expected)
         {
             if (actual.Length >= 0 && actual.Length <= expected.Length)
@@ -330,6 +396,10 @@ namespace TypeIT.Models
             return false;
         }
 
+        /// <summary>
+        /// Updates the display timer at the start of the page
+        /// </summary>
+        /// <param name="averageWpm"></param>
         public void SetDisplayTime(int averageWpm)
         {
             if (SelectedDifficulty == Difficulty.Easy || SelectedDifficulty == Difficulty.Medium)
@@ -341,6 +411,13 @@ namespace TypeIT.Models
                 TimeCounter = TypingModel.CalculateMaxTimeInSeconds(GetNumberOfWords(), averageWpm);
             }
         }
+
+        /// <summary>
+        /// Gets the word at a specific index of the page
+        /// </summary>
+        /// <param name="text">The text to get the word from</param>
+        /// <param name="wordIndex">The index to get the word from</param>
+        /// <returns>The word at the specified index</returns>
         public string GetWord(string text, int wordIndex)
         {
             string[] words = text.Split(' ');
@@ -352,6 +429,12 @@ namespace TypeIT.Models
             return null;
         }
 
+        /// <summary>
+        /// Gets the index of the current user input at which a mistake was made
+        /// </summary>
+        /// <param name="word">The word the user was extected to type</param>
+        /// <param name="input">The string which the user inputted</param>
+        /// <returns>The index at which a mistake was made | returns - 1 if none</returns>
         public int GetMistakeIndex(string word, string input)
         {
             for (int i = 0; i < input.Length; i++)

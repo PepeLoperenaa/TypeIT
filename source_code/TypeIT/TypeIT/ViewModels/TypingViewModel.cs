@@ -20,6 +20,9 @@ namespace TypeIT.ViewModels
         public UserStore currentUser { get; set; }
 
         public string _inputString;
+        /// <summary>
+        /// Sets the inputString and calls the TypeWord Method whenever the inputString is updated
+        /// </summary>
         public string InputString
         {
             get
@@ -66,7 +69,7 @@ namespace TypeIT.ViewModels
         }
 
         /// <summary>
-        /// Timer when on the writting page
+        /// Timer to constantly calculate user accuracy and average speed throughout the page
         /// </summary>
         /// <param name="source"></param>
         /// <param name="e"></param>
@@ -84,7 +87,10 @@ namespace TypeIT.ViewModels
         }
 
         /// <summary>
-        /// See the amount of words you have written
+        /// This method is the main function for typing the words out.
+        /// 
+        /// It keeps track of where the user currently is in the document, as well as handling the number of mistakes a user has made
+        /// on the current page.
         /// </summary>
         /// <param name="word"></param>
         public void TypeWord(string word)
@@ -93,6 +99,8 @@ namespace TypeIT.ViewModels
 
             TypingModel.InputCount++;
 
+            // sets the current mistakes depending on the index at which they made the mistakes, as well as increments the 
+            // number of total mistakes the user has made
             if (TypingModel.GetMistakeIndex(word, InputString) >= 0)
             {
                 if (InputString.Trim() != word)
@@ -122,7 +130,7 @@ namespace TypeIT.ViewModels
         }
 
         /// <summary>
-        /// Update the text being displayed whilst writting
+        /// Updates the three text blocks used to display the different colors whilst typing.
         /// </summary>
         /// <param name="word"></param>
         private void UpdateDisplayText(string word)
@@ -147,7 +155,8 @@ namespace TypeIT.ViewModels
         }
 
         /// <summary>
-        /// Parsing the words written by the user
+        /// Determines if the user proceeds to the next word / page by checking if the word which the
+        /// user has typed is the word expected
         /// </summary>
         /// <param name="word"></param>
         private void ParseWord(string word)

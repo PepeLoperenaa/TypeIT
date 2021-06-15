@@ -3,7 +3,7 @@
   <Name>Steffen</Name>
   <Statistics>
     <HighestWPM />
-	  <AverageWPM>100</AverageWPM>
+    <AverageWPM>100</AverageWPM>
     <AverageAccuracy />
     <HoursSpent />
     <TypedTypedWordsTotalWords />
@@ -16,8 +16,8 @@
     </DailyRecords>
   </Statistics>
   <Settings>
-    <Theme />
-    <GameMode />
+    <Theme>Dark</Theme>
+    <GameMode>Hard</GameMode>
   </Settings>
   <Achievements>
     <Achievement>
