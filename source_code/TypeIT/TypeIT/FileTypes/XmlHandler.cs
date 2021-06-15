@@ -94,6 +94,34 @@ namespace TypeIT.FileTypes
             doc.Root.Element("Statistics").Element("DailyRecords").Element(element).Element(daily).Value = value;
         }
 
+        public static void updateSettings(string filePath, string tags, string mode)
+        {
+            XDocument doc = XDocument.Load(filePath);
+
+            doc.Root.Element("Settings").Element(tags).Value = mode;
+
+            doc.Save(filePath);
+
+        }
+
+        public static void updateAchiemvents(string filePath, string tags, string value)
+        {
+            XDocument doc = XDocument.Load(filePath);
+
+            doc.Root.Element("Achievements").Element("Achievement").Element(tags).Value = value;
+
+            doc.Save(filePath);
+        }
+
+        public static void updateDocuments(string filePath, string tag, string value)
+        {
+            XDocument doc = XDocument.Load(filePath);
+
+            doc.Root.Element("Documents").Element("Document").Element(tag).Value = value;
+
+            doc.Save(filePath);
+        }
+
         /// <summary>
         /// Adding a document into the users .TypeIT file when a new document is added.  
         /// </summary>
