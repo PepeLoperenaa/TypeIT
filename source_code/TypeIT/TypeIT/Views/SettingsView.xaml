@@ -35,7 +35,7 @@
                 </StackPanel>
             </Button>
             <Button Grid.Column="1" Grid.Row="1" Style="{DynamicResource ImageButton}"
-                    Command="{Binding NavigateChangeUserCommand}">
+                    Command="{Binding ChangeUserCommand}">
                 <StackPanel>
                     <Image Source="../Resources/Images/changeUserIcon.png" Height="35" Margin="0,5,0,0"/>
                     <TextBlock Text="Change user" Height="15" Margin="0,2,0,0" TextAlignment="Center"/>

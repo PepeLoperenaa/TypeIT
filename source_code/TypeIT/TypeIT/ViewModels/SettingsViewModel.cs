@@ -18,35 +18,34 @@ namespace TypeIT.ViewModels
     {
         public ICommand NavigateHomeCommand { get; }
         public ICommand NavigateSettingsCommand { get; }
-        public ICommand NavigateChangeUserCommand { get; set; }
+        public ICommand NavigateChangeUserCommandForFiveUsers { get; set; }
+        public ICommand NavigateChangeUserCommandForSixUsers { get; set; }
         public ICommand NavigateChangeGameModeCommand { get; set; }
         public ICommand ResetStatisticsCommand { get; set; }
         public ICommand ChangeThemeCommand { get; set; }
         public ICommand DeleteAccountCommand { get; set; }
         public ICommand ExitCommand { get; set; }
-        
+        public ICommand ChangeUserCommand { get; set; }
+
         public string currentTheme { get; set; }
         public UserStore currentUser { get; set; }
 
         public SettingsViewModel(NavigationStore navigationStore, UserStore userStore)
         {
-            string[] files = Directory.GetFiles("../../../FileTypes/Users");
 
-            if (files.Length < 6)
-            {
-                NavigateChangeUserCommand = new NavigateCommand<ChangeUserViewModelWithOneToFiveUsers>(navigationStore, () => new ChangeUserViewModelWithOneToFiveUsers(navigationStore));
-            }
-            else
-            {
-                NavigateChangeUserCommand = new NavigateCommand<ChangeUserViewModelWithSixUsers>(navigationStore, () => new ChangeUserViewModelWithSixUsers(navigationStore));
-            }
+
             //Navigation comands
             NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore, userStore));
+            NavigateChangeUserCommandForFiveUsers = new NavigateCommand<ChangeUserViewModelWithOneToFiveUsers>(navigationStore, () => new ChangeUserViewModelWithOneToFiveUsers(navigationStore));
+            NavigateChangeUserCommandForSixUsers = new NavigateCommand<ChangeUserViewModelWithSixUsers>(navigationStore, () => new ChangeUserViewModelWithSixUsers(navigationStore));
             NavigateChangeGameModeCommand = new NavigateCommand<ChangeGameModeViewModel>(navigationStore, () => new ChangeGameModeViewModel(navigationStore, userStore));
             NavigateSettingsCommand = new NavigateCommand<SettingsViewModel>(navigationStore, () => new SettingsViewModel(navigationStore, userStore));
 
             //Delete User Command
             DeleteAccountCommand = new DelegateCommand(ClickedDeleteAccount);
+
+            //Change User Command
+            ChangeUserCommand = new DelegateCommand(ClickedChangeUser);
 
             //Current user
             currentUser = userStore;
@@ -126,7 +125,8 @@ namespace TypeIT.ViewModels
                 if (File.Exists(Path.Combine(usersFolder, userToDelete)))
                 {
                     File.Delete(Path.Combine(usersFolder, userToDelete));
-                    NavigateChangeUserCommand.Execute(null);
+                    NavigateSettingsCommand.Execute(null);
+                    ChangeUserCommand.Execute(null);
                 }
             }
         }
@@ -148,6 +148,24 @@ namespace TypeIT.ViewModels
                 XmlHandler.ClearUserStatistics(currentUser.CurrentUser.Name);
             }
 
+        }
+
+        /// <summary>
+        /// Changing the current user
+        /// Directs you to separate pages based upon the number of current users
+        /// </summary>
+        private void ClickedChangeUser()
+        {
+            string[] files = Directory.GetFiles("../../../FileTypes/Users");
+
+            if (files.Length < 6)
+            {
+                NavigateChangeUserCommandForFiveUsers.Execute(null);
+            }
+            else
+            {
+                NavigateChangeUserCommandForSixUsers.Execute(null);
+            }
         }
     }
 }

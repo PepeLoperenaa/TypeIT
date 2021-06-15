@@ -37,9 +37,9 @@
 
             <Grid Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.1*"/>
-                    <ColumnDefinition Width="0.8*"/>
-                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="0.05*"/>
+                    <ColumnDefinition Width="0.9*"/>
+                    <ColumnDefinition Width="0.05*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="5"/>
@@ -49,7 +49,7 @@
 
                 <ItemsControl ItemsSource="{Binding Users}" 
                               Grid.Column="1" 
-                              Grid.Row="1" Margin="10">
+                              Grid.Row="1">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <Button Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:ChangeUserViewWithSixUsers}}, Path=DataContext.SelectUser}" 
