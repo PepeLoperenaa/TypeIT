@@ -84,6 +84,14 @@ namespace TypeIT.FileTypes
         {
             XDocument doc = XDocument.Load($"../../../FileTypes/Users/{userName}.TypeIT");
 
+            doc.Root.Element("Statistics").Element(type).Value = value;
+        }
+
+        public static void UpdateDailyRecords(string userName, string element, string daily , string value)
+        {
+            XDocument doc = XDocument.Load($"../../../FileTypes/Users/{userName}.TypeIT");
+
+            doc.Root.Element("Statistics").Element("DailyRecords").Element(element).Element(daily).Value = value;
         }
 
         /// <summary>
