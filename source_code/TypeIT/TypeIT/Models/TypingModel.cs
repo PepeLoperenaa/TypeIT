@@ -28,13 +28,13 @@ namespace TypeIT.Models
 
         //Binded values
         private Timer _typingTimer;
-        private double _averageAccuracy;
+        private string _averageAccuracy;
         private string _textCorrect;
         private string _textWrong;
         private string _textLeft;
         private string _currentWord;
         private string _timeDisplay;
-        private int _averageTypingSpeed;
+        private string _averageTypingSpeed;
         private int _errorSpace;
         private int _pageNumber;
         private int _timeCounter;
@@ -49,7 +49,6 @@ namespace TypeIT.Models
                 _totalMistakes = value;
             }
         }
-
         public string TimeDisplay
         {
             get => _timeDisplay;
@@ -59,7 +58,6 @@ namespace TypeIT.Models
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TimeDisplay)));
             }
         }
-
         public int TimeCounter
         {
             get => _timeCounter;
@@ -72,7 +70,6 @@ namespace TypeIT.Models
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TimeCounter)));
             }
         }
-
         public int PageNumber
         {
             get => _pageNumber;
@@ -82,7 +79,6 @@ namespace TypeIT.Models
                 Text = GetTextFromPage(PageNumber);
             }
         }
-
         public string TextCorrect
         {
             get => _textCorrect;
@@ -92,7 +88,6 @@ namespace TypeIT.Models
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TextCorrect)));
             }
         }
-
         public string TextWrong
         {
             get => _textWrong;
@@ -102,7 +97,6 @@ namespace TypeIT.Models
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TextWrong)));
             }
         }
-
         public string CharactersLeft
         {
             get => _textLeft;
@@ -112,7 +106,6 @@ namespace TypeIT.Models
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CharactersLeft)));
             }
         }
-
         public int ErrorSpace
         {
             get => _errorSpace;
@@ -122,7 +115,6 @@ namespace TypeIT.Models
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ErrorSpace)));
             }
         }
-
         public Timer TypingTimer
         {
             get => _typingTimer;
@@ -131,7 +123,6 @@ namespace TypeIT.Models
                 _typingTimer = value;
             }
         }
-
         public string CurrentWord
         {
             get => _currentWord;
@@ -141,8 +132,7 @@ namespace TypeIT.Models
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CurrentWord)));
             }
         }
-
-        public int AverageTypingSpeed
+        public string AverageTypingSpeed
         {
             get => _averageTypingSpeed;
             set
@@ -151,8 +141,7 @@ namespace TypeIT.Models
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(AverageTypingSpeed)));
             }
         }
-
-        public double AverageAccuracy
+        public string AverageAccuracy
         {
             get => _averageAccuracy;
             set
@@ -161,7 +150,6 @@ namespace TypeIT.Models
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(AverageAccuracy)));
             }
         }
-
         public TypingModel(string document)
         {
             Document = new DocumentModel(document);
@@ -169,8 +157,6 @@ namespace TypeIT.Models
             CurrentMistakes = 0;
             HighestSpeed = 0;
             TotalMistakes = 0;
-            AverageAccuracy = 0;
-            AverageTypingSpeed = 0;
             CurrentWordIndex = 0;
             ErrorSpace = 5;
             Text = GetTextFromPage(PageNumber);
@@ -287,12 +273,31 @@ namespace TypeIT.Models
             TotalMistakes = 0;
 
             // stat trackers
-            AverageAccuracy = 0;
-            AverageTypingSpeed = 0;
+            DisplayAverages();
             HighestSpeed = 0;
 
             // time trackers
             TypingTimer.Stop();
+        }
+
+        public void DisplayAverages()
+        {
+            if (SelectedDifficulty == Difficulty.Easy)
+            {
+                AverageAccuracy = "N/A";
+                AverageTypingSpeed = "N/A";
+            }
+            else
+            {
+                AverageAccuracy = CalculateAccuracy(InputCount).ToString();
+
+                AverageTypingSpeed = ((int)CalculateTypingSpeed(CurrentWordIndex)).ToString();
+
+                if (Double.Parse(AverageAccuracy) < 0)
+                {
+                    AverageAccuracy = "0";
+                }
+            }
         }
 
         /// <summary>

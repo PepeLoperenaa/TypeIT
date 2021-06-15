@@ -63,6 +63,8 @@ namespace TypeIT.ViewModels
             // set the in itial displayed time
             TypingModel.SetDisplayTime(currentUser.CurrentUser.Statistics.AverageWPM);
 
+            TypingModel.DisplayAverages();
+
             // configure timer
             TypingModel.TypingTimer.Elapsed += OnTimedEvent;
             TypingModel.TypingTimer.Interval = 1000;
@@ -75,15 +77,9 @@ namespace TypeIT.ViewModels
         /// <param name="e"></param>
         private void OnTimedEvent(Object source, ElapsedEventArgs e)
         {
-            TypingModel.AverageAccuracy = TypingModel.CalculateAccuracy(TypingModel.InputCount);
-            if (TypingModel.AverageAccuracy < 0)
-            {
-                TypingModel.AverageAccuracy = 0;
-            }
+            TypingModel.DisplayAverages();
 
             TypingModel.IncrementTime();
-
-            TypingModel.AverageTypingSpeed = (int) TypingModel.CalculateTypingSpeed(TypingModel.CurrentWordIndex);
         }
 
         /// <summary>
