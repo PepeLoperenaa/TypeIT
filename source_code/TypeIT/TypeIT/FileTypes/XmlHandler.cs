@@ -35,7 +35,6 @@ namespace TypeIT.FileTypes
                                        new XElement("Documents")));
 
             doc.Save("../../../FileTypes/Users/" + name + ".TypeIT");
-            //when we save in the current directory, it will save the data in the debug folder.
         }
 
         public static List<string> getElementsFromTags(string filePath, string tag)
@@ -79,6 +78,12 @@ namespace TypeIT.FileTypes
             doc.Root.Element("Documents").Element("Document").Element("DocumentAccuracy").Value = "Example";
 
             doc.Save(filePath);
+        }
+
+        public static void UpdateStatistics(string userName, string type, string value)
+        {
+            XDocument doc = XDocument.Load($"../../../FileTypes/Users/{userName}.TypeIT");
+
         }
 
         /// <summary>
