@@ -2,22 +2,16 @@
 <UserProfile>
   <Name>Costa</Name>
   <Statistics>
-    <HighestWPM />
-    <AverageWPM />
-    <AverageAccuracy />
-    <HoursSpent />
-    <TypedTypedWordsTotalWords />
-    <DailyRecords>
-      <Day>
-        <Date />
-        <WPM />
-        <Average />
-      </Day>
-    </DailyRecords>
+    <HighestWPM></HighestWPM>
+    <AverageWPM></AverageWPM>
+    <AverageAccuracy></AverageAccuracy>
+    <HoursSpent></HoursSpent>
+    <TypedTypedWordsTotalWords></TypedTypedWordsTotalWords>
+    <DailyRecords></DailyRecords>
   </Statistics>
   <Settings>
-    <Theme>Dark</Theme>
-    <GameMode />
+    <Theme>Light</Theme>
+    <GameMode>Hard</GameMode>
   </Settings>
   <Achievements>
     <Achievement>

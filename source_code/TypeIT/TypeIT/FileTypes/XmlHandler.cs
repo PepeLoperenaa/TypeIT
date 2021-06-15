@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Windows;
+using System.Xml;
 using System.Xml.Linq;
 using TypeIT.Models;
 
@@ -176,6 +179,22 @@ namespace TypeIT.FileTypes
             document.Add(docAccuracy);
 
             doc.Element("documents").Add(document);
+        }
+
+        /// <summary>
+        /// Clears the statistics of the name provided
+        /// </summary>
+        /// <param name="userName"></param>
+        public static void ClearUserStatistics(string userName)
+        {
+            string filePath = $"../../../FileTypes/Users/{userName}.TypeIT";
+            XDocument doc = XDocument.Load(filePath);
+
+            foreach (XNode node in doc.Descendants("Statistics").DescendantNodes())
+            {
+                ((XElement)node).Value = "";
+            }
+            doc.Save(filePath);
         }
 
         // remove document from user

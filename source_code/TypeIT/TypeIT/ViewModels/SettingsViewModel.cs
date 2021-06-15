@@ -41,7 +41,6 @@ namespace TypeIT.ViewModels
             }
             //Navigation comands
             NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore, userStore));
-           
             NavigateChangeGameModeCommand = new NavigateCommand<ChangeGameModeViewModel>(navigationStore, () => new ChangeGameModeViewModel(navigationStore, userStore));
 
             //Delete User Command
@@ -50,9 +49,13 @@ namespace TypeIT.ViewModels
             //Current user
             currentUser = userStore;
 
-            //ResetStatisticsCommand
+            //Change Theme Command
             ChangeThemeCommand = new DelegateCommand(ClickedChangeTheme);
 
+            //Reset Statistics Command
+            ResetStatisticsCommand = new DelegateCommand(ClickedResetStatistics);
+
+            //Exit Command
             ExitCommand = new DelegateCommand(ClickedExit);
         }
 
@@ -104,7 +107,7 @@ namespace TypeIT.ViewModels
 
         /// <summary>
         /// Deleting the current user
-        /// Shows an alert asking if the user want to delete their account as it is irreversible
+        /// Shows an alert asking if the user wants to delete their account as it is irreversible
         /// </summary>
         private void ClickedDeleteAccount()
         {
@@ -125,10 +128,26 @@ namespace TypeIT.ViewModels
                     NavigateChangeUserCommand.Execute(null);
                 }
             }
-
-            
-
         }
 
+        /// <summary>
+        /// Resetting the current users statistics
+        /// Shows an alert asking if the usre wants reset their statistics as it is irreversible
+        /// </summary>
+        private void ClickedResetStatistics()
+        {
+            var res = Xceed.Wpf.Toolkit.MessageBox.Show(
+                "Are you sure you want to reset your statistics? This is irreversible!",
+                "Reset Statistics",
+                MessageBoxButton.YesNo
+            );
+
+            if ("Yes" == res.ToString())
+            {
+                // TODO implement wipe statisiics
+                XmlHandler.ClearUserStatistics(currentUser.CurrentUser.Name);
+            }
+
+        }
     }
 }
