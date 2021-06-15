@@ -102,16 +102,20 @@ namespace TypeIT.ViewModels
             NavigateHomeCommand.Execute(null);
         }
 
+        /// <summary>
+        /// Deleting the current user
+        /// Shows an alert asking if the user want to delete their account as it is irreversible
+        /// </summary>
         private void ClickedDeleteAccount()
         {
             string usersFolder = "../../../FileTypes/Users/";
             string userToDelete = currentUser.CurrentUser.Name + ".TypeIT";
 
-                        var res = Xceed.Wpf.Toolkit.MessageBox.Show(
-                           "Are you sure you want to delete your account this is irreversible",
-                           "Delete Account",
-                           MessageBoxButton.YesNo
-                       );
+            var res = Xceed.Wpf.Toolkit.MessageBox.Show(
+                "Are you sure you want to delete your account? This is irreversible!",
+                "Delete Account",
+                MessageBoxButton.YesNo
+            );
 
             if ("Yes" == res.ToString())
             {

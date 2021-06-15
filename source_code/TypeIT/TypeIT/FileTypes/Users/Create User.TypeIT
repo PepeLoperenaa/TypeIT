@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <UserProfile>
-  <Name>Costa</Name>
+  <Name>Create User</Name>
   <Statistics>
     <HighestWPM />
     <AverageWPM />
@@ -16,7 +16,7 @@
     </DailyRecords>
   </Statistics>
   <Settings>
-    <Theme>Dark</Theme>
+    <Theme />
     <GameMode />
   </Settings>
   <Achievements>
@@ -24,12 +24,5 @@
       <AchievementName />
     </Achievement>
   </Achievements>
-  <Documents>
-    <Document>
-      <DocumentName />
-      <TotalPageNumber />
-      <UserPageNumber />
-      <DocumentAccuracy />
-    </Document>
-  </Documents>
+  <Documents />
 </UserProfile>
