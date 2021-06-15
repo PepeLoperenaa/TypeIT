@@ -35,7 +35,6 @@ namespace TypeIT.FileTypes
                                        new XElement("Documents")));
 
             doc.Save("../../../FileTypes/Users/" + name + ".TypeIT");
-            //when we save in the current directory, it will save the data in the debug folder.
         }
 
         public static List<string> getElementsFromTags(string filePath, string tag)
@@ -77,6 +76,80 @@ namespace TypeIT.FileTypes
             doc.Root.Element("Documents").Element("Document").Element("TotalPageNumber").Value = "Example";
             doc.Root.Element("Documents").Element("Document").Element("UserPageNumber").Value = "Example";
             doc.Root.Element("Documents").Element("Document").Element("DocumentAccuracy").Value = "Example";
+
+            doc.Save(filePath);
+        }
+
+        /// <summary>
+        ///  Method to update specific elements from the update settings
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <param name="type"></param>
+        /// <param name="value"></param>
+        public static void UpdateStatistics(string userName, string type, string value)
+        {
+            XDocument doc = XDocument.Load($"../../../FileTypes/Users/{userName}.TypeIT");
+
+            doc.Root.Element("Statistics").Element(type).Value = value;
+        }
+
+        /// <summary>
+        /// Method to update the elements for daily records
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <param name="element"></param>
+        /// <param name="daily"></param>
+        /// <param name="value"></param>
+        public static void UpdateDailyRecords(string userName, string element, string daily , string value)
+        {
+            XDocument doc = XDocument.Load($"../../../FileTypes/Users/{userName}.TypeIT");
+
+            doc.Root.Element("Statistics").Element("DailyRecords").Element(element).Element(daily).Value = value;
+        }
+
+        /// <summary>
+        /// Method to update the elements from settings
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <param name="tags"></param>
+        /// <param name="mode"></param>
+
+        public static void updateSettings(string filePath, string tags, string mode)
+        {
+            XDocument doc = XDocument.Load(filePath);
+
+            doc.Root.Element("Settings").Element(tags).Value = mode;
+
+            doc.Save(filePath);
+
+        }
+
+        /// <summary>
+        /// method to update elements from achievements
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <param name="tags"></param>
+        /// <param name="value"></param>
+        public static void updateAchiemvents(string filePath, string tags, string value)
+        {
+            XDocument doc = XDocument.Load(filePath);
+
+            doc.Root.Element("Achievements").Element("Achievement").Element(tags).Value = value;
+
+            doc.Save(filePath);
+        }
+
+        /// <summary>
+        /// Method to update documents elements
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <param name="tag"></param>
+        /// <param name="value"></param>
+        public static void updateDocuments(string filePath, string tag, string value)
+        {
+            XDocument doc = XDocument.Load(filePath);
+
+            doc.Root.Element("Documents").Element("Document").Element(tag).Value = value;
 
             doc.Save(filePath);
         }

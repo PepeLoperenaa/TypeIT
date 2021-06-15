@@ -4,13 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TypeIT.Utilities
+namespace TypeIT.Utilities.Enums
 {
-    public enum Difficulty
-    {
-        Easy,
-        Medium,
-        Hard,
-        Extreme
+        public enum Settings
+        {
+            Theme
+        }
     }
-}
