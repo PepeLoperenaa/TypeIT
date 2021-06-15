@@ -22,6 +22,7 @@ namespace TypeIT.ViewModels
         {
             NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore, userStore));
             currentUser = userStore;
+            //TODO
             //ChangeGameModeToCasual
             //ChangeGameModeToNormal
             //ChangeGameModeToHard

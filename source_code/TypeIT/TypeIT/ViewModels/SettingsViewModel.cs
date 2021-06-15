@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using TypeIT.Commands;
+using TypeIT.FileTypes;
 using TypeIT.Stores;
 
 namespace TypeIT.ViewModels
@@ -75,7 +76,9 @@ namespace TypeIT.ViewModels
         }
 
         /// <summary>
-        /// Changing the theme of the application. Can choose between Dark mode and Light mode. 
+        /// Changing the theme of the application
+        /// Switches between Light and Dark theme
+        /// TODO: update the user's .TypeIT with the preferred theme
         /// </summary>
         private void ClickedChangeTheme()
         {
@@ -87,9 +90,11 @@ namespace TypeIT.ViewModels
             if (currentTheme == "Resources/LightTheme.xaml")
             {
                 Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("Resources/DarkTheme.xaml", UriKind.Relative) });
+                XmlHandler.updateSettings(currentUser.CurrentUser.Name, "Theme", "Dark");
             } else if (currentTheme == "Resources/DarkTheme.xaml")
             {
                 Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("Resources/LightTheme.xaml", UriKind.Relative) });
+                XmlHandler.updateSettings(currentUser.CurrentUser.Name, "Theme", "Light");
             }
 
             Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("Resources/StyleResource.xaml", UriKind.Relative) });

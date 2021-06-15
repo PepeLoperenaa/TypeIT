@@ -31,7 +31,7 @@ namespace TypeIT.ViewModels
         }
 
         /// <summary>
-        /// Loading the user achievements on the application
+        /// Loading the user achievements 
         /// </summary>
         private void loadUsersAchievements()
         {            
@@ -47,14 +47,15 @@ namespace TypeIT.ViewModels
         }
         
         /// <summary>
-        /// Load all of the achievements into the application.
+        /// Load all of the achievements into the application from the user's .TypeIT file
         /// </summary>
         private void loadAchievements()
         {
+            //Loading the achievements from .TypeIT
             List<string> achievementName = XmlHandler.getElementsFromTags("../../../FileTypes/TypeitFiles/achievements.TypeIT", "AchievementName");
             List<string> achievementDesc = XmlHandler.getElementsFromTags("../../../FileTypes/TypeitFiles/achievements.TypeIT", "Description");
 
-            //Adding the achievements to the field that is binded to the view
+            //Adding the achievements to the field that is binded to the view (Achievements)
             for (int i = 0; i < achievementName.Count; i++)
             {
                 AchievementModel achievementModel = new AchievementModel(achievementName[i], achievementDesc[i]);

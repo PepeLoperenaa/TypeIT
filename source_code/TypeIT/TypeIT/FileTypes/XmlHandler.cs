@@ -113,9 +113,10 @@ namespace TypeIT.FileTypes
         /// <param name="filePath"></param>
         /// <param name="tags"></param>
         /// <param name="mode"></param>
-
-        public static void updateSettings(string filePath, string tags, string mode)
+        public static void updateSettings(string userName, string tags, string mode)
         {
+            string filePath = $"../../../FileTypes/Users/{userName}.TypeIT";
+
             XDocument doc = XDocument.Load(filePath);
 
             doc.Root.Element("Settings").Element(tags).Value = mode;
