@@ -16,8 +16,8 @@
     </DailyRecords>
   </Statistics>
   <Settings>
-    <Theme />
-    <GameMode />
+    <Theme>Dark</Theme>
+    <GameMode></GameMode>
   </Settings>
   <Achievements>
     <Achievement>

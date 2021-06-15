@@ -16,11 +16,13 @@ namespace TypeIT.ViewModels
 
         public bool CanExecute(object parameter)
         {
+            //Not used
             throw new NotImplementedException();
         }
 
         public void Execute(object parameter)
         {
+            //Not used
             throw new NotImplementedException();
         }
 

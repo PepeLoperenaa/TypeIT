@@ -23,12 +23,17 @@ namespace TypeIT.Models
             Statistics = loadStatistics();
             Achievements = new List<string>();
             Documents = new List<DocumentModel>();
+            Theme = loadTheme();
 
             loadUsersAchievements();
             loadUserDocuments();
             loadStatistics();
         }
 
+        /// <summary>
+        /// Loads the user's unlocked achievements from his .TypeIT file
+        /// The readings are loaded into the Achievements List
+        /// </summary>
         private void loadUsersAchievements()
         {
             // Load unlocked achievements
@@ -39,44 +44,70 @@ namespace TypeIT.Models
             }            
         }
 
+        /// <summary>
+        /// Loads the user's docuements from his .TypeIT file
+        /// A Documentmodel object is created for each document
+        /// The objects are added to the Documents List
+        /// </summary>
         private void loadUserDocuments()
         {
+            //Reading the values from the .TpyeIT file
             List<string> ListDocumentName = XmlHandler.getElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "DocumentName");
             List<string> ListTotalPageNumber = XmlHandler.getElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "TotalPageNumber");
             List<string> ListUserPageNumber = XmlHandler.getElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "UserPageNumber");
             List<string> ListDocumentAccuracy = XmlHandler.getElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "DocumentAccuracy");
 
+            //Loop through each list
             for (int i = 0; i < ListDocumentName.Count; i++)
             {
+                //If the documentname is empty skip this entry
+                //Needed because the reader can be buggy
                 if (ListDocumentName[i] == "")
                     break;
 
+                //Converting strings to numbers
                 int pageNumber = Convert.ToInt32(ListUserPageNumber[i]);
                 double accuracy = Convert.ToDouble(ListDocumentAccuracy[i]);
 
+                //Create a new DocumentModel and add it to the Documents list
                 DocumentModel document = new DocumentModel(ListDocumentName[i], pageNumber, accuracy);
                 Documents.Add(document);
             }
         }
 
+        /// <summary>
+        /// Loads the user's statistics from his .TypeIT file
+        /// </summary>
+        /// <returns>Returns a StatisticsModel with the user's statistics</returns>
         private StatisticsModel loadStatistics()
         {
+            //Reading Highest WPM and converting to double
             string parameter = XmlHandler.getElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "HighestWPM").First();
             double HighestWPM = (parameter == "") ? 0 : Convert.ToDouble(parameter);
 
+            //Reading Average WPM and converting to int
             parameter = XmlHandler.getElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "AverageWPM").First();
             int AverageWPM = (parameter == "") ? 0 : Int32.Parse(parameter);
 
+            //Reading Average Accuracy and converting to double
             parameter = XmlHandler.getElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "AverageAccuracy").First();
             double AverageAccuracy = (parameter == "") ? 0 : Convert.ToDouble(parameter);
 
+            //Reading Hour Spent and converting to double
             parameter = XmlHandler.getElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "HoursSpent").First();
             double HoursSpent = (parameter == "") ? 0 : Convert.ToDouble(parameter);
 
+            //Reading Total words typed and converting to int
             parameter = XmlHandler.getElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "TypedTypedWordsTotalWords").First();
             int TypedTypedWordsTotalWords = (parameter == "") ? 0 : Convert.ToInt32(parameter);
 
+            //Returning a new statistics model based on the read values
             return new StatisticsModel(HighestWPM, AverageWPM, AverageAccuracy, HoursSpent, TypedTypedWordsTotalWords);
+        }
+
+        private string loadTheme()
+        {
+            return XmlHandler.getElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "Theme").First();
         }
     }
 }

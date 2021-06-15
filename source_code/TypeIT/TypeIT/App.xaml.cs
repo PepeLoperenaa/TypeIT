@@ -32,8 +32,7 @@ namespace TypeIT
             {
                 navigationStore.CurrentViewModel = new ChangeUserViewModelWithSixUsers(navigationStore);
             }
-
-            
+                        
             
             MainWindow = new MainWindow()
             {

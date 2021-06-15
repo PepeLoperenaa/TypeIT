@@ -48,6 +48,13 @@ namespace TypeIT.ViewModels
             //Setting the current user to the selected one
             currentUser.CurrentUser = user;
 
+            //Setting the default theme
+            string currentTheme = Application.Current.Resources.MergedDictionaries[0].Source.ToString();
+
+            Application.Current.Resources.MergedDictionaries.Clear();
+            Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("Resources/" + user.Theme + "Theme.xaml", UriKind.Relative) });
+            Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("Resources/StyleResource.xaml", UriKind.Relative) });
+
             //Navigate to dashboard
             NavigateHomeCommand.Execute(null);
         }
