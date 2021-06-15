@@ -99,21 +99,25 @@ namespace TypeIT.ViewModels
 
         private void ClickedDeleteAccount()
         {
-            string usersFolder = "./FileTypes/Users/";
+            string usersFolder = "../../../FileTypes/Users/";
             string userToDelete = currentUser.CurrentUser.Name + ".TypeIT";
 
-            if (File.Exists(Path.Combine(usersFolder, userToDelete))) 
+                        var res = Xceed.Wpf.Toolkit.MessageBox.Show(
+                           "Are you sure you want to delete your account this is irreversible",
+                           "Delete Account",
+                           MessageBoxButton.YesNo
+                       );
+
+            if ("Yes" == res.ToString())
             {
-                try
+                if (File.Exists(Path.Combine(usersFolder, userToDelete)))
                 {
                     File.Delete(Path.Combine(usersFolder, userToDelete));
+                    NavigateChangeUserCommand.Execute(null);
                 }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex);
-                }
-                
             }
+
+            
 
         }
 
