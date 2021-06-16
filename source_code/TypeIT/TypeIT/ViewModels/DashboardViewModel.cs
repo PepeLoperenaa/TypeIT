@@ -20,7 +20,7 @@ namespace TypeIT.ViewModels
         public ICommand NavigateStatisticsCommand { get; set; }
         public ICommand NavigateTypingCommand { get; set; }
         public ICommand NavigateAchievementsCommand { get; set; }
-
+        public ICommand SubmitDocumentCommand { get; set; }
         public UserStore currentUser { get; set; }
 
         /// <summary>
@@ -50,6 +50,7 @@ namespace TypeIT.ViewModels
 
             //Command when exit button is clicked
             ExitCommand = new DelegateCommand(ClickedExit);
+            SubmitDocumentCommand = new DelegateCommand(SuccessfulAddedFile);
 
             //Setting the current user to the parameter
             currentUser = userStore;
@@ -72,6 +73,15 @@ namespace TypeIT.ViewModels
             {
                 System.Windows.Application.Current.Shutdown();
             }
+        }
+
+        private void SuccessfulAddedFile()
+        {
+            Xceed.Wpf.Toolkit.MessageBox.Show(
+                        "Your document was sussessfully added",
+                        "Ok",
+                        MessageBoxButton.OK
+                );
         }
     }
 }
