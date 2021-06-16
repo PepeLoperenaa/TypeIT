@@ -3,6 +3,7 @@ using Syncfusion.DocIO.DLS;
 using System;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
 namespace TypeIT.Utilities
 {
@@ -53,18 +54,18 @@ namespace TypeIT.Utilities
         /// <param name="Title"></param>
         public void ParseFile(string FilePath, string Title)
         {
-            string dir = "../../Documents/" + Title + "/";
+            string dir = @"../../../Documents/" + Title + "/";
 
             switch (GetFileExtension(FilePath))
             {
                 case ".pdf":
-                    ParsePDF(FilePath, dir);
+                    new Task(() => ParsePDF(FilePath, dir)).Start();
                     break;
                 case ".txt":
-                    ParseTXT(FilePath, dir);
+                    new Task(() => ParseTXT(FilePath, dir)).Start();
                     break;
                 case ".docx":
-                    ParseDOCX(FilePath, dir);
+                    new Task(() => ParseDOCX(FilePath, dir)).Start();
                     break;
                 default:
                     throw new Exception("That file type is not supported.");
@@ -79,7 +80,8 @@ namespace TypeIT.Utilities
         private static string RemoveSpecialCharacters(string str)
         {
             // replace characters with counter-parts on keyboard
-            str = str.Replace('\u2018', '\'').Replace('\u2019', '\'').Replace('\u201c', '\"').Replace('\u201d', '\"').Replace("\u2026", "...").Replace("\r\n", " ").Replace('—', '-').Replace(@"\s+", " ");
+            str = str.Replace('\u2018', '\'').Replace('\u2019', '\'').Replace('\u201c', '\"').Replace('\u201d', '\"').
+                Replace("\u2026", "...").Replace("\r\n", " ").Replace('—', '-').Replace(@"\s+", " ");
             
             // replace multiple spaces with single ones
             str = Regex.Replace(str, @"\s+", " ");
@@ -138,7 +140,7 @@ namespace TypeIT.Utilities
         /// <param name="StoragePath"></param>
         public void ParseDOCX(string FilePath, string StoragePath)
         {
-            string Text = OpenDocument(FilePath);
+            string text;
 
             if (!Directory.Exists(StoragePath))
             {
@@ -146,18 +148,15 @@ namespace TypeIT.Utilities
             }
 
             // opens the Word template document
-            using (WordDocument document = new WordDocument(FilePath)) // template.docx does not exist here we should change this.
-            {
-                // gets the string that contains whole document content as text
-                string text = document.GetText();
+            using WordDocument document = new WordDocument(FilePath); // template.docx does not exist here we should change this.
+                                                                      // gets the string that contains whole document content as text
+            text = document.GetText();
 
-                // cleanse the file of the unnecessary charactest
-                RemoveSpecialCharacters(text);
+            // cleanse the file of the unnecessary charactest
+            RemoveSpecialCharacters(text);
 
-                // create a new text file and write specified string in it
-                File.WriteAllText("Result.txt", text);
-            }
-            System.Diagnostics.Process.Start("Result.txt"); // this is a test to see if we get the txt file.
+            // create a new text file and write specified string in it
+            File.WriteAllText("Result.txt", text);
         }
     }
 }
