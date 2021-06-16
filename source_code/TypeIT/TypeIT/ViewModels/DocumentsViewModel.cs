@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using TypeIT.Commands;
 using TypeIT.Stores;
+using TypeIT.Utilities;
 
 namespace TypeIT.ViewModels
 {
@@ -29,18 +30,25 @@ namespace TypeIT.ViewModels
         }
         /// <summary>
         /// Open File dialog so that a document can be chosen. 
+        /// TODO: Create File
         /// </summary>
         private void ClickedUploadDocument()
         {
             //Custom messagebox
             OpenFileDialog openFileDialog = new OpenFileDialog();
 
-            Nullable<bool> result = openFileDialog.ShowDialog();
-            //if (result == true)
-            //{
-            //    FileNameTextBox.Text = openFileDialog.FileName;
-            //    TextBlock1.Text = System.IO.File.ReadAllText(openFileDialog.FileName);
-            //}
+            if (openFileDialog.ShowDialog() == true)
+            {
+                string filePath = openFileDialog.FileName;
+                int posOfDot = filePath.LastIndexOf(".");
+                int posOfSlash = filePath.LastIndexOf("\\") + 1;
+
+                string fileName = filePath.Substring(posOfSlash, posOfDot - posOfSlash);
+
+                FileParser fileParser = new FileParser();
+                fileParser.ParseFile(filePath,fileName);
+
+            }
         }
     }
 }
