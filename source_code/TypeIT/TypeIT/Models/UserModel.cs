@@ -37,6 +37,8 @@ namespace TypeIT.Models
         /// </summary>
         private void loadUsersAchievements()
         {
+            Achievements.Clear();
+
             // Load unlocked achievements
             List<string> hallo = XmlHandler.getElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "AchievementName");
             foreach (string achievementName in hallo)
@@ -52,6 +54,8 @@ namespace TypeIT.Models
         /// </summary>
         public void loadUserDocuments()
         {
+            Documents.Clear();
+
             //Reading the values from the .TpyeIT file
             List<string> ListDocumentName = XmlHandler.getElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "DocumentName");
             List<string> ListTotalPageNumber = XmlHandler.getElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "TotalPageNumber");
@@ -67,11 +71,12 @@ namespace TypeIT.Models
                     break;
 
                 //Converting strings to numbers
-                int pageNumber = Convert.ToInt32(ListUserPageNumber[i]);
+                int totalPageNumber = Convert.ToInt32(ListTotalPageNumber[i]);
+                int userPageNumber = Convert.ToInt32(ListUserPageNumber[i]);
                 double accuracy = Convert.ToDouble(ListDocumentAccuracy[i]);
 
                 //Create a new DocumentModel and add it to the Documents list
-                DocumentModel document = new DocumentModel(ListDocumentName[i], pageNumber, accuracy);
+                DocumentModel document = new DocumentModel(ListDocumentName[i], totalPageNumber, userPageNumber, accuracy);
                 Documents.Add(document);
             }
         }

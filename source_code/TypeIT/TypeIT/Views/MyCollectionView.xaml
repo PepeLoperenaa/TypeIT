@@ -57,20 +57,19 @@
                         <ItemsControl ItemsSource="{Binding currentUser.CurrentUser.Documents}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Border Style="{DynamicResource BookBorder}">
-                                        
+                                    <Border Style="{DynamicResource BookBorder}" Cursor="Hand">
                                         <StackPanel Orientation="Horizontal">
                                             <Button Style="{DynamicResource DocumentTitleStyle}">
                                                 <StackPanel Orientation="Vertical">
                                                     <TextBlock Style="{DynamicResource AchievementAndBookTitle}" Text="{Binding Name}"/>
-                                                    <TextBlock Style="{DynamicResource AchievementAndBookDescription}" Text="{Binding UserPageNumber}"/>
+                                                    <TextBlock Style="{DynamicResource AchievementAndBookDescription}">
+                                                        <Run Text="{Binding UserPageNumber}"/>
+                                                        <Run Text="of"/>
+                                                        <Run Text="{Binding PageCount}"/>
+                                                    </TextBlock>
                                                 </StackPanel>
                                             </Button>
-                                            <Button Style="{DynamicResource DocumentTitleStyle}" 
-                                                    VerticalAlignment="Bottom" 
-                                                    HorizontalAlignment="Right"
-                                                    Margin="12,0,0,0"
-                                                    Height="20">
+                                            <Button Style="{DynamicResource DocumentDeleteStyle}">
                                                 <Image Source="../Resources/Images/deleteIcon.png" />
                                                 </Button>
                                         </StackPanel>
