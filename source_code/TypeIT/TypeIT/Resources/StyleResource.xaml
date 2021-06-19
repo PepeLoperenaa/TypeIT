@@ -103,8 +103,8 @@
         </Setter>
     </Style>
 
-    <!-- Achievement title -->
-    <Style x:Key="AchievementAndBookTitle" TargetType="TextBlock">
+
+    <Style x:Key="BookTitle" TargetType="TextBlock">
         <Setter Property="FontSize" Value="6"/>
         <Setter Property="Width" Value="110"/>
         <Setter Property="TextWrapping" Value="WrapWithOverflow"/>
@@ -113,13 +113,34 @@
         <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="TextWrapping" Value="WrapWithOverflow"/>
     </Style>
-    
-    <!-- Achievement description -->
-    <Style x:Key="AchievementAndBookDescription" TargetType="TextBlock">
+
+    <Style x:Key="BookDescription" TargetType="TextBlock">
         <Setter Property="Margin" Value="0,0,0,0"/>
         <Setter Property="Height" Value="30"/>
         <Setter Property="Width" Value="85"/>
         <Setter Property="Margin" Value="-15,0,0,0"/>
+        <Setter Property="FontSize" Value="5"/>
+        <Setter Property="FontFamily" Value="Fonts/Fragmentcore.otf#Fragment Core" />
+        <Setter Property="Foreground" Value="{DynamicResource TextBodyColor}"/>
+    </Style>
+
+    <!-- Achievement title -->
+    <Style x:Key="AchievementTitle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="6"/>
+        <Setter Property="Width" Value="80"/>
+        <Setter Property="TextWrapping" Value="WrapWithOverflow"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextHeaderColor}"/>
+        <Setter Property="FontFamily" Value="Fonts/Fragmentcore.otf#Fragment Core" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="TextWrapping" Value="WrapWithOverflow"/>
+    </Style>
+    
+    <!-- Achievement description -->
+    <Style x:Key="AchievementDescription" TargetType="TextBlock">
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Width" Value="80"/>
+        <Setter Property="TextWrapping" Value="WrapWithOverflow"/>
+        <Setter Property="Margin" Value="0,0,0,0"/>
         <Setter Property="FontSize" Value="5"/>
         <Setter Property="FontFamily" Value="Fonts/Fragmentcore.otf#Fragment Core" />
         <Setter Property="Foreground" Value="{DynamicResource TextBodyColor}"/>

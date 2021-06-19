@@ -99,11 +99,11 @@ namespace TypeIT.FileTypes
         /// <summary>
         /// Method to delete a document
         /// </summary>
-        /// <param name="userName"></param>
-        public static void DeleteDocument(string userName)
+        /// <param name="userName"></param>+
+        public static void DeleteDocument(string userName, string documentName)
         {
             XDocument doc = XDocument.Load($"../../../FileTypes/Users/{userName}.TypeIT");
-            doc.Root.Element("Documents").Element("Document").Remove();
+            doc.Root.Element("Documents").Element("Document").Element(documentName).Remove();
         }
 
         /// <summary>

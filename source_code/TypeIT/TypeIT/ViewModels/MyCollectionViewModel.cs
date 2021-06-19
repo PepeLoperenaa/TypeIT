@@ -7,23 +7,31 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using TypeIT.Commands;
+using TypeIT.FileTypes;
 using TypeIT.Stores;
 
 namespace TypeIT.ViewModels
 {
-    class MyCollectionViewModel : ViewModelBase
+    public class MyCollectionViewModel : ViewModelBase
     {
         public ICommand NavigateHomeCommand { get; }
         public ICommand NavigateDocumentsCommand { get; }
+        public ICommand DeleteBookCommand { get; set; }
         public UserStore currentUser { get; set; }
 
         public MyCollectionViewModel(NavigationStore navigationStore, UserStore userStore)
         {
-
-           NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore, userStore));
+            NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore, userStore));
             NavigateDocumentsCommand = new NavigateCommand<DocumentsViewModel>(navigationStore, () => new DocumentsViewModel(navigationStore, userStore));
             currentUser = userStore;
-
+            DeleteBookCommand = new DelegateCommand(ClickedDeleteBook);
         }
+
+        private void ClickedDeleteBook()
+        {
+            XmlHandler.DeleteDocument(currentUser.CurrentUser.Name, "Functional Design");
+        }
+
+
     }
 }
