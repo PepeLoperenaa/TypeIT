@@ -12,11 +12,13 @@ namespace TypeIT.Models
         public string Name { get; set; }
         public string Location { get; set; }
         public List<PageModel> Pages { get; set; }
+        public int PageCount { get; set; }
         public int UserPageNumber { get; set; }
         public double Accuracy { get; set; }
 
         public DocumentModel(string location)
         {
+            Name = location.Substring(location.LastIndexOf('/') + 1);
             Location = location;
             Pages = new List<PageModel>();
 
@@ -27,6 +29,7 @@ namespace TypeIT.Models
             }
 
             Pages = Pages.OrderBy(o => o.Number).ToList();
+            PageCount = GetNumberOfPages();
         }
 
         public DocumentModel(string name, int userPageNumber, double accuracy)
