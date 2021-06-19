@@ -40,6 +40,13 @@ namespace TypeIT.FileTypes
 
             doc.Save("../../../FileTypes/Users/" + name + ".TypeIT");
         }
+
+        /// <summary>
+        /// Getting the elements of the tags. 
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <param name="tag"></param>
+        /// <returns></returns>
         public static List<string> getElementsFromTags(string filePath, string tag)
         {
             List<string> listElements = new List<string>();
