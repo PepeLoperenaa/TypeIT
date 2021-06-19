@@ -50,7 +50,7 @@ namespace TypeIT.Models
         /// A Documentmodel object is created for each document
         /// The objects are added to the Documents List
         /// </summary>
-        private void loadUserDocuments()
+        public void loadUserDocuments()
         {
             //Reading the values from the .TpyeIT file
             List<string> ListDocumentName = XmlHandler.getElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "DocumentName");

@@ -53,6 +53,8 @@ namespace TypeIT.ViewModels
 
                 XmlHandler.AddingADocumentIntoUserXml(currentUser.CurrentUser.Name, document.Name, document.GetNumberOfPages(), document.UserPageNumber);
 
+                currentUser.CurrentUser.loadUserDocuments();
+
             }
         }
     }

@@ -19,9 +19,11 @@ namespace TypeIT.ViewModels
 
         public MyCollectionViewModel(NavigationStore navigationStore, UserStore userStore)
         {
+
            NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore, userStore));
             NavigateDocumentsCommand = new NavigateCommand<DocumentsViewModel>(navigationStore, () => new DocumentsViewModel(navigationStore, userStore));
-           currentUser = userStore;
+            currentUser = userStore;
+
         }
     }
 }
