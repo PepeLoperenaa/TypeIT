@@ -162,10 +162,13 @@ namespace TypeIT.FileTypes
         /// Adding a document into the users .TypeIT file when a new document is added.  
         /// </summary>
         /// <param name="userName"></param>
-        public static void AddingADocumentIntoUserXml(string userName)
+        public static void AddingADocumentIntoUserXml(string userName, string documentName, int documentNumberOfPages, int currentPage)
         {
-            XDocument doc = XDocument.Load($"../../../FileTypes/Users/{userName}.TypeIT"); 
-            doc.Element("Documents");
+
+            string filePath = $"../../../FileTypes/Users/{userName}.TypeIT";
+            XDocument doc = XDocument.Load(filePath);
+
+            XElement documents = doc.Root.Element("Documents");
 
             XElement document = new XElement("Document");
             XElement name = new XElement("DocumentName");
@@ -173,12 +176,19 @@ namespace TypeIT.FileTypes
             XElement userNumber = new XElement("UserPageNumber");
             XElement docAccuracy = new XElement("DocumentAccuracy");
 
+            name.Value = documentName;
+            numberTotal.Value = documentNumberOfPages.ToString();
+            userNumber.Value = currentPage.ToString();
+            docAccuracy.Value = "0";
+
             document.Add(name);
             document.Add(numberTotal);
             document.Add(userNumber);
             document.Add(docAccuracy);
 
-            doc.Element("documents").Add(document);
+            documents.Add(document);
+            doc.Save(filePath);
+
         }
 
         /// <summary>

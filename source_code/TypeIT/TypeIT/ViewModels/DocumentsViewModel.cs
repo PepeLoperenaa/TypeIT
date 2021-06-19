@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using TypeIT.Commands;
+using TypeIT.FileTypes;
+using TypeIT.Models;
 using TypeIT.Stores;
 using TypeIT.Utilities;
 
@@ -32,10 +34,11 @@ namespace TypeIT.ViewModels
         /// Open File dialog so that a document can be chosen. 
         /// TODO: Create File
         /// </summary>
-        private void ClickedUploadDocument()
+        private async void ClickedUploadDocument()
         {
             //Custom messagebox
             OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "PDF files (*.pdf)|*.pdf|Text files (*.txt)|*.txt";
 
             if (openFileDialog.ShowDialog() == true)
             {
@@ -46,7 +49,9 @@ namespace TypeIT.ViewModels
                 string fileName = filePath.Substring(posOfSlash, posOfDot - posOfSlash);
 
                 FileParser fileParser = new FileParser();
-                fileParser.ParseFile(filePath,fileName);
+                DocumentModel document = await fileParser.ParseFile(filePath,fileName);
+
+                XmlHandler.AddingADocumentIntoUserXml(currentUser.CurrentUser.Name, document.Name, document.GetNumberOfPages(), document.UserPageNumber);
 
             }
         }

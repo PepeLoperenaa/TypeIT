@@ -24,5 +24,12 @@
       <AchievementName />
     </Achievement>
   </Achievements>
-  <Documents />
+  <Documents>
+    <Document>
+      <DocumentName>Data Structures</DocumentName>
+      <TotalPageNumber>71</TotalPageNumber>
+      <UserPageNumber>0</UserPageNumber>
+      <DocumentAccuracy>0</DocumentAccuracy>
+    </Document>
+  </Documents>
 </UserProfile>
