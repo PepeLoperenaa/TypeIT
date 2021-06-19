@@ -1,10 +1,12 @@
 ﻿using Microsoft.Win32;
 using Prism.Commands;
+using Prism.Services.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using TypeIT.Commands;
 using TypeIT.FileTypes;
@@ -27,8 +29,8 @@ namespace TypeIT.ViewModels
            NavigateMyCollectionCommand = new NavigateCommand<MyCollectionViewModel>(navigationStore, () => new MyCollectionViewModel(navigationStore, userStore));
            UploadDocumentCommand = new DelegateCommand(ClickedUploadDocument);
 
-           //Current user
-           currentUser = userStore;
+            //Current user
+            currentUser = userStore;
         }
         /// <summary>
         /// Open File dialog so that a document can be chosen. 
@@ -53,7 +55,23 @@ namespace TypeIT.ViewModels
 
                 XmlHandler.AddingADocumentIntoUserXml(currentUser.CurrentUser.Name, document.Name, document.GetNumberOfPages(), document.UserPageNumber);
 
+                if(filePath != null)
+                {
+                    Xceed.Wpf.Toolkit.MessageBox.Show(
+                       "Your document was sussessfully added !",
+                       "Ok",
+                       MessageBoxButton.OK
+                    );
+                }else
+                {
+                    Xceed.Wpf.Toolkit.MessageBox.Show(
+                       "There was a problem with adding your document !",
+                       "Ok",
+                       MessageBoxButton.OK
+                    );
+                }
             }
         }
+
     }
 }
