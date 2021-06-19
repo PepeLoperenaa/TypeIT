@@ -378,4 +378,4 @@ FodyWeavers.xsd
 *.tlog
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudio,dotnetcore
-/source_code/TypeIT/TypeIT/Documents/Data Structures
+/source_code/TypeIT/TypeIT/Documents

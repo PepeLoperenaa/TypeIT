@@ -32,9 +32,10 @@ namespace TypeIT.Models
             PageCount = GetNumberOfPages();
         }
 
-        public DocumentModel(string name, int userPageNumber, double accuracy)
+        public DocumentModel(string name, int totalPageNumber, int userPageNumber, double accuracy)
         {
             Name = name;
+            PageCount = totalPageNumber;
             UserPageNumber = userPageNumber;
             Accuracy = accuracy;
         }
