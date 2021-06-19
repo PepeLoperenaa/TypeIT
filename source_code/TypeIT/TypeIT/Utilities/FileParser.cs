@@ -4,6 +4,7 @@ using System;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using TypeIT.Models;
 
 namespace TypeIT.Utilities
 {
@@ -52,24 +53,35 @@ namespace TypeIT.Utilities
         /// </summary>
         /// <param name="FilePath"></param>
         /// <param name="Title"></param>
-        public void ParseFile(string FilePath, string Title)
+        public async Task<DocumentModel> ParseFile(string FilePath, string Title)
         {
+            DocumentModel model;
+            Task t;
+
             string dir = @"../../../Documents/" + Title + "/";
+            string docDir = @"../../../Documents/" + Title;
 
             switch (GetFileExtension(FilePath))
             {
                 case ".pdf":
-                    new Task(() => ParsePDF(FilePath, dir)).Start();
+                    t = Task.Run(() => ParsePDF(FilePath, dir));
                     break;
                 case ".txt":
-                    new Task(() => ParseTXT(FilePath, dir)).Start();
-                    break;
-                case ".docx":
-                    new Task(() => ParseDOCX(FilePath, dir)).Start();
+                    t = Task.Run(() => ParseTXT(FilePath, dir));
                     break;
                 default:
                     throw new Exception("That file type is not supported.");
             }
+
+            model = await t.ContinueWith(antecendent => 
+            { 
+                model = new DocumentModel(docDir); 
+                return model; 
+            });
+
+            model.Name = Title;
+
+            return model;
         }
 
         /// <summary>
@@ -80,6 +92,7 @@ namespace TypeIT.Utilities
         private static string RemoveSpecialCharacters(string str)
         {
             // replace characters with counter-parts on keyboard
+            // Replacing them individually like this, since there are no inbuilt / online methods for autmatically replacing special characters for their asii counterparts
             str = str.Replace('\u2018', '\'').Replace('\u2019', '\'').Replace('\u201c', '\"').Replace('\u201d', '\"').
                 Replace("\u2026", "...").Replace("\r\n", " ").Replace('—', '-').Replace(@"\s+", " ");
             
@@ -95,9 +108,9 @@ namespace TypeIT.Utilities
         /// <summary>
         /// parsing PDF files.
         /// </summary>
-        /// <param name="FilePath"></param>
-        /// <param name="StoragePath"></param>
-        public void ParsePDF(string FilePath, string StoragePath)
+        /// <param name="FilePath">Direct Path to the file</param>
+        /// <param name="StoragePath">Direct Path to where the file should be stored</param>
+        public bool ParsePDF(string FilePath, string StoragePath)
         {
             PdfDocument pdf = PdfDocument.FromFile(FilePath);
 
@@ -114,6 +127,8 @@ namespace TypeIT.Utilities
                     CreateDocument(StoragePath, i, RemoveSpecialCharacters(Text));
                 }
             }
+
+            return true;
         }
 
         /// <summary>
@@ -121,7 +136,7 @@ namespace TypeIT.Utilities
         /// </summary>
         /// <param name="FilePath"></param>
         /// <param name="StoragePath"></param>
-        public void ParseTXT(string FilePath, string StoragePath)
+        public bool ParseTXT(string FilePath, string StoragePath)
         {
             string Text = OpenDocument(FilePath);
 
@@ -131,32 +146,8 @@ namespace TypeIT.Utilities
             }
 
             CreateDocument(StoragePath, 0, RemoveSpecialCharacters(Text));
-        }
 
-        /// <summary>
-        /// Parsing Word document files
-        /// </summary>
-        /// <param name="FilePath"></param>
-        /// <param name="StoragePath"></param>
-        public void ParseDOCX(string FilePath, string StoragePath)
-        {
-            string text;
-
-            if (!Directory.Exists(StoragePath))
-            {
-                Directory.CreateDirectory(StoragePath);
-            }
-
-            // opens the Word template document
-            using WordDocument document = new WordDocument(FilePath); // template.docx does not exist here we should change this.
-                                                                      // gets the string that contains whole document content as text
-            text = document.GetText();
-
-            // cleanse the file of the unnecessary charactest
-            RemoveSpecialCharacters(text);
-
-            // create a new text file and write specified string in it
-            File.WriteAllText("Result.txt", text);
+            return true;
         }
     }
 }

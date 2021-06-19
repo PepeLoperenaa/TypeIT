@@ -232,7 +232,7 @@ namespace TypeIT.Models
         {
             if (averageWpm > 6)
             {
-                return (int)((wordCount * 60) / (averageWpm + 10)) + 5;
+                return (int)((wordCount * 60) / (averageWpm)) + 5;
             }
             else
             {

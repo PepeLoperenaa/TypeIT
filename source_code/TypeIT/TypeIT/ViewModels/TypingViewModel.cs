@@ -13,7 +13,6 @@ namespace TypeIT.ViewModels
 {
     class TypingViewModel : ViewModelBase
     {
-
         public ICommand NavigateHomeCommand { get; }
         public TypingModel TypingModel { get; set; }
         public int InputLengthTracker { get; set; }
