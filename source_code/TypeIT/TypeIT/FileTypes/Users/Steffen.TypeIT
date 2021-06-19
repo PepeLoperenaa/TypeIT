@@ -35,6 +35,12 @@
       <DocumentName>Overlord 1</DocumentName>
       <TotalPageNumber>321</TotalPageNumber>
       <UserPageNumber>1</UserPageNumber>
+      <DocumentAccuracy>100</DocumentAccuracy>
+    </Document>
+    <Document>
+      <DocumentName>Overlord Volume 8 - The Two Leaders (v1.2)</DocumentName>
+      <TotalPageNumber>432</TotalPageNumber>
+      <UserPageNumber>0</UserPageNumber>
       <DocumentAccuracy>0</DocumentAccuracy>
     </Document>
   </Documents>
