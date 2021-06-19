@@ -40,7 +40,6 @@ namespace TypeIT.FileTypes
 
             doc.Save("../../../FileTypes/Users/" + name + ".TypeIT");
         }
-
         public static List<string> getElementsFromTags(string filePath, string tag)
         {
             List<string> listElements = new List<string>();
@@ -95,6 +94,16 @@ namespace TypeIT.FileTypes
             XDocument doc = XDocument.Load($"../../../FileTypes/Users/{userName}.TypeIT");
 
             doc.Root.Element("Statistics").Element(type).Value = value;
+        }
+
+        /// <summary>
+        /// Method to delete a document
+        /// </summary>
+        /// <param name="userName"></param>
+        public static void DeleteDocument(string userName)
+        {
+            XDocument doc = XDocument.Load($"../../../FileTypes/Users/{userName}.TypeIT");
+            doc.Root.Element("Documents").Element("Document").Remove();
         }
 
         /// <summary>

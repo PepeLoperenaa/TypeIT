@@ -164,7 +164,11 @@ namespace TypeIT.ViewModels
                 {
                     if (TypingModel.HasNextPage())
                     {
+                        XmlHandler.updateDocuments(currentUser.CurrentUser.Name, TypingModel.Document.Name, 
+                            (TypingModel.PageNumber + 1).ToString(), TypingModel.AverageAccuracy);
+
                         TypingModel.NextPage();
+
 
                         // doing this here since we need user statistics for calculation
                         TypingModel.SetDisplayTime(currentUser.CurrentUser.Statistics.AverageWPM);
