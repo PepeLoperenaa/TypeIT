@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Timers;
 using System.Windows;
+using TypeIT.FileTypes;
 using TypeIT.Utilities;
 
 namespace TypeIT.Models
@@ -22,12 +23,12 @@ namespace TypeIT.Models
         public int InputCount { get; set; }
         public double HighestSpeed { get; set; }
         public string Text { get; set; }
-        public DocumentModel Document { get; set; }
         public DateTime StartTime { get; set; }
         public Difficulty SelectedDifficulty { get; set; }
 
         //Binded values
         private Timer _typingTimer;
+        private DocumentModel _document;
         private string _averageAccuracy;
         private string _textCorrect;
         private string _textWrong;
@@ -150,16 +151,23 @@ namespace TypeIT.Models
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(AverageAccuracy)));
             }
         }
-        public TypingModel(string document)
+        public DocumentModel Document
         {
-            Document = new DocumentModel(document);
-            PageNumber = 0;
+            get => _document;
+            set
+            {
+                _document = value;
+
+                PageNumber = Document.UserPageNumber;
+            }
+        }
+        public TypingModel()
+        {
             CurrentMistakes = 0;
             HighestSpeed = 0;
             TotalMistakes = 0;
             CurrentWordIndex = 0;
             ErrorSpace = 5;
-            Text = GetTextFromPage(PageNumber);
             TypingTimer = new Timer();
         }
 
@@ -258,7 +266,6 @@ namespace TypeIT.Models
         /// </summary>
         public void NavigatePage()
         {
-
             // indexes
             CurrentWordIndex = 0;
             Index = 0;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Xml;
 using System.Xml.Linq;
@@ -149,13 +150,35 @@ namespace TypeIT.FileTypes
         /// <param name="filePath"></param>
         /// <param name="tag"></param>
         /// <param name="value"></param>
-        public static void updateDocuments(string filePath, string tag, string value)
+        public static void updateDocuments(string userName, string docName, string userPage, string docAccuracy)
         {
+            string filePath = $"../../../FileTypes/Users/{userName}.TypeIT";
             XDocument doc = XDocument.Load(filePath);
 
-            doc.Root.Element("Documents").Element("Document").Element(tag).Value = value;
+            XElement documents = doc.Root.Element("Documents");
+
+            XElement document = documents.Elements("Document").Where(x => (string)x.Element("DocumentName") == docName).SingleOrDefault();
+
+            document.Element("UserPageNumber").Value = userPage;
+            document.Element("DocumentAccuracy").Value = docAccuracy;
 
             doc.Save(filePath);
+        }
+
+        public static DocumentModel GetUserDocument(string user, string docPath)
+        {
+            DocumentModel model = new DocumentModel(docPath);
+
+            string filePath = $"../../../FileTypes/Users/{user}.TypeIT";
+            XDocument doc = XDocument.Load(filePath);
+
+            XElement documents = doc.Root.Element("Documents");
+
+            XElement document = documents.Elements("Document").Where(x => (string)x.Element("DocumentName") == model.Name).SingleOrDefault();
+
+            model.UserPageNumber = Int32.Parse(document.Element("UserPageNumber").Value);
+
+            return model;
         }
 
         /// <summary>
@@ -164,7 +187,6 @@ namespace TypeIT.FileTypes
         /// <param name="userName"></param>
         public static void AddingADocumentIntoUserXml(string userName, string documentName, int documentNumberOfPages, int currentPage)
         {
-
             string filePath = $"../../../FileTypes/Users/{userName}.TypeIT";
             XDocument doc = XDocument.Load(filePath);
 
@@ -188,7 +210,6 @@ namespace TypeIT.FileTypes
 
             documents.Add(document);
             doc.Save(filePath);
-
         }
 
         /// <summary>

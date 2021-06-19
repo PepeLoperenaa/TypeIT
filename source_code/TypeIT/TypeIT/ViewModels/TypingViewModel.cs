@@ -5,6 +5,7 @@ using System.Timers;
 using System.Windows;
 using System.Windows.Input;
 using TypeIT.Commands;
+using TypeIT.FileTypes;
 using TypeIT.Models;
 using TypeIT.Stores;
 using TypeIT.Utilities;
@@ -46,7 +47,8 @@ namespace TypeIT.ViewModels
         {
             currentUser = userStore;
 
-            TypingModel = new TypingModel("../../../Documents/Overlord 1");
+            TypingModel = new TypingModel();
+            TypingModel.Document = XmlHandler.GetUserDocument(currentUser.CurrentUser.Name, "../../../Documents/Overlord 1");
 
             NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore, userStore));
 
