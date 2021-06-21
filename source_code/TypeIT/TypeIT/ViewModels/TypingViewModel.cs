@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Timers;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using TypeIT.Commands;
 using TypeIT.Models;
@@ -44,6 +45,7 @@ namespace TypeIT.ViewModels
 
         public TypingViewModel(NavigationStore navigationStore, UserStore userStore, DocumentModel document)
         {
+
             currentUser = userStore;
 
             TypingModel = new TypingModel();
@@ -139,7 +141,7 @@ namespace TypeIT.ViewModels
         /// </summary>
         /// <param name="word"></param>
         private void UpdateDisplayText(string word)
-        { 
+        {
             // set the gray text (text left to type)
             TypingModel.CharactersLeft = TypingModel.Text[(TypingModel.Index)..];
 
@@ -238,5 +240,6 @@ namespace TypeIT.ViewModels
             }
             return false;
         }
+
     }
 }
