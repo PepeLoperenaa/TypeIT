@@ -169,24 +169,66 @@ namespace TypeIT.Utilities
         }
 
         /// <summary>
+        /// Calculates the average typing speed of the user based on the new speed added
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <param name="speed"></param>
+        public static void UpdateAverageSpeed(string userName, double speed)
+        {
+            string filePath = $"../../../FileTypes/Users/{userName}.TypeIT";
+            XDocument doc = XDocument.Load(filePath);
+
+            int pageCount = 0;
+            XmlHandler.GetElementsFromTags(filePath, "UserPageNumber").ForEach(x =>  pageCount += int.Parse(x) == -1 ? 0 : int.Parse(x));
+
+            int avgSpeed = int.Parse(XmlHandler.GetElementsFromTags(filePath, "AverageWPM").FirstOrDefault() ?? "0");
+
+            avgSpeed = (int)((avgSpeed * (pageCount - 1)) + speed) / (pageCount);
+
+            XElement statistics = doc.Root?.Elements("Statistics").FirstOrDefault();
+
+            if (statistics != null)
+            {
+                XElement docAverage = statistics.Element("AverageWPM");
+
+                if (docAverage != null) docAverage.Value = avgSpeed.ToString();
+            }
+
+            doc.Save(filePath);
+        }
+
+        /// <summary>
         /// Method to update documents elements
         /// </summary>
-        /// <param name="filePath"></param>
-        /// <param name="tag"></param>
-        /// <param name="value"></param>
+        /// <param name="userName"></param>
+        /// <param name="docName"></param>
+        /// <param name="userPage"></param>
+        /// <param name="docAccuracy"></param>
         public static void UpdateDocuments(string userName, string docName, string userPage, string docAccuracy)
         {
             string filePath = $"../../../FileTypes/Users/{userName}.TypeIT";
             XDocument doc = XDocument.Load(filePath);
 
-            XElement documents = doc.Root.Element("Documents");
+            XElement documents = doc.Root?.Element("Documents");
 
-            XElement document = documents.Elements("Document").Where(x => (string)x.Element("DocumentName") == docName).SingleOrDefault();
+            if (documents != null)
+            {
+                XElement document = documents.Elements("Document").SingleOrDefault(x => (string)x.Element("DocumentName") == docName);
 
-            double accuracy = (Double.Parse(document.Element("UserPageNumber").Value) * Double.Parse(document.Element("DocumentAccuracy").Value) + Double.Parse(docAccuracy)) / Double.Parse(userPage); 
+                if (document != null)
+                {
+                    double accuracy =
+                        (Double.Parse(document.Element("UserPageNumber")?.Value ?? string.Empty) *
+                            Double.Parse(document.Element("DocumentAccuracy")?.Value ?? string.Empty) + Double.Parse(docAccuracy)) /
+                        Double.Parse(userPage);
+                }
 
-            document.Element("UserPageNumber").Value = userPage;
-            document.Element("DocumentAccuracy").Value = docAccuracy;
+                if (document != null)
+                {
+                    document.Element("UserPageNumber").Value = userPage;
+                    document.Element("DocumentAccuracy").Value = docAccuracy;
+                }
+            }
 
             doc.Save(filePath);
         }
@@ -213,9 +255,9 @@ namespace TypeIT.Utilities
 
                     if (document != null)
                     {
-                        model = new DocumentModel($"../../../Documents/{document.Element("DocumentName")}")
+                        model = new DocumentModel($"../../../Documents/{document.Element("DocumentName")?.Value}")
                         {
-                            UserPageNumber = int.Parse(document.Element("UserPageNumber")?.Value ?? string.Empty)
+                            UserPageNumber = int.Parse(document.Element("UserPageNumber")?.Value ?? "0")
                         };
                     }
                 }
@@ -296,7 +338,7 @@ namespace TypeIT.Utilities
         // remove document from user
         // get documentmodel from user
 
-        public static void unlockAchievements(string userName, string AchievementName)
+        public static void UnlockAchievements(string userName, string AchievementName)
         {
             string filePath = $"../../../FileTypes/Users/{userName}.TypeIT";
             XDocument doc = XDocument.Load(filePath);

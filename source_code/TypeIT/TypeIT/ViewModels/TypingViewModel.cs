@@ -17,9 +17,9 @@ namespace TypeIT.ViewModels
         public ICommand NavigateHomeCommand { get; }
         public TypingModel TypingModel { get; set; }
         public int InputLengthTracker { get; set; }
-        public UserStore currentUser { get; set; }
+        public UserStore CurrentUser { get; set; }
 
-        public string _inputString;
+        private string _inputString;
         /// <summary>
         /// Sets the inputString and calls the TypeWord Method whenever the inputString is updated
         /// </summary>
@@ -45,8 +45,7 @@ namespace TypeIT.ViewModels
 
         public TypingViewModel(NavigationStore navigationStore, UserStore userStore, DocumentModel document)
         {
-
-            currentUser = userStore;
+            CurrentUser = userStore;
 
             TypingModel = new TypingModel();
             TypingModel.Document = document;
@@ -54,7 +53,7 @@ namespace TypeIT.ViewModels
             NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore, userStore));
 
             // loading the user's game mode
-            TypingModel.SelectedDifficulty = (currentUser.CurrentUser.GameMode);
+            TypingModel.SelectedDifficulty = (CurrentUser.CurrentUser.GameMode);
 
             // set the initial text 
             TypingModel.CharactersLeft = TypingModel.Text;
@@ -63,7 +62,7 @@ namespace TypeIT.ViewModels
             TypingModel.CurrentWord = TypingModel.GetWord(TypingModel.Text, TypingModel.CurrentWordIndex);
 
             // set the in itial displayed time
-            TypingModel.SetDisplayTime(currentUser.CurrentUser.Statistics.AverageWPM);
+            TypingModel.SetDisplayTime(CurrentUser.CurrentUser.Statistics.AverageWpm);
 
             TypingModel.DisplayAverages();
 
@@ -168,40 +167,44 @@ namespace TypeIT.ViewModels
         /// <param name="word"></param>
         private void ParseWord(string word)
         {
-            if (CanGoToNextWord(word))
+            if (!CanGoToNextWord(word)) return;
+            if (TypingModel.CurrentWordIndex == TypingModel.GetNumberOfWords())
             {
-                if (TypingModel.CurrentWordIndex == TypingModel.GetNumberOfWords())
+                if (TypingModel.HasNextPage())
                 {
-                    if (TypingModel.HasNextPage())
-                    {
-                        string displayAcc = TypingModel.SelectedDifficulty == Difficulty.Easy ? "100" : TypingModel.AverageAccuracy;
-                        XmlHandler.UpdateDocuments(currentUser.CurrentUser.Name, TypingModel.Document.Name,
-                            (TypingModel.PageNumber + 1).ToString(), displayAcc);
+                    string displayAcc = TypingModel.SelectedDifficulty == Difficulty.Easy ? "100" : TypingModel.AverageAccuracy;
+                    
+                    XmlHandler.UpdateDocuments(CurrentUser.CurrentUser.Name, TypingModel.Document.Name,
+                        (TypingModel.PageNumber + 1).ToString(), displayAcc);
+                    
+                    XmlHandler.UpdateAverageSpeed(CurrentUser.CurrentUser.Name, Double.Parse(TypingModel.AverageTypingSpeed));
 
-                        currentUser.CurrentUser.RefreshUserModel();
+                    string filePath = $"../../../FileTypes/Users/{CurrentUser.CurrentUser.Name}.TypeIT";
+                    CurrentUser.CurrentUser.Statistics.AverageWpm = int.Parse(XmlHandler.GetElementsFromTags(filePath, "AverageWPM").FirstOrDefault() ?? "Error");
+                    
+                    CurrentUser.CurrentUser.RefreshUserModel();
 
-                        TypingModel.NextPage();
+                    TypingModel.NextPage();
 
 
-                        // doing this here since we need user statistics for calculation
-                        TypingModel.SetDisplayTime(currentUser.CurrentUser.Statistics.AverageWPM);
-                    }
-                    else
-                    {
-                        // Go back to home page or say hey you finished the book or something
-                    }
+                    // doing this here since we need user statistics for calculation
+                    TypingModel.SetDisplayTime(CurrentUser.CurrentUser.Statistics.AverageWpm);
                 }
                 else
                 {
-                    TypingModel.CurrentWordIndex++;
+                    // Go back to home page or say hey you finished the book or something
                 }
-                TypingModel.CurrentWord = TypingModel.GetWord(TypingModel.Text, TypingModel.CurrentWordIndex);
-
-                InputLengthTracker = 0;
-                InputString = "";
-
-                return;
             }
+            else
+            {
+                TypingModel.CurrentWordIndex++;
+            }
+            TypingModel.CurrentWord = TypingModel.GetWord(TypingModel.Text, TypingModel.CurrentWordIndex);
+
+            InputLengthTracker = 0;
+            InputString = "";
+
+            return;
         }
 
         /// <summary>
@@ -211,30 +214,28 @@ namespace TypeIT.ViewModels
         /// <returns></returns>
         private bool CanGoToNextWord(string word)
         {
-            if (InputString.Length > 0)
+            if (InputString.Length <= 0) return false;
+            // check if you're at the last word to see if the space is needed to continue
+            // important otherwise the text will proceed without a space needed
+            if (TypingModel.CurrentWordIndex == TypingModel.GetNumberOfWords())
             {
-                // check if you're at the last word to see if the space is needed to continue
-                // important otherwise the text will proceed without a space needed
-                if (TypingModel.CurrentWordIndex == TypingModel.GetNumberOfWords())
+                // check if the input is equal to the word (no need to trim)
+                if (InputString == TypingModel.CurrentWord)
                 {
-                    // check if the input is equal to the word (no need to trim)
-                    if (InputString == TypingModel.CurrentWord)
+                    return true;
+                }
+            }
+            else
+            {
+                // goes to the next word in the text, needs to check for the space to know when to go to next word
+
+                // check if the end of the word is a space to determine when to break to the next word
+                if (InputString.Last() == ' ')
+                {
+                    // check if the word minus the space at the end is equal to the expected word
+                    if (InputString[0..^1].Equals(word))
                     {
                         return true;
-                    }
-                }
-                else
-                {
-                    // goes to the next word in the text, needs to check for the space to know when to go to next word
-
-                    // check if the end of the word is a space to determine when to break to the next word
-                    if (InputString.Last() == ' ')
-                    {
-                        // check if the word minus the space at the end is equal to the expected word
-                        if (InputString[0..^1].Equals(word))
-                        {
-                            return true;
-                        }
                     }
                 }
             }

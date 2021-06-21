@@ -387,6 +387,18 @@ namespace TypeIT.Models
                 if (TimeCounter == 0)
                 {
                     Alive = false;
+                
+                    //Custom messagebox
+                    var res = Xceed.Wpf.Toolkit.MessageBox.Show(
+                        "You ran out of time :(",
+                        "Home",
+                        MessageBoxButton.YesNo
+                    );
+
+                    if ("Home" == res.ToString())
+                    {
+                        System.Windows.Application.Current.Shutdown();
+                    }
                 }
             }
 
