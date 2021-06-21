@@ -30,6 +30,7 @@
     <None Remove="Resources\Images\settingsIcon.png" />
     <None Remove="Resources\Images\statsIcon.png" />
     <None Remove="Resources\Images\typingIcon.png" />
+    <None Remove="FileTypes\hel  lo.TypeIT" />
   </ItemGroup>
 
   <ItemGroup>

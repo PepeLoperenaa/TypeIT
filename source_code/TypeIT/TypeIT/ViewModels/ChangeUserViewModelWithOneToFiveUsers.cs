@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using TypeIT.Commands;
-using TypeIT.FileTypes;
 using TypeIT.Models;
 using TypeIT.Stores;
+using TypeIT.Utilities;
 
 namespace TypeIT.ViewModels
 {
@@ -31,7 +31,7 @@ namespace TypeIT.ViewModels
 
         private void createUserFile(string userName)
         {
-            XmlHandler.newUser(userName);
+            XmlHandler.NewUser(userName);
             base.loadSelectedUser(userName);
         }
     }
