@@ -177,6 +177,8 @@ namespace TypeIT.ViewModels
                         XmlHandler.updateDocuments(currentUser.CurrentUser.Name, TypingModel.Document.Name,
                             (TypingModel.PageNumber + 1).ToString(), displayAcc);
 
+                        currentUser.CurrentUser.RefreshUserModel();
+
                         TypingModel.NextPage();
 
 

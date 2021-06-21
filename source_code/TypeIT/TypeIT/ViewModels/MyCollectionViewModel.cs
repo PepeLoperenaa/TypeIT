@@ -29,13 +29,14 @@ namespace TypeIT.ViewModels
             NavigateDocumentsCommand = new NavigateCommand<DocumentsViewModel>(navigationStore, () => new DocumentsViewModel(navigationStore, userStore));
             NavigateTypingCommand = new NavigateCommand<TypingViewModel>(navigationStore, () => new TypingViewModel(navigationStore, userStore, currentDocument));
             currentUser = userStore;
-            DeleteBookCommand = new DelegateCommand(ClickedDeleteBook);
+            DeleteBookCommand = new DelegateCommand<string>(ClickedDeleteBook);
             OpenBookCommand = new DelegateCommand<string>(ClickedOpenBook);
         }
 
-        private void ClickedDeleteBook()
+        private void ClickedDeleteBook(string BookTitle)
         {
-            XmlHandler.DeleteDocument(currentUser.CurrentUser.Name, "Functional Design");
+            XmlHandler.DeleteDocument(currentUser.CurrentUser.Name, BookTitle);
+            currentUser.CurrentUser.RefreshUserModel();
         }
 
         private void ClickedOpenBook(string BookTitle)

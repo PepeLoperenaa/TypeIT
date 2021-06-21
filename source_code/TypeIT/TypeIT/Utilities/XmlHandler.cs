@@ -109,8 +109,17 @@ namespace TypeIT.FileTypes
         /// <param name="userName"></param>+
         public static void DeleteDocument(string userName, string documentName)
         {
-            XDocument doc = XDocument.Load($"../../../FileTypes/Users/{userName}.TypeIT");
-            doc.Root.Element("Documents").Element("Document").Element(documentName).Remove();
+            string filePath = $"../../../FileTypes/Users/{userName}.TypeIT";
+            XDocument doc = XDocument.Load(filePath);
+            //doc.Root.Element("Documents").Element("Document").Element(documentName).Remove();
+
+            XElement documents = doc.Root.Element("Documents");
+
+            XElement document = documents.Elements("Document").Where(x => (string)x.Element("DocumentName") == documentName).SingleOrDefault();
+
+            document.Remove();
+
+            doc.Save(filePath);
         }
 
         /// <summary>

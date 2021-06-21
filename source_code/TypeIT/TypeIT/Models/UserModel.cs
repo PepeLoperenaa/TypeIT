@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,21 +10,32 @@ using TypeIT.Utilities;
 
 namespace TypeIT.Models
 {
-    public class UserModel
+    public class UserModel : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
         public string Name { get; set; }
         public StatisticsModel Statistics { get; set; }
         public string Theme { get; set; }
         public Difficulty GameMode { get; set; }
-        public List<string> Achievements { get; set; }
-        public List<DocumentModel> Documents { get; set; }
+        public ObservableCollection<string> Achievements { get; set; }
+
+        private ObservableCollection<DocumentModel> _document;
+        public ObservableCollection<DocumentModel> Documents
+        {
+            get => _document;
+            set
+            {
+                _document = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(_document)));
+            }
+        }
 
         public UserModel(string name, bool load)
         {
             Name = name;
             Statistics = loadStatistics();
-            Achievements = new List<string>();
-            Documents = new List<DocumentModel>();
+            Achievements = new ObservableCollection<string>();
+            Documents = new ObservableCollection<DocumentModel>();
             Theme = loadTheme();
 
             loadUsersAchievements();

@@ -73,8 +73,9 @@
                                                     </TextBlock>
                                                 </StackPanel>
                                             </Button>
-                                            <Button Style="{DynamicResource DocumentDeleteStyle}" Command="{Binding DeleteBookCommand}" 
-                                                    DataContext="{Binding DataContext, RelativeSource={RelativeSource FindAncestor, AncestorType=local:MyCollectionView}}">
+                                            <Button Style="{DynamicResource DocumentDeleteStyle}" 
+                                                    Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:MyCollectionView}}, Path=DataContext.DeleteBookCommand}"
+                                                    CommandParameter="{Binding Name}">
                                                 <Image Source="../Resources/Images/deleteIcon.png" />
                                             </Button>
                                         </StackPanel>
