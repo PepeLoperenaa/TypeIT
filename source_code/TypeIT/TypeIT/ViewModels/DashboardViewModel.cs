@@ -75,5 +75,10 @@ namespace TypeIT.ViewModels
                 System.Windows.Application.Current.Shutdown();
             }
         }
+
+        private void clickedStartTyping()
+        {
+
+        }
     }
 }
