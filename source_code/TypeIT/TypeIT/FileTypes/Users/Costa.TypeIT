@@ -16,7 +16,7 @@
     </DailyRecords>
   </Statistics>
   <Settings>
-    <Theme>Light</Theme>
+    <Theme>Dark</Theme>
     <GameMode />
   </Settings>
   <Achievements>
@@ -28,19 +28,19 @@
     <Document>
       <DocumentName>Modulebook_IN-OIC#1_181108(1)</DocumentName>
       <TotalPageNumber>39</TotalPageNumber>
-      <UserPageNumber>0</UserPageNumber>
+      <UserPageNumber>1</UserPageNumber>
       <DocumentAccuracy>0</DocumentAccuracy>
     </Document>
     <Document>
       <DocumentName>Functional Design</DocumentName>
       <TotalPageNumber>20</TotalPageNumber>
-      <UserPageNumber>0</UserPageNumber>
-      <DocumentAccuracy>0</DocumentAccuracy>
+      <UserPageNumber>1</UserPageNumber>
+      <DocumentAccuracy>N/A</DocumentAccuracy>
     </Document>
     <Document>
       <DocumentName>Digital Graphic Design (BOOK)</DocumentName>
       <TotalPageNumber>208</TotalPageNumber>
-      <UserPageNumber>0</UserPageNumber>
+      <UserPageNumber>1</UserPageNumber>
       <DocumentAccuracy>0</DocumentAccuracy>
     </Document>
     <Document>

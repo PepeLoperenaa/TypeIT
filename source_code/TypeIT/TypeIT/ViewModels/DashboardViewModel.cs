@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Input;
 using TypeIT.Commands;
 using TypeIT.FileTypes;
+using TypeIT.Models;
 using TypeIT.Stores;
 
 namespace TypeIT.ViewModels
@@ -22,6 +23,7 @@ namespace TypeIT.ViewModels
         public ICommand NavigateTypingCommand { get; set; }
         public ICommand NavigateAchievementsCommand { get; set; }
         public UserStore currentUser { get; set; }
+        public DocumentModel currentDocument { get; set; }
 
         /// <summary>
         /// Contains the navigation ICommands to different views
@@ -43,7 +45,7 @@ namespace TypeIT.ViewModels
             NavigateStatisticsCommand = new NavigateCommand<StatisticsViewModel>(navigationStore, () => new StatisticsViewModel(navigationStore, userStore));
 
             //Navigate to Typing view
-            NavigateTypingCommand = new NavigateCommand<TypingViewModel>(navigationStore, () => new TypingViewModel(navigationStore, userStore));
+            NavigateTypingCommand = new NavigateCommand<TypingViewModel>(navigationStore, () => new TypingViewModel(navigationStore, userStore, currentDocument));
 
             //Navigate to Achievements view
             NavigateAchievementsCommand = new NavigateCommand<AchievementsViewModel>(navigationStore, () => new AchievementsViewModel(navigationStore, userStore));

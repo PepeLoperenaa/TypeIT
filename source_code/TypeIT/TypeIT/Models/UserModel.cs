@@ -31,6 +31,14 @@ namespace TypeIT.Models
             loadUserGameMode();
         }
 
+        public void RefreshUserModel()
+        {
+            loadUsersAchievements();
+            loadUserDocuments();
+            loadStatistics();
+            loadUserGameMode();
+        }
+
         /// <summary>
         /// Loads the user's unlocked achievements from his .TypeIT file
         /// The readings are loaded into the Achievements List

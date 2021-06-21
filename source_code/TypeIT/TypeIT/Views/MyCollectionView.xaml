@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TypeIT.Views"
+             xmlns:c="clr-namespace:TypeIT.Models"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
@@ -60,7 +61,9 @@
                                 <DataTemplate>
                                     <Border Style="{DynamicResource BookBorder}" Cursor="Hand">
                                         <StackPanel Orientation="Horizontal">
-                                            <Button Style="{DynamicResource DocumentTitleStyle}" Command="{Binding OpenBookCommand}">
+                                            <Button Style="{DynamicResource DocumentTitleStyle}" 
+                                                    Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:MyCollectionView}}, Path=DataContext.OpenBookCommand}"
+                                                    CommandParameter="{Binding Name}">
                                                 <StackPanel Orientation="Vertical">
                                                     <TextBlock Style="{DynamicResource BookTitle}" Text="{Binding Name}"/>
                                                     <TextBlock Style="{DynamicResource BookDescription}">
@@ -70,7 +73,8 @@
                                                     </TextBlock>
                                                 </StackPanel>
                                             </Button>
-                                            <Button Style="{DynamicResource DocumentDeleteStyle}" Command="{Binding DeleteBookCommand}">
+                                            <Button Style="{DynamicResource DocumentDeleteStyle}" Command="{Binding DeleteBookCommand}" 
+                                                    DataContext="{Binding DataContext, RelativeSource={RelativeSource FindAncestor, AncestorType=local:MyCollectionView}}">
                                                 <Image Source="../Resources/Images/deleteIcon.png" />
                                             </Button>
                                         </StackPanel>

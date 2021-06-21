@@ -43,12 +43,12 @@ namespace TypeIT.ViewModels
             }
         }
 
-        public TypingViewModel(NavigationStore navigationStore, UserStore userStore)
+        public TypingViewModel(NavigationStore navigationStore, UserStore userStore, DocumentModel document)
         {
             currentUser = userStore;
 
             TypingModel = new TypingModel();
-            TypingModel.Document = XmlHandler.GetUserDocument(currentUser.CurrentUser.Name, "../../../Documents/Overlord 1");
+            TypingModel.Document = document;
 
             NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore, userStore));
 
@@ -166,6 +166,7 @@ namespace TypeIT.ViewModels
                     {
                         XmlHandler.updateDocuments(currentUser.CurrentUser.Name, TypingModel.Document.Name, 
                             (TypingModel.PageNumber + 1).ToString(), TypingModel.AverageAccuracy);
+                        currentUser.CurrentUser.RefreshUserModel();
 
                         TypingModel.NextPage();
 
