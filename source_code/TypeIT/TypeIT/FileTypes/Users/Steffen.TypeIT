@@ -3,7 +3,7 @@
   <Name>Steffen</Name>
   <Statistics>
     <HighestWPM />
-    <AverageWPM>100</AverageWPM>
+    <AverageWPM>47</AverageWPM>
     <AverageAccuracy />
     <HoursSpent />
     <TypedTypedWordsTotalWords />
@@ -17,7 +17,7 @@
   </Statistics>
   <Settings>
     <Theme>Dark</Theme>
-    <GameMode>Normal</GameMode>
+    <GameMode>Hard</GameMode>
   </Settings>
   <Achievements>
     <Achievement>
@@ -29,7 +29,7 @@
       <DocumentName>Overlord 1</DocumentName>
       <TotalPageNumber>321</TotalPageNumber>
       <UserPageNumber>2</UserPageNumber>
-      <DocumentAccuracy>94,43</DocumentAccuracy>
+      <DocumentAccuracy>90,8</DocumentAccuracy>
     </Document>
   </Documents>
 </UserProfile>

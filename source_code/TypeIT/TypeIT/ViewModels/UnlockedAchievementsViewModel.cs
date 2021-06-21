@@ -14,7 +14,7 @@ namespace TypeIT.ViewModels
             {
                 if (!achievements.Contains("You have to start somewhere") && document.Count == 1)
                 {
-                    XmlHandler.unlockAchievements(userName, "You have to start somewhere");
+                    XmlHandler.UnlockAchievements(userName, "You have to start somewhere");
                 }
             }
 
@@ -22,7 +22,7 @@ namespace TypeIT.ViewModels
             {
                 if (!achievements.Contains("Library owner") && document.Count == 10)
                 {
-                    XmlHandler.unlockAchievements(userName, "Library owner");
+                    XmlHandler.UnlockAchievements(userName, "Library owner");
                 }
             }
         }
@@ -38,7 +38,7 @@ namespace TypeIT.ViewModels
             {
                 if (!achievements.Contains("First steps") && user.Equals(1))
                 {
-                    XmlHandler.unlockAchievements(userName, "First steps");
+                    XmlHandler.UnlockAchievements(userName, "First steps");
                 }
             }
 
@@ -46,7 +46,7 @@ namespace TypeIT.ViewModels
             {
                 if (!achievements.Contains("What book is that?") && total.Count == 1000 && user.Count <= 1000)
                 {
-                    XmlHandler.unlockAchievements(userName, "What book is that?");
+                    XmlHandler.UnlockAchievements(userName, "What book is that?");
                 }
             }
 
@@ -61,7 +61,7 @@ namespace TypeIT.ViewModels
             {
                 if (!achievements.Contains("Fast as the wind") && HighestWPM.Equals("80"))
                 {
-                    XmlHandler.unlockAchievements(userName, "Fast as the wind");
+                    XmlHandler.UnlockAchievements(userName, "Fast as the wind");
                 }
             }
 
@@ -69,7 +69,7 @@ namespace TypeIT.ViewModels
             {
                 if (!achievements.Contains("Faster than the wind") && HighestWPM.Equals("130"))
                 {
-                    XmlHandler.unlockAchievements(userName, "Faster than the wind");
+                    XmlHandler.UnlockAchievements(userName, "Faster than the wind");
                 }
             }
 
@@ -77,7 +77,7 @@ namespace TypeIT.ViewModels
             {
                 if (!achievements.Contains("No skill luck only") && HighestWPM.Equals("180"))
                 {
-                    XmlHandler.unlockAchievements(userName, "No skill luck only");
+                    XmlHandler.UnlockAchievements(userName, "No skill luck only");
                 }
             }
 
@@ -85,7 +85,7 @@ namespace TypeIT.ViewModels
             {
                 if (!achievements.Contains("Did I just do that ?") && HighestWPM.Equals("200"))
                 {
-                    XmlHandler.unlockAchievements(userName, "Did I just do that ?");
+                    XmlHandler.UnlockAchievements(userName, "Did I just do that ?");
                 }
             }
 
@@ -93,7 +93,7 @@ namespace TypeIT.ViewModels
             {
                 if (!achievements.Contains("No skill luck only") && HighestWPM.Equals("300"))
                 {
-                    XmlHandler.unlockAchievements(userName, "No skill luck only");
+                    XmlHandler.UnlockAchievements(userName, "No skill luck only");
                 }
             }
         }
@@ -108,7 +108,7 @@ namespace TypeIT.ViewModels
             {
                 if (!achievements.Contains("The birth of a legend") && AverageWpm.Equals("40"))
                 {
-                    XmlHandler.unlockAchievements(userName, "The birth of a legend");
+                    XmlHandler.UnlockAchievements(userName, "The birth of a legend");
                 }
             }
 
@@ -116,7 +116,7 @@ namespace TypeIT.ViewModels
             {
                 if (!achievements.Contains("You made it") && AverageWpm.Equals("80"))
                 {
-                    XmlHandler.unlockAchievements(userName, "You made it");
+                    XmlHandler.UnlockAchievements(userName, "You made it");
                 }
             }
 
@@ -124,7 +124,7 @@ namespace TypeIT.ViewModels
             {
                 if (!achievements.Contains("Typing professional") && AverageWpm.Equals("90"))
                 {
-                    XmlHandler.unlockAchievements(userName, "Typing professional");
+                    XmlHandler.UnlockAchievements(userName, "Typing professional");
                 }
             }
 
@@ -132,7 +132,7 @@ namespace TypeIT.ViewModels
             {
                 if (!achievements.Contains("Fast and furious") && AverageWpm.Equals("100"))
                 {
-                    XmlHandler.unlockAchievements(userName, "Fast and furious");
+                    XmlHandler.UnlockAchievements(userName, "Fast and furious");
                 }
             }
 
@@ -140,7 +140,7 @@ namespace TypeIT.ViewModels
             {
                 if (!achievements.Contains("Beat the creator") && AverageWpm.Equals("140"))
                 {
-                    XmlHandler.unlockAchievements(userName, "Beat the creator");
+                    XmlHandler.UnlockAchievements(userName, "Beat the creator");
                 }
             }
 
@@ -148,13 +148,13 @@ namespace TypeIT.ViewModels
             {
                 if (!achievements.Contains("Quit this game") && AverageWpm.Equals("170"))
                 {
-                    XmlHandler.unlockAchievements(userName, "Quit this game");
+                    XmlHandler.UnlockAchievements(userName, "Quit this game");
                 }
             }
 
             if (AverageWpm.Equals("170"))
             {
-                XmlHandler.unlockAchievements("Pepe", "Quit this game");
+                XmlHandler.UnlockAchievements("Pepe", "Quit this game");
             }
         }
 
@@ -167,7 +167,7 @@ namespace TypeIT.ViewModels
             {
                 if (achievements.Contains("You cheated to get this didn't you") && acc.Equals("100"))
                 {
-                    XmlHandler.unlockAchievements(userName, "You cheated to get this didn't you");
+                    XmlHandler.UnlockAchievements(userName, "You cheated to get this didn't you");
                 }
             }
         }

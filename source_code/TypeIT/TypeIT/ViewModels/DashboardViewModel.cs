@@ -1,14 +1,10 @@
 ﻿using Prism.Commands;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using TypeIT.Commands;
 using TypeIT.Models;
 using TypeIT.Stores;
+using TypeIT.Utilities;
 
 namespace TypeIT.ViewModels
 {
@@ -21,8 +17,9 @@ namespace TypeIT.ViewModels
         public ICommand NavigateStatisticsCommand { get; set; }
         public ICommand NavigateTypingCommand { get; set; }
         public ICommand NavigateAchievementsCommand { get; set; }
-        public UserStore currentUser { get; set; }
-        public DocumentModel currentDocument { get; set; }
+        public ICommand StartTypingCommand { get; set; }
+        public UserStore CurrentUser { get; set; }
+        public DocumentModel CurrentDocument { get; set; }
 
         /// <summary>
         /// Contains the navigation ICommands to different views
@@ -44,7 +41,7 @@ namespace TypeIT.ViewModels
             NavigateStatisticsCommand = new NavigateCommand<StatisticsViewModel>(navigationStore, () => new StatisticsViewModel(navigationStore, userStore));
 
             //Navigate to Typing view
-            NavigateTypingCommand = new NavigateCommand<TypingViewModel>(navigationStore, () => new TypingViewModel(navigationStore, userStore, currentDocument));
+            NavigateTypingCommand = new NavigateCommand<TypingViewModel>(navigationStore, () => new TypingViewModel(navigationStore, userStore, CurrentDocument));
 
             //Navigate to Achievements view
             NavigateAchievementsCommand = new NavigateCommand<AchievementsViewModel>(navigationStore, () => new AchievementsViewModel(navigationStore, userStore));
@@ -52,8 +49,10 @@ namespace TypeIT.ViewModels
             //Command when exit button is clicked
             ExitCommand = new DelegateCommand(ClickedExit);
 
+            StartTypingCommand = new DelegateCommand(ClickedStartTyping);
+
             //Setting the current user to the parameter
-            currentUser = userStore;
+            CurrentUser = userStore;
         }
 
 
@@ -73,6 +72,12 @@ namespace TypeIT.ViewModels
             {
                 System.Windows.Application.Current.Shutdown();
             }
+        }
+
+        private void ClickedStartTyping()
+        {
+            CurrentDocument = XmlHandler.GetRandomUserDocument(CurrentUser.CurrentUser.Name);
+            NavigateTypingCommand.Execute(null);
         }
     }
 }
