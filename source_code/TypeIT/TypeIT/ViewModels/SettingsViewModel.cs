@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using TypeIT.Commands;
-using TypeIT.FileTypes;
 using TypeIT.Stores;
+using TypeIT.Utilities;
 
 namespace TypeIT.ViewModels
 {
@@ -93,11 +93,11 @@ namespace TypeIT.ViewModels
             if (currentTheme == "Resources/LightTheme.xaml")
             {
                 Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("Resources/DarkTheme.xaml", UriKind.Relative) });
-                XmlHandler.updateSettings(currentUser.CurrentUser.Name, "Theme", "Dark");
+                XmlHandler.UpdateSettings(currentUser.CurrentUser.Name, "Theme", "Dark");
             } else if (currentTheme == "Resources/DarkTheme.xaml")
             {
                 Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("Resources/LightTheme.xaml", UriKind.Relative) });
-                XmlHandler.updateSettings(currentUser.CurrentUser.Name, "Theme", "Light");
+                XmlHandler.UpdateSettings(currentUser.CurrentUser.Name, "Theme", "Light");
             }
 
             Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("Resources/StyleResource.xaml", UriKind.Relative) });

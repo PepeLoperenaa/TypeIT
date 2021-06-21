@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using TypeIT.Commands;
-using TypeIT.FileTypes;
 using TypeIT.Models;
 using TypeIT.Stores;
 
@@ -22,7 +21,6 @@ namespace TypeIT.ViewModels
         public ICommand NavigateStatisticsCommand { get; set; }
         public ICommand NavigateTypingCommand { get; set; }
         public ICommand NavigateAchievementsCommand { get; set; }
-        public ICommand StartTypingCommand { get; set; }
         public UserStore currentUser { get; set; }
         public DocumentModel currentDocument { get; set; }
 
@@ -54,8 +52,6 @@ namespace TypeIT.ViewModels
             //Command when exit button is clicked
             ExitCommand = new DelegateCommand(ClickedExit);
 
-            StartTypingCommand = new DelegateCommand(ClickedStartTyping);
-
             //Setting the current user to the parameter
             currentUser = userStore;
         }
@@ -77,11 +73,6 @@ namespace TypeIT.ViewModels
             {
                 System.Windows.Application.Current.Shutdown();
             }
-        }
-
-        private void ClickedStartTyping()
-        {
-
         }
     }
 }

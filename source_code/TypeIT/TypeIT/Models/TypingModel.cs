@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Timers;
 using System.Windows;
-using TypeIT.FileTypes;
 using TypeIT.Utilities;
 
 namespace TypeIT.Models

@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows;
-using System.Xml;
 using System.Xml.Linq;
 using TypeIT.Models;
 
-namespace TypeIT.FileTypes
+namespace TypeIT.Utilities
 {
     public static class XmlHandler
     {
@@ -14,7 +12,7 @@ namespace TypeIT.FileTypes
         /// when a new user comes into the application, a new .TypeIT file is created.
         /// </summary>
         /// <param name="name"></param>
-        public static void newUser(string name)
+        public static void NewUser(string name)
         {
             XDocument doc;
             doc = new XDocument(new XElement("UserProfile",
@@ -47,7 +45,7 @@ namespace TypeIT.FileTypes
         /// <param name="filePath"></param>
         /// <param name="tag"></param>
         /// <returns></returns>
-        public static List<string> getElementsFromTags(string filePath, string tag)
+        public static List<string> GetElementsFromTags(string filePath, string tag)
         {
             List<string> listElements = new List<string>();
 
@@ -140,9 +138,10 @@ namespace TypeIT.FileTypes
         /// Method to update the elements from settings
         /// </summary>
         /// <param name="filePath"></param>
+        /// <param name="userName"></param>
         /// <param name="tags"></param>
         /// <param name="mode"></param>
-        public static void updateSettings(string userName, string tags, string mode)
+        public static void UpdateSettings(string userName, string tags, string mode)
         {
             string filePath = $"../../../FileTypes/Users/{userName}.TypeIT";
 
@@ -160,7 +159,7 @@ namespace TypeIT.FileTypes
         /// <param name="filePath"></param>
         /// <param name="tags"></param>
         /// <param name="value"></param>
-        public static void updateAchiemvents(string filePath, string tags, string value)
+        public static void UpdateAchiemvents(string filePath, string tags, string value)
         {
             XDocument doc = XDocument.Load(filePath);
 
@@ -175,7 +174,7 @@ namespace TypeIT.FileTypes
         /// <param name="filePath"></param>
         /// <param name="tag"></param>
         /// <param name="value"></param>
-        public static void updateDocuments(string userName, string docName, string userPage, string docAccuracy)
+        public static void UpdateDocuments(string userName, string docName, string userPage, string docAccuracy)
         {
             string filePath = $"../../../FileTypes/Users/{userName}.TypeIT";
             XDocument doc = XDocument.Load(filePath);
@@ -192,6 +191,39 @@ namespace TypeIT.FileTypes
             doc.Save(filePath);
         }
 
+        public static DocumentModel GetRandomUserDocument(string user)
+        {
+            DocumentModel model = null;
+
+            string filePath = $"../../../FileTypes/Users/{user}.TypeIT";
+            
+            XDocument doc = XDocument.Load(filePath);
+
+            if (doc.Root != null)
+            {
+                XElement documents = doc.Root.Element("Documents");
+
+                Random rng = new Random();
+
+                if (documents != null)
+                {
+                    int count = documents.Elements("Document").Count();
+
+                    XElement document = documents.Elements("Document").Skip(rng.Next(0, count)).FirstOrDefault();
+
+                    if (document != null)
+                    {
+                        model = new DocumentModel($"../../../Documents/{document.Element("DocumentName")}")
+                        {
+                            UserPageNumber = int.Parse(document.Element("UserPageNumber")?.Value ?? string.Empty)
+                        };
+                    }
+                }
+            }
+
+            return model;
+        }
+
         public static DocumentModel GetUserDocument(string user, string docPath)
         {
             DocumentModel model = new DocumentModel(docPath);
@@ -199,11 +231,17 @@ namespace TypeIT.FileTypes
             string filePath = $"../../../FileTypes/Users/{user}.TypeIT";
             XDocument doc = XDocument.Load(filePath);
 
-            XElement documents = doc.Root.Element("Documents");
+            if (doc.Root != null)
+            {
+                XElement documents = doc.Root.Element("Documents");
 
-            XElement document = documents.Elements("Document").Where(x => (string)x.Element("DocumentName") == model.Name).SingleOrDefault();
+                if (documents != null)
+                {
+                    XElement document = documents.Elements("Document").SingleOrDefault(x => (string)x.Element("DocumentName") == model.Name);
 
-            model.UserPageNumber = Int32.Parse(document.Element("UserPageNumber").Value);
+                    if (document != null) model.UserPageNumber = Int32.Parse(document.Element("UserPageNumber")?.Value ?? string.Empty);
+                }
+            }
 
             return model;
         }

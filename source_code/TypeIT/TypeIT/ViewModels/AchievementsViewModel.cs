@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Input;
 using TypeIT.Commands;
-using TypeIT.FileTypes;
 using TypeIT.Models;
 using TypeIT.Stores;
+using TypeIT.Utilities;
 
 namespace TypeIT.ViewModels
 {
@@ -46,8 +46,8 @@ namespace TypeIT.ViewModels
         private void loadAchievements()
         {
             //Loading the achievements from .TypeIT
-            List<string> achievementName = XmlHandler.getElementsFromTags("../../../FileTypes/TypeitFiles/achievements.TypeIT", "AchievementName");
-            List<string> achievementDesc = XmlHandler.getElementsFromTags("../../../FileTypes/TypeitFiles/achievements.TypeIT", "Description");
+            List<string> achievementName = XmlHandler.GetElementsFromTags("../../../FileTypes/TypeitFiles/achievements.TypeIT", "AchievementName");
+            List<string> achievementDesc = XmlHandler.GetElementsFromTags("../../../FileTypes/TypeitFiles/achievements.TypeIT", "Description");
 
             //Adding the achievements to the field that is binded to the view (Achievements)
             for (int i = 0; i < achievementName.Count; i++)

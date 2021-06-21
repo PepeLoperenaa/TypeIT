@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using TypeIT.Commands;
-using TypeIT.FileTypes;
 using TypeIT.Stores;
 using TypeIT.Utilities;
 
@@ -36,28 +35,28 @@ namespace TypeIT.ViewModels
 
         private void setToCasual()
         {
-            XmlHandler.updateSettings(currentUser.CurrentUser.Name, "GameMode", "Casual");
+            XmlHandler.UpdateSettings(currentUser.CurrentUser.Name, "GameMode", "Casual");
             currentUser.CurrentUser.GameMode = Difficulty.Easy;
             NavigateSettingsCommand.Execute(null);
         }
 
         private void setToNormal()
         {
-            XmlHandler.updateSettings(currentUser.CurrentUser.Name, "GameMode", "Normal");
+            XmlHandler.UpdateSettings(currentUser.CurrentUser.Name, "GameMode", "Normal");
             currentUser.CurrentUser.GameMode = Difficulty.Medium;
             NavigateSettingsCommand.Execute(null);
         }
 
         private void setToHard()
         {
-            XmlHandler.updateSettings(currentUser.CurrentUser.Name, "GameMode", "Hard");
+            XmlHandler.UpdateSettings(currentUser.CurrentUser.Name, "GameMode", "Hard");
             currentUser.CurrentUser.GameMode = Difficulty.Hard;
             NavigateSettingsCommand.Execute(null);
         }
 
         private void setToExtreme()
         {
-            XmlHandler.updateSettings(currentUser.CurrentUser.Name, "GameMode", "Extreme");
+            XmlHandler.UpdateSettings(currentUser.CurrentUser.Name, "GameMode", "Extreme");
             currentUser.CurrentUser.GameMode = Difficulty.Extreme;
             NavigateSettingsCommand.Execute(null);
         }

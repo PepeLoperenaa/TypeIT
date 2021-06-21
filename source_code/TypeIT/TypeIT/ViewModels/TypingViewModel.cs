@@ -5,7 +5,6 @@ using System.Timers;
 using System.Windows;
 using System.Windows.Input;
 using TypeIT.Commands;
-using TypeIT.FileTypes;
 using TypeIT.Models;
 using TypeIT.Stores;
 using TypeIT.Utilities;
@@ -174,7 +173,7 @@ namespace TypeIT.ViewModels
                     if (TypingModel.HasNextPage())
                     {
                         string displayAcc = TypingModel.SelectedDifficulty == Difficulty.Easy ? "100" : TypingModel.AverageAccuracy;
-                        XmlHandler.updateDocuments(currentUser.CurrentUser.Name, TypingModel.Document.Name,
+                        XmlHandler.UpdateDocuments(currentUser.CurrentUser.Name, TypingModel.Document.Name,
                             (TypingModel.PageNumber + 1).ToString(), displayAcc);
 
                         currentUser.CurrentUser.RefreshUserModel();

@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using TypeIT.FileTypes;
+using TypeIT.Utilities;
 
 namespace TypeIT.ViewModels
 {
@@ -7,8 +7,8 @@ namespace TypeIT.ViewModels
     {
         public void collectionAchievements(string userName)
         {
-            List<string> achievements = XmlHandler.getElementsFromTags($"../../../FileTypes/Users/{userName}.TypeIT", "AchievementName");
-            List<string> document = XmlHandler.getElementsFromTags($"../../../FileTypes/Users/{userName}.TypeIT", "Document");
+            List<string> achievements = XmlHandler.GetElementsFromTags($"../../../FileTypes/Users/{userName}.TypeIT", "AchievementName");
+            List<string> document = XmlHandler.GetElementsFromTags($"../../../FileTypes/Users/{userName}.TypeIT", "Document");
 
             for (int i = 0; i < achievements.Count; i++)
             {
@@ -30,9 +30,9 @@ namespace TypeIT.ViewModels
 
         public void finishPages(string userName)
         {
-            List<string> achievements = XmlHandler.getElementsFromTags($"../../../FileTypes/Users/{userName}.TypeIT", "AchievementName");
-            List<string> total = XmlHandler.getElementsFromTags($"../../../FileTypes/Users/{userName}.TypeIT", "TotalPageNumber");
-            List<string> user = XmlHandler.getElementsFromTags($"../../../FileTypes/Users/{userName}.TypeIT", "UserPageNumber");
+            List<string> achievements = XmlHandler.GetElementsFromTags($"../../../FileTypes/Users/{userName}.TypeIT", "AchievementName");
+            List<string> total = XmlHandler.GetElementsFromTags($"../../../FileTypes/Users/{userName}.TypeIT", "TotalPageNumber");
+            List<string> user = XmlHandler.GetElementsFromTags($"../../../FileTypes/Users/{userName}.TypeIT", "UserPageNumber");
 
             for (int i = 0; i < achievements.Count; i++)
             {
@@ -54,8 +54,8 @@ namespace TypeIT.ViewModels
 
         public void speedAchievements(string userName)
         {
-            List<string> achievements = XmlHandler.getElementsFromTags($"../../../FileTypes/Users/{userName}.TypeIT", "AchievementName");
-            List<string> HighestWPM = XmlHandler.getElementsFromTags($"../../../FileTypes/Users/{userName}.TypeIT", "HighestWPM");
+            List<string> achievements = XmlHandler.GetElementsFromTags($"../../../FileTypes/Users/{userName}.TypeIT", "AchievementName");
+            List<string> HighestWPM = XmlHandler.GetElementsFromTags($"../../../FileTypes/Users/{userName}.TypeIT", "HighestWPM");
 
             for (int i = 0; i < achievements.Count; i++)
             {
@@ -100,8 +100,8 @@ namespace TypeIT.ViewModels
 
         public void averageSpeedAchievements(string userName)
         {
-            List<string> achievements = XmlHandler.getElementsFromTags($"../../../FileTypes/Users/{userName}.TypeIT", "AchievementName");
-            List<string> AverageWpm = XmlHandler.getElementsFromTags("../../../FileTypes/TypeitFiles/Pepe.TypeIT", "AverageWPM");
+            List<string> achievements = XmlHandler.GetElementsFromTags($"../../../FileTypes/Users/{userName}.TypeIT", "AchievementName");
+            List<string> AverageWpm = XmlHandler.GetElementsFromTags("../../../FileTypes/TypeitFiles/Pepe.TypeIT", "AverageWPM");
 
 
             for (int i = 0; i < achievements.Count; i++)
@@ -160,8 +160,8 @@ namespace TypeIT.ViewModels
 
         public void mistakesAchievements(string userName)
         {
-            List<string> achievements = XmlHandler.getElementsFromTags($"../../../FileTypes/Users/{userName}.TypeIT", "AchievementName");
-            List<string> acc = XmlHandler.getElementsFromTags("../../../FileTypes/TypeitFiles/Pepe.TypeIT", "DocumentAccuracy");
+            List<string> achievements = XmlHandler.GetElementsFromTags($"../../../FileTypes/Users/{userName}.TypeIT", "AchievementName");
+            List<string> acc = XmlHandler.GetElementsFromTags("../../../FileTypes/TypeitFiles/Pepe.TypeIT", "DocumentAccuracy");
 
             for (int i = 0; i < achievements.Count; i++)
             {

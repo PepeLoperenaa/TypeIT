@@ -5,7 +5,6 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TypeIT.FileTypes;
 using TypeIT.Utilities;
 
 namespace TypeIT.Models
@@ -61,7 +60,7 @@ namespace TypeIT.Models
             Achievements.Clear();
 
             // Load unlocked achievements
-            List<string> hallo = XmlHandler.getElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "AchievementName");
+            List<string> hallo = XmlHandler.GetElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "AchievementName");
             foreach (string achievementName in hallo)
             {
                 Achievements.Add(achievementName);
@@ -78,10 +77,10 @@ namespace TypeIT.Models
             Documents.Clear();
 
             //Reading the values from the .TpyeIT file
-            List<string> ListDocumentName = XmlHandler.getElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "DocumentName");
-            List<string> ListTotalPageNumber = XmlHandler.getElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "TotalPageNumber");
-            List<string> ListUserPageNumber = XmlHandler.getElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "UserPageNumber");
-            List<string> ListDocumentAccuracy = XmlHandler.getElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "DocumentAccuracy");
+            List<string> ListDocumentName = XmlHandler.GetElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "DocumentName");
+            List<string> ListTotalPageNumber = XmlHandler.GetElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "TotalPageNumber");
+            List<string> ListUserPageNumber = XmlHandler.GetElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "UserPageNumber");
+            List<string> ListDocumentAccuracy = XmlHandler.GetElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "DocumentAccuracy");
 
             //Loop through each list
             for (int i = 0; i < ListDocumentName.Count; i++)
@@ -109,23 +108,23 @@ namespace TypeIT.Models
         private StatisticsModel loadStatistics()
         {
             //Reading Highest WPM and converting to double
-            string parameter = XmlHandler.getElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "HighestWPM").First();
+            string parameter = XmlHandler.GetElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "HighestWPM").First();
             double HighestWPM = (parameter == "") ? 0 : Convert.ToDouble(parameter);
 
             //Reading Average WPM and converting to int
-            parameter = XmlHandler.getElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "AverageWPM").First();
+            parameter = XmlHandler.GetElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "AverageWPM").First();
             int AverageWPM = (parameter == "") ? 0 : Int32.Parse(parameter);
 
             //Reading Average Accuracy and converting to double
-            parameter = XmlHandler.getElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "AverageAccuracy").First();
+            parameter = XmlHandler.GetElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "AverageAccuracy").First();
             double AverageAccuracy = (parameter == "") ? 0 : Convert.ToDouble(parameter);
 
             //Reading Hour Spent and converting to double
-            parameter = XmlHandler.getElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "HoursSpent").First();
+            parameter = XmlHandler.GetElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "HoursSpent").First();
             double HoursSpent = (parameter == "") ? 0 : Convert.ToDouble(parameter);
 
             //Reading Total words typed and converting to int
-            parameter = XmlHandler.getElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "TypedTypedWordsTotalWords").First();
+            parameter = XmlHandler.GetElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "TypedTypedWordsTotalWords").First();
             int TypedTypedWordsTotalWords = (parameter == "") ? 0 : Convert.ToInt32(parameter);
 
             //Returning a new statistics model based on the read values
@@ -138,7 +137,7 @@ namespace TypeIT.Models
         /// <returns>Returns the theme as string</returns>
         private string loadTheme()
         {
-            return XmlHandler.getElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "Theme").First();
+            return XmlHandler.GetElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "Theme").First();
         }
 
         /// <summary>
@@ -148,7 +147,7 @@ namespace TypeIT.Models
         /// </summary>
         private void loadUserGameMode()
         {
-            string gameMode = XmlHandler.getElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "GameMode").First();
+            string gameMode = XmlHandler.GetElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "GameMode").First();
 
             switch (gameMode)
             {
