@@ -115,7 +115,7 @@
 
             <!-- Second row -->
             <Border Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4" Style="{DynamicResource TextBlockBorder}">
-                <TextBlock Padding="3" TextWrapping="WrapWithOverflow">
+                <TextBlock Padding="3" TextWrapping="WrapWithOverflow" ScrollViewer.CanContentScroll="True">
                     <!-- It needs to be like this so the text doesn't have a space between it-->
                     <Run Style="{DynamicResource BodyText}" 
                          Text="{Binding TypingModel.TextCorrect}" Foreground="Green"/><Run 

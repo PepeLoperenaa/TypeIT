@@ -102,6 +102,8 @@ namespace TypeIT.Utilities
             // remove characters which aren't on the keyboard (qwerty)
             str = Regex.Replace(str, @"[^a-zA-Z0-9`!@#$%^&*()_+|\-=\\{}\[\]:"";<>?,./\r\n\'' ]+", "", RegexOptions.Compiled);
 
+            str = Regex.Replace(str, @"\s+", " ");
+
             return str;
         }
 

@@ -33,7 +33,7 @@ namespace TypeIT.ViewModels
             {
                 _inputString = value;
 
-                if (InputString.Length == 1 && TypingModel.CurrentWordIndex == 0)
+                if (InputString.Length == 1 && TypingModel.CurrentWordIndex == 0 && TypingModel.Alive)
                 {
                     TypingModel.StartTime = DateTime.Now;
                     TypingModel.TypingTimer.Start();
@@ -92,38 +92,47 @@ namespace TypeIT.ViewModels
         /// <param name="word"></param>
         public void TypeWord(string word)
         {
-            TypingModel.CurrentMistakes = 0;
-
-            TypingModel.InputCount++;
-
-            // sets the current mistakes depending on the index at which they made the mistakes, as well as increments the 
-            // number of total mistakes the user has made
-            if (TypingModel.GetMistakeIndex(word, InputString) >= 0)
+            if (TypingModel.Alive)
             {
-                if (InputString.Trim() != word)
+                TypingModel.CurrentMistakes = 0;
+
+                TypingModel.InputCount++;
+
+                // sets the current mistakes depending on the index at which they made the mistakes, as well as increments the 
+                // number of total mistakes the user has made
+                if (TypingModel.GetMistakeIndex(word, InputString) >= 0)
                 {
-                    TypingModel.CurrentMistakes = (InputString.Length - TypingModel.GetMistakeIndex(word, InputString));
-                    TypingModel.TotalMistakes++;
+                    if (InputString.Trim() != word)
+                    {
+                        TypingModel.CurrentMistakes = (InputString.Length - TypingModel.GetMistakeIndex(word, InputString));
+                        TypingModel.TotalMistakes++;
+                    }
                 }
+
+                // handle the countdown timer if difficulty is extreme
+                TypingModel.HandleExtreme();
+
+                // set the index based on the current length subtracted by the tracker
+                TypingModel.Index += InputString.Length - InputLengthTracker;
+
+                // set the length tracker after processing the index
+                InputLengthTracker = InputString.Length;
+
+
+                if (TypingModel.Index > TypingModel.Text.Length)
+                {
+                    return;
+                }
+
+                // set the number of letters they can input after making a mistake
+                if (word.Contains(InputString.Trim()) && InputString != "")
+                {
+                    TypingModel.ErrorSpace = InputString.Length + TypingModel.CalculateErrorSpace(word);
+                }
+
+                UpdateDisplayText(word);
+                ParseWord(word);
             }
-
-            // handle the countdown timer if difficulty is extreme
-            TypingModel.HandleExtreme();
-
-            // set the index based on the current length subtracted by the tracker
-            TypingModel.Index += InputString.Length - InputLengthTracker;
-
-            // set the length tracker after processing the index
-            InputLengthTracker = InputString.Length;
-
-            // set the number of letters they can input after making a mistake
-            if (word.Contains(InputString.Trim()) && InputString != "")
-            {
-                TypingModel.ErrorSpace = InputString.Length + TypingModel.CalculateErrorSpace(word);
-            }
-
-            UpdateDisplayText(word);
-            ParseWord(word);
         }
 
         /// <summary>
@@ -131,7 +140,7 @@ namespace TypeIT.ViewModels
         /// </summary>
         /// <param name="word"></param>
         private void UpdateDisplayText(string word)
-        {
+        { 
             // set the gray text (text left to type)
             TypingModel.CharactersLeft = TypingModel.Text[(TypingModel.Index)..];
 
@@ -164,9 +173,9 @@ namespace TypeIT.ViewModels
                 {
                     if (TypingModel.HasNextPage())
                     {
-                        XmlHandler.updateDocuments(currentUser.CurrentUser.Name, TypingModel.Document.Name, 
-                            (TypingModel.PageNumber + 1).ToString(), TypingModel.AverageAccuracy);
-                        currentUser.CurrentUser.RefreshUserModel();
+                        string displayAcc = TypingModel.SelectedDifficulty == Difficulty.Easy ? "100" : TypingModel.AverageAccuracy;
+                        XmlHandler.updateDocuments(currentUser.CurrentUser.Name, TypingModel.Document.Name,
+                            (TypingModel.PageNumber + 1).ToString(), displayAcc);
 
                         TypingModel.NextPage();
 
