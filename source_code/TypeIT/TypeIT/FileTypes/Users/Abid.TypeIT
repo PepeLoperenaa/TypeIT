@@ -24,6 +24,5 @@
       <AchievementName />
     </Achievement>
   </Achievements>
-  <Documents>
-  </Documents>
+  <Documents />
 </UserProfile>
