@@ -159,6 +159,8 @@ namespace TypeIT.FileTypes
 
             XElement document = documents.Elements("Document").Where(x => (string)x.Element("DocumentName") == docName).SingleOrDefault();
 
+            double accuracy = (Double.Parse(document.Element("UserPageNumber").Value) * Double.Parse(document.Element("DocumentAccuracy").Value) + Double.Parse(docAccuracy)) / Double.Parse(userPage); 
+
             document.Element("UserPageNumber").Value = userPage;
             document.Element("DocumentAccuracy").Value = docAccuracy;
 

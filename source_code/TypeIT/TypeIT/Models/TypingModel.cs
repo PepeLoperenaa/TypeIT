@@ -25,6 +25,7 @@ namespace TypeIT.Models
         public string Text { get; set; }
         public DateTime StartTime { get; set; }
         public Difficulty SelectedDifficulty { get; set; }
+        public bool Alive { get; set; }
 
         //Binded values
         private Timer _typingTimer;
@@ -166,6 +167,7 @@ namespace TypeIT.Models
             CurrentMistakes = 0;
             HighestSpeed = 0;
             TotalMistakes = 0;
+            Alive = true;
             CurrentWordIndex = 0;
             ErrorSpace = 5;
             TypingTimer = new Timer();
@@ -341,13 +343,16 @@ namespace TypeIT.Models
         /// </summary>
         public void IncrementTime()
         {
-            if (SelectedDifficulty == Difficulty.Easy || SelectedDifficulty == Difficulty.Medium)
+            if (Alive)
             {
-                TimeCounter++;
-            }
-            else
-            {
-                TimeCounter--;
+                if (SelectedDifficulty == Difficulty.Easy || SelectedDifficulty == Difficulty.Medium)
+                {
+                    TimeCounter++;
+                }
+                else
+                {
+                    TimeCounter--;
+                }
             }
         }
 
@@ -380,9 +385,9 @@ namespace TypeIT.Models
             if (SelectedDifficulty == Difficulty.Hard || SelectedDifficulty == Difficulty.Extreme)
             {
                 // fail the user if time runs out
-                if (TimeCounter <= 0)
+                if (TimeCounter == 0)
                 {
-                    // go back to main menu or something
+                    Alive = false;
                 }
             }
 
