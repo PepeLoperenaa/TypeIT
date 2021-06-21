@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:TypeIT.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
     <Viewbox>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -54,25 +55,24 @@
                           Grid.ColumnSpan="4"
                           Grid.RowSpan="2">
                     <StackPanel>
-                        <ItemsControl ItemsSource="{Binding currentUser.CurrentUser.Documents}">
+                        <ItemsControl ItemsSource="{Binding currentUser.CurrentUser.Documents}" Name="ItemContol">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Border Style="{DynamicResource BookBorder}">
-                                        
+                                    <Border Style="{DynamicResource BookBorder}" Cursor="Hand">
                                         <StackPanel Orientation="Horizontal">
-                                            <Button Style="{DynamicResource DocumentTitleStyle}">
+                                            <Button Style="{DynamicResource DocumentTitleStyle}" Command="{Binding OpenBookCommand}">
                                                 <StackPanel Orientation="Vertical">
-                                                    <TextBlock Style="{DynamicResource AchievementAndBookTitle}" Text="{Binding Name}"/>
-                                                    <TextBlock Style="{DynamicResource AchievementAndBookDescription}" Text="{Binding UserPageNumber}"/>
+                                                    <TextBlock Style="{DynamicResource BookTitle}" Text="{Binding Name}"/>
+                                                    <TextBlock Style="{DynamicResource BookDescription}">
+                                                        <Run Text="{Binding UserPageNumber}"/>
+                                                        <Run Text="of"/>
+                                                        <Run Text="{Binding PageCount}"/>
+                                                    </TextBlock>
                                                 </StackPanel>
                                             </Button>
-                                            <Button Style="{DynamicResource DocumentTitleStyle}" 
-                                                    VerticalAlignment="Bottom" 
-                                                    HorizontalAlignment="Right"
-                                                    Margin="12,0,0,0"
-                                                    Height="20">
+                                            <Button Style="{DynamicResource DocumentDeleteStyle}" Command="{Binding DeleteBookCommand}">
                                                 <Image Source="../Resources/Images/deleteIcon.png" />
-                                                </Button>
+                                            </Button>
                                         </StackPanel>
                                     </Border>
                                 </DataTemplate>
@@ -87,7 +87,6 @@
                         </ItemsControl>
                     </StackPanel>
                 </ScrollViewer>
-
             </Grid>
         </Grid>
     </Viewbox>

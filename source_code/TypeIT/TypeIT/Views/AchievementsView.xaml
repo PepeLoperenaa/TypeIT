@@ -80,15 +80,14 @@
                                         <Image Source="../Resources/Images/individualAchievemtsIcon.png" 
                                            VerticalAlignment="Top"
                                            Height="20"/>
-                                        <StackPanel Orientation="Vertical" Margin="3,0,0,0">
-                                            <TextBlock Style="{DynamicResource AchievementAndBookTitle}" Text="{Binding Title}"/>
-                                            <TextBlock Style="{DynamicResource AchievementAndBookDescription}" Text="{Binding Desc}"/>
+                                        <StackPanel Orientation="Vertical" Margin="5,0,0,0">
+                                            <TextBlock Style="{DynamicResource AchievementTitle}" Text="{Binding Title}"/>
+                                            <TextBlock Style="{DynamicResource AchievementDescription}" Text="{Binding Desc}"/>
                                         </StackPanel>
                                         <Image Source="../Resources/Images/lockedAchievementsIcon.png" 
                                         VerticalAlignment="Bottom" 
                                         HorizontalAlignment="Right"
-                                        Height="20"
-                                        Margin="-3,0,0,0"/>
+                                        Height="20"/>
                                     </StackPanel>
                                 </Border>
                             </DataTemplate>

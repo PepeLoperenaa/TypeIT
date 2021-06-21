@@ -55,7 +55,7 @@ namespace TypeIT.ViewModels
 
                 XmlHandler.AddingADocumentIntoUserXml(currentUser.CurrentUser.Name, document.Name, document.GetNumberOfPages(), document.UserPageNumber);
 
-                if(filePath != null)
+                if(document != null)
                 {
                     Xceed.Wpf.Toolkit.MessageBox.Show(
                        "Your document was sussessfully added !",
@@ -70,6 +70,8 @@ namespace TypeIT.ViewModels
                        MessageBoxButton.OK
                     );
                 }
+
+                currentUser.CurrentUser.loadUserDocuments();
             }
         }
 

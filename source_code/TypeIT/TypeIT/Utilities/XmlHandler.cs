@@ -41,6 +41,12 @@ namespace TypeIT.FileTypes
             doc.Save("../../../FileTypes/Users/" + name + ".TypeIT");
         }
 
+        /// <summary>
+        /// Getting the elements of the tags. 
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <param name="tag"></param>
+        /// <returns></returns>
         public static List<string> getElementsFromTags(string filePath, string tag)
         {
             List<string> listElements = new List<string>();
@@ -95,6 +101,16 @@ namespace TypeIT.FileTypes
             XDocument doc = XDocument.Load($"../../../FileTypes/Users/{userName}.TypeIT");
 
             doc.Root.Element("Statistics").Element(type).Value = value;
+        }
+
+        /// <summary>
+        /// Method to delete a document
+        /// </summary>
+        /// <param name="userName"></param>+
+        public static void DeleteDocument(string userName, string documentName)
+        {
+            XDocument doc = XDocument.Load($"../../../FileTypes/Users/{userName}.TypeIT");
+            doc.Root.Element("Documents").Element("Document").Element(documentName).Remove();
         }
 
         /// <summary>
@@ -232,5 +248,17 @@ namespace TypeIT.FileTypes
 
         // remove document from user
         // get documentmodel from user
+
+        public static void unlockAchievements(string userName, string AchievementName)
+        {
+            string filePath = $"../../../FileTypes/Users/{userName}.TypeIT";
+            XDocument doc = XDocument.Load(filePath);
+
+            foreach (XNode node in doc.Descendants("Achievements").Descendants(AchievementName).DescendantNodes())
+            {
+                ((XElement)node).Value = AchievementName;
+            }
+            doc.Save(filePath);
+        }
     }
 }

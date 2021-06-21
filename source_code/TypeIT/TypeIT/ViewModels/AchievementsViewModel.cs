@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows.Input;
-using System.Xml;
 using TypeIT.Commands;
 using TypeIT.FileTypes;
 using TypeIT.Models;
@@ -34,7 +28,7 @@ namespace TypeIT.ViewModels
         /// Loading the user achievements 
         /// </summary>
         private void loadUsersAchievements()
-        {            
+        {
             // We have to iterate backwards to safely delete elements
             for (int i = Achievements.Count - 1; i >= 0; i--)
             {
@@ -45,7 +39,7 @@ namespace TypeIT.ViewModels
                 }
             }
         }
-        
+
         /// <summary>
         /// Load all of the achievements into the application from the user's .TypeIT file
         /// </summary>
