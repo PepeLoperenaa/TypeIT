@@ -293,8 +293,8 @@ namespace TypeIT.Models
         {
             if (SelectedDifficulty == Difficulty.Easy)
             {
-                AverageAccuracy = "N/A";
-                AverageTypingSpeed = "N/A";
+                AverageAccuracy = "-1";
+                AverageTypingSpeed = "-1";
             }
             else
             {
