@@ -2,17 +2,17 @@
 <UserProfile>
   <Name>Costa</Name>
   <Statistics>
-    <HighestWPM />
-    <AverageWPM />
-    <AverageAccuracy />
-    <HoursSpent />
-    <TypedTypedWordsTotalWords />
+	  <HighestWPM>100</HighestWPM>
+	  <AverageWPM>100</AverageWPM>
+	  <AverageAccuracy>100</AverageAccuracy>
+	  <HoursSpent>10000</HoursSpent>
+	  <TypedTypedWordsTotalWords>1000000</TypedTypedWordsTotalWords>
     <DailyRecords>
-      <Day>
-        <Date />
-        <WPM />
-        <Average />
-      </Day>
+        <Day>
+		    <Date></Date>
+		    <WPM></WPM>
+		    <Average></Average>
+	    </Day>
     </DailyRecords>
   </Statistics>
   <Settings>
@@ -27,19 +27,7 @@
   <Documents>
     <Document>
       <DocumentName>1</DocumentName>
-      <TotalPageNumber>1</TotalPageNumber>
-      <UserPageNumber>1</UserPageNumber>
-      <DocumentAccuracy>NaN</DocumentAccuracy>
-    </Document>
-    <Document>
-      <DocumentName>CV</DocumentName>
-      <TotalPageNumber>1</TotalPageNumber>
-      <UserPageNumber>0</UserPageNumber>
-      <DocumentAccuracy>0</DocumentAccuracy>
-    </Document>
-    <Document>
-      <DocumentName>1</DocumentName>
-      <TotalPageNumber>1</TotalPageNumber>
+      <TotalPageNumber>0</TotalPageNumber>
       <UserPageNumber>0</UserPageNumber>
       <DocumentAccuracy>0</DocumentAccuracy>
     </Document>

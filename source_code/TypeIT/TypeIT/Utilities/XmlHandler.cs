@@ -1,5 +1,8 @@
-﻿using System;
+﻿using LiveCharts;
+using LiveCharts.Defaults;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Xml.Linq;
 using TypeIT.Models;
@@ -335,7 +338,7 @@ namespace TypeIT.Utilities
 
             foreach (XNode node in doc.Descendants("Statistics").DescendantNodes())
             {
-                ((XElement)node).Value = "";
+                ((XElement)node).Value = "0";
             }
             doc.Save(filePath);
         }
@@ -353,6 +356,35 @@ namespace TypeIT.Utilities
                 ((XElement)node).Value = AchievementName;
             }
             doc.Save(filePath);
+        }
+
+        public static object[] GetValues(string UserName)
+        {
+            Object[] Values = new object[3];
+            ChartValues<int> WpmValues = new ChartValues<int>();
+            ChartValues<double> AccuracyValues = new ChartValues<double>();
+            ObservableCollection<string> Dates = new ObservableCollection<string>();
+
+            string filePath = $"../../../FileTypes/Users/{UserName}.TypeIT";
+            XDocument doc = XDocument.Load(filePath);
+            
+            foreach(XElement Days in doc.Descendants("DailyRecords"))
+            {
+                foreach(XElement Day in Days.Descendants("Day"))
+                {
+                    WpmValues.Add(int.Parse(Day.Element("WPM").Value));
+
+                    AccuracyValues.Add(double.Parse(Day.Element("Average").Value));
+
+                    Dates.Add(DateTime.Parse(Day.Element("Date").Value).ToString("yyyy-MM-dd"));
+                }
+            }
+
+            Values[0] = WpmValues;
+            Values[1] = AccuracyValues;
+            Values[2] = Dates;
+
+            return Values;
         }
     }
 }
