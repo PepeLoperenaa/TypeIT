@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TypeIT.Stores;
+﻿using TypeIT.Stores;
 
 namespace TypeIT.ViewModels
 {

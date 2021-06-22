@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Mail;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using TypeIT.Commands;
 using TypeIT.Stores;
 
@@ -18,8 +11,8 @@ namespace TypeIT.ViewModels
 
         public AboutViewModel(NavigationStore navigationStore, UserStore userStore)
         {
-           NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore, userStore));
-           currentUser = userStore;
+            NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore, userStore));
+            currentUser = userStore;
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using IronPdf;
-using Syncfusion.DocIO.DLS;
 using System;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -73,10 +72,10 @@ namespace TypeIT.Utilities
                     throw new Exception("That file type is not supported.");
             }
 
-            model = await t.ContinueWith(antecendent => 
-            { 
-                model = new DocumentModel(docDir); 
-                return model; 
+            model = await t.ContinueWith(antecendent =>
+            {
+                model = new DocumentModel(docDir);
+                return model;
             });
 
             model.Name = Title;
@@ -95,7 +94,7 @@ namespace TypeIT.Utilities
             // Replacing them individually like this, since there are no inbuilt / online methods for autmatically replacing special characters for their asii counterparts
             str = str.Replace('\u2018', '\'').Replace('\u2019', '\'').Replace('\u201c', '\"').Replace('\u201d', '\"').
                 Replace("\u2026", "...").Replace("\r\n", " ").Replace('—', '-').Replace(@"\s+", " ");
-            
+
             // replace multiple spaces with single ones
             str = Regex.Replace(str, @"\s+", " ");
 

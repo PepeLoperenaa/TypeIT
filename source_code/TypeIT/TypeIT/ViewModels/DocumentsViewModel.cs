@@ -1,11 +1,5 @@
 ﻿using Microsoft.Win32;
 using Prism.Commands;
-using Prism.Services.Dialogs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using TypeIT.Commands;
@@ -24,9 +18,9 @@ namespace TypeIT.ViewModels
 
         public DocumentsViewModel(NavigationStore navigationStore, UserStore userStore)
         {
-           NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore, userStore));
-           NavigateMyCollectionCommand = new NavigateCommand<MyCollectionViewModel>(navigationStore, () => new MyCollectionViewModel(navigationStore, userStore));
-           UploadDocumentCommand = new DelegateCommand(ClickedUploadDocument);
+            NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore, userStore));
+            NavigateMyCollectionCommand = new NavigateCommand<MyCollectionViewModel>(navigationStore, () => new MyCollectionViewModel(navigationStore, userStore));
+            UploadDocumentCommand = new DelegateCommand(ClickedUploadDocument);
 
             //Current user
             currentUser = userStore;
@@ -50,7 +44,7 @@ namespace TypeIT.ViewModels
                 string fileName = filePath.Substring(posOfSlash, posOfDot - posOfSlash);
 
                 FileParser fileParser = new FileParser();
-                DocumentModel document = await fileParser.ParseFile(filePath,fileName);
+                DocumentModel document = await fileParser.ParseFile(filePath, fileName);
 
                 XmlHandler.AddingADocumentIntoUserXml(currentUser.CurrentUser.Name, document.Name, document.GetNumberOfPages(), document.UserPageNumber);
 

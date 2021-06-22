@@ -1,11 +1,6 @@
 ﻿using Prism.Commands;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using TypeIT.Commands;
@@ -94,7 +89,8 @@ namespace TypeIT.ViewModels
             {
                 Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("Resources/DarkTheme.xaml", UriKind.Relative) });
                 XmlHandler.UpdateSettings(currentUser.CurrentUser.Name, "Theme", "Dark");
-            } else if (currentTheme == "Resources/DarkTheme.xaml")
+            }
+            else if (currentTheme == "Resources/DarkTheme.xaml")
             {
                 Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("Resources/LightTheme.xaml", UriKind.Relative) });
                 XmlHandler.UpdateSettings(currentUser.CurrentUser.Name, "Theme", "Light");
