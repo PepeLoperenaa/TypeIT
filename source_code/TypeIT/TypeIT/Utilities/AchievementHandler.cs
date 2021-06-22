@@ -20,6 +20,8 @@ namespace TypeIT.Utilities
         /// <param name="accuracy">The accuracy to be compared to the achievements requirements.</param>
         public static void FinishPageAchievements(UserStore currentUser, int wpm, double accuracy)
         {
+            newlyUnlockedAchievements.Clear();
+
             List<string> achievementName = XmlHandler.GetElementsFromTags("../../../FileTypes/TypeitFiles/achievements.TypeIT", "AchievementName");
             List<string> achievementTreshold = XmlHandler.GetElementsFromTags("../../../FileTypes/TypeitFiles/achievements.TypeIT", "Treshold");
             List<string> achievementProperty = XmlHandler.GetElementsFromTags("../../../FileTypes/TypeitFiles/achievements.TypeIT", "Property");
@@ -46,9 +48,12 @@ namespace TypeIT.Utilities
             AddNewAchievements(currentUser);
         }
 
+        /// <summary>
+        /// Adds the achievements to the user's .TypeIT file
+        /// </summary>
+        /// <param name="currentUser">The current user that unlocked the achievements.</param>
         private static void AddNewAchievements(UserStore currentUser)
         {
-            // We have to iterate backwards to safely delete elements
             for (int i = 0; i < newlyUnlockedAchievements.Count; i++)
             {
                 if (!currentUser.CurrentUser.Achievements.Contains(newlyUnlockedAchievements[i]))
