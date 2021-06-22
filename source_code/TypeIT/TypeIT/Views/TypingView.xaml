@@ -133,7 +133,7 @@
                     <Run Style="{DynamicResource BodyText}"
                          Text="{Binding TypingModel.TextCorrect}" Foreground="Green"/><Run
                         Style="{DynamicResource BodyText}"
-                        Text="{Binding TypingModel.TextWrong}" Foreground="DarkRed" Background="Red" /><Run
+                        Text="{Binding TypingModel.TextWrong}" Foreground="Black" Background="DarkRed" /><Run
                         Style="{DynamicResource BodyText}"
                         Text="{Binding TypingModel.CharactersLeft}" />
                     </TextBlock>

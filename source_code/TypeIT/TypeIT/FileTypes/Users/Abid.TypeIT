@@ -17,12 +17,19 @@
   </Statistics>
   <Settings>
     <Theme>Dark</Theme>
-    <GameMode />
+    <GameMode>Hard</GameMode>
   </Settings>
   <Achievements>
     <Achievement>
       <AchievementName />
     </Achievement>
   </Achievements>
-  <Documents />
+  <Documents>
+    <Document>
+      <DocumentName>Overlord, Vol. 1_ The Undead King</DocumentName>
+      <TotalPageNumber>236</TotalPageNumber>
+      <UserPageNumber>20</UserPageNumber>
+      <DocumentAccuracy>0</DocumentAccuracy>
+    </Document>
+  </Documents>
 </UserProfile>
