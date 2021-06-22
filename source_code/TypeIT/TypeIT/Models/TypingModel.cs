@@ -12,11 +12,15 @@ namespace TypeIT.Models
     class TypingModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+
         public bool Taxed { get; set; }
+
         // used to keep track of typing individual words
         public int CurrentMistakes { get; set; }
+
         // keep track of which part of the text is being typed
         public int CurrentWordIndex { get; set; }
+
         // used to keep track of where the user is in the text and replace colors
         public int Index { get; set; }
         public int InputCount { get; set; }
@@ -45,11 +49,9 @@ namespace TypeIT.Models
         public int TotalMistakes
         {
             get => _totalMistakes;
-            set
-            {
-                _totalMistakes = value;
-            }
+            set { _totalMistakes = value; }
         }
+
         public string TimeDisplay
         {
             get => _timeDisplay;
@@ -59,6 +61,7 @@ namespace TypeIT.Models
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TimeDisplay)));
             }
         }
+
         public int TimeCounter
         {
             get => _timeCounter;
@@ -71,6 +74,7 @@ namespace TypeIT.Models
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TimeCounter)));
             }
         }
+
         public int PageNumber
         {
             get => _pageNumber;
@@ -78,8 +82,10 @@ namespace TypeIT.Models
             {
                 _pageNumber = value;
                 Text = GetTextFromPage(PageNumber);
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(PageNumber)));
             }
         }
+
         public string TextCorrect
         {
             get => _textCorrect;
@@ -89,6 +95,7 @@ namespace TypeIT.Models
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TextCorrect)));
             }
         }
+
         public string TextWrong
         {
             get => _textWrong;
@@ -98,6 +105,7 @@ namespace TypeIT.Models
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TextWrong)));
             }
         }
+
         public string CharactersLeft
         {
             get => _textLeft;
@@ -107,6 +115,7 @@ namespace TypeIT.Models
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CharactersLeft)));
             }
         }
+
         public int ErrorSpace
         {
             get => _errorSpace;
@@ -116,14 +125,13 @@ namespace TypeIT.Models
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ErrorSpace)));
             }
         }
+
         public Timer TypingTimer
         {
             get => _typingTimer;
-            set
-            {
-                _typingTimer = value;
-            }
+            set { _typingTimer = value; }
         }
+
         public string CurrentWord
         {
             get => _currentWord;
@@ -133,6 +141,7 @@ namespace TypeIT.Models
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CurrentWord)));
             }
         }
+
         public string AverageTypingSpeed
         {
             get => _averageTypingSpeed;
@@ -142,6 +151,7 @@ namespace TypeIT.Models
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(AverageTypingSpeed)));
             }
         }
+
         public string AverageAccuracy
         {
             get => _averageAccuracy;
@@ -151,6 +161,7 @@ namespace TypeIT.Models
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(AverageAccuracy)));
             }
         }
+
         public DocumentModel Document
         {
             get => _document;
@@ -161,6 +172,7 @@ namespace TypeIT.Models
                 PageNumber = Document.UserPageNumber;
             }
         }
+
         public TypingModel()
         {
             CurrentMistakes = 0;
@@ -190,7 +202,7 @@ namespace TypeIT.Models
         public int CalculateErrorSpace(string word)
         {
             int minSpace = 5;
-            int calculatedSpace = (int)((word.Length * 1.5) / 2);
+            int calculatedSpace = (int) ((word.Length * 1.5) / 2);
 
             return minSpace > calculatedSpace ? minSpace : calculatedSpace;
         }
@@ -207,6 +219,7 @@ namespace TypeIT.Models
             {
                 HighestSpeed = speed;
             }
+
             return speed;
         }
 
@@ -217,7 +230,7 @@ namespace TypeIT.Models
         /// <returns>The average accuracy of a user</returns>
         public double CalculateAccuracy(int totalChars)
         {
-            return Math.Round(((Double)(totalChars - TotalMistakes) / totalChars) * 100, 2);
+            return Math.Round(((Double) (totalChars - TotalMistakes) / totalChars) * 100, 2);
         }
 
         /// <summary>
@@ -246,11 +259,11 @@ namespace TypeIT.Models
         {
             if (averageWpm > 6)
             {
-                return (int)((wordCount * 60) / (averageWpm)) + 5;
+                return (int) ((wordCount * 60) / (averageWpm)) + 5;
             }
             else
             {
-                return (int)((wordCount * 60) / 30) + 5;
+                return (int) ((wordCount * 60) / 30) + 5;
             }
         }
 
@@ -264,6 +277,7 @@ namespace TypeIT.Models
             {
                 return true;
             }
+
             return false;
         }
 
@@ -297,14 +311,14 @@ namespace TypeIT.Models
         {
             if (SelectedDifficulty == Difficulty.Easy)
             {
-                AverageAccuracy = "-1";
-                AverageTypingSpeed = "-1";
+                AverageAccuracy = "N/A";
+                AverageTypingSpeed = "N/A";
             }
             else
             {
                 AverageAccuracy = CalculateAccuracy(InputCount).ToString();
 
-                AverageTypingSpeed = ((int)CalculateTypingSpeed(CurrentWordIndex)).ToString();
+                AverageTypingSpeed = ((int) CalculateTypingSpeed(CurrentWordIndex)).ToString();
 
                 if (Double.Parse(AverageAccuracy) < 0)
                 {
@@ -347,16 +361,13 @@ namespace TypeIT.Models
         /// </summary>
         public void IncrementTime()
         {
-            if (Alive)
+            if (SelectedDifficulty == Difficulty.Easy || SelectedDifficulty == Difficulty.Medium)
             {
-                if (SelectedDifficulty == Difficulty.Easy || SelectedDifficulty == Difficulty.Medium)
-                {
-                    TimeCounter++;
-                }
-                else
-                {
-                    TimeCounter--;
-                }
+                TimeCounter++;
+            }
+            else
+            {
+                TimeCounter--;
             }
         }
 
@@ -386,27 +397,6 @@ namespace TypeIT.Models
         /// </summary>
         private void OnCounterChange()
         {
-            if (SelectedDifficulty == Difficulty.Hard || SelectedDifficulty == Difficulty.Extreme)
-            {
-                // fail the user if time runs out
-                if (TimeCounter == 0)
-                {
-                    Alive = false;
-                
-                    //Custom messagebox
-                    var res = Xceed.Wpf.Toolkit.MessageBox.Show(
-                        "You ran out of time :(",
-                        "Home",
-                        MessageBoxButton.YesNo
-                    );
-
-                    if ("Home" == res.ToString())
-                    {
-                        System.Windows.Application.Current.Shutdown();
-                    }
-                }
-            }
-
             // set the time span string whenever the counter changes (always increments or decrements)
             TimeDisplay = TimeSpan.FromSeconds(TimeCounter).ToString("mm':'ss");
         }
@@ -426,6 +416,7 @@ namespace TypeIT.Models
                     return true;
                 }
             }
+
             return false;
         }
 
@@ -459,6 +450,7 @@ namespace TypeIT.Models
             {
                 return words[wordIndex];
             }
+
             return null;
         }
 
@@ -484,6 +476,7 @@ namespace TypeIT.Models
                     return word.Length;
                 }
             }
+
             return -1;
         }
     }
