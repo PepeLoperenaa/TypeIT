@@ -6,7 +6,7 @@ using TypeIT.Utilities;
 
 namespace TypeIT.ViewModels
 {
-    class ChangeGameModeViewModel : ViewModelBase
+    internal class ChangeGameModeViewModel : ViewModelBase
     {
         public ICommand NavigateHomeCommand { get; }
         public ICommand NavigateSettingsCommand { get; }
@@ -16,11 +16,11 @@ namespace TypeIT.ViewModels
         public ICommand ChangeGameModeToExtreme { get; set; }
         public UserStore CurrentUser { get; set; }
 
-        public ChangeGameModeViewModel(NavigationStore navigationStore, UserStore userStore)
+        public ChangeGameModeViewModel(NavigationStore navigationStore, UserStore UserStore)
         {
-            NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore, userStore));
-            NavigateSettingsCommand = new NavigateCommand<SettingsViewModel>(navigationStore, () => new SettingsViewModel(navigationStore, userStore));
-            CurrentUser = userStore;
+            NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore, UserStore));
+            NavigateSettingsCommand = new NavigateCommand<SettingsViewModel>(navigationStore, () => new SettingsViewModel(navigationStore, UserStore));
+            CurrentUser = UserStore;
 
             ChangeGameModeToCasual = new DelegateCommand(setToCasual);
             ChangeGameModeToNormal = new DelegateCommand(setToNormal);

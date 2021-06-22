@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UserProfile>
+  <Name>Create User</Name>
+  <Statistics>
+    <HighestWPM>0</HighestWPM>
+    <AverageWPM>30</AverageWPM>
+    <AverageAccuracy>-2147483648</AverageAccuracy>
+    <HoursSpent>0</HoursSpent>
+    <TypedWordsTotal>0</TypedWordsTotal>
+    <DailyRecords />
+  </Statistics>
+  <Settings>
+    <Theme />
+    <GameMode>Normal</GameMode>
+  </Settings>
+  <Achievements>
+    <Achievement>
+      <AchievementName />
+    </Achievement>
+    <AchievementName>The birth of a legend</AchievementName>
+    <AchievementName>You can do better</AchievementName>
+  </Achievements>
+  <Documents>
+    <Document>
+      <DocumentName>1</DocumentName>
+      <TotalPageNumber>1</TotalPageNumber>
+      <UserPageNumber>2</UserPageNumber>
+      <DocumentAccuracy>NaN</DocumentAccuracy>
+    </Document>
+    <Document>
+      <DocumentName>Data Processing Feedback</DocumentName>
+      <TotalPageNumber>1</TotalPageNumber>
+      <UserPageNumber>2</UserPageNumber>
+      <DocumentAccuracy>89.09</DocumentAccuracy>
+    </Document>
+  </Documents>
+</UserProfile>

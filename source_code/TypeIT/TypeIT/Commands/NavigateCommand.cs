@@ -4,7 +4,7 @@ using TypeIT.ViewModels;
 
 namespace TypeIT.Commands
 {
-    class NavigateCommand<TViewModel> : CommandBase
+    internal class NavigateCommand<TViewModel> : CommandBase
         where TViewModel : ViewModelBase
     {
         private readonly NavigationStore _navigationStore;

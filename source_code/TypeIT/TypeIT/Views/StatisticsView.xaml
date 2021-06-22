@@ -139,7 +139,7 @@
 
                         <TextBlock Foreground="{DynamicResource ResourceKey=TextBlue}"
                                    Style="{DynamicResource StatisticsValue}"
-                                   Text="{Binding currentUser.CurrentUser.Statistics.HighestWPM}"
+                                   Text="{Binding CurrentUser.CurrentUser.Statistics.HighestWPM}"
                                    FontSize="25"
                                    Margin="0,0,0,-3"/>
                         <TextBlock Foreground="{DynamicResource ResourceKey=TextHeaderColor}"
@@ -157,7 +157,7 @@
 
                         <TextBlock Foreground="{DynamicResource ResourceKey=TextBlue}"
                                    Style="{DynamicResource StatisticsValue}"
-                                   Text="{Binding currentUser.CurrentUser.Statistics.AverageWpm}"
+                                   Text="{Binding CurrentUser.CurrentUser.Statistics.AverageWpm}"
                                    FontSize="25"
                                    Margin="0,0,0,-3"/> 
                         <TextBlock Foreground="{DynamicResource ResourceKey=TextHeaderColor}"
@@ -177,7 +177,7 @@
                                    Style="{DynamicResource StatisticsValue}"
                                    FontSize="20"
                                    Margin="0,0,0,-6">
-                            <Run Text="{Binding currentUser.CurrentUser.Statistics.AverageAccuracy}"/><Run>%</Run>
+                            <Run Text="{Binding CurrentUser.CurrentUser.Statistics.AverageAccuracy}"/><Run>%</Run>
                         </TextBlock>
                         <TextBlock Foreground="{DynamicResource ResourceKey=TextHeaderColor}"
                                    Style="{DynamicResource StatisticsName}" 
@@ -194,7 +194,7 @@
 
                         <TextBlock Foreground="{DynamicResource ResourceKey=TextBlue}"
                                    Style="{DynamicResource StatisticsValue}"
-                                   Text="{Binding currentUser.CurrentUser.Statistics.HoursSpent}"
+                                   Text="{Binding CurrentUser.CurrentUser.Statistics.HoursSpent}"
                                    Margin="0,0,0,-10"/>
                         <TextBlock Foreground="{DynamicResource ResourceKey=TextHeaderColor}"
                                    Style="{DynamicResource StatisticsName}"
@@ -212,7 +212,7 @@
                         <TextBlock Foreground="{DynamicResource ResourceKey=TextBlue}"
                                    Style="{DynamicResource StatisticsValue}"
                                    Margin="0,0,0,-10"
-                                   Text="{Binding currentUser.CurrentUser.Statistics.TypedWordsTotal}"/>
+                                   Text="{Binding CurrentUser.CurrentUser.Statistics.TypedWordsTotal}"/>
                         <TextBlock Foreground="{DynamicResource ResourceKey=TextHeaderColor}"
                                    Style="{DynamicResource StatisticsName}"
                                    Margin="0,0,0,-9"

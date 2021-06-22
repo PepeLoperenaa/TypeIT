@@ -64,35 +64,6 @@ namespace TypeIT.Utilities
         }
 
         /// <summary>
-        /// Method to add data to the different .TypeIT files
-        /// </summary>
-        /// <param name="filePath"></param>
-        public static void AddingDataIntoAnXml(string filePath)
-        {
-            XDocument doc = XDocument.Load(filePath);
-
-            doc.Root.Element("Name").Value = "example ";
-            doc.Root.Element("Statistics").Element("HighestWPM").Value = "0";
-            doc.Root.Element("Statistics").Element("AverageWPM").Value = "0";
-            doc.Root.Element("Statistics").Element("AverageAccuracy").Value = "0";
-            doc.Root.Element("Statistics").Element("HoursSpent").Value = "0";
-            doc.Root.Element("Statistics").Element("TypedWordsTotal").Value = "0";
-            doc.Root.Element("Statistics").Element("DailyRecords").Element("Day").Element("Date").Value = "0";
-            doc.Root.Element("Statistics").Element("DailyRecords").Element("Day").Element("WPM").Value = "0";
-            doc.Root.Element("Statistics").Element("DailyRecords").Element("Day").Element("Average").Value = "0";
-            doc.Root.Element("Statistics").Element("DailyRecords").Element("Day").Element("Accuracy").Value = "0";
-            doc.Root.Element("Settings").Element("Theme").Value = "LightMode";
-            doc.Root.Element("Settings").Element("GameMode").Value = "Hard";
-            doc.Root.Element("Achievements").Element("Achievement").Element("AchievementName").Value = "Example";
-            doc.Root.Element("Documents").Element("Document").Element("DocumentName").Value = "Example";
-            doc.Root.Element("Documents").Element("Document").Element("TotalPageNumber").Value = "Example";
-            doc.Root.Element("Documents").Element("Document").Element("UserPageNumber").Value = "Example";
-            doc.Root.Element("Documents").Element("Document").Element("DocumentAccuracy").Value = "Example";
-
-            doc.Save(filePath);
-        }
-
-        /// <summary>
         ///  Method to update specific elements from the update settings
         /// </summary>
         /// <param name="userName"></param>
@@ -116,7 +87,10 @@ namespace TypeIT.Utilities
             {
                 XElement docAverage = statistics.Element(tag);
 
-                if (docAverage != null) docAverage.Value = avg.ToString();
+                if (docAverage != null)
+                {
+                    docAverage.Value = avg.ToString();
+                }
             }
 
             doc.Save(filePath);
@@ -222,9 +196,9 @@ namespace TypeIT.Utilities
                 if (document != null)
                 {
                     double accuracy =
-                        (Double.Parse(document.Element("UserPageNumber")?.Value ?? string.Empty) *
-                            Double.Parse(document.Element("DocumentAccuracy")?.Value ?? string.Empty) + Double.Parse(docAccuracy)) /
-                        Double.Parse(userPage);
+                        (double.Parse(document.Element("UserPageNumber")?.Value ?? string.Empty) *
+                            double.Parse(document.Element("DocumentAccuracy")?.Value ?? string.Empty) + double.Parse(docAccuracy)) /
+                        double.Parse(userPage);
                 }
 
                 if (document != null)
@@ -285,7 +259,10 @@ namespace TypeIT.Utilities
                 {
                     XElement document = documents.Elements("Document").SingleOrDefault(x => (string)x.Element("DocumentName") == model.Name);
 
-                    if (document != null) model.UserPageNumber = Int32.Parse(document.Element("UserPageNumber")?.Value ?? string.Empty);
+                    if (document != null)
+                    {
+                        model.UserPageNumber = int.Parse(document.Element("UserPageNumber")?.Value ?? string.Empty);
+                    }
                 }
             }
 
@@ -356,29 +333,19 @@ namespace TypeIT.Utilities
             doc.Save(filePath);
         }
 
-        // remove document from user
-        // get documentmodel from user
-
-        public static void UnlockAchievements(string userName, string AchievementName)
+        /// <summary>
+        /// Gets all the data for the charts in the statistcs page
+        /// </summary>
+        /// <param name="UserName"></param>
+        /// <returns></returns>
+        public static object[] GetValues(string userName)
         {
-            string filePath = $"../../../FileTypes/Users/{userName}.TypeIT";
-            XDocument doc = XDocument.Load(filePath);
-
-            foreach (XNode node in doc.Descendants("Achievements").Descendants(AchievementName).DescendantNodes())
-            {
-                ((XElement)node).Value = AchievementName;
-            }
-            doc.Save(filePath);
-        }
-
-        public static object[] GetValues(string UserName)
-        {
-            Object[] Values = new object[3];
+            object[] Values = new object[3];
             ChartValues<int> WpmValues = new ChartValues<int>();
             ChartValues<double> AccuracyValues = new ChartValues<double>();
             ObservableCollection<string> Dates = new ObservableCollection<string>();
 
-            string filePath = $"../../../FileTypes/Users/{UserName}.TypeIT";
+            string filePath = $"../../../FileTypes/Users/{userName}.TypeIT";
             XDocument doc = XDocument.Load(filePath);
 
             foreach (XElement Days in doc.Descendants("DailyRecords"))

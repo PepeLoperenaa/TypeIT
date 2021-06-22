@@ -14,29 +14,29 @@ namespace TypeIT.ViewModels
         public ICommand NavigateDocumentsCommand { get; }
         public ICommand OpenBookCommand { get; set; }
         public ICommand DeleteBookCommand { get; set; }
-        public UserStore currentUser { get; set; }
-        public DocumentModel currentDocument { get; set; }
+        public UserStore CurrentUser { get; set; }
+        public DocumentModel CurrentDocument { get; set; }
 
         public MyCollectionViewModel(NavigationStore navigationStore, UserStore userStore)
         {
             NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore, userStore));
             NavigateDocumentsCommand = new NavigateCommand<DocumentsViewModel>(navigationStore, () => new DocumentsViewModel(navigationStore, userStore));
-            NavigateTypingCommand = new NavigateCommand<TypingViewModel>(navigationStore, () => new TypingViewModel(navigationStore, userStore, currentDocument));
-            currentUser = userStore;
+            NavigateTypingCommand = new NavigateCommand<TypingViewModel>(navigationStore, () => new TypingViewModel(navigationStore, userStore, CurrentDocument));
+            CurrentUser = userStore;
             DeleteBookCommand = new DelegateCommand<string>(ClickedDeleteBook);
             OpenBookCommand = new DelegateCommand<string>(ClickedOpenBook);
         }
 
         private void ClickedDeleteBook(string BookTitle)
         {
-            XmlHandler.DeleteDocument(currentUser.CurrentUser.Name, BookTitle);
-            currentUser.CurrentUser.RefreshUserModel();
+            XmlHandler.DeleteDocument(CurrentUser.CurrentUser.Name, BookTitle);
+            CurrentUser.CurrentUser.RefreshUserModel();
         }
 
         private void ClickedOpenBook(string BookTitle)
         {
-            currentDocument = XmlHandler.GetUserDocument(currentUser.CurrentUser.Name, $"../../../Documents/{BookTitle}");
-            NavigateTypingCommand.Execute(currentDocument);
+            CurrentDocument = XmlHandler.GetUserDocument(CurrentUser.CurrentUser.Name, $"../../../Documents/{BookTitle}");
+            NavigateTypingCommand.Execute(CurrentDocument);
         }
 
 

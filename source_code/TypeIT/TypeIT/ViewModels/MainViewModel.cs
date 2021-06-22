@@ -2,7 +2,7 @@
 
 namespace TypeIT.ViewModels
 {
-    class MainViewModel : ViewModelBase
+    internal class MainViewModel : ViewModelBase
     {
         private readonly NavigationStore _navigationStore;
 
@@ -17,7 +17,7 @@ namespace TypeIT.ViewModels
 
         private void OnCurrentViewModelChanged()
         {
-            onPropertyChanged(nameof(CurrentViewModel));
+            OnPropertyChanged(nameof(CurrentViewModel));
         }
     }
 }

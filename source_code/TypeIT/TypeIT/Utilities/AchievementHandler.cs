@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows;
 using TypeIT.Stores;
 
@@ -7,7 +6,7 @@ namespace TypeIT.Utilities
 {
     public static class AchievementHandler
     {
-        private static List<string> newlyUnlockedAchievements = new List<string>();
+        private static List<string> NewlyUnlockedAchievements = new List<string>();
 
         /// <summary>
         /// This method should be called when the user finishes a page. If he manages to successfully unlock an achievement it will be added to his .TypeIT file.
@@ -17,7 +16,7 @@ namespace TypeIT.Utilities
         /// <param name="accuracy">The accuracy to be compared to the achievements requirements.</param>
         public static void FinishPageAchievements(UserStore currentUser, int wpm, double accuracy)
         {
-            newlyUnlockedAchievements.Clear();
+            NewlyUnlockedAchievements.Clear();
 
             List<string> achievementName = XmlHandler.GetElementsFromTags("../../../FileTypes/TypeitFiles/achievements.TypeIT", "AchievementName");
             List<string> achievementThreshold = XmlHandler.GetElementsFromTags("../../../FileTypes/TypeitFiles/achievements.TypeIT", "Treshold");
@@ -28,15 +27,15 @@ namespace TypeIT.Utilities
                 switch (achievementProperty[i])
                 {
                     case "WPM":
-                        if (wpm >= Int32.Parse(achievementThreshold[i]))
+                        if (wpm >= int.Parse(achievementThreshold[i]))
                         {
-                            newlyUnlockedAchievements.Add(achievementName[i]);
+                            NewlyUnlockedAchievements.Add(achievementName[i]);
                         }
                         break;
                     case "Acc":
-                        if (accuracy >= Double.Parse(achievementThreshold[i]))
+                        if (accuracy >= double.Parse(achievementThreshold[i]))
                         {
-                            newlyUnlockedAchievements.Add(achievementName[i]);
+                            NewlyUnlockedAchievements.Add(achievementName[i]);
                         }
                         break;
                 }
@@ -51,15 +50,15 @@ namespace TypeIT.Utilities
         /// <param name="currentUser">The current user that unlocked the achievements.</param>
         private static void AddNewAchievements(UserStore currentUser)
         {
-            for (int i = 0; i < newlyUnlockedAchievements.Count; i++)
+            for (int i = 0; i < NewlyUnlockedAchievements.Count; i++)
             {
-                if (!currentUser.CurrentUser.Achievements.Contains(newlyUnlockedAchievements[i]))
+                if (!currentUser.CurrentUser.Achievements.Contains(NewlyUnlockedAchievements[i]))
                 {
-                    XmlHandler.AddAchievementToUser(currentUser.CurrentUser.Name, newlyUnlockedAchievements[i]);
+                    XmlHandler.AddAchievementToUser(currentUser.CurrentUser.Name, NewlyUnlockedAchievements[i]);
 
                     //Custom messagebox
                     var res = Xceed.Wpf.Toolkit.MessageBox.Show(
-                                   "You have unlocked: " + newlyUnlockedAchievements[i],
+                                   "You have unlocked: " + NewlyUnlockedAchievements[i],
                                    "Congratulations!",
                                    MessageBoxButton.OK
                                );

@@ -30,30 +30,30 @@ namespace TypeIT.Models
         public UserModel(string name, bool load)
         {
             Name = name;
-            Statistics = loadStatistics();
+            Statistics = LoadStatistics();
             Achievements = new ObservableCollection<string>();
             Documents = new ObservableCollection<DocumentModel>();
-            Theme = loadTheme();
+            Theme = LoadTheme();
 
-            loadUsersAchievements();
-            loadUserDocuments();
-            loadStatistics();
-            loadUserGameMode();
+            LoadUsersAchievements();
+            LoadUserDocuments();
+            LoadStatistics();
+            LoadUserGameMode();
         }
 
         public void RefreshUserModel()
         {
-            loadUsersAchievements();
-            loadUserDocuments();
-            loadStatistics();
-            loadUserGameMode();
+            LoadUsersAchievements();
+            LoadUserDocuments();
+            LoadStatistics();
+            LoadUserGameMode();
         }
 
         /// <summary>
         /// Loads the user's unlocked achievements from his .TypeIT file
         /// The readings are loaded into the Achievements List
         /// </summary>
-        private void loadUsersAchievements()
+        private void LoadUsersAchievements()
         {
             Achievements.Clear();
 
@@ -70,7 +70,7 @@ namespace TypeIT.Models
         /// A Documentmodel object is created for each document
         /// The objects are added to the Documents List
         /// </summary>
-        public void loadUserDocuments()
+        public void LoadUserDocuments()
         {
             Documents.Clear();
 
@@ -86,7 +86,9 @@ namespace TypeIT.Models
                 //If the documentname is empty skip this entry
                 //Needed because the reader can be buggy
                 if (ListDocumentName[i] == "")
+                {
                     break;
+                }
 
                 //Converting strings to numbers
                 int totalPageNumber = Convert.ToInt32(ListTotalPageNumber[i]);
@@ -103,7 +105,7 @@ namespace TypeIT.Models
         /// Loads the user's statistics from his .TypeIT file
         /// </summary>
         /// <returns>Returns a StatisticsModel with the user's statistics</returns>
-        private StatisticsModel loadStatistics()
+        private StatisticsModel LoadStatistics()
         {
             //Reading Highest WPM and converting to double
             string parameter = XmlHandler.GetElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "HighestWPM").First();
@@ -111,7 +113,7 @@ namespace TypeIT.Models
 
             //Reading Average WPM and converting to int
             parameter = XmlHandler.GetElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "AverageWPM").First();
-            int AverageWPM = (parameter == "") ? 0 : Int32.Parse(parameter);
+            int AverageWPM = (parameter == "") ? 0 : int.Parse(parameter);
 
             //Reading Average Accuracy and converting to double
             parameter = XmlHandler.GetElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "AverageAccuracy").First();
@@ -133,7 +135,7 @@ namespace TypeIT.Models
         /// Loads the user's theme from his .TypeIT file
         /// </summary>
         /// <returns>Returns the theme as string</returns>
-        private string loadTheme()
+        private string LoadTheme()
         {
             return XmlHandler.GetElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "Theme").First();
         }
@@ -143,7 +145,7 @@ namespace TypeIT.Models
         /// Sets the enum value based on the game mode
         /// If the value is invalid it's set to easy
         /// </summary>
-        private void loadUserGameMode()
+        private void LoadUserGameMode()
         {
             string gameMode = XmlHandler.GetElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "GameMode").First();
 

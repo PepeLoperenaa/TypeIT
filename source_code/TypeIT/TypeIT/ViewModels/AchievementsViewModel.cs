@@ -7,19 +7,19 @@ using TypeIT.Utilities;
 
 namespace TypeIT.ViewModels
 {
-    class AchievementsViewModel : ViewModelBase
+    internal class AchievementsViewModel : ViewModelBase
     {
         public ICommand NavigateHomeCommand { get; }
         public UserStore CurrentUser { get; set; }
         public List<AchievementModel> Achievements { get; set; }
         public List<AchievementModel> UnlockedAchievements { get; set; }
 
-        public AchievementsViewModel(NavigationStore NavigationStore, UserStore UserStore)
+        public AchievementsViewModel(NavigationStore navigationStore, UserStore userStore)
         {
-            NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(NavigationStore, () => new DashboardViewModel(NavigationStore, UserStore));
+            NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore, userStore));
             Achievements = new List<AchievementModel>();
             UnlockedAchievements = new List<AchievementModel>();
-            CurrentUser = UserStore;
+            CurrentUser = userStore;
             LoadAchievements();
             LoadUsersAchievements();
         }

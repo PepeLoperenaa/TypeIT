@@ -5,7 +5,7 @@ using TypeIT.Utilities;
 
 namespace TypeIT.ViewModels
 {
-    class ChangeUserViewModelWithOneToFiveUsers : ChangeUserViewModel
+    internal class ChangeUserViewModelWithOneToFiveUsers : ChangeUserViewModel
     {
         public ICommand CreateUser { get; }
 
@@ -16,13 +16,13 @@ namespace TypeIT.ViewModels
         public ChangeUserViewModelWithOneToFiveUsers(NavigationStore navigationStore) : base(navigationStore)
         {
             //Commands
-            CreateUser = new DelegateCommand<string>(createUserFile);
+            CreateUser = new DelegateCommand<string>(CreateUserFile);
         }
 
-        private void createUserFile(string userName)
+        private void CreateUserFile(string userName)
         {
             XmlHandler.NewUser(userName);
-            base.loadSelectedUser(userName);
+            base.LoadSelectedUser(userName);
         }
     }
 }
