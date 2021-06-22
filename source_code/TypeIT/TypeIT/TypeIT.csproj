@@ -36,7 +36,6 @@
 
   <ItemGroup>
     <Folder Include="Documents\" />
-    <Folder Include="FileTypes\Users" />
     <Folder Include="FileTypes\Users\" />
   </ItemGroup>
 
