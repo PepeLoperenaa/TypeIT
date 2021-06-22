@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 using System.Timers;
 using System.Windows;
@@ -19,6 +20,7 @@ namespace TypeIT.ViewModels
         public UserStore CurrentUser { get; private set; }
 
         private string _inputString;
+
         /// <summary>
         /// Sets the inputString and calls the TypeWord Method whenever the inputString is updated
         /// </summary>
@@ -36,6 +38,7 @@ namespace TypeIT.ViewModels
                 }
 
                 TypeWord(TypingModel.CurrentWord);
+                CheckIfFailed();
             }
         }
 
@@ -45,7 +48,8 @@ namespace TypeIT.ViewModels
 
             TypingModel = new TypingModel {Document = document};
 
-            NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore, userStore));
+            NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore,
+                () => new DashboardViewModel(navigationStore, userStore));
 
             // loading the user's game mode
             TypingModel.SelectedDifficulty = (CurrentUser.CurrentUser.GameMode);
@@ -73,9 +77,14 @@ namespace TypeIT.ViewModels
         /// <param name="e"></param>
         private void OnTimedEvent(Object source, ElapsedEventArgs e)
         {
-            TypingModel.DisplayAverages();
+            if (TypingModel.Alive)
+            {
+                TypingModel.DisplayAverages();
 
-            TypingModel.IncrementTime();
+                TypingModel.IncrementTime();
+            }
+            
+            CheckIfFailed();
         }
 
         /// <summary>
@@ -99,7 +108,8 @@ namespace TypeIT.ViewModels
                 {
                     if (InputString.Trim() != word)
                     {
-                        TypingModel.CurrentMistakes = (InputString.Length - TypingModel.GetMistakeIndex(word, InputString));
+                        TypingModel.CurrentMistakes =
+                            (InputString.Length - TypingModel.GetMistakeIndex(word, InputString));
                         TypingModel.TotalMistakes++;
                     }
                 }
@@ -143,6 +153,13 @@ namespace TypeIT.ViewModels
             // !IMPORTANT do not delete
             TypingModel.TextWrong = null;
 
+            if (TypingModel.CurrentWordIndex % 175 == 0 && TypingModel.CurrentWordIndex != 0)
+            {
+                TypingModel.Text = TypingModel.Text[TypingModel.Index..];
+                TypingModel.CurrentWordIndex = 0;
+                TypingModel.Index = 0;
+            }
+
             if (TypingModel.IsActualExpected(InputString, word))
             {
                 // set value of text correct to all correct characters
@@ -151,7 +168,8 @@ namespace TypeIT.ViewModels
             else
             {
                 // set value of text wrong to all wrong characters
-                TypingModel.TextWrong = TypingModel.Text[(TypingModel.Index - TypingModel.CurrentMistakes)..(TypingModel.Index)];
+                TypingModel.TextWrong =
+                    TypingModel.Text[(TypingModel.Index - TypingModel.CurrentMistakes)..(TypingModel.Index)];
             }
         }
 
@@ -163,19 +181,31 @@ namespace TypeIT.ViewModels
         private void ParseWord(string word)
         {
             if (!CanGoToNextWord(word)) return;
-            
+
             if (TypingModel.CurrentWordIndex == TypingModel.GetNumberOfWords())
             {
-                string displayAcc = TypingModel.SelectedDifficulty == Difficulty.Easy ? "100" : TypingModel.AverageAccuracy;
-                    
+                string displayAcc = TypingModel.SelectedDifficulty == Difficulty.Easy
+                    ? CurrentUser.CurrentUser.Statistics.AverageAccuracy.ToString(CultureInfo.InvariantCulture)
+                    : TypingModel.AverageAccuracy;
+                string displayWpm = TypingModel.SelectedDifficulty == Difficulty.Easy
+                    ? CurrentUser.CurrentUser.Statistics.AverageWpm.ToString()
+                    : TypingModel.AverageTypingSpeed;
+
                 XmlHandler.UpdateDocuments(CurrentUser.CurrentUser.Name, TypingModel.Document.Name,
                     (TypingModel.PageNumber + 1).ToString(), displayAcc);
-                    
-                XmlHandler.UpdateAverageSpeed(CurrentUser.CurrentUser.Name, Double.Parse(TypingModel.AverageTypingSpeed));
+
+                XmlHandler.UpdateAverageSpeed(CurrentUser.CurrentUser.Name, Double.Parse(displayWpm));
+
+                XmlHandler.UpdateStatistics(CurrentUser.CurrentUser.Name,"AverageAccuracy",TypingModel.AverageAccuracy);
 
                 string filePath = $"../../../FileTypes/Users/{CurrentUser.CurrentUser.Name}.TypeIT";
+                CurrentUser.CurrentUser.Statistics.AverageWpm =
+                    int.Parse(XmlHandler.GetElementsFromTags(filePath, "AverageWPM").FirstOrDefault() ?? "Error");
+
                 CurrentUser.CurrentUser.Statistics.AverageWpm = int.Parse(XmlHandler.GetElementsFromTags(filePath, "AverageWPM").FirstOrDefault() ?? "Error");
-                
+
+                AchievementHandler.FinishPageAchievements(CurrentUser, int.Parse(TypingModel.AverageTypingSpeed), double.Parse(TypingModel.AverageAccuracy));
+
                 if (TypingModel.HasNextPage())
                 {
                     TypingModel.NextPage();
@@ -186,6 +216,7 @@ namespace TypeIT.ViewModels
                 }
                 else
                 {
+                    TypingModel.Alive = false;
                     //Custom messagebox
                     var res = Xceed.Wpf.Toolkit.MessageBox.Show(
                         "You have finished this book!",
@@ -198,12 +229,14 @@ namespace TypeIT.ViewModels
                         NavigateHomeCommand.Execute(null);
                     }
                 }
+
                 CurrentUser.CurrentUser.RefreshUserModel();
             }
             else
             {
                 TypingModel.CurrentWordIndex++;
             }
+
             TypingModel.CurrentWord = TypingModel.GetWord(TypingModel.Text, TypingModel.CurrentWordIndex);
 
             InputLengthTracker = 0;
@@ -243,8 +276,32 @@ namespace TypeIT.ViewModels
                     }
                 }
             }
+
             return false;
         }
 
+        private void CheckIfFailed()
+        {
+            if (TypingModel.SelectedDifficulty == Difficulty.Hard || TypingModel.SelectedDifficulty == Difficulty.Extreme)
+            {
+                // fail the user if time runs out
+                if (TypingModel.TimeCounter == 0)
+                {
+                    TypingModel.Alive = false;
+                    
+                    //Custom messagebox
+                    var res = Xceed.Wpf.Toolkit.MessageBox.Show(
+                        "You ran out of time :(",
+                        "OK",
+                        MessageBoxButton.OK
+                    );
+                    
+                    if ("OK" == res.ToString())
+                    {
+                        NavigateHomeCommand.Execute(null);
+                    }
+                }
+            }
+        }
     }
 }

@@ -2,22 +2,16 @@
 <UserProfile>
   <Name>Steffen</Name>
   <Statistics>
-    <HighestWPM />
-    <AverageWPM>79</AverageWPM>
-    <AverageAccuracy />
-    <HoursSpent />
-    <TypedTypedWordsTotalWords />
-    <DailyRecords>
-      <Day>
-        <Date />
-        <WPM />
-        <Average />
-      </Day>
-    </DailyRecords>
+    <HighestWPM>0</HighestWPM>
+    <AverageWPM>60</AverageWPM>
+    <AverageAccuracy>0</AverageAccuracy>
+    <HoursSpent>0</HoursSpent>
+    <TypedTypedWordsTotalWords>0</TypedTypedWordsTotalWords>
+    <DailyRecords></DailyRecords>
   </Statistics>
   <Settings>
     <Theme>Dark</Theme>
-    <GameMode>Hard</GameMode>
+    <GameMode>Extreme</GameMode>
   </Settings>
   <Achievements>
     <Achievement>
@@ -28,14 +22,8 @@
     <Document>
       <DocumentName>Overlord 1</DocumentName>
       <TotalPageNumber>320</TotalPageNumber>
-      <UserPageNumber>2</UserPageNumber>
-      <DocumentAccuracy>94,06</DocumentAccuracy>
-    </Document>
-    <Document>
-      <DocumentName>Overlord Volume 2 - The Dark Knight (v2.1)</DocumentName>
-      <TotalPageNumber>328</TotalPageNumber>
-      <UserPageNumber>0</UserPageNumber>
-      <DocumentAccuracy>0</DocumentAccuracy>
+      <UserPageNumber>8</UserPageNumber>
+      <DocumentAccuracy>92,65</DocumentAccuracy>
     </Document>
   </Documents>
 </UserProfile>

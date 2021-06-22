@@ -54,21 +54,11 @@ namespace TypeIT.ViewModels
 
                 XmlHandler.AddingADocumentIntoUserXml(currentUser.CurrentUser.Name, document.Name, document.GetNumberOfPages(), document.UserPageNumber);
 
-                if(document != null)
-                {
-                    Xceed.Wpf.Toolkit.MessageBox.Show(
-                       "Your document was sussessfully added !",
-                       "Ok",
-                       MessageBoxButton.OK
-                    );
-                }else
-                {
-                    Xceed.Wpf.Toolkit.MessageBox.Show(
-                       "There was a problem with adding your document !",
-                       "Ok",
-                       MessageBoxButton.OK
-                    );
-                }
+                Xceed.Wpf.Toolkit.MessageBox.Show(
+                    "Your document was successfully added !",
+                    "Ok",
+                    MessageBoxButton.OK
+                );
 
                 currentUser.CurrentUser.loadUserDocuments();
             }

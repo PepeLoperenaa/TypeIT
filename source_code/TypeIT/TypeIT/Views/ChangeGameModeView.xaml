@@ -41,15 +41,11 @@
                     Command="{Binding ChangeGameModeToCasual}">
                 <StackPanel Width="120" Orientation="Horizontal">
                     <Image Source="../Resources/Images/casualIcon.png" Height="35" Margin="15,0,0,0"/>
-                    <TextBlock Width="60" Margin="15,0,0,0">
+                    <TextBlock Width="60" Margin="15,0,0,0" TextWrapping="WrapWithOverflow">
                         <TextBlock.Inlines>
                             <Run Text="Casual"/>
                             <LineBreak/>
-                            <Run Style="{DynamicResource BodyText}" Text="Type without a time"/>
-                            <LineBreak/>
-                            <Run Style="{DynamicResource BodyText}" Text="and your stats being"/>
-                            <LineBreak/>
-                            <Run Style="{DynamicResource BodyText}" Text="tracked"/>
+                            <Run Style="{DynamicResource BodyText}" Text="Type without a timer and your stats being tracked. Achievement unlocking is disabled."/>
                         </TextBlock.Inlines>
                     </TextBlock>
                 </StackPanel>
@@ -60,15 +56,11 @@
                     Command="{Binding ChangeGameModeToNormal}">
                 <StackPanel Width="120" Orientation="Horizontal">
                     <Image Source="../Resources/Images/normalIcon.png" Height="35" Margin="15,0,0,0"/>
-                    <TextBlock Width="60" Margin="15,0,0,0">
+                    <TextBlock Width="60" Margin="15,0,0,0" TextWrapping="WrapWithOverflow">
                         <TextBlock.Inlines>
                             <Run Text="Normal"/>
                             <LineBreak/>
-                            <Run Style="{DynamicResource BodyText}" Text="Type with your stats"/>
-                            <LineBreak/>
-                            <Run Style="{DynamicResource BodyText}" Text="being tracked but"/>
-                            <LineBreak/>
-                            <Run Style="{DynamicResource BodyText}" Text="without a timer"/>
+                            <Run Style="{DynamicResource BodyText}" Text="Type with your stats being tracked but without a timer. Achievements are enabled."/>
                         </TextBlock.Inlines>
                     </TextBlock>
                 </StackPanel>
@@ -79,17 +71,11 @@
                     Command="{Binding ChangeGameModeToHard}">
                 <StackPanel Width="120" Orientation="Horizontal">
                     <Image Source="../Resources/Images/hardIcon.png" Height="40" Margin="5,0,0,0"/>
-                    <TextBlock Width="60" Margin="10,0,0,0">
+                    <TextBlock Width="60" Margin="10,0,0,0" TextWrapping="WrapWithOverflow">
                         <TextBlock.Inlines>
                             <Run Text="Hard"/>
                             <LineBreak/>
-                            <Run Style="{DynamicResource BodyText}" Text="If you make three mistakes"/>
-                            <LineBreak/>
-                            <Run Style="{DynamicResource BodyText}" Text="you will have to start"/>
-                            <LineBreak/>
-                            <Run Style="{DynamicResource BodyText}" Text="from the beginning of"/>
-                            <LineBreak/>
-                            <Run Style="{DynamicResource BodyText}" Text="the section"/>
+                            <Run Style="{DynamicResource BodyText}" Text="Enables a countdown based on your average WPM. If the timer runs out the page restarts."/>
                         </TextBlock.Inlines>
                     </TextBlock>
                 </StackPanel>

@@ -3,7 +3,7 @@
   <Name>Chris</Name>
   <Statistics>
     <HighestWPM>15555555</HighestWPM>
-    <AverageWPM>2</AverageWPM>
+    <AverageWPM>179</AverageWPM>
     <AverageAccuracy>3</AverageAccuracy>
     <HoursSpent>4</HoursSpent>
     <TypedTypedWordsTotalWords>5</TypedTypedWordsTotalWords>
@@ -17,28 +17,15 @@
   </Statistics>
   <Settings>
     <Theme>Light</Theme>
-    <GameMode>Normal</GameMode>
+    <GameMode>Extreme</GameMode>
   </Settings>
-  <Achievements>
-    <Achievement>
-      <AchievementName>You have to start somewhere</AchievementName>
-      <AchievementName>Library owner</AchievementName>
-      <AchievementName>First steps</AchievementName>
-      <AchievementName>What book is that?</AchievementName>
-    </Achievement>
-  </Achievements>
+  <Achievements></Achievements>
   <Documents>
     <Document>
-      <DocumentName>A Game of Thrones</DocumentName>
-      <TotalPageNumber>750</TotalPageNumber>
-      <UserPageNumber>650</UserPageNumber>
-      <DocumentAccuracy>97</DocumentAccuracy>
-    </Document>
-    <Document>
-      <DocumentName>Return of the King</DocumentName>
-      <TotalPageNumber>450</TotalPageNumber>
-      <UserPageNumber>299</UserPageNumber>
-      <DocumentAccuracy>85</DocumentAccuracy>
+      <DocumentName>hello</DocumentName>
+      <TotalPageNumber>0</TotalPageNumber>
+      <UserPageNumber>1</UserPageNumber>
+      <DocumentAccuracy>100</DocumentAccuracy>
     </Document>
   </Documents>
 </UserProfile>

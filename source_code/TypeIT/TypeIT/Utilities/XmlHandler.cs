@@ -102,6 +102,8 @@ namespace TypeIT.Utilities
             XDocument doc = XDocument.Load($"../../../FileTypes/Users/{userName}.TypeIT");
 
             doc.Root.Element("Statistics").Element(type).Value = value;
+
+            doc.Save($"../../../FileTypes/Users/{userName}.TypeIT");
         }
 
         /// <summary>
@@ -154,6 +156,18 @@ namespace TypeIT.Utilities
 
             doc.Save(filePath);
 
+        }
+
+        public static void AddAchievementToUser(string userName, string achievementName)
+        {
+            string filePath = $"../../../FileTypes/Users/{userName}.TypeIT";
+
+            XDocument doc = XDocument.Load(filePath);
+            XElement achievement = new XElement("AchievementName", achievementName);
+
+            doc.Root.Element("Achievements").Add(achievement);
+
+            doc.Save(filePath);
         }
 
         /// <summary>
