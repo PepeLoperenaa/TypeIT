@@ -153,6 +153,18 @@ namespace TypeIT.Utilities
 
         }
 
+        public static void AddAchievementToUser(string userName, string achievementName)
+        {
+            string filePath = $"../../../FileTypes/Users/{userName}.TypeIT";
+
+            XDocument doc = XDocument.Load(filePath);
+            XElement achievement = new XElement("AchievementName", achievementName);
+
+            doc.Root.Element("Achievements").Add(achievement);
+
+            doc.Save(filePath);
+        }
+
         /// <summary>
         /// method to update elements from achievements
         /// </summary>

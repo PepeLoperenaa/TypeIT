@@ -1,75 +1,93 @@
-﻿<?xml version = "1.0"?>
+﻿<?xml version="1.0"?>
 <Achievements>
   <Achievement>
     <AchievementName>You have to start somewhere</AchievementName>
     <Description>Add 1 book to your collection</Description>
+    <Treshold>1</Treshold>
+    <Property>BookAdd</Property>
   </Achievement>
   <Achievement>
     <AchievementName>Library owner</AchievementName>
     <Description>Add 10 books to your collection</Description>
+    <Treshold>10</Treshold>
+    <Property>BookAdd</Property>
   </Achievement>
   <Achievement>
     <AchievementName>First steps</AchievementName>
     <Description>Finish one page in any book</Description>
+    <Treshold>1</Treshold>
+    <Property>Page</Property>
   </Achievement>
   <Achievement>
     <AchievementName>What book is that?</AchievementName>
     <Description>Finish a book with 1000 pages</Description>
+    <Treshold>1000</Treshold>
+    <Property>Page</Property>
   </Achievement>
   <Achievement>
     <AchievementName>Basically Tolkien</AchievementName>
     <Description>Finish 3 books in total</Description>
-  </Achievement>
-  <Achievement>
-    <AchievementName>Fast as the wind</AchievementName>
-    <Description>Reach the top speed of 80WPM</Description>
-  </Achievement>
-  <Achievement>
-    <AchievementName>Faster than the wind</AchievementName>
-    <Description>Reach the top speed of 130WPM</Description>
-  </Achievement>
-  <Achievement>
-    <AchievementName>No skill luck only</AchievementName>
-    <Description>Reach the top speed of 180WPM</Description>
-  </Achievement>
-  <Achievement>
-    <AchievementName>Did I just do that?</AchievementName>
-    <Description>Reach the top speed of 200WPM</Description>
-  </Achievement>
-  <Achievement>
-    <AchievementName>No skill luck only</AchievementName>
-    <Description>Reach the top speed of 300WPM</Description>
+    <Treshold>3</Treshold>
+    <Property>BookFinish</Property>
   </Achievement>
   <Achievement>
     <AchievementName>The birth of a legend</AchievementName>
     <Description>Reach an average of 40 WPM</Description>
+    <Treshold>40</Treshold>
+    <Property>WPM</Property>
   </Achievement>
   <Achievement>
     <AchievementName>Getting there...</AchievementName>
     <Description>Reach an average of 60 WPM</Description>
+    <Treshold>60</Treshold>
+    <Property>WPM</Property>
   </Achievement>
   <Achievement>
     <AchievementName>You made it</AchievementName>
     <Description>Reach an average of 80 WPM</Description>
+    <Treshold>80</Treshold>
+    <Property>WPM</Property>
   </Achievement>
   <Achievement>
     <AchievementName>Typing professional</AchievementName>
     <Description>Reach an average of 90 WPM</Description>
+    <Treshold>90</Treshold>
+    <Property>WPM</Property>
   </Achievement>
   <Achievement>
     <AchievementName>Fast and furious</AchievementName>
     <Description>Reach an average of 100 WPM</Description>
+    <Treshold>100</Treshold>
+    <Property>WPM</Property>
   </Achievement>
   <Achievement>
     <AchievementName>Beat the creator</AchievementName>
     <Description>Reach an average of 140 WPM</Description>
+    <Treshold>140</Treshold>
+    <Property>WPM</Property>
   </Achievement>
   <Achievement>
     <AchievementName>Quit this game</AchievementName>
     <Description>Reach an average of 170 WPM</Description>
+    <Treshold>170</Treshold>
+    <Property>WPM</Property>
+  </Achievement>
+  <Achievement>
+    <AchievementName>You can do better</AchievementName>
+    <Description>Finish a page with at least 60% accuracy</Description>
+    <Treshold>60</Treshold>
+    <Property>Acc</Property>
+  </Achievement>
+  <Achievement>
+    <AchievementName>Headshot</AchievementName>
+    <Description>Finish a page with no mistake (100% accuracy)</Description>
+    <Treshold>100</Treshold>
+    <Property>Acc</Property>
   </Achievement>
   <Achievement>
     <AchievementName>You cheated to get this didn't you</AchievementName>
     <Description>Finish a book with no mistake (100% accuracy)</Description>
+    <Treshold>100</Treshold>
+    <Property>BookAcc</Property>
   </Achievement>
 </Achievements>

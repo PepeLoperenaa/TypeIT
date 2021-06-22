@@ -20,12 +20,11 @@
     <GameMode>Normal</GameMode>
   </Settings>
   <Achievements>
-    <Achievement>
-      <AchievementName>You have to start somewhere</AchievementName>
-      <AchievementName>Library owner</AchievementName>
-      <AchievementName>First steps</AchievementName>
-      <AchievementName>What book is that?</AchievementName>
-    </Achievement>
+    <AchievementName>You have to start somewhere</AchievementName>
+    <AchievementName>Library owner</AchievementName>
+    <AchievementName>First steps</AchievementName>
+    <AchievementName>What book is that?</AchievementName>
+    <AchievementName>You cheated to get this didn't you</AchievementName>
   </Achievements>
   <Documents>
     <Document>
