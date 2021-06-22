@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Xml.Linq;
 using TypeIT.Models;
@@ -79,7 +80,8 @@ namespace TypeIT.Utilities
 
             int avg = int.Parse(XmlHandler.GetElementsFromTags(filePath, tag).FirstOrDefault() ?? "0");
 
-            avg = (int)((avg * (pageCount - 1) + Double.Parse(value)) / pageCount);
+            double temp = Double.Parse(value, CultureInfo.InvariantCulture);
+            avg = (int)((avg * (pageCount - 1) + temp) / pageCount);
 
             XElement statistics = doc.Root?.Elements("Statistics").FirstOrDefault();
 
