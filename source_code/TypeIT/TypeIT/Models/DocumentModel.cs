@@ -29,6 +29,7 @@ namespace TypeIT.Models
             }
 
             Pages = Pages.OrderBy(o => o.Number).ToList();
+            UserPageNumber = 1;
             PageCount = GetNumberOfPages();
         }
 
@@ -54,7 +55,7 @@ namespace TypeIT.Models
 
         public int GetNumberOfPages()
         {
-            return Pages.Count - 1;
+            return Pages.Count;
         }
     }
 }

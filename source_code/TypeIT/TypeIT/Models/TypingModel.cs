@@ -31,7 +31,6 @@ namespace TypeIT.Models
         public bool Alive { get; set; }
 
         //Binded values
-        private Timer _typingTimer;
         private DocumentModel _document;
         private string _averageAccuracy;
         private string _textCorrect;
@@ -81,6 +80,8 @@ namespace TypeIT.Models
             set
             {
                 _pageNumber = value;
+                // Have to do - 1 here since programmers use base 1 for arrays, but normal people
+                // use base 1 (Makes sure we display page 1 and get from array[0])
                 Text = GetTextFromPage(PageNumber);
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(PageNumber)));
             }
@@ -126,11 +127,7 @@ namespace TypeIT.Models
             }
         }
 
-        public Timer TypingTimer
-        {
-            get => _typingTimer;
-            set { _typingTimer = value; }
-        }
+        public Timer TypingTimer { get; private set; }
 
         public string CurrentWord
         {
@@ -240,12 +237,12 @@ namespace TypeIT.Models
         /// <returns>The text from the page</returns>
         public string GetTextFromPage(int pageNumber)
         {
-            if (Document.GetPageByPageNumber(pageNumber) == null)
+            if (Document.GetPageByPageNumber(PageNumber - 1) == null)
             {
-                PageNumber = 0;
+                _pageNumber = 1;
             }
 
-            return Document.GetPageByPageNumber(PageNumber).Text;
+            return Document.GetPageByPageNumber(PageNumber - 1).Text;
         }
 
         /// <summary>
@@ -254,7 +251,7 @@ namespace TypeIT.Models
         /// </summary>
         /// <param name="wordCount"></param>
         /// <param name="averageWpm"></param>
-        /// <returns>The time limit which the user has to complete the current pagae</returns>
+        /// <returns>The time limit which the user has to complete the current page</returns>
         public static int CalculateMaxTimeInSeconds(double wordCount, double averageWpm)
         {
             if (averageWpm > 6)
