@@ -4,14 +4,14 @@
   <Statistics>
     <HighestWPM>0</HighestWPM>
     <AverageWPM>0</AverageWPM>
-    <AverageAccuracy>N/A</AverageAccuracy>
+    <AverageAccuracy>0</AverageAccuracy>
     <HoursSpent>0</HoursSpent>
     <TypedWordsTotal>0</TypedWordsTotal>
     <DailyRecords />
   </Statistics>
   <Settings>
     <Theme />
-    <GameMode />
+    <GameMode>Normal</GameMode>
   </Settings>
   <Achievements>
     <Achievement>
@@ -20,9 +20,15 @@
   </Achievements>
   <Documents>
     <Document>
-      <DocumentName>Data Processing Feedback</DocumentName>
+      <DocumentName>CV</DocumentName>
       <TotalPageNumber>0</TotalPageNumber>
-      <UserPageNumber>1</UserPageNumber>
+      <UserPageNumber>0</UserPageNumber>
+      <DocumentAccuracy>0</DocumentAccuracy>
+    </Document>
+    <Document>
+      <DocumentName>1</DocumentName>
+      <TotalPageNumber>0</TotalPageNumber>
+      <UserPageNumber>0</UserPageNumber>
       <DocumentAccuracy>0</DocumentAccuracy>
     </Document>
   </Documents>

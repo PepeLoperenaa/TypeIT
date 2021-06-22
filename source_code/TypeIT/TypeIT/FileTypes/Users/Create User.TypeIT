@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UserProfile>
+  <Name>Create User</Name>
+  <Statistics>
+    <HighestWPM>0</HighestWPM>
+    <AverageWPM>0</AverageWPM>
+    <AverageAccuracy>0</AverageAccuracy>
+    <HoursSpent>0</HoursSpent>
+    <TypedWordsTotal>0</TypedWordsTotal>
+    <DailyRecords />
+  </Statistics>
+  <Settings>
+    <Theme />
+    <GameMode />
+  </Settings>
+  <Achievements>
+    <Achievement>
+      <AchievementName />
+    </Achievement>
+  </Achievements>
+  <Documents />
+</UserProfile>
