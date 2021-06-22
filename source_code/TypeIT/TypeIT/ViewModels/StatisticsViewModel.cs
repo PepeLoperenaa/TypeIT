@@ -10,12 +10,12 @@ namespace TypeIT.ViewModels
 {
     internal class StatisticsViewModel : ViewModelBase
     {
+
         public ICommand NavigateHomeCommand { get; }
         public UserStore CurrentUser { get; set; }
         public ChartValues<int> WpmValues { get; set; }
         public ChartValues<double> AccuracyValues { get; set; }
         public ObservableCollection<string> Dates { get; set; }
-
 
         public StatisticsViewModel(NavigationStore navigationStore, UserStore userStore)
         {

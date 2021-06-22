@@ -25,5 +25,11 @@ namespace TypeIT.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        protected void PropertyChangedEvent(string name)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+
+        }
     }
 }

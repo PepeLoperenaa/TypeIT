@@ -77,32 +77,17 @@
                     Width="125" Style="{DynamicResource ImageButton}"
                     Command="{Binding ContactCommand}">
                 <StackPanel Width="120" Orientation="Horizontal">
-                    <Image Source="../Resources/Images/contactUsIcon.png" Height="35"/>
-                    <TextBlock Text="Contact us" 
-                               Height="15" Margin="15,0,0,0" 
+                    <Image Source="../Resources/Images/contactUsIcon.png" 
+                           Margin="15,0,0,0"
+                           Height="35"/>
+                    <TextBlock Text="Contact us"  
+                               Height="10" Margin="15,0,0,0" 
                                TextAlignment="Center"
-                               Foreground="{DynamicResource TextBodyColor}"/>
+                               Foreground="{DynamicResource TextHeaderColor}"/>
                 </StackPanel>
             </Button>
 
-                <Border Grid.Column="3" Grid.Row="1"
-                    Grid.ColumnSpan="2"
-                    Style="{DynamicResource TextBlockBorder}">
-                    <TextBlock
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Center">
-                <WrapPanel Orientation="Horizontal"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center">
-                        <Image Source="../Resources/Images/contactUsIcon.png" Height="40"/>
-                        <TextBlock Margin="10, 0, 0, 0"
-                                   Foreground="{DynamicResource ResourceKey=TextHeaderColor}"
-                                   Height="15">Contact us</TextBlock>
-                    </WrapPanel>
-                </TextBlock>
-                </Border>
-
-                <TextBlock Grid.Column="3" Grid.Row="2"
+            <TextBlock Grid.Column="3" Grid.Row="2"
                        Grid.ColumnSpan="2"
                        Text="typeIT" 
                        Foreground="{DynamicResource TextHeaderColor}"

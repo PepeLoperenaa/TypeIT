@@ -124,9 +124,7 @@
 
             <!-- Second row -->
             <Border Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4" Style="{DynamicResource TextBlockBorder}">
-                <ScrollViewer Style="{StaticResource ScrollViewerStyle}" 
-                              x:Name="ScollViewer">
-                    <TextBlock Padding="3" 
+                <TextBlock Padding="3" 
                                TextWrapping="WrapWithOverflow"
                                x:Name="Content">
                     <!-- It needs to be like this so the text doesn't have a space between it-->
@@ -136,8 +134,7 @@
                         Text="{Binding TypingModel.TextWrong}" Foreground="DarkRed" Background="Red" /><Run
                         Style="{DynamicResource BodyText}"
                         Text="{Binding TypingModel.CharactersLeft}" />
-                    </TextBlock>
-                </ScrollViewer>
+                </TextBlock>
             </Border>
 
             <!-- Third row -->
