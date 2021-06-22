@@ -174,7 +174,9 @@ namespace TypeIT.ViewModels
 
                 string filePath = $"../../../FileTypes/Users/{CurrentUser.CurrentUser.Name}.TypeIT";
                 CurrentUser.CurrentUser.Statistics.AverageWpm = int.Parse(XmlHandler.GetElementsFromTags(filePath, "AverageWPM").FirstOrDefault() ?? "Error");
-                
+
+                AchievementHandler.FinishPageAchievements(CurrentUser, int.Parse(TypingModel.AverageTypingSpeed), double.Parse(TypingModel.AverageAccuracy));
+
                 if (TypingModel.HasNextPage())
                 {
                     TypingModel.NextPage();

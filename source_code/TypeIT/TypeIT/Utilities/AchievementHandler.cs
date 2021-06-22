@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using TypeIT.Stores;
 
 namespace TypeIT.Utilities
@@ -11,6 +12,12 @@ namespace TypeIT.Utilities
     {
         private static List<string> newlyUnlockedAchievements = new List<string>();
 
+        /// <summary>
+        /// This method should be called when the user finishes a page. If he manages to successfully unlock an achievement it will be added to his .TypeIT file.
+        /// </summary>
+        /// <param name="currentUser">The current user. It is needed to see his already unlocked achievements and his username.</param>
+        /// <param name="wpm">The WPM to be compared to the achievements requirements.</param>
+        /// <param name="accuracy">The accuracy to be compared to the achievements requirements.</param>
         public static void FinishPageAchievements(UserStore currentUser, int wpm, double accuracy)
         {
             List<string> achievementName = XmlHandler.GetElementsFromTags("../../../FileTypes/TypeitFiles/achievements.TypeIT", "AchievementName");
@@ -42,11 +49,18 @@ namespace TypeIT.Utilities
         private static void AddNewAchievements(UserStore currentUser)
         {
             // We have to iterate backwards to safely delete elements
-            for (int i = currentUser.CurrentUser.Achievements.Count - 1; i >= 0; i--)
+            for (int i = 0; i < newlyUnlockedAchievements.Count; i++)
             {
                 if (!currentUser.CurrentUser.Achievements.Contains(newlyUnlockedAchievements[i]))
                 {
                     XmlHandler.AddAchievementToUser(currentUser.CurrentUser.Name, newlyUnlockedAchievements[i]);
+
+                    //Custom messagebox
+                    var res = Xceed.Wpf.Toolkit.MessageBox.Show(
+                                   "You have unlocked: " + newlyUnlockedAchievements[i],
+                                   "Congratulations!",
+                                   MessageBoxButton.OK
+                               );
                 }
             }
         }
