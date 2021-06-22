@@ -3,7 +3,6 @@ using System.Globalization;
 using System.Linq;
 using System.Timers;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using TypeIT.Commands;
 using TypeIT.Models;
@@ -194,9 +193,9 @@ namespace TypeIT.ViewModels
                 XmlHandler.UpdateDocuments(CurrentUser.CurrentUser.Name, TypingModel.Document.Name,
                     (TypingModel.PageNumber + 1).ToString(), displayAcc);
 
-                XmlHandler.UpdateAverageSpeed(CurrentUser.CurrentUser.Name, Double.Parse(displayWpm));
+                XmlHandler.UpdateUserStatistics(CurrentUser.CurrentUser.Name, "AverageWPM", Double.Parse(displayWpm).ToString(CultureInfo.InvariantCulture));
 
-                XmlHandler.UpdateStatistics(CurrentUser.CurrentUser.Name,"AverageAccuracy",TypingModel.AverageAccuracy);
+                XmlHandler.UpdateUserStatistics(CurrentUser.CurrentUser.Name,"AverageAccuracy",Double.Parse(displayAcc).ToString(CultureInfo.InvariantCulture));
 
                 string filePath = $"../../../FileTypes/Users/{CurrentUser.CurrentUser.Name}.TypeIT";
                 CurrentUser.CurrentUser.Statistics.AverageWpm =
@@ -204,12 +203,11 @@ namespace TypeIT.ViewModels
 
                 CurrentUser.CurrentUser.Statistics.AverageWpm = int.Parse(XmlHandler.GetElementsFromTags(filePath, "AverageWPM").FirstOrDefault() ?? "Error");
 
-                AchievementHandler.FinishPageAchievements(CurrentUser, int.Parse(TypingModel.AverageTypingSpeed), double.Parse(TypingModel.AverageAccuracy));
+                AchievementHandler.FinishPageAchievements(CurrentUser, int.Parse(displayWpm), Double.Parse(displayAcc));
 
                 if (TypingModel.HasNextPage())
                 {
                     TypingModel.NextPage();
-
 
                     // doing this here since we need user statistics for calculation
                     TypingModel.SetDisplayTime(CurrentUser.CurrentUser.Statistics.AverageWpm);

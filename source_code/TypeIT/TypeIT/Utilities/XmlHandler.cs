@@ -1,5 +1,8 @@
-﻿using System;
+﻿using LiveCharts;
+using LiveCharts.Defaults;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Xml.Linq;
 using TypeIT.Models;
@@ -22,12 +25,8 @@ namespace TypeIT.Utilities
                                            new XElement("AverageWPM"),
                                            new XElement("AverageAccuracy"),
                                            new XElement("HoursSpent"),
-                                           new XElement("TypedTypedWordsTotalWords"),
-                                           new XElement("DailyRecords",
-                                               new XElement("Day",
-                                               new XElement("Date"),
-                                               new XElement("WPM"),
-                                               new XElement("Average")))),
+                                           new XElement("TypedWordsTotal"),
+                                           new XElement("DailyRecords")),
                                        new XElement("Settings",
                                            new XElement("Theme"),
                                            new XElement("GameMode")),
@@ -35,6 +34,12 @@ namespace TypeIT.Utilities
                                            new XElement("Achievement",
                                                new XElement("AchievementName"))),
                                        new XElement("Documents")));
+
+            doc.Root.Element("Statistics").Element("HighestWPM").Value = "0";
+            doc.Root.Element("Statistics").Element("AverageWPM").Value = "0";
+            doc.Root.Element("Statistics").Element("AverageAccuracy").Value = "0";
+            doc.Root.Element("Statistics").Element("HoursSpent").Value = "0";
+            doc.Root.Element("Statistics").Element("TypedWordsTotal").Value = "0";
 
             doc.Save("../../../FileTypes/Users/" + name + ".TypeIT");
         }
@@ -92,15 +97,30 @@ namespace TypeIT.Utilities
         ///  Method to update specific elements from the update settings
         /// </summary>
         /// <param name="userName"></param>
-        /// <param name="type"></param>
+        /// <param name="tag"></param>
         /// <param name="value"></param>
-        public static void UpdateStatistics(string userName, string type, string value)
+        public static void UpdateUserStatistics(string userName, string tag, string value)
         {
-            XDocument doc = XDocument.Load($"../../../FileTypes/Users/{userName}.TypeIT");
+            string filePath = $"../../../FileTypes/Users/{userName}.TypeIT";
+            XDocument doc = XDocument.Load(filePath);
 
-            doc.Root.Element("Statistics").Element(type).Value = value;
+            int pageCount = 0;
+            XmlHandler.GetElementsFromTags(filePath, "UserPageNumber").ForEach(x =>  pageCount += int.Parse(x) == -1 ? 0 : int.Parse(x));
 
-            doc.Save($"../../../FileTypes/Users/{userName}.TypeIT");
+            int avg = int.Parse(XmlHandler.GetElementsFromTags(filePath, tag).FirstOrDefault() ?? "0");
+
+            avg = (int)((avg * (pageCount - 1)) + int.Parse(value)) / (pageCount);
+
+            XElement statistics = doc.Root?.Elements("Statistics").FirstOrDefault();
+
+            if (statistics != null)
+            {
+                XElement docAverage = statistics.Element(tag);
+
+                if (docAverage != null) docAverage.Value = avg.ToString();
+            }
+
+            doc.Save(filePath);
         }
 
         /// <summary>
@@ -178,35 +198,6 @@ namespace TypeIT.Utilities
             XDocument doc = XDocument.Load(filePath);
 
             doc.Root.Element("Achievements").Element("Achievement").Element(tags).Value = value;
-
-            doc.Save(filePath);
-        }
-
-        /// <summary>
-        /// Calculates the average typing speed of the user based on the new speed added
-        /// </summary>
-        /// <param name="userName"></param>
-        /// <param name="speed"></param>
-        public static void UpdateAverageSpeed(string userName, double speed)
-        {
-            string filePath = $"../../../FileTypes/Users/{userName}.TypeIT";
-            XDocument doc = XDocument.Load(filePath);
-
-            int pageCount = 0;
-            XmlHandler.GetElementsFromTags(filePath, "UserPageNumber").ForEach(x =>  pageCount += int.Parse(x) == -1 ? 0 : int.Parse(x));
-
-            int avgSpeed = int.Parse(XmlHandler.GetElementsFromTags(filePath, "AverageWPM").FirstOrDefault() ?? "0");
-
-            avgSpeed = (int)((avgSpeed * (pageCount - 1)) + speed) / (pageCount);
-
-            XElement statistics = doc.Root?.Elements("Statistics").FirstOrDefault();
-
-            if (statistics != null)
-            {
-                XElement docAverage = statistics.Element("AverageWPM");
-
-                if (docAverage != null) docAverage.Value = avgSpeed.ToString();
-            }
 
             doc.Save(filePath);
         }
@@ -351,6 +342,18 @@ namespace TypeIT.Utilities
             {
                 ((XElement)node).Value = "";
             }
+
+            foreach (XNode node in doc.Descendants("DailyRecords").DescendantNodes())
+            {
+                ((XElement)node).Value = "";
+            }
+
+            doc.Root.Element("Statistics").Element("HighestWPM").Value = "0";
+            doc.Root.Element("Statistics").Element("AverageWPM").Value = "0";
+            doc.Root.Element("Statistics").Element("AverageAccuracy").Value = "0";
+            doc.Root.Element("Statistics").Element("HoursSpent").Value = "0";
+            doc.Root.Element("Statistics").Element("TypedWordsTotal").Value = "0";
+
             doc.Save(filePath);
         }
 
@@ -367,6 +370,35 @@ namespace TypeIT.Utilities
                 ((XElement)node).Value = AchievementName;
             }
             doc.Save(filePath);
+        }
+
+        public static object[] GetValues(string UserName)
+        {
+            Object[] Values = new object[3];
+            ChartValues<int> WpmValues = new ChartValues<int>();
+            ChartValues<double> AccuracyValues = new ChartValues<double>();
+            ObservableCollection<string> Dates = new ObservableCollection<string>();
+
+            string filePath = $"../../../FileTypes/Users/{UserName}.TypeIT";
+            XDocument doc = XDocument.Load(filePath);
+            
+            foreach(XElement Days in doc.Descendants("DailyRecords"))
+            {
+                foreach(XElement Day in Days.Descendants("Day"))
+                {
+                    WpmValues.Add(int.Parse(Day.Element("WPM").Value));
+
+                    AccuracyValues.Add(double.Parse(Day.Element("Average").Value));
+
+                    Dates.Add(DateTime.Parse(Day.Element("Date").Value).ToString("yyyy-MM-dd"));
+                }
+            }
+
+            Values[0] = WpmValues;
+            Values[1] = AccuracyValues;
+            Values[2] = Dates;
+
+            return Values;
         }
     }
 }

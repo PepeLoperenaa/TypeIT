@@ -23,7 +23,7 @@ namespace TypeIT.Utilities
             newlyUnlockedAchievements.Clear();
 
             List<string> achievementName = XmlHandler.GetElementsFromTags("../../../FileTypes/TypeitFiles/achievements.TypeIT", "AchievementName");
-            List<string> achievementTreshold = XmlHandler.GetElementsFromTags("../../../FileTypes/TypeitFiles/achievements.TypeIT", "Treshold");
+            List<string> achievementThreshold = XmlHandler.GetElementsFromTags("../../../FileTypes/TypeitFiles/achievements.TypeIT", "Treshold");
             List<string> achievementProperty = XmlHandler.GetElementsFromTags("../../../FileTypes/TypeitFiles/achievements.TypeIT", "Property");
 
             for (int i = 0; i < achievementName.Count; i++)
@@ -31,13 +31,13 @@ namespace TypeIT.Utilities
                 switch (achievementProperty[i])
                 {
                     case "WPM":
-                        if (wpm >= Int32.Parse(achievementTreshold[i]))
+                        if (wpm >= Int32.Parse(achievementThreshold[i]))
                         {
                             newlyUnlockedAchievements.Add(achievementName[i]);
                         }
                         break;
                     case "Acc":
-                        if (accuracy >= Double.Parse(achievementTreshold[i]))
+                        if (accuracy >= Double.Parse(achievementThreshold[i]))
                         {
                             newlyUnlockedAchievements.Add(achievementName[i]);
                         }

@@ -55,8 +55,8 @@
                                            VerticalAlignment="Top"
                                            Height="20"/>
                                         <StackPanel Orientation="Vertical" Margin="3,0,0,0">
-                                            <TextBlock Style="{DynamicResource AchievementAndBookTitle}" Text="{Binding Title}"/>
-                                            <TextBlock Style="{DynamicResource AchievementAndBookDescription}" Text="{Binding Desc}"/>
+                                            <TextBlock Style="{DynamicResource AchievementTitle}" Text="{Binding Title}"/>
+                                            <TextBlock Style="{DynamicResource AchievementDescription}" Text="{Binding Desc}"/>
                                         </StackPanel>
                                     </StackPanel>
                                 </Border>

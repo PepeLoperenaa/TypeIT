@@ -36,10 +36,12 @@
 
   <ItemGroup>
     <Folder Include="Documents\" />
+    <Folder Include="FileTypes\Users" />
     <Folder Include="FileTypes\Users\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Blend.Interctivity.WPF.v4.0" Version="1.0.3" />
     <PackageReference Include="Extended.Wpf.Toolkit" Version="4.1.0" />
     <PackageReference Include="IronPdf" Version="2021.3.1" />
     <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
