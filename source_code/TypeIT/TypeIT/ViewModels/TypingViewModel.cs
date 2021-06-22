@@ -203,7 +203,7 @@ namespace TypeIT.ViewModels
 
                 CurrentUser.CurrentUser.Statistics.AverageWpm = int.Parse(XmlHandler.GetElementsFromTags(filePath, "AverageWPM").FirstOrDefault() ?? "Error");
 
-                AchievementHandler.FinishPageAchievements(CurrentUser, int.Parse(TypingModel.AverageTypingSpeed), Double.Parse(TypingModel.AverageAccuracy));
+                AchievementHandler.FinishPageAchievements(CurrentUser, int.Parse(displayWpm), Double.Parse(displayAcc));
 
                 if (TypingModel.HasNextPage())
                 {
