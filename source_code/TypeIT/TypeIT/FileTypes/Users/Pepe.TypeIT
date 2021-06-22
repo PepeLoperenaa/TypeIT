@@ -3,8 +3,8 @@
   <Name>Pepe</Name>
   <Statistics>
     <HighestWPM>0</HighestWPM>
-    <AverageWPM>38</AverageWPM>
-    <AverageAccuracy>0</AverageAccuracy>
+    <AverageWPM>86</AverageWPM>
+    <AverageAccuracy>2819</AverageAccuracy>
     <HoursSpent>0</HoursSpent>
     <TypedWordsTotal>0</TypedWordsTotal>
     <DailyRecords />
@@ -17,6 +17,7 @@
     <Achievement>
       <AchievementName />
     </Achievement>
+    <AchievementName>You can do better</AchievementName>
   </Achievements>
   <Documents>
     <Document>
@@ -40,7 +41,19 @@
     <Document>
       <DocumentName>FinalAssignmentGitHubLink</DocumentName>
       <TotalPageNumber>0</TotalPageNumber>
-      <UserPageNumber>0</UserPageNumber>
+      <UserPageNumber>2</UserPageNumber>
+      <DocumentAccuracy>84,58</DocumentAccuracy>
+    </Document>
+    <Document>
+      <DocumentName>Introductory lecture</DocumentName>
+      <TotalPageNumber>1</TotalPageNumber>
+      <UserPageNumber>1</UserPageNumber>
+      <DocumentAccuracy>0</DocumentAccuracy>
+    </Document>
+    <Document>
+      <DocumentName>demo</DocumentName>
+      <TotalPageNumber>1</TotalPageNumber>
+      <UserPageNumber>1</UserPageNumber>
       <DocumentAccuracy>0</DocumentAccuracy>
     </Document>
   </Documents>

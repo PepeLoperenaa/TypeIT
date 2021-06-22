@@ -1,0 +1,1 @@
+Hello this is a demo for the TypeIT presentation. As you see here, we can see that whilst writting, the accuracy and speed of my writting is displayed as well as the page number. If there is an error, the text where the error is, will be highlighted. Now, we wait until the end of this text to see some magic. Hope you enjoy!
