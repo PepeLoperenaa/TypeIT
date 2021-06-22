@@ -4,8 +4,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TypeIT.Views"
-             xmlns:i  = "http://schemas.microsoft.com/expression/2010/interactivity"
-             xmlns:ei = "http://schemas.microsoft.com/expression/2010/interactions"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Viewbox>
@@ -74,16 +72,7 @@
             </TextBlock>
             </Border>
 
-            <Label Grid.Column="3" Grid.Row="1"
-                    Grid.ColumnSpan="2" Content="Contact us">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="MouseLeftButtonUp">
-                        <ei:LaunchUriOrFileAction Path="mailto:pepe.loperena@student.nhlstdenden.com" />
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </Label>
-            
-            <!--<Button Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="2"
+            <Button Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="2"
                     VerticalAlignment="Top" Margin="0,2,0,0"
                     Width="125" Style="{DynamicResource ImageButton}"
                     Command="{Binding ContactCommand}">
@@ -96,22 +85,7 @@
                 </StackPanel>
             </Button>
 
-                <Border Grid.Column="3" Grid.Row="1"
-                    Grid.ColumnSpan="2"
-                    Style="{DynamicResource TextBlockBorder}">
-                    <TextBlock
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Center">
-                <WrapPanel Orientation="Horizontal"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center">
-                        <Image Source="../Resources/Images/contactUsIcon.png" Height="40"/>
-                        <TextBlock Margin="10, 0, 0, 0"
-                                   Foreground="{DynamicResource ResourceKey=TextHeaderColor}"
-                                   Height="15">Contact us</TextBlock>
-                    </WrapPanel>
-                </TextBlock>
-                </Border> -->
+                
 
                 <TextBlock Grid.Column="3" Grid.Row="2"
                        Grid.ColumnSpan="2"
