@@ -14,12 +14,12 @@ namespace TypeIT.ViewModels
     class AboutViewModel : ViewModelBase
     {
         public ICommand NavigateHomeCommand { get; }
-        public UserStore currentUser { get; set; }
+        public UserStore CurrentUser { get; set; }
 
-        public AboutViewModel(NavigationStore navigationStore, UserStore userStore)
+        public AboutViewModel(NavigationStore NavigationStore, UserStore UserStore)
         {
-           NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore, userStore));
-           currentUser = userStore;
+           NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(NavigationStore, () => new DashboardViewModel(NavigationStore, UserStore));
+           CurrentUser = UserStore;
         }
     }
 }
