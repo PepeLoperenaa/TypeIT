@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.Linq;
 using System.Timers;
 using System.Windows;
@@ -14,9 +13,9 @@ namespace TypeIT.ViewModels
     class TypingViewModel : ViewModelBase
     {
         public ICommand NavigateHomeCommand { get; }
-        public TypingModel TypingModel { get; set; }
-        public int InputLengthTracker { get; set; }
-        public UserStore CurrentUser { get; set; }
+        public TypingModel TypingModel { get; private set; }
+        private int InputLengthTracker { get; set; }
+        public UserStore CurrentUser { get; private set; }
 
         private string _inputString;
         /// <summary>
@@ -24,10 +23,7 @@ namespace TypeIT.ViewModels
         /// </summary>
         public string InputString
         {
-            get
-            {
-                return _inputString;
-            }
+            get => _inputString;
             set
             {
                 _inputString = value;
@@ -46,8 +42,7 @@ namespace TypeIT.ViewModels
         {
             CurrentUser = userStore;
 
-            TypingModel = new TypingModel();
-            TypingModel.Document = document;
+            TypingModel = new TypingModel {Document = document};
 
             NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore, userStore));
 
@@ -89,7 +84,7 @@ namespace TypeIT.ViewModels
         /// on the current page.
         /// </summary>
         /// <param name="word"></param>
-        public void TypeWord(string word)
+        private void TypeWord(string word)
         {
             if (TypingModel.Alive)
             {
@@ -167,22 +162,21 @@ namespace TypeIT.ViewModels
         private void ParseWord(string word)
         {
             if (!CanGoToNextWord(word)) return;
+            
             if (TypingModel.CurrentWordIndex == TypingModel.GetNumberOfWords())
             {
+                string displayAcc = TypingModel.SelectedDifficulty == Difficulty.Easy ? "100" : TypingModel.AverageAccuracy;
+                    
+                XmlHandler.UpdateDocuments(CurrentUser.CurrentUser.Name, TypingModel.Document.Name,
+                    (TypingModel.PageNumber + 1).ToString(), displayAcc);
+                    
+                XmlHandler.UpdateAverageSpeed(CurrentUser.CurrentUser.Name, Double.Parse(TypingModel.AverageTypingSpeed));
+
+                string filePath = $"../../../FileTypes/Users/{CurrentUser.CurrentUser.Name}.TypeIT";
+                CurrentUser.CurrentUser.Statistics.AverageWpm = int.Parse(XmlHandler.GetElementsFromTags(filePath, "AverageWPM").FirstOrDefault() ?? "Error");
+                
                 if (TypingModel.HasNextPage())
                 {
-                    string displayAcc = TypingModel.SelectedDifficulty == Difficulty.Easy ? "100" : TypingModel.AverageAccuracy;
-                    
-                    XmlHandler.UpdateDocuments(CurrentUser.CurrentUser.Name, TypingModel.Document.Name,
-                        (TypingModel.PageNumber + 1).ToString(), displayAcc);
-                    
-                    XmlHandler.UpdateAverageSpeed(CurrentUser.CurrentUser.Name, Double.Parse(TypingModel.AverageTypingSpeed));
-
-                    string filePath = $"../../../FileTypes/Users/{CurrentUser.CurrentUser.Name}.TypeIT";
-                    CurrentUser.CurrentUser.Statistics.AverageWpm = int.Parse(XmlHandler.GetElementsFromTags(filePath, "AverageWPM").FirstOrDefault() ?? "Error");
-                    
-                    CurrentUser.CurrentUser.RefreshUserModel();
-
                     TypingModel.NextPage();
 
 
@@ -191,8 +185,19 @@ namespace TypeIT.ViewModels
                 }
                 else
                 {
-                    // Go back to home page or say hey you finished the book or something
+                    //Custom messagebox
+                    var res = Xceed.Wpf.Toolkit.MessageBox.Show(
+                        "You have finished this book!",
+                        "Back to Home",
+                        MessageBoxButton.OK
+                    );
+
+                    if ("OK" == res.ToString())
+                    {
+                        NavigateHomeCommand.Execute(null);
+                    }
                 }
+                CurrentUser.CurrentUser.RefreshUserModel();
             }
             else
             {
@@ -202,8 +207,6 @@ namespace TypeIT.ViewModels
 
             InputLengthTracker = 0;
             InputString = "";
-
-            return;
         }
 
         /// <summary>
@@ -216,7 +219,8 @@ namespace TypeIT.ViewModels
             if (InputString.Length <= 0) return false;
             // check if you're at the last word to see if the space is needed to continue
             // important otherwise the text will proceed without a space needed
-            if (TypingModel.CurrentWordIndex == TypingModel.GetNumberOfWords())
+            var curNum = TypingModel.GetNumberOfWords();
+            if (TypingModel.CurrentWordIndex == curNum)
             {
                 // check if the input is equal to the word (no need to trim)
                 if (InputString == TypingModel.CurrentWord)

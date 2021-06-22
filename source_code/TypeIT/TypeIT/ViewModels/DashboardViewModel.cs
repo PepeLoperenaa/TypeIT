@@ -77,7 +77,10 @@ namespace TypeIT.ViewModels
         private void ClickedStartTyping()
         {
             CurrentDocument = XmlHandler.GetRandomUserDocument(CurrentUser.CurrentUser.Name);
-            NavigateTypingCommand.Execute(null);
+            if (CurrentDocument != null)
+            {
+                NavigateTypingCommand.Execute(null);
+            }
         }
     }
 }

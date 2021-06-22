@@ -48,14 +48,13 @@ namespace TypeIT.Models
             }
             catch (Exception)
             {
-
-                throw new Exception("That page doesn't exist");
+                return null;
             }
         }
 
         public int GetNumberOfPages()
         {
-            return Pages.Count;
+            return Pages.Count - 1;
         }
     }
 }
