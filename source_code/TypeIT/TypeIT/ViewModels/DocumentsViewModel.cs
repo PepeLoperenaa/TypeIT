@@ -53,7 +53,7 @@ namespace TypeIT.ViewModels
                     MessageBoxButton.OK
                 );
 
-                CurrentUser.CurrentUser.loadUserDocuments();
+                CurrentUser.CurrentUser.LoadUserDocuments();
             }
         }
 
