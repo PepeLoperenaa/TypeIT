@@ -227,7 +227,12 @@ namespace TypeIT.Models
         /// <returns>The text from the page</returns>
         public string GetTextFromPage(int pageNumber)
         {
-            return Document.GetPageByPageNumber(pageNumber).Text;
+            if (Document.GetPageByPageNumber(pageNumber) == null)
+            {
+                PageNumber = 0;
+            }
+
+            return Document.GetPageByPageNumber(PageNumber).Text;
         }
 
         /// <summary>
@@ -272,7 +277,7 @@ namespace TypeIT.Models
             Index = 0;
 
             // text blocks
-            CharactersLeft = Text;
+            CharactersLeft = Text.Trim();
             TextCorrect = "";
             TextWrong = "";
 

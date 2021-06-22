@@ -3,7 +3,7 @@
   <Name>Steffen</Name>
   <Statistics>
     <HighestWPM />
-    <AverageWPM>47</AverageWPM>
+    <AverageWPM>79</AverageWPM>
     <AverageAccuracy />
     <HoursSpent />
     <TypedTypedWordsTotalWords />
@@ -27,9 +27,15 @@
   <Documents>
     <Document>
       <DocumentName>Overlord 1</DocumentName>
-      <TotalPageNumber>321</TotalPageNumber>
+      <TotalPageNumber>320</TotalPageNumber>
       <UserPageNumber>2</UserPageNumber>
-      <DocumentAccuracy>90,8</DocumentAccuracy>
+      <DocumentAccuracy>94,06</DocumentAccuracy>
+    </Document>
+    <Document>
+      <DocumentName>Overlord Volume 2 - The Dark Knight (v2.1)</DocumentName>
+      <TotalPageNumber>328</TotalPageNumber>
+      <UserPageNumber>0</UserPageNumber>
+      <DocumentAccuracy>0</DocumentAccuracy>
     </Document>
   </Documents>
 </UserProfile>

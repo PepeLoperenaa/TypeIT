@@ -131,7 +131,7 @@
                                x:Name="Content">
                     <!-- It needs to be like this so the text doesn't have a space between it-->
                     <Run Style="{DynamicResource BodyText}"
-                         Text="{Binding TypingModel.TextCorrect}" Foreground="Green" /><Run
+                         Text="{Binding TypingModel.TextCorrect}" Foreground="Green"/><Run
                         Style="{DynamicResource BodyText}"
                         Text="{Binding TypingModel.TextWrong}" Foreground="DarkRed" Background="Red" /><Run
                         Style="{DynamicResource BodyText}"
