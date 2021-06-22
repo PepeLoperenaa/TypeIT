@@ -24,19 +24,6 @@ namespace TypeIT.Views
         public TypingView()
         {
             InitializeComponent();
-
-            DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = new TimeSpan(0, 0, 2);
-            timer.Tick += ((sender, e) =>
-            {
-                Content.Height += 10;
-
-                if (ScollViewer.VerticalOffset == ScollViewer.ScrollableHeight)
-                {
-                    ScollViewer.ScrollToEnd();
-                }
-            });
-            timer.Start();
         }
     }
 }

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UserProfile>
+  <Name>Steffen</Name>
+  <Statistics>
+    <HighestWPM>0</HighestWPM>
+    <AverageWPM>0</AverageWPM>
+    <AverageAccuracy>0</AverageAccuracy>
+    <HoursSpent>0</HoursSpent>
+    <TypedTypedWordsTotalWords>0</TypedTypedWordsTotalWords>
+    <DailyRecords></DailyRecords>
+  </Statistics>
+  <Settings>
+    <Theme>Dark</Theme>
+    <GameMode>Casual</GameMode>
+  </Settings>
+  <Achievements>
+    <Achievement>
+      <AchievementName />
+    </Achievement>
+    <AchievementName>The birth of a legend</AchievementName>
+    <AchievementName>Getting there...</AchievementName>
+    <AchievementName>You can do better</AchievementName>
+    <AchievementName>You made it</AchievementName>
+    <AchievementName>Headshot</AchievementName>
+  </Achievements>
+  <Documents>
+    <Document>
+      <DocumentName>Overlord 1</DocumentName>
+      <TotalPageNumber>320</TotalPageNumber>
+      <UserPageNumber>1</UserPageNumber>
+      <DocumentAccuracy>0</DocumentAccuracy>
+    </Document>
+  </Documents>
+</UserProfile>
