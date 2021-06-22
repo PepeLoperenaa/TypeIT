@@ -18,7 +18,7 @@ namespace TypeIT.Utilities
         /// <param name="Text"></param>
         private void CreateDocument(string FileLocation, int PageNum, string Text)
         {
-            System.IO.File.WriteAllText(FileLocation + PageNum + ".txt", Text);
+            System.IO.File.WriteAllText(FileLocation + PageNum + ".txt", Text.Trim());
         }
 
         /// <summary>

@@ -310,25 +310,30 @@ namespace TypeIT.Utilities
             XDocument doc = XDocument.Load(filePath);
 
             XElement documents = doc.Root.Element("Documents");
+            
+            XElement existing = documents.Elements("Document").SingleOrDefault(x => (string)x.Element("DocumentName") == documentName);
 
-            XElement document = new XElement("Document");
-            XElement name = new XElement("DocumentName");
-            XElement numberTotal = new XElement("TotalPageNumber");
-            XElement userNumber = new XElement("UserPageNumber");
-            XElement docAccuracy = new XElement("DocumentAccuracy");
+            if (existing == null)
+            {
+                XElement document = new XElement("Document");
+                XElement name = new XElement("DocumentName");
+                XElement numberTotal = new XElement("TotalPageNumber");
+                XElement userNumber = new XElement("UserPageNumber");
+                XElement docAccuracy = new XElement("DocumentAccuracy");
 
-            name.Value = documentName;
-            numberTotal.Value = documentNumberOfPages.ToString();
-            userNumber.Value = currentPage.ToString();
-            docAccuracy.Value = "0";
+                name.Value = documentName;
+                numberTotal.Value = documentNumberOfPages.ToString();
+                userNumber.Value = currentPage.ToString();
+                docAccuracy.Value = "0";
 
-            document.Add(name);
-            document.Add(numberTotal);
-            document.Add(userNumber);
-            document.Add(docAccuracy);
+                document.Add(name);
+                document.Add(numberTotal);
+                document.Add(userNumber);
+                document.Add(docAccuracy);
 
-            documents.Add(document);
-            doc.Save(filePath);
+                documents.Add(document);
+                doc.Save(filePath);
+            }
         }
 
         /// <summary>
