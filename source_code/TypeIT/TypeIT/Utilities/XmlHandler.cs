@@ -25,12 +25,8 @@ namespace TypeIT.Utilities
                                            new XElement("AverageWPM"),
                                            new XElement("AverageAccuracy"),
                                            new XElement("HoursSpent"),
-                                           new XElement("TypedTypedWordsTotalWords"),
-                                           new XElement("DailyRecords",
-                                               new XElement("Day",
-                                               new XElement("Date"),
-                                               new XElement("WPM"),
-                                               new XElement("Average")))),
+                                           new XElement("TypedWordsTotal"),
+                                           new XElement("DailyRecords")),
                                        new XElement("Settings",
                                            new XElement("Theme"),
                                            new XElement("GameMode")),
@@ -38,6 +34,12 @@ namespace TypeIT.Utilities
                                            new XElement("Achievement",
                                                new XElement("AchievementName"))),
                                        new XElement("Documents")));
+
+            doc.Root.Element("Statistics").Element("HighestWPM").Value = "0";
+            doc.Root.Element("Statistics").Element("AverageWPM").Value = "0";
+            doc.Root.Element("Statistics").Element("AverageAccuracy").Value = "0";
+            doc.Root.Element("Statistics").Element("HoursSpent").Value = "0";
+            doc.Root.Element("Statistics").Element("TypedWordsTotal").Value = "0";
 
             doc.Save("../../../FileTypes/Users/" + name + ".TypeIT");
         }
@@ -352,8 +354,20 @@ namespace TypeIT.Utilities
 
             foreach (XNode node in doc.Descendants("Statistics").DescendantNodes())
             {
-                ((XElement)node).Value = "0";
+                ((XElement)node).Value = "";
             }
+
+            foreach (XNode node in doc.Descendants("DailyRecords").DescendantNodes())
+            {
+                ((XElement)node).Value = "";
+            }
+
+            doc.Root.Element("Statistics").Element("HighestWPM").Value = "0";
+            doc.Root.Element("Statistics").Element("AverageWPM").Value = "0";
+            doc.Root.Element("Statistics").Element("AverageAccuracy").Value = "0";
+            doc.Root.Element("Statistics").Element("HoursSpent").Value = "0";
+            doc.Root.Element("Statistics").Element("TypedWordsTotal").Value = "0";
+
             doc.Save(filePath);
         }
 
