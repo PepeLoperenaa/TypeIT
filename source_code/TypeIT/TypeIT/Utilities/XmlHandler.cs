@@ -104,11 +104,11 @@ namespace TypeIT.Utilities
             XDocument doc = XDocument.Load(filePath);
 
             int pageCount = 0;
-            XmlHandler.GetElementsFromTags(filePath, "UserPageNumber").ForEach(x => pageCount += int.Parse(x) == -1 ? 0 : int.Parse(x));
+            XmlHandler.GetElementsFromTags(filePath, "UserPageNumber").ForEach(x => pageCount += int.Parse(x) <= 0 ? 0 : int.Parse(x));
 
             int avg = int.Parse(XmlHandler.GetElementsFromTags(filePath, tag).FirstOrDefault() ?? "0");
 
-            avg = (int)(avg * (pageCount - 1) + Double.Parse(value) / pageCount);
+            avg = (int)((avg * (pageCount - 1) + Double.Parse(value)) / pageCount);
 
             XElement statistics = doc.Root?.Elements("Statistics").FirstOrDefault();
 

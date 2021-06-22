@@ -233,12 +233,12 @@ namespace TypeIT.Models
         /// <returns>The text from the page</returns>
         public string GetTextFromPage(int pageNumber)
         {
-            if (Document.GetPageByPageNumber(PageNumber - 1) == null)
+            if (Document.GetPageByPageNumber(PageNumber) == null)
             {
-                _pageNumber = 1;
+                _pageNumber = 0;
             }
 
-            return Document.GetPageByPageNumber(PageNumber - 1).Text;
+            return Document.GetPageByPageNumber(PageNumber).Text;
         }
 
         /// <summary>
@@ -266,7 +266,8 @@ namespace TypeIT.Models
         /// <returns>Whether the next page exists or not</returns>
         public bool HasNextPage()
         {
-            if (PageNumber < Document.GetNumberOfPages())
+            // Have to do -1 here since the book works base 1, but c# works base 0
+            if (PageNumber < Document.GetNumberOfPages() - 1)
             {
                 return true;
             }
