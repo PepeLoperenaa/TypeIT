@@ -3,8 +3,8 @@
   <Name>Steffen</Name>
   <Statistics>
     <HighestWPM>0</HighestWPM>
-    <AverageWPM>74</AverageWPM>
-    <AverageAccuracy>92</AverageAccuracy>
+    <AverageWPM>68</AverageWPM>
+    <AverageAccuracy>96</AverageAccuracy>
     <HoursSpent>0</HoursSpent>
     <TypedWordsTotal>0</TypedWordsTotal>
     <DailyRecords></DailyRecords>
@@ -14,14 +14,13 @@
     <GameMode>Normal</GameMode>
   </Settings>
   <Achievements>
-    <Achievement>
-      <AchievementName />
-    </Achievement>
+    <Achievement></Achievement>
     <AchievementName>The birth of a legend</AchievementName>
     <AchievementName>Getting there...</AchievementName>
     <AchievementName>You made it</AchievementName>
     <AchievementName>Typing professional</AchievementName>
     <AchievementName>Fast and furious</AchievementName>
+    <AchievementName>Beat the creator</AchievementName>
     <AchievementName>You can do better</AchievementName>
     <AchievementName>Headshot</AchievementName>
   </Achievements>
@@ -29,8 +28,8 @@
     <Document>
       <DocumentName>Overlord 1</DocumentName>
       <TotalPageNumber>321</TotalPageNumber>
-      <UserPageNumber>1</UserPageNumber>
-      <DocumentAccuracy>0</DocumentAccuracy>
+      <UserPageNumber>2</UserPageNumber>
+      <DocumentAccuracy>93,88</DocumentAccuracy>
     </Document>
   </Documents>
 </UserProfile>
