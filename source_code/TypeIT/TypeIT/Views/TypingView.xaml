@@ -3,9 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:TypeIT.Views"
-             xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
-             xmlns:viewmodels="clr-namespace:TypeIT.ViewModels" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:viewmodels="clr-namespace:TypeIT.ViewModels"
              d:DataContext="{d:DesignInstance Type=viewmodels:TypingViewModel}"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
@@ -42,7 +40,9 @@
             </Button>
 
             <!-- Second row -->
-            <Grid Grid.Row="1" Grid.ColumnSpan="5">
+            <Grid Grid.Row="1" Grid.ColumnSpan="5" Grid.Column="0">
+                <Grid.RowDefinitions>
+                </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="5" />
                     <ColumnDefinition Width="55" />
@@ -124,8 +124,6 @@
 
             <!-- Second row -->
             <Border Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4" Style="{DynamicResource TextBlockBorder}">
-                <ScrollViewer Style="{StaticResource ScrollViewerStyle}" 
-                              x:Name="ScollViewer">
                     <TextBlock Padding="3" 
                                TextWrapping="WrapWithOverflow"
                                x:Name="Content">
@@ -133,11 +131,10 @@
                     <Run Style="{DynamicResource BodyText}"
                          Text="{Binding TypingModel.TextCorrect}" Foreground="Green"/><Run
                         Style="{DynamicResource BodyText}"
-                        Text="{Binding TypingModel.TextWrong}" Foreground="DarkRed" Background="Red" /><Run
+                        Text="{Binding TypingModel.TextWrong}" Foreground="Black" Background="DarkRed"/><Run
                         Style="{DynamicResource BodyText}"
                         Text="{Binding TypingModel.CharactersLeft}" />
                     </TextBlock>
-                </ScrollViewer>
             </Border>
 
             <!-- Third row -->

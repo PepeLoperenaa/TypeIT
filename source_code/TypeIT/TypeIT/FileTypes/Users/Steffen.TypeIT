@@ -3,7 +3,7 @@
   <Name>Steffen</Name>
   <Statistics>
     <HighestWPM>0</HighestWPM>
-    <AverageWPM>60</AverageWPM>
+    <AverageWPM>0</AverageWPM>
     <AverageAccuracy>0</AverageAccuracy>
     <HoursSpent>0</HoursSpent>
     <TypedTypedWordsTotalWords>0</TypedTypedWordsTotalWords>
@@ -11,19 +11,24 @@
   </Statistics>
   <Settings>
     <Theme>Dark</Theme>
-    <GameMode>Extreme</GameMode>
+    <GameMode>Casual</GameMode>
   </Settings>
   <Achievements>
     <Achievement>
       <AchievementName />
     </Achievement>
+    <AchievementName>The birth of a legend</AchievementName>
+    <AchievementName>Getting there...</AchievementName>
+    <AchievementName>You can do better</AchievementName>
+    <AchievementName>You made it</AchievementName>
+    <AchievementName>Headshot</AchievementName>
   </Achievements>
   <Documents>
     <Document>
       <DocumentName>Overlord 1</DocumentName>
       <TotalPageNumber>320</TotalPageNumber>
-      <UserPageNumber>8</UserPageNumber>
-      <DocumentAccuracy>92,65</DocumentAccuracy>
+      <UserPageNumber>1</UserPageNumber>
+      <DocumentAccuracy>0</DocumentAccuracy>
     </Document>
   </Documents>
 </UserProfile>
