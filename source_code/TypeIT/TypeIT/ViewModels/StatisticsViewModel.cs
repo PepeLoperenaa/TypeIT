@@ -1,13 +1,6 @@
 ﻿using LiveCharts;
-using LiveCharts.Defaults;
-using LiveCharts.Wpf;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using TypeIT.Commands;
 using TypeIT.Stores;
@@ -66,7 +59,7 @@ namespace TypeIT.ViewModels
         public StatisticsViewModel(NavigationStore navigationStore, UserStore userStore)
         {
             NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore, userStore));
-            
+
             //Current user
             currentUser = userStore;
 
@@ -74,6 +67,6 @@ namespace TypeIT.ViewModels
             AccuracyValues = (ChartValues<double>)XmlHandler.GetValues(currentUser.CurrentUser.Name)[1];
             Dates = (ObservableCollection<string>)XmlHandler.GetValues(currentUser.CurrentUser.Name)[2];
 
-        }      
+        }
     }
 }

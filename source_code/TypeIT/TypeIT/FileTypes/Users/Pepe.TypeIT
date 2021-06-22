@@ -3,7 +3,7 @@
   <Name>Pepe</Name>
   <Statistics>
     <HighestWPM>0</HighestWPM>
-    <AverageWPM>0</AverageWPM>
+    <AverageWPM>38</AverageWPM>
     <AverageAccuracy>0</AverageAccuracy>
     <HoursSpent>0</HoursSpent>
     <TypedWordsTotal>0</TypedWordsTotal>
@@ -27,6 +27,18 @@
     </Document>
     <Document>
       <DocumentName>test plan</DocumentName>
+      <TotalPageNumber>0</TotalPageNumber>
+      <UserPageNumber>1</UserPageNumber>
+      <DocumentAccuracy>84,06</DocumentAccuracy>
+    </Document>
+    <Document>
+      <DocumentName>DTT preparation</DocumentName>
+      <TotalPageNumber>0</TotalPageNumber>
+      <UserPageNumber>0</UserPageNumber>
+      <DocumentAccuracy>0</DocumentAccuracy>
+    </Document>
+    <Document>
+      <DocumentName>FinalAssignmentGitHubLink</DocumentName>
       <TotalPageNumber>0</TotalPageNumber>
       <UserPageNumber>0</UserPageNumber>
       <DocumentAccuracy>0</DocumentAccuracy>

@@ -1,11 +1,7 @@
 ﻿using Prism.Commands;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using TypeIT.Commands;
@@ -14,7 +10,7 @@ using TypeIT.Stores;
 
 namespace TypeIT.ViewModels
 {
-    public abstract class ChangeUserViewModel: ViewModelBase
+    public abstract class ChangeUserViewModel : ViewModelBase
     {
         public ICommand NavigateHomeCommand { get; }
         public ICommand SelectUser { get; }

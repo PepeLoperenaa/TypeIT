@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TypeIT.Utilities;
 
 namespace TypeIT.Models
@@ -64,7 +62,7 @@ namespace TypeIT.Models
             foreach (string achievementName in hallo)
             {
                 Achievements.Add(achievementName);
-            }            
+            }
         }
 
         /// <summary>
