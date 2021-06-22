@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace TypeIT.Views
 {
@@ -23,6 +24,19 @@ namespace TypeIT.Views
         public TypingView()
         {
             InitializeComponent();
+
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = new TimeSpan(0, 0, 2);
+            timer.Tick += ((sender, e) =>
+            {
+                Content.Height += 10;
+
+                if (ScollViewer.VerticalOffset == ScollViewer.ScrollableHeight)
+                {
+                    ScollViewer.ScrollToEnd();
+                }
+            });
+            timer.Start();
         }
     }
 }

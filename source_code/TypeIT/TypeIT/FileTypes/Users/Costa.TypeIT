@@ -25,5 +25,23 @@
     </Achievement>
   </Achievements>
   <Documents>
+    <Document>
+      <DocumentName>1</DocumentName>
+      <TotalPageNumber>1</TotalPageNumber>
+      <UserPageNumber>1</UserPageNumber>
+      <DocumentAccuracy>NaN</DocumentAccuracy>
+    </Document>
+    <Document>
+      <DocumentName>CV</DocumentName>
+      <TotalPageNumber>1</TotalPageNumber>
+      <UserPageNumber>0</UserPageNumber>
+      <DocumentAccuracy>0</DocumentAccuracy>
+    </Document>
+    <Document>
+      <DocumentName>1</DocumentName>
+      <TotalPageNumber>1</TotalPageNumber>
+      <UserPageNumber>0</UserPageNumber>
+      <DocumentAccuracy>0</DocumentAccuracy>
+    </Document>
   </Documents>
 </UserProfile>

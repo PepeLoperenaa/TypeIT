@@ -21,7 +21,7 @@
                 <RowDefinition Height="65"/>
                 <RowDefinition Height="5"/>
             </Grid.RowDefinitions>
-            <TextBlock Text="{Binding currentUser.CurrentUser.Name, StringFormat='Welcome {0}'}" 
+            <TextBlock Text="{Binding CurrentUser.CurrentUser.Name, StringFormat='Welcome {0}'}" 
                        TextAlignment="Left" VerticalAlignment="Bottom"
                        Foreground="{DynamicResource TextBlue}"
                        Grid.Column="1" Grid.Row="0"
