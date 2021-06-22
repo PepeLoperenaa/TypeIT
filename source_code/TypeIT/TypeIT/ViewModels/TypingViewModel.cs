@@ -45,7 +45,7 @@ namespace TypeIT.ViewModels
         {
             CurrentUser = userStore;
 
-            TypingModel = new TypingModel {Document = document};
+            TypingModel = new TypingModel { Document = document };
 
             NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore,
                 () => new DashboardViewModel(navigationStore, userStore));
@@ -82,7 +82,7 @@ namespace TypeIT.ViewModels
 
                 TypingModel.IncrementTime();
             }
-            
+
             CheckIfFailed();
         }
 
@@ -195,7 +195,7 @@ namespace TypeIT.ViewModels
 
                 XmlHandler.UpdateUserStatistics(CurrentUser.CurrentUser.Name, "AverageWPM", Double.Parse(displayWpm).ToString(CultureInfo.InvariantCulture));
 
-                XmlHandler.UpdateUserStatistics(CurrentUser.CurrentUser.Name,"AverageAccuracy",Double.Parse(displayAcc).ToString(CultureInfo.InvariantCulture));
+                XmlHandler.UpdateUserStatistics(CurrentUser.CurrentUser.Name, "AverageAccuracy", Double.Parse(displayAcc).ToString(CultureInfo.InvariantCulture));
 
                 string filePath = $"../../../FileTypes/Users/{CurrentUser.CurrentUser.Name}.TypeIT";
                 CurrentUser.CurrentUser.Statistics.AverageWpm =
@@ -286,14 +286,14 @@ namespace TypeIT.ViewModels
                 if (TypingModel.TimeCounter == 0)
                 {
                     TypingModel.Alive = false;
-                    
+
                     //Custom messagebox
                     var res = Xceed.Wpf.Toolkit.MessageBox.Show(
                         "You ran out of time :(",
                         "OK",
                         MessageBoxButton.OK
                     );
-                    
+
                     if ("OK" == res.ToString())
                     {
                         NavigateHomeCommand.Execute(null);

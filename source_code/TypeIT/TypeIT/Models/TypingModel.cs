@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
 using System.Timers;
-using System.Windows;
 using TypeIT.Utilities;
 
 namespace TypeIT.Models
@@ -199,7 +195,7 @@ namespace TypeIT.Models
         public int CalculateErrorSpace(string word)
         {
             int minSpace = 5;
-            int calculatedSpace = (int) ((word.Length * 1.5) / 2);
+            int calculatedSpace = (int)((word.Length * 1.5) / 2);
 
             return minSpace > calculatedSpace ? minSpace : calculatedSpace;
         }
@@ -227,7 +223,7 @@ namespace TypeIT.Models
         /// <returns>The average accuracy of a user</returns>
         public double CalculateAccuracy(int totalChars)
         {
-            return Math.Round(((Double) (totalChars - TotalMistakes) / totalChars) * 100, 2);
+            return Math.Round(((Double)(totalChars - TotalMistakes) / totalChars) * 100, 2);
         }
 
         /// <summary>
@@ -256,11 +252,11 @@ namespace TypeIT.Models
         {
             if (averageWpm > 6)
             {
-                return (int) ((wordCount * 60) / (averageWpm)) + 5;
+                return (int)((wordCount * 60) / (averageWpm)) + 5;
             }
             else
             {
-                return (int) ((wordCount * 60) / 30) + 5;
+                return (int)((wordCount * 60) / 30) + 5;
             }
         }
 
@@ -315,7 +311,7 @@ namespace TypeIT.Models
             {
                 AverageAccuracy = CalculateAccuracy(InputCount).ToString();
 
-                AverageTypingSpeed = ((int) CalculateTypingSpeed(CurrentWordIndex)).ToString();
+                AverageTypingSpeed = ((int)CalculateTypingSpeed(CurrentWordIndex)).ToString();
 
                 if (Double.Parse(AverageAccuracy) < 0)
                 {

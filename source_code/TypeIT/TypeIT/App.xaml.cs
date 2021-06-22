@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 using TypeIT.Stores;
 using TypeIT.ViewModels;
@@ -27,12 +22,13 @@ namespace TypeIT
             if (files.Length < 6)
             {
                 navigationStore.CurrentViewModel = new ChangeUserViewModelWithOneToFiveUsers(navigationStore);
-            } else
+            }
+            else
             {
                 navigationStore.CurrentViewModel = new ChangeUserViewModelWithSixUsers(navigationStore);
             }
-                        
-            
+
+
             MainWindow = new MainWindow()
             {
                 DataContext = new MainViewModel(navigationStore)
@@ -46,6 +42,6 @@ namespace TypeIT
             base.OnStartup(e);
         }
 
-        
+
     }
 }

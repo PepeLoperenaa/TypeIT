@@ -1,5 +1,4 @@
 ﻿using LiveCharts;
-using LiveCharts.Defaults;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -68,7 +67,7 @@ namespace TypeIT.Utilities
         /// Method to add data to the different .TypeIT files
         /// </summary>
         /// <param name="filePath"></param>
-        public static void AddingDataIntoAnXml(string filePath) 
+        public static void AddingDataIntoAnXml(string filePath)
         {
             XDocument doc = XDocument.Load(filePath);
 
@@ -105,7 +104,7 @@ namespace TypeIT.Utilities
             XDocument doc = XDocument.Load(filePath);
 
             int pageCount = 0;
-            XmlHandler.GetElementsFromTags(filePath, "UserPageNumber").ForEach(x =>  pageCount += int.Parse(x) == -1 ? 0 : int.Parse(x));
+            XmlHandler.GetElementsFromTags(filePath, "UserPageNumber").ForEach(x => pageCount += int.Parse(x) == -1 ? 0 : int.Parse(x));
 
             int avg = int.Parse(XmlHandler.GetElementsFromTags(filePath, tag).FirstOrDefault() ?? "0");
 
@@ -149,7 +148,7 @@ namespace TypeIT.Utilities
         /// <param name="element"></param>
         /// <param name="daily"></param>
         /// <param name="value"></param>
-        public static void UpdateDailyRecords(string userName, string element, string daily , string value)
+        public static void UpdateDailyRecords(string userName, string element, string daily, string value)
         {
             XDocument doc = XDocument.Load($"../../../FileTypes/Users/{userName}.TypeIT");
 
@@ -243,7 +242,7 @@ namespace TypeIT.Utilities
             DocumentModel model = null;
 
             string filePath = $"../../../FileTypes/Users/{user}.TypeIT";
-            
+
             XDocument doc = XDocument.Load(filePath);
 
             if (doc.Root != null)
@@ -303,7 +302,7 @@ namespace TypeIT.Utilities
             XDocument doc = XDocument.Load(filePath);
 
             XElement documents = doc.Root.Element("Documents");
-            
+
             XElement existing = documents.Elements("Document").SingleOrDefault(x => (string)x.Element("DocumentName") == documentName);
 
             if (existing == null)
@@ -381,10 +380,10 @@ namespace TypeIT.Utilities
 
             string filePath = $"../../../FileTypes/Users/{UserName}.TypeIT";
             XDocument doc = XDocument.Load(filePath);
-            
-            foreach(XElement Days in doc.Descendants("DailyRecords"))
+
+            foreach (XElement Days in doc.Descendants("DailyRecords"))
             {
-                foreach(XElement Day in Days.Descendants("Day"))
+                foreach (XElement Day in Days.Descendants("Day"))
                 {
                     WpmValues.Add(int.Parse(Day.Element("WPM").Value));
 
