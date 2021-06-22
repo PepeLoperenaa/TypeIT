@@ -4,15 +4,15 @@ using TypeIT.Stores;
 
 namespace TypeIT.ViewModels
 {
-    class AboutViewModel : ViewModelBase
+    internal class AboutViewModel : ViewModelBase
     {
         public ICommand NavigateHomeCommand { get; }
         public UserStore CurrentUser { get; set; }
 
-        public AboutViewModel(NavigationStore NavigationStore, UserStore UserStore)
+        public AboutViewModel(NavigationStore navigationStore, UserStore userStore)
         {
-           NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(NavigationStore, () => new DashboardViewModel(NavigationStore, UserStore));
-           CurrentUser = UserStore;
+            NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore, () => new DashboardViewModel(navigationStore, userStore));
+            CurrentUser = userStore;
         }
     }
 }

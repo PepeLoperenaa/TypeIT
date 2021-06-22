@@ -56,7 +56,7 @@
                           Grid.ColumnSpan="4"
                           Grid.RowSpan="2">
                     <StackPanel>
-                        <ItemsControl ItemsSource="{Binding currentUser.CurrentUser.Documents}" Name="ItemContol">
+                        <ItemsControl ItemsSource="{Binding CurrentUser.CurrentUser.Documents}" Name="ItemContol">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
                                     <Border Style="{DynamicResource BookBorder}" Cursor="Hand">

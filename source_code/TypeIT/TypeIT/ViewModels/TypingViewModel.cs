@@ -11,7 +11,7 @@ using TypeIT.Utilities;
 
 namespace TypeIT.ViewModels
 {
-    class TypingViewModel : ViewModelBase
+    internal class TypingViewModel : ViewModelBase
     {
         public ICommand NavigateHomeCommand { get; }
         public TypingModel TypingModel { get; private set; }
@@ -41,14 +41,14 @@ namespace TypeIT.ViewModels
             }
         }
 
-        public TypingViewModel(NavigationStore navigationStore, UserStore userStore, DocumentModel document)
+        public TypingViewModel(NavigationStore navigationStore, UserStore UserStore, DocumentModel document)
         {
-            CurrentUser = userStore;
+            CurrentUser = UserStore;
 
             TypingModel = new TypingModel { Document = document };
 
             NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore,
-                () => new DashboardViewModel(navigationStore, userStore));
+                () => new DashboardViewModel(navigationStore, UserStore));
 
             // loading the user's game mode
             TypingModel.SelectedDifficulty = (CurrentUser.CurrentUser.GameMode);
@@ -74,7 +74,7 @@ namespace TypeIT.ViewModels
         /// </summary>
         /// <param name="source"></param>
         /// <param name="e"></param>
-        private void OnTimedEvent(Object source, ElapsedEventArgs e)
+        private void OnTimedEvent(object source, ElapsedEventArgs e)
         {
             if (TypingModel.Alive)
             {
@@ -179,7 +179,10 @@ namespace TypeIT.ViewModels
         /// <param name="word"></param>
         private void ParseWord(string word)
         {
-            if (!CanGoToNextWord(word)) return;
+            if (!CanGoToNextWord(word))
+            {
+                return;
+            }
 
             if (TypingModel.CurrentWordIndex == TypingModel.GetNumberOfWords())
             {
@@ -193,9 +196,9 @@ namespace TypeIT.ViewModels
                 XmlHandler.UpdateDocuments(CurrentUser.CurrentUser.Name, TypingModel.Document.Name,
                     (TypingModel.PageNumber + 1).ToString(), displayAcc);
 
-                XmlHandler.UpdateUserStatistics(CurrentUser.CurrentUser.Name, "AverageWPM", Double.Parse(displayWpm).ToString(CultureInfo.InvariantCulture));
+                XmlHandler.UpdateUserStatistics(CurrentUser.CurrentUser.Name, "AverageWPM", double.Parse(displayWpm).ToString(CultureInfo.InvariantCulture));
 
-                XmlHandler.UpdateUserStatistics(CurrentUser.CurrentUser.Name, "AverageAccuracy", Double.Parse(displayAcc).ToString(CultureInfo.InvariantCulture));
+                XmlHandler.UpdateUserStatistics(CurrentUser.CurrentUser.Name, "AverageAccuracy", double.Parse(displayAcc).ToString(CultureInfo.InvariantCulture));
 
                 string filePath = $"../../../FileTypes/Users/{CurrentUser.CurrentUser.Name}.TypeIT";
                 CurrentUser.CurrentUser.Statistics.AverageWpm =
@@ -203,7 +206,7 @@ namespace TypeIT.ViewModels
 
                 CurrentUser.CurrentUser.Statistics.AverageWpm = int.Parse(XmlHandler.GetElementsFromTags(filePath, "AverageWPM").FirstOrDefault() ?? "Error");
 
-                AchievementHandler.FinishPageAchievements(CurrentUser, int.Parse(displayWpm), Double.Parse(displayAcc));
+                AchievementHandler.FinishPageAchievements(CurrentUser, int.Parse(displayWpm), double.Parse(displayAcc));
 
                 if (TypingModel.HasNextPage())
                 {
@@ -248,7 +251,10 @@ namespace TypeIT.ViewModels
         /// <returns></returns>
         private bool CanGoToNextWord(string word)
         {
-            if (InputString.Length <= 0) return false;
+            if (InputString.Length <= 0)
+            {
+                return false;
+            }
             // check if you're at the last word to see if the space is needed to continue
             // important otherwise the text will proceed without a space needed
             var curNum = TypingModel.GetNumberOfWords();

@@ -9,12 +9,12 @@ using TypeIT.Utilities;
 
 namespace TypeIT.ViewModels
 {
-    class DocumentsViewModel : ViewModelBase
+    internal class DocumentsViewModel : ViewModelBase
     {
         public ICommand NavigateHomeCommand { get; }
         public ICommand UploadDocumentCommand { get; set; }
         public ICommand NavigateMyCollectionCommand { get; set; }
-        public UserStore currentUser { get; set; }
+        public UserStore CurrentUser { get; set; }
 
         public DocumentsViewModel(NavigationStore navigationStore, UserStore userStore)
         {
@@ -23,11 +23,10 @@ namespace TypeIT.ViewModels
             UploadDocumentCommand = new DelegateCommand(ClickedUploadDocument);
 
             //Current user
-            currentUser = userStore;
+            CurrentUser = userStore;
         }
         /// <summary>
         /// Open File dialog so that a document can be chosen. 
-        /// TODO: Create File
         /// </summary>
         private async void ClickedUploadDocument()
         {
@@ -46,15 +45,15 @@ namespace TypeIT.ViewModels
                 FileParser fileParser = new FileParser();
                 DocumentModel document = await fileParser.ParseFile(filePath, fileName);
 
-                XmlHandler.AddingADocumentIntoUserXml(currentUser.CurrentUser.Name, document.Name, document.GetNumberOfPages(), document.UserPageNumber);
+                XmlHandler.AddingADocumentIntoUserXml(CurrentUser.CurrentUser.Name, document.Name, document.GetNumberOfPages(), document.UserPageNumber);
 
                 Xceed.Wpf.Toolkit.MessageBox.Show(
-                    "Your document was successfully added !",
+                    "Your document was successfully added!",
                     "Ok",
                     MessageBoxButton.OK
                 );
 
-                currentUser.CurrentUser.loadUserDocuments();
+                CurrentUser.CurrentUser.loadUserDocuments();
             }
         }
 

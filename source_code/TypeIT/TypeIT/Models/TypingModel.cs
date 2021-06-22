@@ -5,7 +5,7 @@ using TypeIT.Utilities;
 
 namespace TypeIT.Models
 {
-    class TypingModel : INotifyPropertyChanged
+    internal class TypingModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -226,7 +226,7 @@ namespace TypeIT.Models
         /// <returns>The average accuracy of a user</returns>
         public double CalculateAccuracy(int totalChars)
         {
-            return Math.Round(((Double)(totalChars - TotalMistakes) / totalChars) * 100, 2);
+            return Math.Round(((double)(totalChars - TotalMistakes) / totalChars) * 100, 2);
         }
 
         /// <summary>
@@ -316,7 +316,7 @@ namespace TypeIT.Models
 
                 AverageTypingSpeed = ((int)CalculateTypingSpeed(CurrentWordIndex)).ToString();
 
-                if (Double.Parse(AverageAccuracy) < 0)
+                if (double.Parse(AverageAccuracy) < 0)
                 {
                     AverageAccuracy = "0";
                 }

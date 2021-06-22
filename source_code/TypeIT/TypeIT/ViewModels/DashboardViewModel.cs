@@ -8,7 +8,7 @@ using TypeIT.Utilities;
 
 namespace TypeIT.ViewModels
 {
-    class DashboardViewModel : ViewModelBase
+    internal class DashboardViewModel : ViewModelBase
     {
         public ICommand NavigateAboutCommand { get; }
         public ICommand ExitCommand { get; set; }
@@ -25,7 +25,7 @@ namespace TypeIT.ViewModels
         /// Contains the navigation ICommands to different views
         /// </summary>
         /// <param name="navigationStore">Stores the current view</param>
-        /// <param name="userStore">Stores the current view</param>
+        /// <param name="UserStore">Stores the current view</param>
         public DashboardViewModel(NavigationStore navigationStore, UserStore userStore)
         {
             //Navigating to About view

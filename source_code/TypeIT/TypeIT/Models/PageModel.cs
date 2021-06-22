@@ -15,7 +15,7 @@ namespace TypeIT.Models
             Text = File.ReadAllText(location);
             try
             {
-                Number = Int32.Parse(Path.GetFileNameWithoutExtension(location));
+                Number = int.Parse(Path.GetFileNameWithoutExtension(location));
 
             }
             catch (Exception)

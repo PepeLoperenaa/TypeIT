@@ -7,29 +7,29 @@ using TypeIT.Models;
 
 namespace TypeIT.Utilities
 {
-    class FileParser
+    internal class FileParser
     {
         /// <summary>
         /// Creating a new document from the users input.
         /// </summary>
-        /// <param name="FileLocation"></param>
-        /// <param name="PageNum"></param>
-        /// <param name="Text"></param>
-        private void CreateDocument(string FileLocation, int PageNum, string Text)
+        /// <param name="fileLocation"></param>
+        /// <param name="pageNum"></param>
+        /// <param name="text"></param>
+        private void CreateDocument(string fileLocation, int pageNum, string text)
         {
-            System.IO.File.WriteAllText(FileLocation + PageNum + ".txt", Text.Trim());
+            System.IO.File.WriteAllText(fileLocation + pageNum + ".txt", text.Trim());
         }
 
         /// <summary>
         /// Opening the document that the user had added.
         /// </summary>
-        /// <param name="Location"></param>
+        /// <param name="location"></param>
         /// <returns></returns>
-        private string OpenDocument(string Location)
+        private string OpenDocument(string location)
         {
             string contents;
 
-            using (var sr = new StreamReader(Location))
+            using (var sr = new StreamReader(location))
             {
                 contents = sr.ReadToEnd();
             }
@@ -40,33 +40,33 @@ namespace TypeIT.Utilities
         /// <summary>
         /// Getting the file extension of the Users document. 
         /// </summary>
-        /// <param name="FilePath"></param>
+        /// <param name="filePath"></param>
         /// <returns></returns>
-        private string GetFileExtension(string FilePath)
+        private string GetFileExtension(string filePath)
         {
-            return Path.GetExtension(FilePath);
+            return Path.GetExtension(filePath);
         }
 
         /// <summary>
         /// Parsing the users document depening on what type of document it is. 
         /// </summary>
-        /// <param name="FilePath"></param>
-        /// <param name="Title"></param>
-        public async Task<DocumentModel> ParseFile(string FilePath, string Title)
+        /// <param name="filePath"></param>
+        /// <param name="title"></param>
+        public async Task<DocumentModel> ParseFile(string filePath, string title)
         {
             DocumentModel model;
             Task t;
 
-            string dir = @"../../../Documents/" + Title + "/";
-            string docDir = @"../../../Documents/" + Title;
+            string dir = @"../../../Documents/" + title + "/";
+            string docDir = @"../../../Documents/" + title;
 
-            switch (GetFileExtension(FilePath))
+            switch (GetFileExtension(filePath))
             {
                 case ".pdf":
-                    t = Task.Run(() => ParsePDF(FilePath, dir));
+                    t = Task.Run(() => ParsePDF(filePath, dir));
                     break;
                 case ".txt":
-                    t = Task.Run(() => ParseTXT(FilePath, dir));
+                    t = Task.Run(() => ParseTXT(filePath, dir));
                     break;
                 default:
                     throw new Exception("That file type is not supported.");
@@ -78,7 +78,7 @@ namespace TypeIT.Utilities
                 return model;
             });
 
-            model.Name = Title;
+            model.Name = title;
 
             return model;
         }
@@ -109,23 +109,23 @@ namespace TypeIT.Utilities
         /// <summary>
         /// parsing PDF files.
         /// </summary>
-        /// <param name="FilePath">Direct Path to the file</param>
-        /// <param name="StoragePath">Direct Path to where the file should be stored</param>
-        public bool ParsePDF(string FilePath, string StoragePath)
+        /// <param name="filePath">Direct Path to the file</param>
+        /// <param name="storagePath">Direct Path to where the file should be stored</param>
+        public bool ParsePDF(string filePath, string storagePath)
         {
-            PdfDocument pdf = PdfDocument.FromFile(FilePath);
+            PdfDocument pdf = PdfDocument.FromFile(filePath);
 
-            if (!Directory.Exists(StoragePath))
+            if (!Directory.Exists(storagePath))
             {
-                Directory.CreateDirectory(StoragePath);
+                Directory.CreateDirectory(storagePath);
             }
 
             for (int i = 0; i < pdf.PageCount; i++)
             {
-                string Text = pdf.ExtractTextFromPage(i);
-                if (Text != "")
+                string text = pdf.ExtractTextFromPage(i);
+                if (text != "")
                 {
-                    CreateDocument(StoragePath, i, RemoveSpecialCharacters(Text));
+                    CreateDocument(storagePath, i, RemoveSpecialCharacters(text));
                 }
             }
 
@@ -135,18 +135,18 @@ namespace TypeIT.Utilities
         /// <summary>
         /// Parsing TXT files
         /// </summary>
-        /// <param name="FilePath"></param>
-        /// <param name="StoragePath"></param>
-        public bool ParseTXT(string FilePath, string StoragePath)
+        /// <param name="filePath"></param>
+        /// <param name="storagePath"></param>
+        public bool ParseTXT(string filePath, string storagePath)
         {
-            string Text = OpenDocument(FilePath);
+            string text = OpenDocument(filePath);
 
-            if (!Directory.Exists(StoragePath))
+            if (!Directory.Exists(storagePath))
             {
-                Directory.CreateDirectory(StoragePath);
+                Directory.CreateDirectory(storagePath);
             }
 
-            CreateDocument(StoragePath, 0, RemoveSpecialCharacters(Text));
+            CreateDocument(storagePath, 0, RemoveSpecialCharacters(text));
 
             return true;
         }
