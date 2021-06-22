@@ -20,21 +20,21 @@ namespace TypeIT.Utilities
         {
             XDocument doc;
             doc = new XDocument(new XElement("UserProfile",
-                                       new XElement("Name", name), //after specifying the tag, the value should be added
-                                       new XElement("Statistics",
-                                           new XElement("HighestWPM"),
-                                           new XElement("AverageWPM"),
-                                           new XElement("AverageAccuracy"),
-                                           new XElement("HoursSpent"),
-                                           new XElement("TypedWordsTotal"),
-                                           new XElement("DailyRecords")),
-                                       new XElement("Settings",
-                                           new XElement("Theme"),
-                                           new XElement("GameMode")),
-                                       new XElement("Achievements",
-                                           new XElement("Achievement",
-                                               new XElement("AchievementName"))),
-                                       new XElement("Documents")));
+                new XElement("Name", name), //after specifying the tag, the value should be added
+                new XElement("Statistics",
+                    new XElement("HighestWPM"),
+                    new XElement("AverageWPM"),
+                    new XElement("AverageAccuracy"),
+                    new XElement("HoursSpent"),
+                    new XElement("TypedWordsTotal"),
+                    new XElement("DailyRecords")),
+                new XElement("Settings",
+                    new XElement("Theme"),
+                    new XElement("GameMode")),
+                new XElement("Achievements",
+                    new XElement("Achievement",
+                        new XElement("AchievementName"))),
+                new XElement("Documents")));
 
             doc.Root.Element("Statistics").Element("HighestWPM").Value = "0";
             doc.Root.Element("Statistics").Element("AverageWPM").Value = "0";
@@ -59,9 +59,10 @@ namespace TypeIT.Utilities
 
             foreach (XElement element in doc.Descendants(tag))
             {
-                string elementValue = (string)element;
+                string elementValue = (string) element;
                 listElements.Add(elementValue);
             }
+
             return listElements;
         }
 
@@ -77,12 +78,12 @@ namespace TypeIT.Utilities
             XDocument doc = XDocument.Load(filePath);
 
             int pageCount = 0;
-            XmlHandler.GetElementsFromTags(filePath, "UserPageNumber").ForEach(x => pageCount += int.Parse(x) <= 0 ? 0 : int.Parse(x));
+            XmlHandler.GetElementsFromTags(filePath, "UserPageNumber")
+                .ForEach(x => pageCount += int.Parse(x) <= 0 ? 0 : int.Parse(x));
 
             int avg = int.Parse(XmlHandler.GetElementsFromTags(filePath, tag).FirstOrDefault() ?? "0");
 
-            double temp = Double.Parse(value, CultureInfo.InvariantCulture);
-            avg = (int)((avg * (pageCount - 1) + temp) / pageCount);
+            avg = (int) ((avg * (pageCount - 1) + Double.Parse(value, CultureInfo.InvariantCulture)) / pageCount);
 
             XElement statistics = doc.Root?.Elements("Statistics").FirstOrDefault();
 
@@ -111,7 +112,8 @@ namespace TypeIT.Utilities
 
             XElement documents = doc.Root.Element("Documents");
 
-            XElement document = documents.Elements("Document").Where(x => (string)x.Element("DocumentName") == documentName).SingleOrDefault();
+            XElement document = documents.Elements("Document")
+                .Where(x => (string) x.Element("DocumentName") == documentName).SingleOrDefault();
 
             document.Remove();
 
@@ -148,7 +150,6 @@ namespace TypeIT.Utilities
             doc.Root.Element("Settings").Element(tags).Value = mode;
 
             doc.Save(filePath);
-
         }
 
         public static void AddAchievementToUser(string userName, string achievementName)
@@ -194,13 +195,15 @@ namespace TypeIT.Utilities
 
             if (documents != null)
             {
-                XElement document = documents.Elements("Document").SingleOrDefault(x => (string)x.Element("DocumentName") == docName);
+                XElement document = documents.Elements("Document")
+                    .SingleOrDefault(x => (string) x.Element("DocumentName") == docName);
 
                 if (document != null)
                 {
                     double accuracy =
                         (double.Parse(document.Element("UserPageNumber")?.Value ?? string.Empty) *
-                            double.Parse(document.Element("DocumentAccuracy")?.Value ?? string.Empty) + double.Parse(docAccuracy)) /
+                         double.Parse(document.Element("DocumentAccuracy")?.Value ?? string.Empty) +
+                         double.Parse(docAccuracy)) /
                         double.Parse(userPage);
                 }
 
@@ -234,7 +237,8 @@ namespace TypeIT.Utilities
 
                     XElement document = documents.Elements("Document").Skip(rng.Next(0, count)).FirstOrDefault();
 
-                    if (document != null && Directory.Exists($"../../../Documents/{document.Element("DocumentName")?.Value}"))
+                    if (document != null &&
+                        Directory.Exists($"../../../Documents/{document.Element("DocumentName")?.Value}"))
                     {
                         model = new DocumentModel($"../../../Documents/{document.Element("DocumentName")?.Value}")
                         {
@@ -261,7 +265,8 @@ namespace TypeIT.Utilities
 
                 if (documents != null)
                 {
-                    XElement document = documents.Elements("Document").SingleOrDefault(x => (string)x.Element("DocumentName")?.Value == docName);
+                    XElement document = documents.Elements("Document")
+                        .SingleOrDefault(x => (string) x.Element("DocumentName")?.Value == docName);
 
                     if (document != null && Directory.Exists(docPath))
                     {
@@ -280,14 +285,16 @@ namespace TypeIT.Utilities
         /// Adding a document into the users .TypeIT file when a new document is added.  
         /// </summary>
         /// <param name="userName"></param>
-        public static void AddingADocumentIntoUserXml(string userName, string documentName, int documentNumberOfPages, int currentPage)
+        public static void AddingADocumentIntoUserXml(string userName, string documentName, int documentNumberOfPages,
+            int currentPage)
         {
             string filePath = $"../../../FileTypes/Users/{userName}.TypeIT";
             XDocument doc = XDocument.Load(filePath);
 
             XElement documents = doc.Root.Element("Documents");
 
-            XElement existing = documents.Elements("Document").SingleOrDefault(x => (string)x.Element("DocumentName") == documentName);
+            XElement existing = documents.Elements("Document")
+                .SingleOrDefault(x => (string) x.Element("DocumentName") == documentName);
 
             if (existing == null)
             {
@@ -316,26 +323,39 @@ namespace TypeIT.Utilities
         /// Clears the statistics of the name provided
         /// </summary>
         /// <param name="userName"></param>
-        public static void ClearUserStatistics(string userName)
+        public static void ClearUserData(string userName)
         {
             string filePath = $"../../../FileTypes/Users/{userName}.TypeIT";
             XDocument doc = XDocument.Load(filePath);
 
             foreach (XNode node in doc.Descendants("Statistics").DescendantNodes())
             {
-                ((XElement)node).Value = "";
+                ((XElement) node).Value = "";
             }
 
             foreach (XNode node in doc.Descendants("DailyRecords").DescendantNodes())
             {
-                ((XElement)node).Value = "";
+                ((XElement) node).Value = "";
+            }
+
+            foreach (XElement node in doc.Descendants("Documents"))
+            {
+                node.Value = "";
+            }
+
+            foreach (XElement node in doc.Descendants("Achievements"))
+            {
+                node.Value = "";
             }
 
             doc.Root.Element("Statistics").Element("HighestWPM").Value = "0";
             doc.Root.Element("Statistics").Element("AverageWPM").Value = "0";
-            doc.Root.Element("Statistics").Element("AverageAccuracy").Value = "0";
-            doc.Root.Element("Statistics").Element("HoursSpent").Value = "0";
-            doc.Root.Element("Statistics").Element("TypedWordsTotal").Value = "0";
+            if (doc.Root != null)
+            {
+                doc.Root.Element("Statistics").Element("AverageAccuracy").Value = "0";
+                doc.Root.Element("Statistics").Element("HoursSpent").Value = "0";
+                doc.Root.Element("Statistics").Element("TypedWordsTotal").Value = "0";
+            }
 
             doc.Save(filePath);
         }

@@ -45,7 +45,7 @@ namespace TypeIT.ViewModels
         {
             CurrentUser = UserStore;
 
-            TypingModel = new TypingModel { Document = document };
+            TypingModel = new TypingModel {Document = document};
 
             NavigateHomeCommand = new NavigateCommand<DashboardViewModel>(navigationStore,
                 () => new DashboardViewModel(navigationStore, UserStore));
@@ -152,12 +152,15 @@ namespace TypeIT.ViewModels
             // !IMPORTANT do not delete
             TypingModel.TextWrong = null;
 
-            // if (TypingModel.CurrentWordIndex % 175 == 0 && TypingModel.CurrentWordIndex != 0)
-            // {
-            //     TypingModel.Text = TypingModel.Text[TypingModel.Index..];
-            //     TypingModel.CurrentWordIndex = 0;
-            //     TypingModel.Index = 0;
-            // }
+            if (TypingModel.GetNumberOfWords() > 280)
+            {
+                if (TypingModel.CurrentWordIndex % 175 == 0 && TypingModel.CurrentWordIndex != 0)
+                {
+                    TypingModel.Text = TypingModel.Text[TypingModel.Index..];
+                    TypingModel.CurrentWordIndex = 0;
+                    TypingModel.Index = 0;
+                }
+            }
 
             if (TypingModel.IsActualExpected(InputString, word))
             {
@@ -186,27 +189,14 @@ namespace TypeIT.ViewModels
 
             if (TypingModel.CurrentWordIndex == TypingModel.GetNumberOfWords())
             {
-                string displayAcc = TypingModel.SelectedDifficulty == Difficulty.Easy
-                    ? CurrentUser.CurrentUser.Statistics.AverageAccuracy.ToString(CultureInfo.InvariantCulture)
-                    : TypingModel.AverageAccuracy;
-                string displayWpm = TypingModel.SelectedDifficulty == Difficulty.Easy
-                    ? CurrentUser.CurrentUser.Statistics.AverageWpm.ToString()
-                    : TypingModel.AverageTypingSpeed;
-
-                XmlHandler.UpdateDocuments(CurrentUser.CurrentUser.Name, TypingModel.Document.Name,
-                    (TypingModel.PageNumber + 1).ToString(), displayAcc);
-
-                XmlHandler.UpdateUserStatistics(CurrentUser.CurrentUser.Name, "AverageWPM", double.Parse(displayWpm).ToString(CultureInfo.InvariantCulture));
-
-                XmlHandler.UpdateUserStatistics(CurrentUser.CurrentUser.Name, "AverageAccuracy", double.Parse(displayAcc).ToString(CultureInfo.InvariantCulture));
+                UpdateUserXml();
 
                 string filePath = $"../../../FileTypes/Users/{CurrentUser.CurrentUser.Name}.TypeIT";
                 CurrentUser.CurrentUser.Statistics.AverageWpm =
                     int.Parse(XmlHandler.GetElementsFromTags(filePath, "AverageWPM").FirstOrDefault() ?? "Error");
 
-                CurrentUser.CurrentUser.Statistics.AverageWpm = int.Parse(XmlHandler.GetElementsFromTags(filePath, "AverageWPM").FirstOrDefault() ?? "Error");
-
-                AchievementHandler.FinishPageAchievements(CurrentUser, int.Parse(displayWpm), double.Parse(displayAcc));
+                CurrentUser.CurrentUser.Statistics.AverageWpm =
+                    int.Parse(XmlHandler.GetElementsFromTags(filePath, "AverageAccuracy").FirstOrDefault() ?? "Error");
 
                 if (TypingModel.HasNextPage())
                 {
@@ -244,6 +234,27 @@ namespace TypeIT.ViewModels
             InputString = "";
         }
 
+        private void UpdateUserXml()
+        {
+            string displayAcc = TypingModel.SelectedDifficulty == Difficulty.Easy
+                ? CurrentUser.CurrentUser.Statistics.AverageAccuracy.ToString(CultureInfo.InvariantCulture)
+                : TypingModel.AverageAccuracy;
+            string displayWpm = TypingModel.SelectedDifficulty == Difficulty.Easy
+                ? CurrentUser.CurrentUser.Statistics.AverageWpm.ToString()
+                : TypingModel.AverageTypingSpeed;
+            
+            XmlHandler.UpdateDocuments(CurrentUser.CurrentUser.Name, TypingModel.Document.Name,
+                (TypingModel.PageNumber + 1).ToString(), displayAcc);
+
+            XmlHandler.UpdateUserStatistics(CurrentUser.CurrentUser.Name, "AverageWPM",
+                double.Parse(displayWpm).ToString(CultureInfo.InvariantCulture));
+
+            XmlHandler.UpdateUserStatistics(CurrentUser.CurrentUser.Name, "AverageAccuracy",
+                double.Parse(displayAcc).ToString(CultureInfo.InvariantCulture));
+            
+            AchievementHandler.FinishPageAchievements(CurrentUser, int.Parse(displayWpm), double.Parse(displayAcc));
+        }
+
         /// <summary>
         /// Checking if the user can go to the next word depending if the word is written correctly or not
         /// </summary>
@@ -255,6 +266,7 @@ namespace TypeIT.ViewModels
             {
                 return false;
             }
+
             // check if you're at the last word to see if the space is needed to continue
             // important otherwise the text will proceed without a space needed
             var curNum = TypingModel.GetNumberOfWords();
@@ -286,7 +298,8 @@ namespace TypeIT.ViewModels
 
         private void CheckIfFailed()
         {
-            if (TypingModel.SelectedDifficulty == Difficulty.Hard || TypingModel.SelectedDifficulty == Difficulty.Extreme)
+            if (TypingModel.SelectedDifficulty == Difficulty.Hard ||
+                TypingModel.SelectedDifficulty == Difficulty.Extreme)
             {
                 // fail the user if time runs out
                 if (TypingModel.TimeCounter == 0)

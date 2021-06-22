@@ -3,8 +3,8 @@
   <Name>Steffen</Name>
   <Statistics>
     <HighestWPM>0</HighestWPM>
-    <AverageWPM>78</AverageWPM>
-    <AverageAccuracy>96</AverageAccuracy>
+    <AverageWPM>80</AverageWPM>
+    <AverageAccuracy>90</AverageAccuracy>
     <HoursSpent>0</HoursSpent>
     <TypedWordsTotal>0</TypedWordsTotal>
     <DailyRecords></DailyRecords>
@@ -13,20 +13,13 @@
     <Theme>Dark</Theme>
     <GameMode>Hard</GameMode>
   </Settings>
-  <Achievements>
-    <AchievementName>The birth of a legend</AchievementName>
-    <AchievementName>You can do better</AchievementName>
-    <AchievementName>Headshot</AchievementName>
-    <AchievementName>Getting there...</AchievementName>
-    <AchievementName>You made it</AchievementName>
-    <AchievementName>Typing professional</AchievementName>
-  </Achievements>
+  <Achievements></Achievements>
   <Documents>
     <Document>
       <DocumentName>Overlord 1</DocumentName>
       <TotalPageNumber>321</TotalPageNumber>
-      <UserPageNumber>2</UserPageNumber>
-      <DocumentAccuracy>92,12</DocumentAccuracy>
+      <UserPageNumber>9</UserPageNumber>
+      <DocumentAccuracy>90</DocumentAccuracy>
     </Document>
   </Documents>
 </UserProfile>

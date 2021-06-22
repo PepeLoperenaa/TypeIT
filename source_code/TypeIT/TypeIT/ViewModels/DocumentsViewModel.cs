@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using System;
+using Microsoft.Win32;
 using Prism.Commands;
 using System.Windows;
 using System.Windows.Input;
@@ -37,8 +38,8 @@ namespace TypeIT.ViewModels
             if (openFileDialog.ShowDialog() == true)
             {
                 string filePath = openFileDialog.FileName;
-                int posOfDot = filePath.LastIndexOf(".");
-                int posOfSlash = filePath.LastIndexOf("\\") + 1;
+                int posOfDot = filePath.LastIndexOf(".", StringComparison.Ordinal);
+                int posOfSlash = filePath.LastIndexOf("\\", StringComparison.Ordinal) + 1;
 
                 string fileName = filePath.Substring(posOfSlash, posOfDot - posOfSlash);
 

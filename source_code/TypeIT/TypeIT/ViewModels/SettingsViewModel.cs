@@ -21,7 +21,6 @@ namespace TypeIT.ViewModels
         public ICommand DeleteAccountCommand { get; set; }
         public ICommand ExitCommand { get; set; }
         public ICommand ChangeUserCommand { get; set; }
-        public string CurrentTheme { get; set; }
         public UserStore CurrentUser { get; set; }
 
         public SettingsViewModel(NavigationStore navigationStore, UserStore userStore)
@@ -42,7 +41,7 @@ namespace TypeIT.ViewModels
             //Change Theme Command
             ChangeThemeCommand = new DelegateCommand(ClickedChangeTheme);
             //Reset Statistics Command
-            ResetStatisticsCommand = new DelegateCommand(ClickedResetStatistics);
+            ResetStatisticsCommand = new DelegateCommand(ClickedResetAccount);
             //Exit Command
             ExitCommand = new DelegateCommand(ClickedExit);
         }
@@ -121,17 +120,17 @@ namespace TypeIT.ViewModels
         /// Resetting the current users statistics
         /// Shows an alert asking if the usre wants reset their statistics as it is irreversible
         /// </summary>
-        private void ClickedResetStatistics()
+        private void ClickedResetAccount()
         {
             var res = Xceed.Wpf.Toolkit.MessageBox.Show(
-                "Are you sure you want to reset your statistics? This is irreversible!",
+                "Are you sure you want to reset your account? This is irreversible!",
                 "Reset Statistics",
                 MessageBoxButton.YesNo
             );
 
             if ("Yes" == res.ToString())
             {
-                XmlHandler.ClearUserStatistics(CurrentUser.CurrentUser.Name);
+                XmlHandler.ClearUserData(CurrentUser.CurrentUser.Name);
                 CurrentUser.CurrentUser.RefreshUserModel();
             }
 
