@@ -85,7 +85,22 @@
                 </StackPanel>
             </Button>
 
-                
+                <Border Grid.Column="3" Grid.Row="1"
+                    Grid.ColumnSpan="2"
+                    Style="{DynamicResource TextBlockBorder}">
+                    <TextBlock
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center">
+                <WrapPanel Orientation="Horizontal"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center">
+                        <Image Source="../Resources/Images/contactUsIcon.png" Height="40"/>
+                        <TextBlock Margin="10, 0, 0, 0"
+                                   Foreground="{DynamicResource ResourceKey=TextHeaderColor}"
+                                   Height="15">Contact us</TextBlock>
+                    </WrapPanel>
+                </TextBlock>
+                </Border>
 
                 <TextBlock Grid.Column="3" Grid.Row="2"
                        Grid.ColumnSpan="2"
