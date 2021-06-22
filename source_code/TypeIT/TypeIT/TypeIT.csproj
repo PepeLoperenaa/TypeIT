@@ -35,8 +35,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Documents" />
     <Folder Include="Documents\" />
-    <Folder Include="Documents\demo\" />
     <Folder Include="FileTypes\Users\" />
   </ItemGroup>
 
