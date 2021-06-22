@@ -31,5 +31,17 @@
       <UserPageNumber />
       <DocumentAccuracy />
     </Document>
+    <Document>
+      <DocumentName>github</DocumentName>
+      <TotalPageNumber>0</TotalPageNumber>
+      <UserPageNumber>0</UserPageNumber>
+      <DocumentAccuracy>0</DocumentAccuracy>
+    </Document>
+    <Document>
+      <DocumentName>hello</DocumentName>
+      <TotalPageNumber>0</TotalPageNumber>
+      <UserPageNumber>0</UserPageNumber>
+      <DocumentAccuracy>0</DocumentAccuracy>
+    </Document>
   </Documents>
 </UserProfile>
