@@ -35,10 +35,11 @@ namespace TypeIT.ViewModels
 
         private void ClickedOpenBook(string BookTitle)
         {
-            CurrentDocument = XmlHandler.GetUserDocument(CurrentUser.CurrentUser.Name, $"../../../Documents/{BookTitle}");
-            NavigateTypingCommand.Execute(CurrentDocument);
+            CurrentDocument = XmlHandler.GetUserDocument(CurrentUser.CurrentUser.Name, BookTitle);
+            if (CurrentDocument != null)
+            {
+                NavigateTypingCommand.Execute(CurrentDocument);
+            }
         }
-
-
     }
 }

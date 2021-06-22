@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Xml.Linq;
 using TypeIT.Models;
@@ -233,7 +234,7 @@ namespace TypeIT.Utilities
 
                     XElement document = documents.Elements("Document").Skip(rng.Next(0, count)).FirstOrDefault();
 
-                    if (document != null)
+                    if (document != null && Directory.Exists($"../../../Documents/{document.Element("DocumentName")?.Value}"))
                     {
                         model = new DocumentModel($"../../../Documents/{document.Element("DocumentName")?.Value}")
                         {
@@ -246,9 +247,10 @@ namespace TypeIT.Utilities
             return model;
         }
 
-        public static DocumentModel GetUserDocument(string user, string docPath)
+        public static DocumentModel GetUserDocument(string user, string docName)
         {
-            DocumentModel model = new DocumentModel(docPath);
+            string docPath = $"../../../Documents/{docName}";
+            DocumentModel model = null;
 
             string filePath = $"../../../FileTypes/Users/{user}.TypeIT";
             XDocument doc = XDocument.Load(filePath);
@@ -259,11 +261,14 @@ namespace TypeIT.Utilities
 
                 if (documents != null)
                 {
-                    XElement document = documents.Elements("Document").SingleOrDefault(x => (string)x.Element("DocumentName") == model.Name);
+                    XElement document = documents.Elements("Document").SingleOrDefault(x => (string)x.Element("DocumentName")?.Value == docName);
 
-                    if (document != null)
+                    if (document != null && Directory.Exists(docPath))
                     {
-                        model.UserPageNumber = int.Parse(document.Element("UserPageNumber")?.Value ?? string.Empty);
+                        model = new DocumentModel(docPath)
+                        {
+                            UserPageNumber = int.Parse(document.Element("UserPageNumber")?.Value ?? string.Empty)
+                        };
                     }
                 }
             }
