@@ -83,7 +83,7 @@
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                             <!--The ItemsControl is used to specify the ItemsPanelTemplate which then allows for the panel
-                    to be styled from left to right-->
+                                to be styled from left to right-->
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <WrapPanel Orientation="Horizontal"/>

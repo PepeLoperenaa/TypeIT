@@ -56,7 +56,7 @@
                     Command="{Binding ResetStatisticsCommand}">
                 <StackPanel>
                     <Image Source="../Resources/Images/resetStatsIcon.png" Height="35" Margin="0,5,0,0"/>
-                    <TextBlock Text="Reset Statistics" Margin="0,2,0,0" Height="15" TextAlignment="Center"/>
+                    <TextBlock Text="Reset Account" Margin="0,2,0,0" Height="15" TextAlignment="Center"/>
                 </StackPanel>
             </Button>
             <Button Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Style="{DynamicResource ImageButton}"

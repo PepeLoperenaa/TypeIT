@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UserProfile>
+  <Name>Create User2</Name>
+  <Statistics>
+    <HighestWPM>0</HighestWPM>
+    <AverageWPM>0</AverageWPM>
+    <AverageAccuracy>N/A</AverageAccuracy>
+    <HoursSpent>0</HoursSpent>
+    <TypedWordsTotal>0</TypedWordsTotal>
+    <DailyRecords />
+  </Statistics>
+  <Settings>
+    <Theme />
+    <GameMode />
+  </Settings>
+  <Achievements>
+    <Achievement>
+      <AchievementName />
+    </Achievement>
+  </Achievements>
+  <Documents>
+    <Document>
+      <DocumentName>Data Processing Feedback</DocumentName>
+      <TotalPageNumber>0</TotalPageNumber>
+      <UserPageNumber>1</UserPageNumber>
+      <DocumentAccuracy>0</DocumentAccuracy>
+    </Document>
+  </Documents>
+</UserProfile>

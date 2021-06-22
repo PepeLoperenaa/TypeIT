@@ -124,7 +124,7 @@ namespace TypeIT.Models
             double HoursSpent = (parameter == "") ? 0 : Convert.ToDouble(parameter);
 
             //Reading Total words typed and converting to int
-            parameter = XmlHandler.GetElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "TypedTypedWordsTotalWords").First();
+            parameter = XmlHandler.GetElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "TypedWordsTotal").First();
             int TypedTypedWordsTotalWords = (parameter == "") ? 0 : Convert.ToInt32(parameter);
 
             //Returning a new statistics model based on the read values
