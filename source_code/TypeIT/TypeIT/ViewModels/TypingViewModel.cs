@@ -152,12 +152,12 @@ namespace TypeIT.ViewModels
             // !IMPORTANT do not delete
             TypingModel.TextWrong = null;
 
-            if (TypingModel.CurrentWordIndex % 175 == 0 && TypingModel.CurrentWordIndex != 0)
-            {
-                TypingModel.Text = TypingModel.Text[TypingModel.Index..];
-                TypingModel.CurrentWordIndex = 0;
-                TypingModel.Index = 0;
-            }
+            // if (TypingModel.CurrentWordIndex % 175 == 0 && TypingModel.CurrentWordIndex != 0)
+            // {
+            //     TypingModel.Text = TypingModel.Text[TypingModel.Index..];
+            //     TypingModel.CurrentWordIndex = 0;
+            //     TypingModel.Index = 0;
+            // }
 
             if (TypingModel.IsActualExpected(InputString, word))
             {

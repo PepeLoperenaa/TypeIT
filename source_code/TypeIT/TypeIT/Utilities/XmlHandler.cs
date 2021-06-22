@@ -79,7 +79,7 @@ namespace TypeIT.Utilities
 
             int avg = int.Parse(XmlHandler.GetElementsFromTags(filePath, tag).FirstOrDefault() ?? "0");
 
-            avg = ((avg * (pageCount - 1)) + int.Parse(value)) / (pageCount);
+            avg = (int)(avg * (pageCount - 1) + Double.Parse(value) / pageCount);
 
             XElement statistics = doc.Root?.Elements("Statistics").FirstOrDefault();
 
