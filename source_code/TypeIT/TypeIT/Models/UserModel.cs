@@ -11,19 +11,29 @@ namespace TypeIT.Models
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public string Name { get; set; }
-        public StatisticsModel Statistics { get; set; }
         public string Theme { get; set; }
         public Difficulty GameMode { get; set; }
         public ObservableCollection<string> Achievements { get; set; }
 
         private ObservableCollection<DocumentModel> _document;
+        private StatisticsModel _statistics;
+
         public ObservableCollection<DocumentModel> Documents
         {
             get => _document;
             set
             {
                 _document = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(_document)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Documents)));
+            }
+        }
+        public StatisticsModel Statistics
+        {
+            get => _statistics;
+            set
+            {
+                _statistics = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Statistics)));
             }
         }
 
@@ -45,7 +55,7 @@ namespace TypeIT.Models
         {
             LoadUsersAchievements();
             LoadUserDocuments();
-            LoadStatistics();
+            Statistics = LoadStatistics();
             LoadUserGameMode();
         }
 
@@ -105,7 +115,7 @@ namespace TypeIT.Models
         /// Loads the user's statistics from his .TypeIT file
         /// </summary>
         /// <returns>Returns a StatisticsModel with the user's statistics</returns>
-        private StatisticsModel LoadStatistics()
+        public StatisticsModel LoadStatistics()
         {
             //Reading Highest WPM and converting to double
             string parameter = XmlHandler.GetElementsFromTags("../../../FileTypes/Users/" + Name + ".TypeIT", "HighestWPM").First();

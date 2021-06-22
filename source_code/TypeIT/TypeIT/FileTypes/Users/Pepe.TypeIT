@@ -3,11 +3,11 @@
   <Name>Pepe</Name>
   <Statistics>
     <HighestWPM>0</HighestWPM>
-    <AverageWPM>86</AverageWPM>
-    <AverageAccuracy>2819</AverageAccuracy>
+    <AverageWPM>0</AverageWPM>
+    <AverageAccuracy>0</AverageAccuracy>
     <HoursSpent>0</HoursSpent>
     <TypedWordsTotal>0</TypedWordsTotal>
-    <DailyRecords />
+    <DailyRecords></DailyRecords>
   </Statistics>
   <Settings>
     <Theme />

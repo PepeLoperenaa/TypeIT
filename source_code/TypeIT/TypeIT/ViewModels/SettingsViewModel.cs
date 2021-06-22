@@ -47,7 +47,6 @@ namespace TypeIT.ViewModels
             ExitCommand = new DelegateCommand(ClickedExit);
         }
 
-
         /// <summary>
         /// Quitting the application 
         /// </summary>
@@ -133,6 +132,7 @@ namespace TypeIT.ViewModels
             if ("Yes" == res.ToString())
             {
                 XmlHandler.ClearUserStatistics(CurrentUser.CurrentUser.Name);
+                CurrentUser.CurrentUser.RefreshUserModel();
             }
 
         }

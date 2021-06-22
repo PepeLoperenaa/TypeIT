@@ -8,7 +8,6 @@ namespace TypeIT.Models
     internal class TypingModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-
         public bool Taxed { get; set; }
 
         // used to keep track of typing individual words

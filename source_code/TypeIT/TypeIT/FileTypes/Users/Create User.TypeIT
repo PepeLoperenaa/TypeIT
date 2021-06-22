@@ -3,14 +3,14 @@
   <Name>Create User</Name>
   <Statistics>
     <HighestWPM>0</HighestWPM>
-    <AverageWPM>30</AverageWPM>
-    <AverageAccuracy>-2147483648</AverageAccuracy>
+    <AverageWPM>0</AverageWPM>
+    <AverageAccuracy>0</AverageAccuracy>
     <HoursSpent>0</HoursSpent>
     <TypedWordsTotal>0</TypedWordsTotal>
-    <DailyRecords />
+    <DailyRecords></DailyRecords>
   </Statistics>
   <Settings>
-    <Theme />
+    <Theme>Dark</Theme>
     <GameMode>Normal</GameMode>
   </Settings>
   <Achievements>
@@ -22,16 +22,10 @@
   </Achievements>
   <Documents>
     <Document>
-      <DocumentName>1</DocumentName>
-      <TotalPageNumber>1</TotalPageNumber>
-      <UserPageNumber>2</UserPageNumber>
-      <DocumentAccuracy>NaN</DocumentAccuracy>
-    </Document>
-    <Document>
-      <DocumentName>Data Processing Feedback</DocumentName>
-      <TotalPageNumber>1</TotalPageNumber>
-      <UserPageNumber>2</UserPageNumber>
-      <DocumentAccuracy>89.09</DocumentAccuracy>
+      <DocumentName>Data Structures</DocumentName>
+      <TotalPageNumber>71</TotalPageNumber>
+      <UserPageNumber>1</UserPageNumber>
+      <DocumentAccuracy>95.83</DocumentAccuracy>
     </Document>
   </Documents>
 </UserProfile>
