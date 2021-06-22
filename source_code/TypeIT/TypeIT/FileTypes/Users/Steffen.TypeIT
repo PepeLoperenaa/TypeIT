@@ -4,7 +4,7 @@
   <Statistics>
     <HighestWPM />
     <AverageWPM>29</AverageWPM>
-    <AverageAccuracy />
+    <AverageAccuracy>94.74</AverageAccuracy>
     <HoursSpent />
     <TypedTypedWordsTotalWords />
     <DailyRecords>
@@ -22,13 +22,14 @@
   <Achievements>
     <AchievementName>You can do better</AchievementName>
     <AchievementName>Headshot</AchievementName>
+    <AchievementName>The birth of a legend</AchievementName>
   </Achievements>
   <Documents>
     <Document>
       <DocumentName>Overlord 1</DocumentName>
       <TotalPageNumber>320</TotalPageNumber>
       <UserPageNumber>1</UserPageNumber>
-      <DocumentAccuracy>100</DocumentAccuracy>
+      <DocumentAccuracy>93.33</DocumentAccuracy>
     </Document>
     <Document>
       <DocumentName>Overlord Volume 2 - The Dark Knight (v2.1)</DocumentName>

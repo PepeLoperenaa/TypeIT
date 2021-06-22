@@ -173,6 +173,8 @@ namespace TypeIT.ViewModels
                     
                 XmlHandler.UpdateAverageSpeed(CurrentUser.CurrentUser.Name, Double.Parse(TypingModel.AverageTypingSpeed));
 
+                XmlHandler.UpdateStatistics(CurrentUser.CurrentUser.Name,"AverageAccuracy",TypingModel.AverageAccuracy);
+
                 string filePath = $"../../../FileTypes/Users/{CurrentUser.CurrentUser.Name}.TypeIT";
                 CurrentUser.CurrentUser.Statistics.AverageWpm = int.Parse(XmlHandler.GetElementsFromTags(filePath, "AverageWPM").FirstOrDefault() ?? "Error");
 

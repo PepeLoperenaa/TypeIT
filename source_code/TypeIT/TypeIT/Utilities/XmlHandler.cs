@@ -99,6 +99,8 @@ namespace TypeIT.Utilities
             XDocument doc = XDocument.Load($"../../../FileTypes/Users/{userName}.TypeIT");
 
             doc.Root.Element("Statistics").Element(type).Value = value;
+
+            doc.Save($"../../../FileTypes/Users/{userName}.TypeIT");
         }
 
         /// <summary>
