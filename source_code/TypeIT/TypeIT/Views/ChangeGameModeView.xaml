@@ -45,7 +45,7 @@
                         <TextBlock.Inlines>
                             <Run Text="Casual"/>
                             <LineBreak/>
-                            <Run Style="{DynamicResource BodyText}" Text="Type without a timer and your stats being tracked. Achievement unlocking is disabled."/>
+                            <Run Style="{DynamicResource BodyText}" Text="Type without a timer and your stats being tracked."/>
                         </TextBlock.Inlines>
                     </TextBlock>
                 </StackPanel>
@@ -75,7 +75,7 @@
                         <TextBlock.Inlines>
                             <Run Text="Hard"/>
                             <LineBreak/>
-                            <Run Style="{DynamicResource BodyText}" Text="Enables a countdown based on your average WPM. If the timer runs out the page restarts."/>
+                            <Run Style="{DynamicResource BodyText}" Text="Enables a countdown based on your average WPM. If the timer runs out you lose."/>
                         </TextBlock.Inlines>
                     </TextBlock>
                 </StackPanel>
@@ -86,17 +86,11 @@
                     Command="{Binding ChangeGameModeToExtreme}">
                 <StackPanel Width="120" Orientation="Horizontal">
                     <Image Source="../Resources/Images/extremeIcon.png" Height="45" Margin="5,0,0,0"/>
-                    <TextBlock Width="60" Margin="10,0,0,0">
+                    <TextBlock Width="60" Margin="10,0,0,0" TextWrapping="WrapWithOverflow">
                         <TextBlock.Inlines>
                             <Run Text="Extreme"/>
                             <LineBreak/>
-                            <Run Style="{DynamicResource BodyText}" Text="If you make a mistake"/>
-                            <LineBreak/>
-                            <Run Style="{DynamicResource BodyText}" Text="you have to start from"/>
-                            <LineBreak/>
-                            <Run Style="{DynamicResource BodyText}" Text="the beginning of the"/>
-                            <LineBreak/>
-                            <Run Style="{DynamicResource BodyText}" Text="section"/>
+                            <Run Style="{DynamicResource BodyText}" Text="Same settings as Hard, but if you make a typo the countdown decreases."/>
                         </TextBlock.Inlines>
                     </TextBlock>
                 </StackPanel>
