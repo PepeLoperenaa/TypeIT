@@ -216,6 +216,9 @@ namespace TypeIT.ViewModels
                     TypingModel.Alive = false;
 
                     TypingModel.TypingTimer.Stop();
+                    
+
+                    AchievementHandler.FinishBookAchievements(CurrentUser, TypingModel.Document.GetNumberOfPages(), TypingModel.Document.Name);
 
                     //Custom messagebox
                     var res = Xceed.Wpf.Toolkit.MessageBox.Show(

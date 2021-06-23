@@ -25,6 +25,12 @@
     <Property>Page</Property>
   </Achievement>
   <Achievement>
+    <AchievementName>Author</AchievementName>
+    <Description>Finish one book</Description>
+    <Treshold>1</Treshold>
+    <Property>BookFinish</Property>
+  </Achievement>
+  <Achievement>
     <AchievementName>Basically Tolkien</AchievementName>
     <Description>Finish 3 books in total</Description>
     <Treshold>3</Treshold>

@@ -119,20 +119,6 @@ namespace TypeIT.Utilities
         }
 
         /// <summary>
-        /// Method to update the elements for daily records
-        /// </summary>
-        /// <param name="userName"></param>
-        /// <param name="element"></param>
-        /// <param name="daily"></param>
-        /// <param name="value"></param>
-        public static void UpdateDailyRecords(string userName, string element, string daily, string value)
-        {
-            XDocument doc = XDocument.Load($"../../../FileTypes/Users/{userName}.TypeIT");
-
-            doc.Root.Element("Statistics").Element("DailyRecords").Element(element).Element(daily).Value = value;
-        }
-
-        /// <summary>
         /// Adds a new daily record to the user.
         /// If the record already exists for a given day the record is only updated if the new WPM is higher than the existing.
         /// </summary>
@@ -179,6 +165,45 @@ namespace TypeIT.Utilities
             }
                      
             doc.Save(filePath);
+        }
+
+        public static double GetBookAccuracy(string userName, string bookTitle)
+        {
+            string filePath = $"../../../FileTypes/Users/{userName}.TypeIT";
+
+            XDocument doc = XDocument.Load(filePath);
+
+            // Load the daily record into the day variable
+            XElement documents = doc.Root.Element("Documents");
+            XElement book = documents.Elements("Document")
+                        .SingleOrDefault(x => (string)x.Element("DocumentName")?.Value == bookTitle);
+
+            return double.Parse(book.Element("DocumentAccuracy").Value, CultureInfo.InvariantCulture);
+        }
+
+        /// <summary>
+        /// Gets the number of books the user has completely finished.
+        /// </summary>
+        /// <param name="userName">The user's documents to be checked</param>
+        /// <returns>The number of finished books. integer</returns>
+        public static int GetUserBooksFinished(string userName)
+        {
+            string filePath = $"../../../FileTypes/Users/{userName}.TypeIT";
+            int documentsFinished = 0;
+
+            List<string> totalPageNumber = XmlHandler.GetElementsFromTags(filePath, "TotalPageNumber");
+            List<string> userPageNumber = XmlHandler.GetElementsFromTags(filePath, "UserPageNumber");
+
+            for (int i = 0; i < totalPageNumber.Count; i++)
+            {
+                // If the user's page number equals to the total page number the book is finished
+                if (int.Parse(totalPageNumber[i]) == int.Parse(userPageNumber[i]))
+                {
+                    documentsFinished++;
+                }
+            }
+
+            return documentsFinished;
         }
 
         /// <summary>
