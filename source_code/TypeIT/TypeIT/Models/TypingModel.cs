@@ -252,9 +252,9 @@ namespace TypeIT.Models
             return (DateTime.Now - StartTime).TotalSeconds;
         }
 
-        public int IncrimentTypedWordsTotal()
+        public int IncrementTypedWordsTotal()
         {
-            
+            return 0;
         }
 
         /// <summary>

@@ -256,26 +256,24 @@ namespace TypeIT.ViewModels
         /// </summary>
         private void UpdateUserXml()
         {
-            double displayHighestWpm = TypingModel.SelectedDifficulty == Difficulty.Easy
-                ? CurrentUser.CurrentUser.Statistics.HighestWPM
-                : TypingModel.HighestSpeed;
+
+            // determines the average | if difficulty is easy, sets the averages to be the same as they were previously
             string displayWpm = TypingModel.SelectedDifficulty == Difficulty.Easy
                 ? CurrentUser.CurrentUser.Statistics.AverageWpm.ToString()
                 : TypingModel.AverageTypingSpeed;
-            // determines the average | if difficulty is easy, sets the averages to be the same as they were previously
             string displayAcc = TypingModel.SelectedDifficulty == Difficulty.Easy
                 ? CurrentUser.CurrentUser.Statistics.AverageAccuracy.ToString(CultureInfo.InvariantCulture)
                 : TypingModel.AverageAccuracy;
-            int displayHoursSpent = TypingModel.SelectedDifficulty == Difficulty.Easy
-                ? CurrentUser.CurrentUser.Statistics.HoursSpent
-                : TypingModel.HoursSpent;
+
+            double displayHighestWpm = TypingModel.SelectedDifficulty == Difficulty.Easy
+                ? CurrentUser.CurrentUser.Statistics.HighestWPM
+                : TypingModel.HighestSpeed;
+            //int displayHoursSpent = TypingModel.SelectedDifficulty == Difficulty.Easy
+            //    ? CurrentUser.CurrentUser.Statistics.HoursSpent
+            //    : TypingModel.HoursSpent;
             int displayTypedWords = TypingModel.SelectedDifficulty == Difficulty.Easy
                 ? CurrentUser.CurrentUser.Statistics.TypedWordsTotal
                 : TypingModel.TypedWordsTotal;
-
-            string displayWpm = TypingModel.SelectedDifficulty == Difficulty.Easy
-                ? CurrentUser.CurrentUser.Statistics.AverageWpm.ToString()
-                : TypingModel.AverageTypingSpeed;
             
             // update the tracking of user document progress
             XmlHandler.UpdateDocuments(CurrentUser.CurrentUser.Name, TypingModel.Document.Name,
