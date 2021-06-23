@@ -268,9 +268,9 @@ namespace TypeIT.ViewModels
             double displayHighestWpm = TypingModel.SelectedDifficulty == Difficulty.Easy
                 ? CurrentUser.CurrentUser.Statistics.HighestWPM
                 : TypingModel.HighestSpeed;
-            //int displayHoursSpent = TypingModel.SelectedDifficulty == Difficulty.Easy
-            //    ? CurrentUser.CurrentUser.Statistics.HoursSpent
-            //    : TypingModel.HoursSpent;
+            double displayHoursSpent = TypingModel.SelectedDifficulty == Difficulty.Easy
+                ? CurrentUser.CurrentUser.Statistics.HoursSpent
+                : TypingModel.SecondsSpent / 3600;
             int displayTypedWords = TypingModel.SelectedDifficulty == Difficulty.Easy
                 ? CurrentUser.CurrentUser.Statistics.TypedWordsTotal
                 : TypingModel.TypedWordsTotal;
@@ -279,18 +279,17 @@ namespace TypeIT.ViewModels
             XmlHandler.UpdateDocuments(CurrentUser.CurrentUser.Name, TypingModel.Document.Name,
                 (TypingModel.PageNumber + 1).ToString(), displayAcc);
 
-            XmlHandler.UpdateUserStatistics(CurrentUser.CurrentUser.Name, "HighestWPM",
-                displayHighestWpm.ToString(CultureInfo.InvariantCulture));
-
             // Updates the user's averages
             XmlHandler.UpdateUserStatistics(CurrentUser.CurrentUser.Name, "AverageWPM",
                 double.Parse(displayWpm).ToString(CultureInfo.InvariantCulture));
             XmlHandler.UpdateUserStatistics(CurrentUser.CurrentUser.Name, "AverageAccuracy",
                 double.Parse(displayAcc).ToString(CultureInfo.InvariantCulture));
 
+            // Updates user tallies
+            XmlHandler.UpdateUserStatistics(CurrentUser.CurrentUser.Name, "HighestWPM",
+                displayHighestWpm.ToString(CultureInfo.InvariantCulture));
             XmlHandler.UpdateUserStatistics(CurrentUser.CurrentUser.Name, "HoursSpent",
                 displayHoursSpent.ToString(CultureInfo.InvariantCulture));
-
             XmlHandler.UpdateUserStatistics(CurrentUser.CurrentUser.Name, "TypedWordsTotal",
                 displayTypedWords.ToString(CultureInfo.InvariantCulture));
 

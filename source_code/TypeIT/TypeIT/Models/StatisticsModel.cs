@@ -8,7 +8,7 @@ namespace TypeIT.Models
         public event PropertyChangedEventHandler PropertyChanged;
         public double HighestWPM { get; set; }
         public double AverageAccuracy { get; set; }
-        public int HoursSpent { get; set; }
+        public double HoursSpent { get; set; }
         public int TypedWordsTotal { get; set; }
         public List<DailyRecordModel> DailyRecords { get; set; }
         private int _averageWpm;
@@ -23,7 +23,7 @@ namespace TypeIT.Models
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(AverageWpm)));
             }
         }
-        public StatisticsModel(double highestWpm, int averageWpm, double averageAccuracy, int hoursSpent, int typedWordsTotal)
+        public StatisticsModel(double highestWpm, int averageWpm, double averageAccuracy, double hoursSpent, int typedWordsTotal)
         {
             HighestWPM = highestWpm;
             AverageWpm = averageWpm;

@@ -38,7 +38,7 @@ namespace TypeIT.Models
         private int _pageNumber;
         private int _timeCounter;
         private int _totalMistakes;
-        private double _secondsSpent;
+        private int _secondsSpent;
         private int _typedWordsTotal;
 
         // used to calculate accuracy for the page
@@ -167,7 +167,7 @@ namespace TypeIT.Models
             }
         }
 
-        public double SecondsSpent
+        public int SecondsSpent
         {
             get => _secondsSpent;
             set
