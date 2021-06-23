@@ -133,6 +133,55 @@ namespace TypeIT.Utilities
         }
 
         /// <summary>
+        /// Adds a new daily record to the user.
+        /// If the record already exists for a given day the record is only updated if the new WPM is higher than the existing.
+        /// </summary>
+        /// <param name="userName">The user's name</param>
+        /// <param name="date">The date when he set the record. yyyy-MM-dd</param>
+        /// <param name="wpm">The new WPM</param>
+        /// <param name="accuracy">The new accuracy</param>
+        public static void AddDailyRecordToUser(string userName, string date, int wpm, double accuracy)
+        {          
+            string filePath = $"../../../FileTypes/Users/{userName}.TypeIT";
+
+            XDocument doc = XDocument.Load(filePath);
+
+            // Load the daily record into the day variable
+            XElement dailyRecords = doc.Root.Element("Statistics").Element("DailyRecords");
+            XElement day = dailyRecords.Elements("Day")
+                        .SingleOrDefault(x => (string)x.Element("Date")?.Value == date);
+
+            // If day is null the record does not exsist, we create a new one
+            if (day == null)
+            {
+                day = new XElement("Day",
+                                        new XElement("Date", date),
+                                        new XElement("WPM", wpm),
+                                        new XElement("Average", accuracy));
+
+                doc.Root.Element("Statistics").Element("DailyRecords").Add(day);
+            }
+            // If the records exists already we have to check if the current performance is higher than today's highest
+            else
+            {
+                // Getting the existing values from the .TypeIT
+                int existingWpm = int.Parse(day.Element("WPM")?.Value);
+
+                if (wpm > existingWpm)
+                {
+                    int newWpm = wpm;
+                    double newAccuracy = accuracy;
+
+                    // Adding
+                    day.Element("WPM").Value = newWpm.ToString();
+                    day.Element("Average").Value = newAccuracy.ToString();
+                }                
+            }
+                     
+            doc.Save(filePath);
+        }
+
+        /// <summary>
         /// Method to update the elements from settings
         /// </summary>
         /// <param name="filePath"></param>

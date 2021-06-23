@@ -3,23 +3,52 @@
   <Name>Steffen</Name>
   <Statistics>
     <HighestWPM>0</HighestWPM>
-    <AverageWPM>80</AverageWPM>
-    <AverageAccuracy>90</AverageAccuracy>
+    <AverageWPM>64</AverageWPM>
+    <AverageAccuracy>87</AverageAccuracy>
     <HoursSpent>0</HoursSpent>
     <TypedWordsTotal>0</TypedWordsTotal>
-    <DailyRecords></DailyRecords>
+    <DailyRecords>
+      <Day>
+        <Date>2021-06-23</Date>
+        <WPM>299</WPM>
+        <Average>100</Average>
+      </Day>
+    </DailyRecords>
   </Statistics>
   <Settings>
     <Theme>Dark</Theme>
     <GameMode>Hard</GameMode>
   </Settings>
-  <Achievements></Achievements>
+  <Achievements>
+    <AchievementName>You have to start somewhere</AchievementName>
+    <AchievementName>The birth of a legend</AchievementName>
+    <AchievementName>Getting there...</AchievementName>
+    <AchievementName>You can do better</AchievementName>
+    <AchievementName>You made it</AchievementName>
+    <AchievementName>Typing professional</AchievementName>
+    <AchievementName>Fast and furious</AchievementName>
+    <AchievementName>Beat the creator</AchievementName>
+    <AchievementName>Quit this game</AchievementName>
+    <AchievementName>Headshot</AchievementName>
+  </Achievements>
   <Documents>
     <Document>
       <DocumentName>Overlord 1</DocumentName>
       <TotalPageNumber>321</TotalPageNumber>
       <UserPageNumber>9</UserPageNumber>
       <DocumentAccuracy>90</DocumentAccuracy>
+    </Document>
+    <Document>
+      <DocumentName>hello</DocumentName>
+      <TotalPageNumber>1</TotalPageNumber>
+      <UserPageNumber>1</UserPageNumber>
+      <DocumentAccuracy>67.65</DocumentAccuracy>
+    </Document>
+    <Document>
+      <DocumentName>demo</DocumentName>
+      <TotalPageNumber>1</TotalPageNumber>
+      <UserPageNumber>1</UserPageNumber>
+      <DocumentAccuracy>90.56</DocumentAccuracy>
     </Document>
   </Documents>
 </UserProfile>

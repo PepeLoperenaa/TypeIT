@@ -7,6 +7,7 @@ using System.Windows.Input;
 using TypeIT.Commands;
 using TypeIT.Models;
 using TypeIT.Stores;
+using TypeIT.Utilities;
 
 namespace TypeIT.ViewModels
 {
@@ -56,7 +57,7 @@ namespace TypeIT.ViewModels
 
             Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("Resources/" + theme + "Theme.xaml", UriKind.Relative) });
             Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("Resources/StyleResource.xaml", UriKind.Relative) });
-
+                        
             //Navigate to dashboard
             NavigateHomeCommand.Execute(null);
         }

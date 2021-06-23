@@ -9,9 +9,19 @@
     <TypedWordsTotal>0</TypedWordsTotal>
     <DailyRecords>
       <Day>
-        <WPM>25</WPM>
-        <Accuracy>99</Accuracy>
         <Date>2021-06-23</Date>
+        <WPM>25</WPM>
+        <Average>99</Average>
+      </Day>
+      <Day>
+        <Date>2021-06-24</Date>
+        <WPM>34</WPM>
+        <Average>89</Average>
+      </Day>
+      <Day>
+        <Date>2021-06-25</Date>
+        <WPM>75</WPM>
+        <Average>10</Average>
       </Day>
     </DailyRecords>
   </Statistics>

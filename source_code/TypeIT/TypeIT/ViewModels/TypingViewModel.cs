@@ -205,6 +205,7 @@ namespace TypeIT.ViewModels
 
                 if (TypingModel.HasNextPage())
                 {
+                    
                     TypingModel.NextPage();
 
                     // doing this here since we need user statistics for calculation
@@ -213,6 +214,9 @@ namespace TypeIT.ViewModels
                 else
                 {
                     TypingModel.Alive = false;
+
+                    TypingModel.TypingTimer.Stop();
+
                     //Custom messagebox
                     var res = Xceed.Wpf.Toolkit.MessageBox.Show(
                         "You have finished this book!",
@@ -257,7 +261,11 @@ namespace TypeIT.ViewModels
             XmlHandler.UpdateUserStatistics(CurrentUser.CurrentUser.Name, "AverageAccuracy",
                 double.Parse(displayAcc).ToString(CultureInfo.InvariantCulture));
             
-            AchievementHandler.FinishPageAchievements(CurrentUser, int.Parse(displayWpm), double.Parse(displayAcc));
+            AchievementHandler.FinishPageAchievements(CurrentUser, int.Parse(displayWpm), double.Parse(displayAcc, CultureInfo.InvariantCulture));
+
+            // Adding a new daily record to the user
+            string date = DateTime.Now.ToString("yyyy-MM-dd");
+            XmlHandler.AddDailyRecordToUser(CurrentUser.CurrentUser.Name, date, int.Parse(displayWpm), double.Parse(displayAcc, CultureInfo.InvariantCulture));
         }
 
         /// <summary>
