@@ -236,22 +236,40 @@ namespace TypeIT.ViewModels
 
         private void UpdateUserXml()
         {
-            string displayAcc = TypingModel.SelectedDifficulty == Difficulty.Easy
-                ? CurrentUser.CurrentUser.Statistics.AverageAccuracy.ToString(CultureInfo.InvariantCulture)
-                : TypingModel.AverageAccuracy;
+            double displayHighestWpm = TypingModel.SelectedDifficulty == Difficulty.Easy
+                ? CurrentUser.CurrentUser.Statistics.HighestWPM
+                : TypingModel.HighestSpeed;
             string displayWpm = TypingModel.SelectedDifficulty == Difficulty.Easy
                 ? CurrentUser.CurrentUser.Statistics.AverageWpm.ToString()
                 : TypingModel.AverageTypingSpeed;
-            
+            string displayAcc = TypingModel.SelectedDifficulty == Difficulty.Easy
+                ? CurrentUser.CurrentUser.Statistics.AverageAccuracy.ToString(CultureInfo.InvariantCulture)
+                : TypingModel.AverageAccuracy;
+            int displayHoursSpent = TypingModel.SelectedDifficulty == Difficulty.Easy
+                ? CurrentUser.CurrentUser.Statistics.HoursSpent
+                : TypingModel.HoursSpent;
+            int displayTypedWords = TypingModel.SelectedDifficulty == Difficulty.Easy
+                ? CurrentUser.CurrentUser.Statistics.TypedWordsTotal
+                : TypingModel.TypedWordsTotal;
+
             XmlHandler.UpdateDocuments(CurrentUser.CurrentUser.Name, TypingModel.Document.Name,
                 (TypingModel.PageNumber + 1).ToString(), displayAcc);
 
+            XmlHandler.UpdateUserStatistics(CurrentUser.CurrentUser.Name, "HighestWPM",
+                displayHighestWpm.ToString(CultureInfo.InvariantCulture));
+
             XmlHandler.UpdateUserStatistics(CurrentUser.CurrentUser.Name, "AverageWPM",
-                double.Parse(displayWpm).ToString(CultureInfo.InvariantCulture));
+                double.Parse(displayAcc).ToString(CultureInfo.InvariantCulture));
 
             XmlHandler.UpdateUserStatistics(CurrentUser.CurrentUser.Name, "AverageAccuracy",
                 double.Parse(displayAcc).ToString(CultureInfo.InvariantCulture));
-            
+
+            XmlHandler.UpdateUserStatistics(CurrentUser.CurrentUser.Name, "HoursSpent",
+                displayHoursSpent.ToString(CultureInfo.InvariantCulture));
+
+            XmlHandler.UpdateUserStatistics(CurrentUser.CurrentUser.Name, "TypedWordsTotal",
+                displayTypedWords.ToString(CultureInfo.InvariantCulture));
+
             AchievementHandler.FinishPageAchievements(CurrentUser, int.Parse(displayWpm), double.Parse(displayAcc));
         }
 

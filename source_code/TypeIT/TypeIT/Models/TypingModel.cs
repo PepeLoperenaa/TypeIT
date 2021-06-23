@@ -38,6 +38,8 @@ namespace TypeIT.Models
         private int _pageNumber;
         private int _timeCounter;
         private int _totalMistakes;
+        private double _secondsSpent;
+        private int _typedWordsTotal;
 
         // used to calculate accuracy for the page
         public int TotalMistakes
@@ -165,6 +167,26 @@ namespace TypeIT.Models
             }
         }
 
+        public double SecondsSpent
+        {
+            get => _secondsSpent;
+            set
+            {
+                _secondsSpent = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SecondsSpent)));
+            }
+        }
+
+        public int TypedWordsTotal
+        {
+            get => _typedWordsTotal;
+            set
+            {
+                _typedWordsTotal = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TypedWordsTotal)));
+            }
+        }
+
         public TypingModel()
         {
             CurrentMistakes = 0;
@@ -223,6 +245,16 @@ namespace TypeIT.Models
         public double CalculateAccuracy(int totalChars)
         {
             return Math.Round(((double)(totalChars - TotalMistakes) / totalChars) * 100, 2);
+        }
+
+        public double CalcuateHoursSpent()
+        {
+            return (DateTime.Now - StartTime).TotalSeconds;
+        }
+
+        public int IncrimentTypedWordsTotal()
+        {
+            
         }
 
         /// <summary>
