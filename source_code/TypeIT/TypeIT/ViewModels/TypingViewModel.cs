@@ -30,6 +30,7 @@ namespace TypeIT.ViewModels
             {
                 _inputString = value;
 
+                // Set the timer whenever you start typing on a new page
                 if (InputString.Length == 1 && TypingModel.CurrentWordIndex == 0 && TypingModel.Alive)
                 {
                     TypingModel.StartTime = DateTime.Now;
@@ -37,6 +38,10 @@ namespace TypeIT.ViewModels
                 }
 
                 TypeWord(TypingModel.CurrentWord);
+                
+                // Check if the user has failed (based on timer) whenever they input
+                // This is important since Extreme difficulty reduces your time left whenever
+                //  you make a mistake.
                 CheckIfFailed();
             }
         }
@@ -83,7 +88,7 @@ namespace TypeIT.ViewModels
                 TypingModel.IncrementTime();
             }
 
-
+            // Need to check with the dispatcher thread since the CheckIfFailed() method needs it
             Application.Current.Dispatcher.Invoke((Action)delegate
             {
                 CheckIfFailed();
@@ -157,6 +162,7 @@ namespace TypeIT.ViewModels
             // !IMPORTANT do not delete
             TypingModel.TextWrong = null;
 
+            // shorten the text displayed when the user has typed 175 words, and if the total number of words is more than 280
             if (TypingModel.GetNumberOfWords() > 280)
             {
                 if (TypingModel.CurrentWordIndex % 175 == 0 && TypingModel.CurrentWordIndex != 0)
@@ -187,6 +193,7 @@ namespace TypeIT.ViewModels
         /// <param name="word"></param>
         private void ParseWord(string word)
         {
+            // Check if the user is allowed to proceed to the next word
             if (!CanGoToNextWord(word))
             {
                 return;
@@ -197,10 +204,13 @@ namespace TypeIT.ViewModels
                 UpdateUserXml();
 
                 string filePath = $"../../../FileTypes/Users/{CurrentUser.CurrentUser.Name}.TypeIT";
+
+                // Sets the user's average wpm
                 CurrentUser.CurrentUser.Statistics.AverageWpm =
                     int.Parse(XmlHandler.GetElementsFromTags(filePath, "AverageWPM").FirstOrDefault() ?? "Error");
 
-                CurrentUser.CurrentUser.Statistics.AverageWpm =
+                // Sets the user's average accuracy
+                CurrentUser.CurrentUser.Statistics.AverageAccuracy =
                     int.Parse(XmlHandler.GetElementsFromTags(filePath, "AverageAccuracy").FirstOrDefault() ?? "Error");
 
                 if (TypingModel.HasNextPage())
@@ -233,14 +243,20 @@ namespace TypeIT.ViewModels
                 TypingModel.CurrentWordIndex++;
             }
 
+            // Update the current owrd
             TypingModel.CurrentWord = TypingModel.GetWord(TypingModel.Text, TypingModel.CurrentWordIndex);
 
+            // Reset input string 
             InputLengthTracker = 0;
             InputString = "";
         }
 
+        /// <summary>
+        /// Updates the user's file whenever a page is finished
+        /// </summary>
         private void UpdateUserXml()
         {
+            // determines the average | if difficulty is easy, sets the averages to be the same as they were previously
             string displayAcc = TypingModel.SelectedDifficulty == Difficulty.Easy
                 ? CurrentUser.CurrentUser.Statistics.AverageAccuracy.ToString(CultureInfo.InvariantCulture)
                 : TypingModel.AverageAccuracy;
@@ -248,12 +264,13 @@ namespace TypeIT.ViewModels
                 ? CurrentUser.CurrentUser.Statistics.AverageWpm.ToString()
                 : TypingModel.AverageTypingSpeed;
             
+            // update the tracking of user document progress
             XmlHandler.UpdateDocuments(CurrentUser.CurrentUser.Name, TypingModel.Document.Name,
                 (TypingModel.PageNumber + 1).ToString(), displayAcc);
 
+            // Updates the user's averages
             XmlHandler.UpdateUserStatistics(CurrentUser.CurrentUser.Name, "AverageWPM",
                 double.Parse(displayWpm).ToString(CultureInfo.InvariantCulture));
-
             XmlHandler.UpdateUserStatistics(CurrentUser.CurrentUser.Name, "AverageAccuracy",
                 double.Parse(displayAcc).ToString(CultureInfo.InvariantCulture));
             
@@ -263,8 +280,8 @@ namespace TypeIT.ViewModels
         /// <summary>
         /// Checking if the user can go to the next word depending if the word is written correctly or not
         /// </summary>
-        /// <param name="word"></param>
-        /// <returns></returns>
+        /// <param name="word">the word which the user has typed</param>
+        /// <returns>a boolean determining if the user can proceed | return true if yes, false if not</returns>
         private bool CanGoToNextWord(string word)
         {
             if (InputString.Length <= 0)
@@ -301,6 +318,9 @@ namespace TypeIT.ViewModels
             return false;
         }
 
+        /// <summary>
+        /// Checks if the user has failed typing this page (Only for hard and extreme difficulty
+        /// </summary>
         private void CheckIfFailed()
         {
             if (TypingModel.SelectedDifficulty == Difficulty.Hard ||
