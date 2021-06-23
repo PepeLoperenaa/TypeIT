@@ -299,9 +299,7 @@ namespace TypeIT.ViewModels
                 displayHoursSpent.ToString(CultureInfo.InvariantCulture));
             XmlHandler.UpdateUserStatistics(CurrentUser.CurrentUser.Name, "TypedWordsTotal",
                 displayTypedWords.ToString(CultureInfo.InvariantCulture));
-
-            AchievementHandler.FinishPageAchievements(CurrentUser, int.Parse(displayWpm), double.Parse(displayAcc));
-            
+                        
             AchievementHandler.FinishPageAchievements(CurrentUser, int.Parse(displayWpm), double.Parse(displayAcc, CultureInfo.InvariantCulture));
 
             // Adding a new daily record to the user
