@@ -289,6 +289,11 @@ namespace TypeIT.Utilities
             doc.Save(filePath);
         }
 
+        /// <summary>
+        /// Gets a random document from the user's document list
+        /// </summary>
+        /// <param name="user">the user from whom to get the document</param>
+        /// <returns>A DocumentModel from the user's document list | returns null if none exist</returns>
         public static DocumentModel GetRandomUserDocument(string user)
         {
             DocumentModel model = null;
@@ -323,6 +328,13 @@ namespace TypeIT.Utilities
             return model;
         }
 
+        /// <summary>
+        /// Gets a specific document from the user's list of documents if the
+        /// requested document exists
+        /// </summary>
+        /// <param name="user">the user from whom to get the document</param>
+        /// <param name="docName">the name of the documen to retrieve</param>
+        /// <returns>A DocumentModel with the requested name | returns null if it doesn't exist</returns>
         public static DocumentModel GetUserDocument(string user, string docName)
         {
             string docPath = $"../../../Documents/{docName}";
@@ -353,10 +365,14 @@ namespace TypeIT.Utilities
             return model;
         }
 
+       
         /// <summary>
-        /// Adding a document into the users .TypeIT file when a new document is added.  
+        /// Adds a document into the specified user's file
         /// </summary>
-        /// <param name="userName"></param>
+        /// <param name="userName">the name of the user to add the document to</param>
+        /// <param name="documentName">the name of the document (also the name of the directory)</param>
+        /// <param name="documentNumberOfPages">the number of pages of the document</param>
+        /// <param name="currentPage">the page at which the user is on</param>
         public static void AddingADocumentIntoUserXml(string userName, string documentName, int documentNumberOfPages,
             int currentPage)
         {
@@ -394,7 +410,7 @@ namespace TypeIT.Utilities
         /// <summary>
         /// Clears the statistics of the name provided
         /// </summary>
-        /// <param name="userName"></param>
+        /// <param name="userName">name of the user from whom to clear the account data</param>
         public static void ClearUserData(string userName)
         {
             string filePath = $"../../../FileTypes/Users/{userName}.TypeIT";

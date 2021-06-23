@@ -38,6 +38,8 @@ namespace TypeIT.Models
         private int _pageNumber;
         private int _timeCounter;
         private int _totalMistakes;
+        private int _secondsSpent;
+        private int _typedWordsTotal;
 
         // used to calculate accuracy for the page
         public int TotalMistakes
@@ -165,6 +167,26 @@ namespace TypeIT.Models
             }
         }
 
+        public int SecondsSpent
+        {
+            get => _secondsSpent;
+            set
+            {
+                _secondsSpent = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SecondsSpent)));
+            }
+        }
+
+        public int TypedWordsTotal
+        {
+            get => _typedWordsTotal;
+            set
+            {
+                _typedWordsTotal = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TypedWordsTotal)));
+            }
+        }
+
         public TypingModel()
         {
             CurrentMistakes = 0;
@@ -202,7 +224,7 @@ namespace TypeIT.Models
         /// <summary>
         /// Calculates the user's typing speed 
         /// </summary>
-        /// <param name="wordNumber"></param>
+        /// <param name="wordNumber">the index of the word currently being typed</param>
         /// <returns>The average typing speed of a user</returns>
         public double CalculateTypingSpeed(int wordNumber)
         {
@@ -218,17 +240,27 @@ namespace TypeIT.Models
         /// <summary>
         /// Calculates the user's accuracy
         /// </summary>
-        /// <param name="totalChars"></param>
+        /// <param name="totalChars">The total number of characters in the text</param>
         /// <returns>The average accuracy of a user</returns>
         public double CalculateAccuracy(int totalChars)
         {
             return Math.Round(((double)(totalChars - TotalMistakes) / totalChars) * 100, 2);
         }
 
+        public double CalcuateHoursSpent()
+        {
+            return (DateTime.Now - StartTime).TotalSeconds;
+        }
+
+        public int IncrementTypedWordsTotal()
+        {
+            return 0;
+        }
+
         /// <summary>
         /// Retrieves the text from the current word being typed
         /// </summary>
-        /// <param name="pageNumber"></param>
+        /// <param name="pageNumber">The page number to get the text from</param>
         /// <returns>The text from the page</returns>
         public string GetTextFromPage(int pageNumber)
         {
@@ -300,6 +332,10 @@ namespace TypeIT.Models
             TypingTimer.Stop();
         }
 
+        /// <summary>
+        /// Displays all the average stats of the user for the current
+        /// page being typed
+        /// </summary>
         public void DisplayAverages()
         {
             if (SelectedDifficulty == Difficulty.Easy)
