@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UserProfile>
+  <Name>Costa</Name>
+  <Statistics>
+    <HighestWPM>0</HighestWPM>
+    <AverageWPM>0</AverageWPM>
+    <AverageAccuracy>0</AverageAccuracy>
+    <HoursSpent>0</HoursSpent>
+    <TypedWordsTotal>0</TypedWordsTotal>
+    <DailyRecords>
+      <Day>
+        <Date>2021-06-23</Date>
+        <WPM>0</WPM>
+        <Average>0</Average>
+      </Day>
+    </DailyRecords>
+  </Statistics>
+  <Settings>
+    <Theme>Dark</Theme>
+    <GameMode>Normal</GameMode>
+  </Settings>
+  <Achievements>
+    <AchievementName>You have to start somewhere</AchievementName>
+    <AchievementName>First steps</AchievementName>
+    <AchievementName>Author</AchievementName>
+  </Achievements>
+  <Documents>
+    <Document>
+      <DocumentName>JavaScript &amp; jQuery_ Interactive Front-End Development</DocumentName>
+      <TotalPageNumber>556</TotalPageNumber>
+      <UserPageNumber>1</UserPageNumber>
+      <DocumentAccuracy>0</DocumentAccuracy>
+    </Document>
+  </Documents>
+</UserProfile>
