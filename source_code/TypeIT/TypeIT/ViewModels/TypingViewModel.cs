@@ -83,7 +83,12 @@ namespace TypeIT.ViewModels
                 TypingModel.IncrementTime();
             }
 
-            CheckIfFailed();
+
+            Application.Current.Dispatcher.Invoke((Action)delegate
+            {
+                CheckIfFailed();
+            });
+            
         }
 
         /// <summary>
@@ -323,6 +328,7 @@ namespace TypeIT.ViewModels
                 if (TypingModel.TimeCounter == 0)
                 {
                     TypingModel.Alive = false;
+                    TypingModel.TypingTimer.Stop();
 
                     //Custom messagebox
                     var res = Xceed.Wpf.Toolkit.MessageBox.Show(
@@ -330,9 +336,9 @@ namespace TypeIT.ViewModels
                         "OK",
                         MessageBoxButton.OK
                     );
-
+                            
                     if ("OK" == res.ToString())
-                    {
+                    {                        
                         NavigateHomeCommand.Execute(null);
                     }
                 }

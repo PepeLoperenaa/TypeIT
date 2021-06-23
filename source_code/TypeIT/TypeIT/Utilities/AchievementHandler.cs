@@ -44,6 +44,30 @@ namespace TypeIT.Utilities
             AddNewAchievements(currentUser);
         }
 
+        public static void AddBookAchievements(UserStore currentUser, int documentsNumber)
+        {
+            NewlyUnlockedAchievements.Clear();
+
+            List<string> achievementName = XmlHandler.GetElementsFromTags("../../../FileTypes/TypeitFiles/achievements.TypeIT", "AchievementName");
+            List<string> achievementThreshold = XmlHandler.GetElementsFromTags("../../../FileTypes/TypeitFiles/achievements.TypeIT", "Treshold");
+            List<string> achievementProperty = XmlHandler.GetElementsFromTags("../../../FileTypes/TypeitFiles/achievements.TypeIT", "Property");
+
+            for (int i = 0; i < achievementName.Count; i++)
+            {
+                switch (achievementProperty[i])
+                {
+                    case "BookAdd":
+                        if (documentsNumber >= int.Parse(achievementThreshold[i]))
+                        {
+                            NewlyUnlockedAchievements.Add(achievementName[i]);
+                        }
+                        break;
+                }
+            }
+
+            AddNewAchievements(currentUser);
+        }
+
         /// <summary>
         /// Adds the achievements to the user's .TypeIT file
         /// </summary>

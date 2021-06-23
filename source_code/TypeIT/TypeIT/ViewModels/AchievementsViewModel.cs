@@ -20,6 +20,7 @@ namespace TypeIT.ViewModels
             Achievements = new List<AchievementModel>();
             UnlockedAchievements = new List<AchievementModel>();
             CurrentUser = userStore;
+            CurrentUser.CurrentUser.RefreshUserModel();
             LoadAchievements();
             LoadUsersAchievements();
         }
