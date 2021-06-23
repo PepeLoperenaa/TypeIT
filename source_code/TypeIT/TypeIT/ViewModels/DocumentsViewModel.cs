@@ -55,6 +55,8 @@ namespace TypeIT.ViewModels
                 );
 
                 CurrentUser.CurrentUser.LoadUserDocuments();
+
+                AchievementHandler.AddBookAchievements(CurrentUser, CurrentUser.CurrentUser.Documents.Count);
             }
         }
 

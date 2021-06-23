@@ -31,9 +31,7 @@ namespace TypeIT.Utilities
                 new XElement("Settings",
                     new XElement("Theme"),
                     new XElement("GameMode")),
-                new XElement("Achievements",
-                    new XElement("Achievement",
-                        new XElement("AchievementName"))),
+                new XElement("Achievements"),
                 new XElement("Documents")));
 
             doc.Root.Element("Statistics").Element("HighestWPM").Value = "0";

@@ -7,11 +7,17 @@
     <AverageAccuracy>0</AverageAccuracy>
     <HoursSpent>0</HoursSpent>
     <TypedWordsTotal>0</TypedWordsTotal>
-    <DailyRecords></DailyRecords>
+    <DailyRecords>
+      <Day>
+        <WPM>25</WPM>
+        <Accuracy>99</Accuracy>
+        <Date>2021-06-23</Date>
+      </Day>
+    </DailyRecords>
   </Statistics>
   <Settings>
     <Theme />
-    <GameMode>Normal</GameMode>
+    <GameMode>Extreme</GameMode>
   </Settings>
   <Achievements>
     <Achievement>
