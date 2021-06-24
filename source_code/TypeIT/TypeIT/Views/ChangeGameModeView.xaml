@@ -40,8 +40,8 @@
                     Width="125" Style="{DynamicResource ImageButton}"
                     Command="{Binding ChangeGameModeToCasual}">
                 <StackPanel Width="120" Orientation="Horizontal">
-                    <Image Source="../Resources/Images/casualIcon.png" Height="35" Margin="15,0,0,0"/>
-                    <TextBlock Width="60" Margin="15,0,0,0" TextWrapping="WrapWithOverflow">
+                    <Image Source="../Resources/Images/casualIcon.png" Height="35" Margin="10,0,0,0"/>
+                    <TextBlock Width="60" Margin="10,0,0,0" TextWrapping="WrapWithOverflow">
                         <TextBlock.Inlines>
                             <Run Text="Casual"/>
                             <LineBreak/>
@@ -55,8 +55,8 @@
                     Width="125" Style="{DynamicResource ImageButton}"
                     Command="{Binding ChangeGameModeToNormal}">
                 <StackPanel Width="120" Orientation="Horizontal">
-                    <Image Source="../Resources/Images/normalIcon.png" Height="35" Margin="15,0,0,0"/>
-                    <TextBlock Width="60" Margin="15,0,0,0" TextWrapping="WrapWithOverflow">
+                    <Image Source="../Resources/Images/normalIcon.png" Height="35" Margin="12,0,0,0"/>
+                    <TextBlock Width="60" Margin="12,0,0,0" TextWrapping="WrapWithOverflow">
                         <TextBlock.Inlines>
                             <Run Text="Normal"/>
                             <LineBreak/>
