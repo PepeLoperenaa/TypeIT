@@ -2,15 +2,15 @@
 <UserProfile>
   <Name>Steffen</Name>
   <Statistics>
-    <HighestWPM>0</HighestWPM>
-    <AverageWPM>95</AverageWPM>
-    <AverageAccuracy>86</AverageAccuracy>
+    <HighestWPM>178</HighestWPM>
+    <AverageWPM>163</AverageWPM>
+    <AverageAccuracy>100</AverageAccuracy>
     <HoursSpent>0</HoursSpent>
     <TypedWordsTotal>0</TypedWordsTotal>
     <DailyRecords>
       <Day>
-        <Date>2021-06-23</Date>
-        <WPM>299</WPM>
+        <Date>2021-06-26</Date>
+        <WPM>178</WPM>
         <Average>100</Average>
       </Day>
     </DailyRecords>
@@ -20,39 +20,32 @@
     <GameMode>Hard</GameMode>
   </Settings>
   <Achievements>
+    <AchievementName>You have to start somewhere</AchievementName>
     <AchievementName>The birth of a legend</AchievementName>
     <AchievementName>Getting there...</AchievementName>
     <AchievementName>You made it</AchievementName>
     <AchievementName>Typing professional</AchievementName>
     <AchievementName>Fast and furious</AchievementName>
+    <AchievementName>Beat the creator</AchievementName>
     <AchievementName>You can do better</AchievementName>
     <AchievementName>Headshot</AchievementName>
+    <AchievementName>Quit this game</AchievementName>
     <AchievementName>First steps</AchievementName>
     <AchievementName>Author</AchievementName>
-    <AchievementName>Beat the creator</AchievementName>
-    <AchievementName>Basically Tolkien</AchievementName>
-    <AchievementName>You have to start somewhere</AchievementName>
-    <AchievementName>Quit this game</AchievementName>
     <AchievementName>You cheated to get this didn't you</AchievementName>
   </Achievements>
   <Documents>
     <Document>
-      <DocumentName>Overlord 1</DocumentName>
-      <TotalPageNumber>321</TotalPageNumber>
-      <UserPageNumber>321</UserPageNumber>
-      <DocumentAccuracy>90</DocumentAccuracy>
-    </Document>
-    <Document>
-      <DocumentName>hello</DocumentName>
+      <DocumentName>test - Copy</DocumentName>
       <TotalPageNumber>1</TotalPageNumber>
       <UserPageNumber>1</UserPageNumber>
       <DocumentAccuracy>100</DocumentAccuracy>
     </Document>
     <Document>
-      <DocumentName>demo</DocumentName>
+      <DocumentName>test</DocumentName>
       <TotalPageNumber>1</TotalPageNumber>
       <UserPageNumber>1</UserPageNumber>
-      <DocumentAccuracy>90.56</DocumentAccuracy>
+      <DocumentAccuracy>100</DocumentAccuracy>
     </Document>
   </Documents>
 </UserProfile>

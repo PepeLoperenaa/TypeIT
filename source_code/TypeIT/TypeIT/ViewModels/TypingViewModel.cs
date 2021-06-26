@@ -201,6 +201,10 @@ namespace TypeIT.ViewModels
 
             if (TypingModel.CurrentWordIndex == TypingModel.GetNumberOfWords())
             {
+                TypingModel.Alive = false;
+
+                TypingModel.TypingTimer.Stop();
+
                 UpdateUserXml();
 
                 string filePath = $"../../../FileTypes/Users/{CurrentUser.CurrentUser.Name}.TypeIT";
@@ -214,20 +218,14 @@ namespace TypeIT.ViewModels
                     int.Parse(XmlHandler.GetElementsFromTags(filePath, "AverageAccuracy").FirstOrDefault() ?? "Error");
 
                 if (TypingModel.HasNextPage())
-                {
-                    
+                {                    
                     TypingModel.NextPage();
 
                     // doing this here since we need user statistics for calculation
                     TypingModel.SetDisplayTime(CurrentUser.CurrentUser.Statistics.AverageWpm);
                 }
                 else
-                {
-                    TypingModel.Alive = false;
-
-                    TypingModel.TypingTimer.Stop();
-                    
-
+                {                    
                     AchievementHandler.FinishBookAchievements(CurrentUser, TypingModel.Document.GetNumberOfPages(), TypingModel.Document.Name);
 
                     //Custom messagebox
