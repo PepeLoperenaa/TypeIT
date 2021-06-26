@@ -24,7 +24,10 @@ namespace TypeIT.ViewModels
 
             ContactCommand = new DelegateCommand(ClickedContactUs);
         }
-
+        /// <summary>
+        /// This command redirects to the prefferd browser to send an email.
+        /// This URL carries the recepient and the email subject as well.
+        /// </summary>
         private void ClickedContactUs()
         {
             var url = "mailto:rob.smit@nhlstenden.com?subject=TypeIT%20Contact%20us%20form&amp";
