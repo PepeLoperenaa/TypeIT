@@ -34,11 +34,11 @@ namespace TypeIT.Models
         private string _currentWord;
         private string _timeDisplay;
         private string _averageTypingSpeed;
+        private double _secondsSpent;
         private int _errorSpace;
         private int _pageNumber;
         private int _timeCounter;
         private int _totalMistakes;
-        private int _secondsSpent;
         private int _typedWordsTotal;
 
         // used to calculate accuracy for the page
@@ -167,7 +167,7 @@ namespace TypeIT.Models
             }
         }
 
-        public int SecondsSpent
+        public double SecondsSpent
         {
             get => _secondsSpent;
             set

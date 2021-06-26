@@ -1,23 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <UserProfile>
-  <Name>Steffen</Name>
+  <Name>Steff</Name>
   <Statistics>
-    <HighestWPM>178</HighestWPM>
-    <AverageWPM>163</AverageWPM>
+    <HighestWPM>147</HighestWPM>
+    <AverageWPM>147</AverageWPM>
     <AverageAccuracy>100</AverageAccuracy>
-    <HoursSpent>0</HoursSpent>
-    <TypedWordsTotal>0</TypedWordsTotal>
+    <HoursSpent>0,0111111111111111118</HoursSpent>
+    <TypedWordsTotal>116</TypedWordsTotal>
     <DailyRecords>
       <Day>
         <Date>2021-06-26</Date>
-        <WPM>178</WPM>
+        <WPM>147</WPM>
         <Average>100</Average>
       </Day>
     </DailyRecords>
   </Statistics>
   <Settings>
-    <Theme>Dark</Theme>
-    <GameMode>Hard</GameMode>
+    <Theme />
+    <GameMode>Normal</GameMode>
   </Settings>
   <Achievements>
     <AchievementName>You have to start somewhere</AchievementName>
@@ -26,21 +26,14 @@
     <AchievementName>You made it</AchievementName>
     <AchievementName>Typing professional</AchievementName>
     <AchievementName>Fast and furious</AchievementName>
-    <AchievementName>Beat the creator</AchievementName>
     <AchievementName>You can do better</AchievementName>
     <AchievementName>Headshot</AchievementName>
-    <AchievementName>Quit this game</AchievementName>
     <AchievementName>First steps</AchievementName>
     <AchievementName>Author</AchievementName>
     <AchievementName>You cheated to get this didn't you</AchievementName>
+    <AchievementName>Beat the creator</AchievementName>
   </Achievements>
   <Documents>
-    <Document>
-      <DocumentName>test - Copy</DocumentName>
-      <TotalPageNumber>1</TotalPageNumber>
-      <UserPageNumber>1</UserPageNumber>
-      <DocumentAccuracy>100</DocumentAccuracy>
-    </Document>
     <Document>
       <DocumentName>test</DocumentName>
       <TotalPageNumber>1</TotalPageNumber>

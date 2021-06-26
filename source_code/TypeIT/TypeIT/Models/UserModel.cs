@@ -138,7 +138,7 @@ namespace TypeIT.Models
             int TypedTypedWordsTotalWords = (parameter == "") ? 0 : Convert.ToInt32(parameter);
 
             //Returning a new statistics model based on the read values
-            return new StatisticsModel(HighestWPM, AverageWPM, AverageAccuracy, HoursSpent, TypedTypedWordsTotalWords);
+            return new StatisticsModel(HighestWPM, AverageWPM, AverageAccuracy, Math.Round(HoursSpent, 2), TypedTypedWordsTotalWords);
         }
 
         /// <summary>

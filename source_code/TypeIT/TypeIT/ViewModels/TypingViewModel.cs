@@ -83,6 +83,8 @@ namespace TypeIT.ViewModels
         {
             if (TypingModel.Alive)
             {
+                TypingModel.SecondsSpent++;
+
                 TypingModel.DisplayAverages();
 
                 TypingModel.IncrementTime();
@@ -205,6 +207,8 @@ namespace TypeIT.ViewModels
 
                 TypingModel.TypingTimer.Stop();
 
+                TypingModel.DisplayAverages();
+
                 UpdateUserXml();
 
                 string filePath = $"../../../FileTypes/Users/{CurrentUser.CurrentUser.Name}.TypeIT";
@@ -218,14 +222,14 @@ namespace TypeIT.ViewModels
                     int.Parse(XmlHandler.GetElementsFromTags(filePath, "AverageAccuracy").FirstOrDefault() ?? "Error");
 
                 if (TypingModel.HasNextPage())
-                {                    
+                {
                     TypingModel.NextPage();
 
                     // doing this here since we need user statistics for calculation
                     TypingModel.SetDisplayTime(CurrentUser.CurrentUser.Statistics.AverageWpm);
                 }
                 else
-                {                    
+                {
                     AchievementHandler.FinishBookAchievements(CurrentUser, TypingModel.Document.GetNumberOfPages(), TypingModel.Document.Name);
 
                     //Custom messagebox
@@ -241,6 +245,8 @@ namespace TypeIT.ViewModels
                     }
                 }
 
+                XmlHandler.AddToUserRecord(CurrentUser.CurrentUser.Name, "HoursSpent", (TypingModel.SecondsSpent / 3600).ToString());
+
                 CurrentUser.CurrentUser.RefreshUserModel();
             }
             else
@@ -248,8 +254,14 @@ namespace TypeIT.ViewModels
                 TypingModel.CurrentWordIndex++;
             }
 
-            // Update the current owrd
+            // Update the current word
             TypingModel.CurrentWord = TypingModel.GetWord(TypingModel.Text, TypingModel.CurrentWordIndex);
+
+            // Update the total number of words a user has typed
+            XmlHandler.AddToUserRecord(CurrentUser.CurrentUser.Name, "TypedWordsTotal", "1");
+
+            // Refresh the user's xml file
+            CurrentUser.CurrentUser.RefreshUserModel();
 
             // Reset input string 
             InputLengthTracker = 0;
@@ -262,7 +274,7 @@ namespace TypeIT.ViewModels
         private void UpdateUserXml()
         {
 
-            // determines the average | if difficulty is easy, sets the averages to be the same as they were previously
+            // Determines the average | if difficulty is easy, sets the averages to be the same as they were previously
             string displayWpm = TypingModel.SelectedDifficulty == Difficulty.Easy
                 ? CurrentUser.CurrentUser.Statistics.AverageWpm.ToString()
                 : TypingModel.AverageTypingSpeed;
@@ -270,33 +282,18 @@ namespace TypeIT.ViewModels
                 ? CurrentUser.CurrentUser.Statistics.AverageAccuracy.ToString(CultureInfo.InvariantCulture)
                 : TypingModel.AverageAccuracy;
 
-            double displayHighestWpm = TypingModel.SelectedDifficulty == Difficulty.Easy
-                ? CurrentUser.CurrentUser.Statistics.HighestWPM
-                : TypingModel.HighestSpeed;
-            double displayHoursSpent = TypingModel.SelectedDifficulty == Difficulty.Easy
-                ? CurrentUser.CurrentUser.Statistics.HoursSpent
-                : TypingModel.SecondsSpent / 3600;
-            int displayTypedWords = TypingModel.SelectedDifficulty == Difficulty.Easy
-                ? CurrentUser.CurrentUser.Statistics.TypedWordsTotal
-                : TypingModel.TypedWordsTotal;
-            
-            // update the tracking of user document progress
+            // Update the tracking of user document progress
             XmlHandler.UpdateDocuments(CurrentUser.CurrentUser.Name, TypingModel.Document.Name,
                 (TypingModel.PageNumber + 1).ToString(), displayAcc);
+
+            // Updates the user's highest wpm record
+            XmlHandler.AddToUserRecord(CurrentUser.CurrentUser.Name, "HighestWPM", TypingModel.AverageTypingSpeed);
 
             // Updates the user's averages
             XmlHandler.UpdateUserStatistics(CurrentUser.CurrentUser.Name, "AverageWPM",
                 double.Parse(displayWpm).ToString(CultureInfo.InvariantCulture));
             XmlHandler.UpdateUserStatistics(CurrentUser.CurrentUser.Name, "AverageAccuracy",
                 double.Parse(displayAcc).ToString(CultureInfo.InvariantCulture));
-
-            // Updates user tallies
-            XmlHandler.UpdateUserStatistics(CurrentUser.CurrentUser.Name, "HighestWPM",
-                displayHighestWpm.ToString(CultureInfo.InvariantCulture));
-            XmlHandler.UpdateUserStatistics(CurrentUser.CurrentUser.Name, "HoursSpent",
-                displayHoursSpent.ToString(CultureInfo.InvariantCulture));
-            XmlHandler.UpdateUserStatistics(CurrentUser.CurrentUser.Name, "TypedWordsTotal",
-                displayTypedWords.ToString(CultureInfo.InvariantCulture));
                         
             AchievementHandler.FinishPageAchievements(CurrentUser, int.Parse(displayWpm), double.Parse(displayAcc, CultureInfo.InvariantCulture));
 
