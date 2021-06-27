@@ -65,7 +65,50 @@ namespace TypeIT.Utilities
         }
 
         /// <summary>
-        ///  Method to update specific elements from the update settings
+        /// This method takes the provided tag and adds a new value (used for adding to user records which are not averages)
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <param name="tag"></param>
+        /// <param name="value"></param>
+        public static void AddToUserRecord(string userName, string tag, string value)
+        {
+            string filePath = $"../../../FileTypes/Users/{userName}.TypeIT";
+
+            XDocument doc = XDocument.Load(filePath);
+
+            XElement statistics = doc.Root?.Elements("Statistics").FirstOrDefault();
+
+            if (statistics != null)
+            {
+                XElement record = statistics.Element(tag);
+
+                if (record != null)
+                {
+                    if (tag == "HighestWPM")
+                    {
+                        if (int.Parse(value) > int.Parse(record.Value))
+                        {
+                            record.Value = value;
+                            doc.Save(filePath);
+                        }
+                        return;
+                    }
+
+
+                    decimal previous = Convert.ToDecimal(record.Value.Replace(',', '.'), CultureInfo.InvariantCulture);
+
+                    // Have to manually convert ',' to '.' since InvariantCulture isn't doing it for some reason
+                    previous += Convert.ToDecimal(value.Replace(',', '.'), CultureInfo.InvariantCulture);
+
+                    record.Value = previous.ToString();
+                }
+            }
+
+            doc.Save(filePath);
+        }
+
+        /// <summary>
+        /// This method updates the statistics of a user using averages (do not use for values which aren't average calculations)
         /// </summary>
         /// <param name="userName"></param>
         /// <param name="tag"></param>

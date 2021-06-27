@@ -4,7 +4,7 @@
   <Statistics>
     <HighestWPM>0</HighestWPM>
     <AverageWPM>0</AverageWPM>
-    <AverageAccuracy>0</AverageAccuracy>
+    <AverageAccuracy>-2147483648</AverageAccuracy>
     <HoursSpent>0</HoursSpent>
     <TypedWordsTotal>0</TypedWordsTotal>
     <DailyRecords>
@@ -26,14 +26,18 @@
     </DailyRecords>
   </Statistics>
   <Settings>
-    <Theme />
-    <GameMode>Extreme</GameMode>
+    <Theme>Dark</Theme>
+    <GameMode>Normal</GameMode>
   </Settings>
   <Achievements>
     <Achievement>
       <AchievementName />
     </Achievement>
     <AchievementName>You can do better</AchievementName>
+    <AchievementName>You have to start somewhere</AchievementName>
+    <AchievementName>First steps</AchievementName>
+    <AchievementName>Author</AchievementName>
+    <AchievementName>Basically Tolkien</AchievementName>
   </Achievements>
   <Documents>
     <Document>
@@ -70,6 +74,18 @@
       <DocumentName>demo</DocumentName>
       <TotalPageNumber>1</TotalPageNumber>
       <UserPageNumber>1</UserPageNumber>
+      <DocumentAccuracy>0</DocumentAccuracy>
+    </Document>
+    <Document>
+      <DocumentName>1</DocumentName>
+      <TotalPageNumber>1</TotalPageNumber>
+      <UserPageNumber>1</UserPageNumber>
+      <DocumentAccuracy>NaN</DocumentAccuracy>
+    </Document>
+    <Document>
+      <DocumentName>CV</DocumentName>
+      <TotalPageNumber>1</TotalPageNumber>
+      <UserPageNumber>0</UserPageNumber>
       <DocumentAccuracy>0</DocumentAccuracy>
     </Document>
   </Documents>
