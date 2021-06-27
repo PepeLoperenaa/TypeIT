@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UserProfile>
+  <Name>Chris</Name>
+  <Statistics>
+    <HighestWPM>71</HighestWPM>
+    <AverageWPM>71</AverageWPM>
+    <AverageAccuracy>92</AverageAccuracy>
+    <HoursSpent>0.014444444444444444</HoursSpent>
+    <TypedWordsTotal>92</TypedWordsTotal>
+    <DailyRecords>
+      <Day>
+        <Date>2021-06-27</Date>
+        <WPM>71</WPM>
+        <Average>92</Average>
+      </Day>
+    </DailyRecords>
+  </Statistics>
+  <Settings>
+    <Theme>Dark</Theme>
+    <GameMode>Casual</GameMode>
+  </Settings>
+  <Achievements>
+    <AchievementName>You have to start somewhere</AchievementName>
+    <AchievementName>The birth of a legend</AchievementName>
+    <AchievementName>Getting there...</AchievementName>
+    <AchievementName>You can do better</AchievementName>
+    <AchievementName>First steps</AchievementName>
+    <AchievementName>Author</AchievementName>
+  </Achievements>
+  <Documents>
+    <Document>
+      <DocumentName>chris_takacs_CV</DocumentName>
+      <TotalPageNumber>1</TotalPageNumber>
+      <UserPageNumber>0</UserPageNumber>
+      <DocumentAccuracy>0</DocumentAccuracy>
+    </Document>
+    <Document>
+      <DocumentName>demo</DocumentName>
+      <TotalPageNumber>1</TotalPageNumber>
+      <UserPageNumber>1</UserPageNumber>
+      <DocumentAccuracy>92</DocumentAccuracy>
+    </Document>
+  </Documents>
+</UserProfile>

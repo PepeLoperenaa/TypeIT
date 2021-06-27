@@ -43,7 +43,7 @@
                     <Image Source="../Resources/Images/casualIcon.png" Height="35" Margin="10,0,0,0"/>
                     <TextBlock Width="60" Margin="10,0,0,0" TextWrapping="WrapWithOverflow">
                         <TextBlock.Inlines>
-                            <Run Text="Casual"/>
+                            <Run Text="Easy"/>
                             <LineBreak/>
                             <Run Style="{DynamicResource BodyText}" Text="Type without a timer and your stats being tracked."/>
                         </TextBlock.Inlines>
@@ -58,7 +58,7 @@
                     <Image Source="../Resources/Images/normalIcon.png" Height="35" Margin="12,0,0,0"/>
                     <TextBlock Width="60" Margin="12,0,0,0" TextWrapping="WrapWithOverflow">
                         <TextBlock.Inlines>
-                            <Run Text="Normal"/>
+                            <Run Text="Medium"/>
                             <LineBreak/>
                             <Run Style="{DynamicResource BodyText}" Text="Type with your stats being tracked but without a timer. Achievements are enabled."/>
                         </TextBlock.Inlines>
