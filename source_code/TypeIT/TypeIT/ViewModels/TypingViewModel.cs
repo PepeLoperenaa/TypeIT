@@ -201,7 +201,8 @@ namespace TypeIT.ViewModels
 
             if (TypingModel.CurrentWordIndex == TypingModel.GetNumberOfWords())
             {
-                UpdateUserXml();
+                TypingModel.TypingTimer.Stop();
+                UpdateUserXml();                
 
                 string filePath = $"../../../FileTypes/Users/{CurrentUser.CurrentUser.Name}.TypeIT";
 
@@ -225,7 +226,7 @@ namespace TypeIT.ViewModels
                 {
                     TypingModel.Alive = false;
 
-                    TypingModel.TypingTimer.Stop();
+                    
                     
 
                     AchievementHandler.FinishBookAchievements(CurrentUser, TypingModel.Document.GetNumberOfPages(), TypingModel.Document.Name);
